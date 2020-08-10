@@ -107,21 +107,21 @@ TensorFlow (i.e., TF)::
 .. _label7:
 .. toctree::
    :maxdepth: 3
-   :caption: 自然语言处理
+   :caption: 自然语言处理(NLP)
    
    07_Natural_Language_Processing/index
 
 .. _label8:
 .. toctree::
    :maxdepth: 3
-   :caption: 卷积神经网络
+   :caption: 卷积神经网络(CNN)
    
    08_Convolutional_Neural_Networks/index
 
 .. _label9:
 .. toctree::
    :maxdepth: 3
-   :caption: 递归神经网络
+   :caption: 递归神经网络(RNN)
    
    09_Recurrent_Neural_Networks/index
 
