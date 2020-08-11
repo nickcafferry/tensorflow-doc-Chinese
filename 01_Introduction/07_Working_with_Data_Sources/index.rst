@@ -17,25 +17,22 @@
 Iris Dataset(鸢尾属植物数据集)
 ------------------------------------
 
-这个数据集( `Iris Dataset <http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris>`_ )无可置疑地是最经典的用于机器学习的数据集，而且可能扩展到所有统计学。这个数据集采集了三种鸢尾花的 :strong:`sepal length`（花萼长度），:strong:`sepal width`（花萼宽度），:strong:`petal length`（花瓣长度），:strong:`petal width`（花瓣宽度)。这三种鸢尾花分别是Iris Setosa(山鸢尾)，Iris Versicolour(杂色鸢尾)，Iris Virginica(维吉尼亚鸢尾)。总共有150项测量，每种鸢尾花有50项。为了在Python中使用这些数据集，我们使用Scikit Learn中的数据函数。
+这个数据集( `Iris Dataset <http://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris>`_ )无可置疑地是最经典的用于机器学习的数据集，而且可能扩展到所有统计学。这个数据集采集了三种鸢尾花的 :strong:`sepal length` (花萼长度)， :strong:`sepal width` (花萼宽度)，:strong:`petal length` (花瓣长度)，:strong:`petal width` (花瓣宽度)。这三种鸢尾花分别是Iris Setosa(山鸢尾)，Iris Versicolour(杂色鸢尾)，Iris Virginica(维吉尼亚鸢尾)。总共有150项测量，每种鸢尾花有50项。为了在Python中使用这些数据集，我们使用Scikit Learn中的数据函数。
 
-.. code:: ipython3
+.. code:: python
 
     >>> from sklearn.datasets import load_iris
     >>> import pandas as pd
     >>> iris = load_iris()
     >>> print(len(iris.data))
+    150
     >>> print(len(iris.target))
+    150
     >>> print(iris.data[0])
-    >>> print(set(iris.target))
-    >>> pd.DataFrame(data=iris.data, columns=iris.feature_names)
-
-.. parsed-literal::
-
-    150
-    150
     [5.1 3.5 1.4 0.2]
+    >>> print(set(iris.target))
     {0, 1, 2}
+    >>> pd.DataFrame(data=iris.data, columns=iris.feature_names)
 
 .. raw:: html
 
@@ -516,20 +513,793 @@ public Github `here <https://github.com/nfmcclure/tensorflow_cookbook/raw/master
 
 
 .. code:: python
-  
-  import requests
-  birthdata_url = 'https://github.com/nfmcclure/tensorflow_cookbook/raw/master/01_Introduction/07_Working_with_Data_Sources/birthweight_data/birthweight.dat'
-  birth_file = requests.get(birthdata_url)
-  birth_data = birth_file.text.split('\r\n')
-  birth_header = birth_data[0].split('\t')
-  birth_data = [[float(x) for x in y.split('\t') if len(x)>=1] for y in birth_data[1:] if len(y)>=1]
-  print(len(birth_data))
-  print(len(birth_data[0]))
 
-the output::
+    >>> import requests
+    >>> birthdata_url='https://github.com/nfmcclure/tensorflow_cookbook/raw/master/01_Introduction/07_Working_with_Data_Sources/birthweight_data/birthweight.dat'
+    >>> birth_file = requests.get(birthdata_url)
+    >>> birth_data = birth_file.text.split('\r\n')
+    >>> birth_header = birth_data[0].split('\t')
+    >>> birth_data = [[float(x) for x in y.split('\t') if len(x)>=1] for y in birth_data[1:] if len(y)>=1]
+    >>> print(len(birth_data))
+    189
+    >>> print(len(birth_data[0]))
+    9
+    >>> print(birth_header)
+    ['LOW', 'AGE', 'LWT', 'RACE', 'SMOKE', 'PTL', 'HT', 'UI', 'BWT']
 
-  189
-  9
+    >>> import pandas as pd
+    >>> pd.DataFrame(data=birth_data, columns=birth_header)
+
+.. raw:: html
+
+    <div>
+    <style scoped>
+        .dataframe tbody tr th:only-of-type {
+            vertical-align: middle;
+        }
+    
+        .dataframe tbody tr th {
+            vertical-align: top;
+        }
+    
+        .dataframe thead th {
+            text-align: right;
+        }
+    </style>
+    <table border="1" class="dataframe">
+      <thead>
+        <tr style="text-align: right;">
+          <th></th>
+          <th>LOW</th>
+          <th>AGE</th>
+          <th>LWT</th>
+          <th>RACE</th>
+          <th>SMOKE</th>
+          <th>PTL</th>
+          <th>HT</th>
+          <th>UI</th>
+          <th>BWT</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>0</th>
+          <td>1.0</td>
+          <td>28.0</td>
+          <td>113.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>709.0</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>1.0</td>
+          <td>29.0</td>
+          <td>130.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1021.0</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>1.0</td>
+          <td>34.0</td>
+          <td>187.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1135.0</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>1.0</td>
+          <td>25.0</td>
+          <td>105.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1330.0</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>1.0</td>
+          <td>25.0</td>
+          <td>85.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1474.0</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td>1.0</td>
+          <td>27.0</td>
+          <td>150.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1588.0</td>
+        </tr>
+        <tr>
+          <th>6</th>
+          <td>1.0</td>
+          <td>23.0</td>
+          <td>97.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1588.0</td>
+        </tr>
+        <tr>
+          <th>7</th>
+          <td>1.0</td>
+          <td>24.0</td>
+          <td>128.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1701.0</td>
+        </tr>
+        <tr>
+          <th>8</th>
+          <td>1.0</td>
+          <td>24.0</td>
+          <td>132.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1729.0</td>
+        </tr>
+        <tr>
+          <th>9</th>
+          <td>1.0</td>
+          <td>21.0</td>
+          <td>165.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1790.0</td>
+        </tr>
+        <tr>
+          <th>10</th>
+          <td>1.0</td>
+          <td>32.0</td>
+          <td>105.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1818.0</td>
+        </tr>
+        <tr>
+          <th>11</th>
+          <td>1.0</td>
+          <td>19.0</td>
+          <td>91.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1885.0</td>
+        </tr>
+        <tr>
+          <th>12</th>
+          <td>1.0</td>
+          <td>25.0</td>
+          <td>115.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1893.0</td>
+        </tr>
+        <tr>
+          <th>13</th>
+          <td>1.0</td>
+          <td>16.0</td>
+          <td>130.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1899.0</td>
+        </tr>
+        <tr>
+          <th>14</th>
+          <td>1.0</td>
+          <td>25.0</td>
+          <td>92.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1928.0</td>
+        </tr>
+        <tr>
+          <th>15</th>
+          <td>1.0</td>
+          <td>20.0</td>
+          <td>150.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1928.0</td>
+        </tr>
+        <tr>
+          <th>16</th>
+          <td>1.0</td>
+          <td>21.0</td>
+          <td>190.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1928.0</td>
+        </tr>
+        <tr>
+          <th>17</th>
+          <td>1.0</td>
+          <td>24.0</td>
+          <td>155.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1936.0</td>
+        </tr>
+        <tr>
+          <th>18</th>
+          <td>1.0</td>
+          <td>21.0</td>
+          <td>103.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1970.0</td>
+        </tr>
+        <tr>
+          <th>19</th>
+          <td>1.0</td>
+          <td>20.0</td>
+          <td>125.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2055.0</td>
+        </tr>
+        <tr>
+          <th>20</th>
+          <td>1.0</td>
+          <td>25.0</td>
+          <td>89.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>2055.0</td>
+        </tr>
+        <tr>
+          <th>21</th>
+          <td>1.0</td>
+          <td>19.0</td>
+          <td>102.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>2082.0</td>
+        </tr>
+        <tr>
+          <th>22</th>
+          <td>1.0</td>
+          <td>19.0</td>
+          <td>112.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2084.0</td>
+        </tr>
+        <tr>
+          <th>23</th>
+          <td>1.0</td>
+          <td>26.0</td>
+          <td>117.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2084.0</td>
+        </tr>
+        <tr>
+          <th>24</th>
+          <td>1.0</td>
+          <td>24.0</td>
+          <td>138.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>2100.0</td>
+        </tr>
+        <tr>
+          <th>25</th>
+          <td>1.0</td>
+          <td>17.0</td>
+          <td>130.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2125.0</td>
+        </tr>
+        <tr>
+          <th>26</th>
+          <td>1.0</td>
+          <td>20.0</td>
+          <td>120.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>2126.0</td>
+        </tr>
+        <tr>
+          <th>27</th>
+          <td>1.0</td>
+          <td>22.0</td>
+          <td>130.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2187.0</td>
+        </tr>
+        <tr>
+          <th>28</th>
+          <td>1.0</td>
+          <td>27.0</td>
+          <td>130.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2187.0</td>
+        </tr>
+        <tr>
+          <th>29</th>
+          <td>1.0</td>
+          <td>20.0</td>
+          <td>80.0</td>
+          <td>1.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>2211.0</td>
+        </tr>
+        <tr>
+          <th>...</th>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+          <td>...</td>
+        </tr>
+        <tr>
+          <th>159</th>
+          <td>0.0</td>
+          <td>24.0</td>
+          <td>110.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3728.0</td>
+        </tr>
+        <tr>
+          <th>160</th>
+          <td>0.0</td>
+          <td>19.0</td>
+          <td>184.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>3756.0</td>
+        </tr>
+        <tr>
+          <th>161</th>
+          <td>0.0</td>
+          <td>24.0</td>
+          <td>110.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3770.0</td>
+        </tr>
+        <tr>
+          <th>162</th>
+          <td>0.0</td>
+          <td>23.0</td>
+          <td>110.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3770.0</td>
+        </tr>
+        <tr>
+          <th>163</th>
+          <td>0.0</td>
+          <td>20.0</td>
+          <td>120.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3770.0</td>
+        </tr>
+        <tr>
+          <th>164</th>
+          <td>0.0</td>
+          <td>25.0</td>
+          <td>141.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>3790.0</td>
+        </tr>
+        <tr>
+          <th>165</th>
+          <td>0.0</td>
+          <td>30.0</td>
+          <td>112.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3799.0</td>
+        </tr>
+        <tr>
+          <th>166</th>
+          <td>0.0</td>
+          <td>22.0</td>
+          <td>169.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3827.0</td>
+        </tr>
+        <tr>
+          <th>167</th>
+          <td>0.0</td>
+          <td>18.0</td>
+          <td>120.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3856.0</td>
+        </tr>
+        <tr>
+          <th>168</th>
+          <td>0.0</td>
+          <td>16.0</td>
+          <td>170.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3860.0</td>
+        </tr>
+        <tr>
+          <th>169</th>
+          <td>0.0</td>
+          <td>32.0</td>
+          <td>186.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3860.0</td>
+        </tr>
+        <tr>
+          <th>170</th>
+          <td>0.0</td>
+          <td>18.0</td>
+          <td>120.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3884.0</td>
+        </tr>
+        <tr>
+          <th>171</th>
+          <td>0.0</td>
+          <td>29.0</td>
+          <td>130.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3884.0</td>
+        </tr>
+        <tr>
+          <th>172</th>
+          <td>0.0</td>
+          <td>33.0</td>
+          <td>117.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>3912.0</td>
+        </tr>
+        <tr>
+          <th>173</th>
+          <td>0.0</td>
+          <td>20.0</td>
+          <td>170.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3940.0</td>
+        </tr>
+        <tr>
+          <th>174</th>
+          <td>0.0</td>
+          <td>28.0</td>
+          <td>134.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3941.0</td>
+        </tr>
+        <tr>
+          <th>175</th>
+          <td>0.0</td>
+          <td>14.0</td>
+          <td>135.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3941.0</td>
+        </tr>
+        <tr>
+          <th>176</th>
+          <td>0.0</td>
+          <td>28.0</td>
+          <td>130.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3969.0</td>
+        </tr>
+        <tr>
+          <th>177</th>
+          <td>0.0</td>
+          <td>25.0</td>
+          <td>120.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3983.0</td>
+        </tr>
+        <tr>
+          <th>178</th>
+          <td>0.0</td>
+          <td>16.0</td>
+          <td>135.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3997.0</td>
+        </tr>
+        <tr>
+          <th>179</th>
+          <td>0.0</td>
+          <td>20.0</td>
+          <td>158.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>3997.0</td>
+        </tr>
+        <tr>
+          <th>180</th>
+          <td>0.0</td>
+          <td>26.0</td>
+          <td>160.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4054.0</td>
+        </tr>
+        <tr>
+          <th>181</th>
+          <td>0.0</td>
+          <td>21.0</td>
+          <td>115.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4054.0</td>
+        </tr>
+        <tr>
+          <th>182</th>
+          <td>0.0</td>
+          <td>22.0</td>
+          <td>129.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4111.0</td>
+        </tr>
+        <tr>
+          <th>183</th>
+          <td>0.0</td>
+          <td>25.0</td>
+          <td>130.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4153.0</td>
+        </tr>
+        <tr>
+          <th>184</th>
+          <td>0.0</td>
+          <td>31.0</td>
+          <td>120.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4167.0</td>
+        </tr>
+        <tr>
+          <th>185</th>
+          <td>0.0</td>
+          <td>35.0</td>
+          <td>170.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4174.0</td>
+        </tr>
+        <tr>
+          <th>186</th>
+          <td>0.0</td>
+          <td>19.0</td>
+          <td>120.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>4238.0</td>
+        </tr>
+        <tr>
+          <th>187</th>
+          <td>0.0</td>
+          <td>24.0</td>
+          <td>216.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4593.0</td>
+        </tr>
+        <tr>
+          <th>188</th>
+          <td>0.0</td>
+          <td>45.0</td>
+          <td>123.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>1.0</td>
+          <td>0.0</td>
+          <td>0.0</td>
+          <td>4990.0</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>189 rows x 9 columns</p>
+    </div>
+
+
   
 Housing Price Dataset (UCI)
 -----------------------------
@@ -540,13 +1310,13 @@ You can read more about it `here <https://archive.ics.uci.edu/ml/datasets/Housin
 
 .. code:: python
 
-  import requests
-  housing_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data'
-  housing_header = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
-  housing_file = requests.get(housing_url)
-  housing_data = [[float(x) for x in y.split(' ') if len(x)>=1] for y in housing_file.text.split('\n') if len(y)>=1]
-  print(len(housing_data))
-  print(len(housing_data[0]))
+  >>> import requests
+  >>> housing_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data'
+  >>> housing_header = ['CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
+  >>> housing_file = requests.get(housing_url)
+  >>> housing_data = [[float(x) for x in y.split(' ') if len(x)>=1] for y in housing_file.text.split('\n') if len(y)>=1]
+  >>> print(len(housing_data))
+  >>> print(len(housing_data[0]))
   
 the output::
 
