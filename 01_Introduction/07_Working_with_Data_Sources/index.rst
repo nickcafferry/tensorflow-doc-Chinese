@@ -507,7 +507,7 @@ Iris Dataset(鸢尾属植物数据集)
 Low Birthrate Dataset (Hosted on Github)
 ----------------------------------------
 
-马萨诸塞大学艾摩斯特分校(The university of Massachusetts at Amherst)编撰了很多有趣的统计数据集。其中有一项是测量儿童出生重量和其他人口学数据( ` Low Birthrate Dataset <https://github.com/nfmcclure/tensorflow_cookbook/raw/master/01_Introduction/07_Working_with_Data_Sources/birthweight_data/birthweight.dat>`_  , "Low Infant Birth Weight Risk Factor Study", 1989, Hosmer and Lemeshow)，以及母亲和家庭历史的医学测量。总共测量了11个变量的189观察数据。这里给出如何通过Python来获取其中的数据:
+马萨诸塞大学艾摩斯特分校(The university of Massachusetts at Amherst)编撰了很多有趣的统计数据集。其中有一项是测量儿童出生重量和其他人口学数据( `Low Birthrate Dataset <https://github.com/nfmcclure/tensorflow_cookbook/raw/master/01_Introduction/07_Working_with_Data_Sources/birthweight_data/birthweight.dat>`_ , "Low Infant Birth Weight Risk Factor Study", 1989, Hosmer and Lemeshow)，以及母亲和家庭历史的医学测量。总共测量了11个变量的189观察数据。这里给出如何通过Python来获取其中的数据:
 
 .. code:: python
 
