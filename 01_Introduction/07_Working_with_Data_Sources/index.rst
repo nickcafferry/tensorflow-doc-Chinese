@@ -3482,12 +3482,15 @@ Low Birthrate Dataset (Hosted on Github)
 
 MNIST Handwriting Dataset (Yann LeCun)
 -------------------------------------
-The MNIST Handwritten digit picture dataset is the Hello World of image recognition. 
-The famous scientist and researcher, Yann LeCun, hosts it on his webpage `here <http://yann.lecun.com/exdb/mnist/>`_. 
-But because it is so commonly used, many libraries, including TensorFlow, host it 
-internally. We will use TensorFlow to access this data as follows.
 
-If you haven't downloaded this before, please wait a bit while it downloads
+MNIST(Mixed National Institute of Standards and Technology)只是更大NIST手写数据库的子集，但它是图片识别领域的 :strong:`Hello World` . 著名的科学家，Yann LeCun, 将这个数据集存放在 `mnist <http://yann.lecun.com/exdb/mnist/>`_ . 但是因为它经常用，所以很多数据库，包括TensorFlow, 也将它囊括进去了。
+数据集MNIST来自美国国家标准与技术研究所(NIST),其分为训练集和测试集，训练集有60000张图片，测试集有10000张图片,每张图片都有标签。数据集开源地址: `MNIST <http://yann.lecun.com/exdb/mnist/>`_ ，共有四部分::
+  
+  - train-images-idx3-ubyte.gz (训练集样本)
+  - train-labels-idx1-ubyte.gz (训练集标签)
+  - t10k-images-idx3-ubyte.gz (测试集样本)
+  - t10k-labels-idx1-ubyte.gz (测试集标签)
+  
 
 .. code:: python
 
