@@ -114,7 +114,7 @@ S型函数是最普遍基本光滑的激活函数。它有时候也叫做逻辑�
 softsign 函数
 ------------------
 
-:code:`softsign` 函数也会被经常用着激活函数，它拥有着 :math:`\frac{x}{\abs{x}+1}` 数学形式。 :code:`softsign` 是 :code:`soft` 函数的近似。
+:code:`softsign` 函数也会被经常用着激活函数，它拥有着 :math:`\frac{x}{\left| x \right|+1}` 数学形式。 :code:`softsign` 是 :code:`soft` 函数的近似。
 
 .. code:: python
   
