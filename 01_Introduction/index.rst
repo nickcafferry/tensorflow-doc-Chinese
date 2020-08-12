@@ -99,6 +99,7 @@ TensorFlow如何工作
        :maxdepth: 3
        
        /01_Introduction/07_Working_with_Data_Sources/index
+       /01_Introduction/07_Working_with_Data_Sources/appendix
 
 在这里我们会展示如何获取数据资源，这里也有一些有用的链接供你使用。
 
