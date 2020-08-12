@@ -1,7 +1,8 @@
 Ham/Spam Text Dataset(垃圾邮件分类, UCI)
 ----------------------------
 
-我们会用到加州大学艾文分校机器学习数据库也建立了一个垃圾邮件分类的数据库。我们可以获取.zip 文件， 并获取相应的数据。
+我们会用到加州大学艾文分校机器学习数据库也建立了一个垃圾邮件分类的数据库。我们可以获取.zip 文件， 并获取相应的数据。以下是它的链接 `Ham/Spam Text Dataset <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`_ 。顺便提一句，如果一个数据点代表（ :code:`spam` 或者不想要的广告）, 
+
 We will use another UCI ML Repository dataset called the SMS Spam Collection. You can 
 read about it `here <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`. 
 As a sidenote about common terms, when predicting if a data point represents 'spam' 
@@ -13,31 +14,28 @@ This will be very useful for short text sequences for Natural Language Processin
 
 .. code:: python
 
-  import requests
-  import io
-  from zipfile import ZipFile
+  >>> import requests
+  >>> import io
+  >>> from zipfile import ZipFile
 
   # Get/read zip file
-  zip_url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip'
-  r = requests.get(zip_url)
-  z = ZipFile(io.BytesIO(r.content))
-  file = z.read('SMSSpamCollection')
+  >>> zip_url = 'http://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip'
+  >>> r = requests.get(zip_url)
+  >>> z = ZipFile(io.BytesIO(r.content))
+  >>> file = z.read('SMSSpamCollection')
   # Format Data
-  text_data = file.decode()
-  text_data = text_data.encode('ascii',errors='ignore')
-  text_data = text_data.decode().split('\n')
-  text_data = [x.split('\t') for x in text_data if len(x)>=1]
-  [text_data_target, text_data_train] = [list(x) for x in zip(*text_data)]
-  print(len(text_data_train))
-  print(set(text_data_target))
-  print(text_data_train[1])
-
-the output::
-
+  >>> text_data = file.decode()
+  >>> text_data = text_data.encode('ascii',errors='ignore')
+  >>> text_data = text_data.decode().split('\n')
+  >>> text_data = [x.split('\t') for x in text_data if len(x)>=1]
+  >>> [text_data_target, text_data_train] = [list(x) for x in zip(*text_data)]
+  >>> print(len(text_data_train))
   5574
+  >>> print(set(text_data_target))
   {'spam', 'ham'}
+  >>> print(text_data_train[1])
   Ok lar... Joking wif u oni...
-  
+
   
 Movie Review Data (Cornell)
 ---------------------------
@@ -49,20 +47,20 @@ You can read more about the dataset and papers using it `here <https://www.cs.co
 
 .. code:: python
 
-  import requests
-  import io
-  import tarfile
+  >>> import requests
+  >>> import io
+  >>> import tarfile
 
-  movie_data_url = 'http://www.cs.cornell.edu/people/pabo/movie-review-data/rt-polaritydata.tar.gz'
-  r = requests.get(movie_data_url)
+  >>> movie_data_url = 'http://www.cs.cornell.edu/people/pabo/movie-review-data/rt-polaritydata.tar.gz'
+  >>> r = requests.get(movie_data_url)
   # Stream data into temp object
-  stream_data = io.BytesIO(r.content)
-  tmp = io.BytesIO()
-  while True:
-      s = stream_data.read(16384)
-      if not s:  
-         break
-      tmp.write(s)
+  >>> stream_data = io.BytesIO(r.content)
+  >>> tmp = io.BytesIO()
+  >>> while True:
+  ...    s = stream_data.read(16384)
+  ...    if not s:  
+  ...          break
+  ...    tmp.write(s)
   stream_data.close()
   tmp.seek(0)
   # Extract tar file
