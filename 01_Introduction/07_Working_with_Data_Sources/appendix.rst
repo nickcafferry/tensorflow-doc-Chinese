@@ -122,7 +122,7 @@ Ham/Spam Text Dataset(垃圾邮件分类, UCI)
 
 这是个二元情感的数据分类库，包含比之前更多的数据。 这里，我们提供25,000 高度极化的电影评论作为训练集，25,000数据评论作为测试集。还有一些并没有标签的数据也会作为使用。原文本和已经处理过得数据形式也提供了，你可以查看README文件更多细节。
 
-如果你想要理解更多，请点击 ` Stanford <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`_
+如果你想要理解更多，请点击   ` Stanford <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`_
 
 .. code:: python
 
