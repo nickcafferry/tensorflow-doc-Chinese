@@ -1,54 +1,7 @@
-CIFAR-10 Data
---------------
-The `CIFAR-10 data <https://www.cs.toronto.edu/~kriz/cifar.html>`_ contains 60,000 
-32x32 color images of 10 classes collected by Alex Krizhevsky, Vinod Nair, and 
-Geoffrey Hinton. Alex Krizhevsky maintains the page referenced here. This is such a
-common dataset, that there are built in functions in TensorFlow to access this data 
-(the keras wrapper has these commands). Note that the keras wrapper for these functions
-automatically splits the images into a 50,000 training set and a 10,000 test set.
-
-.. code:: python
-
-  from PIL import Image
-  # Running this command requires an internet connection and a few minutes to download all the images.
-  (X_train, y_train), (X_test, y_test) = tf.contrib.keras.datasets.cifar10.load_data()
-
-the output:: 
-
-  Downloading data from http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-  The ten categories are (in order):
-  
-  Airplane
-  Automobile
-  Bird
-  Car
-  Deer
-  Dog
-  Frog
-  Horse
-  Ship
-  Truck
-
-.. code:: python
-  
-  X_train.shape
-  y_train.shape
-  y_train[0,] # this is a frog
-  # Plot the 0-th image (a frog)
-  %matplotlib inline
-  img = Image.fromarray(X_train[0,:,:,:])
-  plt.imshow(img)
-
-the output::
-
-  (50000, 32, 32, 3)
-  (50000, 1)
-  array([6], dtype=uint8)
-  <matplotlib.image.AxesImage at 0x7ffb48a47400>
-
-Ham/Spam Texts Dataset (UCI)
+Ham/Spam Text Dataset(垃圾邮件分类, UCI)
 ----------------------------
 
+我们会用到加州大学艾文分校机器学习数据库也建立了一个垃圾邮件分类的数据库。我们可以获取.zip 文件， 并获取相应的数据。
 We will use another UCI ML Repository dataset called the SMS Spam Collection. You can 
 read about it `here <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`. 
 As a sidenote about common terms, when predicting if a data point represents 'spam' 
@@ -200,3 +153,52 @@ the output::
   147788
   147788
   ['I won!', 'Ich hab gewonnen!']
+  
+CIFAR-10 Data
+--------------
+
+The `CIFAR-10 data <https://www.cs.toronto.edu/~kriz/cifar.html>`_ contains 60,000 
+32x32 color images of 10 classes collected by Alex Krizhevsky, Vinod Nair, and 
+Geoffrey Hinton. Alex Krizhevsky maintains the page referenced here. This is such a
+common dataset, that there are built in functions in TensorFlow to access this data 
+(the keras wrapper has these commands). Note that the keras wrapper for these functions
+automatically splits the images into a 50,000 training set and a 10,000 test set.
+
+.. code:: python
+
+  from PIL import Image
+  # Running this command requires an internet connection and a few minutes to download all the images.
+  (X_train, y_train), (X_test, y_test) = tf.contrib.keras.datasets.cifar10.load_data()
+
+the output:: 
+
+  Downloading data from http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+  The ten categories are (in order):
+  
+  Airplane
+  Automobile
+  Bird
+  Car
+  Deer
+  Dog
+  Frog
+  Horse
+  Ship
+  Truck
+
+.. code:: python
+  
+  X_train.shape
+  y_train.shape
+  y_train[0,] # this is a frog
+  # Plot the 0-th image (a frog)
+  %matplotlib inline
+  img = Image.fromarray(X_train[0,:,:,:])
+  plt.imshow(img)
+
+the output::
+
+  (50000, 32, 32, 3)
+  (50000, 1)
+  array([6], dtype=uint8)
+  <matplotlib.image.AxesImage at 0x7ffb48a47400>
