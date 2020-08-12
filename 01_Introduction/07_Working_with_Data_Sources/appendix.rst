@@ -117,12 +117,12 @@ Ham/Spam Text Dataset(垃圾邮件分类, UCI)
   'Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030']
 
 
-`Movie Review Data <http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz>`_ (Stanford)
+`电影评论数据库 <http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz>`_ (Stanford)
 ---------------------------
-This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. We provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. There is additional unlabeled data for use as well. Raw text and already processed bag of words formats are provided. See the README file contained in the release for more details.
 
+这是个二元情感的数据分类库，包含比之前更多的数据。 这里，我们提供25,000 高度极化的电影评论作为训练集，25,000数据评论作为测试集。还有一些并没有标签的数据也会作为使用。原文本和已经处理过得数据形式也提供了，你可以查看README文件更多细节。
 
-You can read more about the dataset and papers using it `here <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`
+如果你想要理解更多，请点击 `这里 <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`
 
 .. code:: python
 
@@ -140,30 +140,25 @@ You can read more about the dataset and papers using it `here <http://ai.stanfor
   ...    if not s:  
   ...          break
   ...    tmp.write(s)
-  stream_data.close()
-  tmp.seek(0)
+  >>> stream_data.close()
+  >>> tmp.seek(0)
   # Extract tar file
-  tar_file = tarfile.open(fileobj=tmp, mode="r:gz")
-  pos = tar_file.extractfile('rt-polaritydata/rt-polarity.pos')
-  neg = tar_file.extractfile('rt-polaritydata/rt-polarity.neg')
+  >>> tar_file = tarfile.open(fileobj=tmp, mode="r:gz")
+  >>> pos = tar_file.extractfile('rt-polaritydata/rt-polarity.pos')
+  >>> neg = tar_file.extractfile('rt-polaritydata/rt-polarity.neg')
   # Save pos/neg reviews
-  pos_data = []
-  for line in pos:
-      pos_data.append(line.decode('ISO-8859-1').encode('ascii',errors='ignore').decode())
-  neg_data = []
-  for line in neg:
-      neg_data.append(line.decode('ISO-8859-1').encode('ascii',errors='ignore').decode())
-  tar_file.close()
+  >>> pos_data = []
+  >>> for line in pos:
+  ...     pos_data.append(line.decode('ISO-8859-1').encode('ascii',errors='ignore').decode())
+  >>> neg_data = []
+  >>> for line in neg:
+  ...     neg_data.append(line.decode('ISO-8859-1').encode('ascii',errors='ignore').decode())
+  >>> tar_file.close()
   
-  print(len(pos_data))
-  print(len(neg_data))
-  print(neg_data[0])
-  
-the output::
-
-  5331
-  5331
-  simplistic , silly and tedious . 
+  # 数据过大，网速不给力，无法给出结果
+  >>> print(len(pos_data))
+  >>> print(len(neg_data))
+  >>> print(neg_data[0]) 
 
 The Complete Works of William Shakespeare (Gutenberg Project)
 -------------------------------------------------------------
@@ -231,21 +226,16 @@ the output::
   147788
   ['I won!', 'Ich hab gewonnen!']
   
-CIFAR-10 Data
+CIFAR-10 数据库
 --------------
 
-The `CIFAR-10 data <https://www.cs.toronto.edu/~kriz/cifar.html>`_ contains 60,000 
-32x32 color images of 10 classes collected by Alex Krizhevsky, Vinod Nair, and 
-Geoffrey Hinton. Alex Krizhevsky maintains the page referenced here. This is such a
-common dataset, that there are built in functions in TensorFlow to access this data 
-(the keras wrapper has these commands). Note that the keras wrapper for these functions
-automatically splits the images into a 50,000 training set and a 10,000 test set.
+加拿大高级研究所(Canadian Institute For Advanced Research, CIFAR)发布了一个图像集，包含了8千万已标记的图片(每个图片尺寸都是32x32像素). 总共有十大类不同图片，分别是飞机，汽车，鸟类，车，鹿，狗，青蛙，马，船只，卡车。CIFAR-10的一个含有60,000图片的子数据集。训练集有50,000,测试集有10,000。你可以手动下载该数据库 `CIFAR-10 data <https://www.cs.toronto.edu/~kriz/cifar.html>`_ ，可以通过下面的代码来获取该数据库。
 
 .. code:: python
 
-  from PIL import Image
-  # Running this command requires an internet connection and a few minutes to download all the images.
-  (X_train, y_train), (X_test, y_test) = tf.contrib.keras.datasets.cifar10.load_data()
+  >>> from PIL import Image
+  # 运行下面的命令需要网络，下载可能要花上不上时间
+  >>> (X_train, y_train), (X_test, y_test) = tf.contrib.keras.datasets.cifar10.load_data()
 
 the output:: 
 
