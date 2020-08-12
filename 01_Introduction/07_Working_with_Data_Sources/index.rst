@@ -3540,7 +3540,6 @@ MNIST(Mixed National Institute of Standards and Technology)只是更大NIST手�
 
 
 .. toctree::
-    :maxdepth: 2
-    :caption: 
-
-    01_Introduction/07_Working_with_Data_Sources/appendix
+   :maxdepth: 2
+   
+   01_Introduction/07_Working_with_Data_Sources/appendix
