@@ -1,16 +1,84 @@
+MNIST 手写数据代码补充
+---------------------
+
+因为篇幅原因，在介绍MNIST手写数据库时，没有对手写的数字可视化进行详细介绍，这里补充一些代码：
+
+.. code:: bash
+  
+  $ dataset_url = "https://modelarts-cnnorth1-market-dataset.obs.cn-north-1.myhuaweicloud.com/dataset-market/Mnist-Data-Set/archiver/Mnist-Data-Set.zip"
+  $ dataset_local_path = 'dataset/'
+  $ wget {dataset_url} -P {dataset_local_path}
+  $ unzip -d {dataset_local_path} -o {dataset_local_name}
+  $ ls $dataset_local_path
+  Mnist-Data-Set.zip	       train-images-idx3-ubyte
+  t10k-images-idx3-ubyte	   train-images-idx3-ubyte.gz
+  t10k-images-idx3-ubyte.gz  train-labels-idx1-ubyte
+  t10k-labels-idx1-ubyte	   train-labels-idx1-ubyte.gz
+  t10k-labels-idx1-ubyte.gz
+  
+  $ train_image = os.path.join(dataset_local_path, 'train-images-idx3-ubyte')
+  $ train_lable = os.path.join(dataset_local_path, 'train-labels-idx1-ubyte')
+  $ eval_image  = os.path.join(dataset_local_path, 't10k-images-idx3-ubyte')
+  $ eval_lable  = os.path.join(dataset_local_path, 't10k-labels-idx1-ubyte')
+  
+  $ pip install mxnet
+  Looking in indexes: http://repo.myhuaweicloud.com/repository/pypi/simple
+  Collecting mxnet
+  Downloading http://repo.myhuaweicloud.com/repository/pypi/packages/81/f5/d79b5b40735086ff1100c680703e0f3efc830fa455e268e9e96f3c857e93/mxnet-1.6.0-py2.py3-none-any.whl (68.7 MB)
+     |████████████████████████████████| 68.7 MB 7.1 MB/s eta 0:00:01MB/s eta 0:00:31
+  Requirement already satisfied: numpy<2.0.0,>1.16.0 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from mxnet) (1.18.4)
+  Requirement already satisfied: requests<3,>=2.20.0 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from mxnet) (2.23.0)
+  Requirement already satisfied: graphviz<0.9.0,>=0.8.1 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from mxnet) (0.8.1)
+  Requirement already satisfied: chardet<4,>=3.0.2 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from requests<3,>=2.20.0->mxnet) (3.0.4)
+  Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from  requests<3,>=2.20.0->mxnet) (1.22)
+  Requirement already satisfied: certifi>=2017.4.17 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from requests<3,>=2.20.0->mxnet) (2018.1.18)
+  Requirement already satisfied: idna<3,>=2.5 in /home/ma-user/anaconda3/envs/TensorFlow-2.1.0/lib/python3.6/site-packages (from requests<3,>=2.20.0->mxnet) (2.6)
+  Installing collected packages: mxnet
+  Successfully installed mxnet-1.6.0
+  WARNING: You are using pip version 20.1.1; however, version 20.2.1 is available.
+  You should consider upgrading via the '/home/ma-user/anaconda3/envs/TensorFlow-2.1.0/bin/python -m pip install --upgrade pip' command.
+
+.. code:: python
+  
+  >>> import mxnet as mx
+  >>> batch_size = 128
+  >>> train_data = mx.io.MNISTIter(image = train_image,
+  ...                              label = train_lable,
+  ...                              data_shqpe = (1,28,28),
+  ...                              batch_size = batch_size,
+  ...                              shuffle = True,
+  ...                              flat    = False,
+  ...                              silent  = False)
+
+  >>> eval_data  = mx.io.MNISTIter(image = eval_image,
+  ...                              label = eval_lable,
+  ...                              data_shqpe = (1,28,28),
+  ...                              batch_size = batch_size,
+  ...                              shuffle = False)
+  
+  >>> import matplotlib.pyplot as plt
+  >>> train_data.reset()
+  >>> next_batch  =  train_data.next()
+
+  >>> for i in range(128):
+  ...   show_image  =  next_batch.data[0][i].asnumpy() * 255      
+  ...   show_image  =  show_image.astype('uint8').reshape(28, 28)
+  ...   plt.figure(168)
+  ...   plt.subplot(16,8,1+i)
+  ...   plt.imshow(show_image, cmap = plt.cm.gray)
+  
+  >>> plt.savefig('Handwriting.png', dpi=1000)
+  >>> plt.show()
+
+
 Ham/Spam Text Dataset(垃圾邮件分类, UCI)
 ----------------------------
 
-我们会用到加州大学艾文分校机器学习数据库也建立了一个垃圾邮件分类的数据库。我们可以获取.zip 文件， 并获取相应的数据。以下是它的链接 `Ham/Spam Text Dataset <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`_ 。顺便提一句，如果一个数据点代表（ :code:`spam` 或者不想要的广告）, 
+我们会用到加州大学艾文分校机器学习数据库也建立了一个垃圾邮件分类的数据库。我们可以获取.zip 文件， 并获取相应的数据。以下是它的链接 `Ham/Spam Text Dataset <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`_ 。顺便提一句，如果一个数据点代表（ :code:`spam` 或者不想要的广告）, 那么另外一个就是
+'ham'.
 
-We will use another UCI ML Repository dataset called the SMS Spam Collection. You can 
-read about it `here <https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection>`. 
-As a sidenote about common terms, when predicting if a data point represents 'spam' 
-(or unwanted advertisement), the alternative is called 'ham' (or useful information).
-
-This is a great dataset for predicting a binary outcome (spam/ham) from a textual input.
-This will be very useful for short text sequences for Natural Language Processing 
-(Ch 7) and Recurrent Neural Networks (Ch 9).
+:strong:`Ham/Spam Text Dataset` 是一个从文本输入当中预测二进制结果（spam or ham）一个很好的数据集。 这将对自然语言处理的短文本处理(第七章)和递归神经网络(第九章)
+很有用。
 
 .. code:: python
 
@@ -35,15 +103,26 @@ This will be very useful for short text sequences for Natural Language Processin
   {'spam', 'ham'}
   >>> print(text_data_train[1])
   Ok lar... Joking wif u oni...
-
   
-Movie Review Data (Cornell)
+  >>> text_data_train[0:10]
+  ['Go until jurong point, crazy.. Available only in bugis n great world la e buffet... Cine there got amore wat...',
+  'Ok lar... Joking wif u oni...',
+  "Free entry in 2 a wkly comp to win FA Cup final tkts 21st May 2005. Text FA to 87121 to receive entry question(std txt rate)T&C's apply 08452810075over18's",
+  'U dun say so early hor... U c already then say...',
+  "Nah I don't think he goes to usf, he lives around here though",
+  "FreeMsg Hey there darling it's been 3 week's now and no word back! I'd like some fun you up for it still? Tb ok! XxX std chgs to send, 1.50 to rcv",
+  'Even my brother is not like to speak with me. They treat me like aids patent.',
+  "As per your request 'Melle Melle (Oru Minnaminunginte Nurungu Vettam)' has been set as your callertune for all Callers. Press *9 to copy your friends Callertune",
+  'WINNER!! As a valued network customer you have been selected to receivea 900 prize reward! To claim call 09061701461. Claim code KL341. Valid 12 hours only.',
+  'Had your mobile 11 months or more? U R entitled to Update to the latest colour mobiles with camera for Free! Call The Mobile Update Co FREE on 08002986030']
+
+
+`Movie Review Data <http://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz>`_ (Stanford)
 ---------------------------
-The Movie Review database, collected by Bo Pang and Lillian Lee (researchers at Cornell),
-serves as a great dataset to use for predicting a numerical number from textual inputs.
+This is a dataset for binary sentiment classification containing substantially more data than previous benchmark datasets. We provide a set of 25,000 highly polar movie reviews for training, and 25,000 for testing. There is additional unlabeled data for use as well. Raw text and already processed bag of words formats are provided. See the README file contained in the release for more details.
 
 
-You can read more about the dataset and papers using it `here <https://www.cs.cornell.edu/people/pabo/movie-review-data/>`
+You can read more about the dataset and papers using it `here <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`
 
 .. code:: python
 
