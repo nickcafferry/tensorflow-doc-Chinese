@@ -122,7 +122,7 @@ Ham/Spam Text Dataset(垃圾邮件分类, UCI)
 
 这是个二元情感的数据分类库，包含比之前更多的数据。 这里，我们提供25,000 高度极化的电影评论作为训练集，25,000数据评论作为测试集。还有一些并没有标签的数据也会作为使用。原文本和已经处理过得数据形式也提供了，你可以查看README文件更多细节。
 
-如果你想要理解更多，请点击 `这里 <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`
+如果你想要理解更多，请点击 ` 这里 <http://ai.stanford.edu/~amaas/data/sentiment/index.html>`_ .
 
 .. code:: python
 
@@ -160,70 +160,60 @@ Ham/Spam Text Dataset(垃圾邮件分类, UCI)
   >>> print(len(neg_data))
   >>> print(neg_data[0]) 
 
-The Complete Works of William Shakespeare (Gutenberg Project)
+莎士比亚全集 (古登堡计划)
 -------------------------------------------------------------
-For training a TensorFlow Model to create text, we will train it on the complete works
-of William Shakespeare. This can be accessed through the good work of the Gutenberg 
-Project. The Gutenberg Project frees many non-copyright books by making them accessible
-for free from the hard work of volunteers.
 
-You can read more about the Shakespeare works `here <http://www.gutenberg.org/ebooks/100>`_
+Project Gutenberg(古登堡计划)是为了出版电子版本的免费书籍而发起的。这个计划把莎士比亚所有作品都编撰在一起。为了训练一个TensorFlow的模型来闯将文本，我们把这个模型放在威廉莎士比亚全集中训练。古登堡计划有很多志愿者为了实现无版权书籍的免费使用，花费了很多精力。在这里，我们可以通过Python的脚本来获取文本文件。
+
+如果你想了解更多莎士比亚全集，请点击 `这里 <http://www.gutenberg.org/ebooks/100>`_ 。
 
 .. code:: python
 
-  # The Works of Shakespeare Data
-  import requests
+  # 莎士比亚全集数据
+  >>> import requests
 
-  shakespeare_url = 'http://www.gutenberg.org/cache/epub/100/pg100.txt'
-  # Get Shakespeare text
-  response = requests.get(shakespeare_url)
-  shakespeare_file = response.content
-  # Decode binary into string
-  shakespeare_text = shakespeare_file.decode('utf-8')
-  # Drop first few descriptive paragraphs.
-  shakespeare_text = shakespeare_text[7675:]
-  print(len(shakespeare_text))
-
-the output::
-
+  >>> shakespeare_url = 'http://www.gutenberg.org/cache/epub/100/pg100.txt'
+  # 获取莎士比亚文本
+  >>> response = requests.get(shakespeare_url)
+  >>> shakespeare_file = response.content
+  # 将二进制转化为字符串
+  >>> shakespeare_text = shakespeare_file.decode('utf-8')
+  # 截取几个描述性的段落
+  >>> shakespeare_text = shakespeare_text[7675:]
+  >>> print(len(shakespeare_text))
   5582212
-  
-English-German Sentence Translation Database (Manythings/Tatoeba)
+
+
+英语-德语 文本翻译数据库 (Manythings/Tatoeba)
 -----------------------------------------------------------------
 
-The `Tatoeba Project <http://www.manythings.org/corpus/about.html#info>` is also run 
-by volunteers and is set to make the most bilingual sentence translations available 
-between many different languages. Manythings.org compiles the data and makes it 
-accessible.
+`Tatoeba Project <http://www.manythings.org/corpus/about.html#info>`_ 也是由志愿者发起的，旨在
+让很多不同的语言之间双语翻译可以实现。Manythings.org 组织编撰这些数据,使得句对句翻译可以下载。在这里
+我们用到是英语对德语翻译，但是你可以自己想选哪一个就选哪一个。
 
-
-
-`More bilingual sentence pairs <http://www.manythings.org/bilingual/>`_
+`双语句对 <http://www.manythings.org/bilingual/>`_
 
 .. code:: python
 
-  # English-German Sentence Translation Data
-  import requests
-  import io
-  from zipfile import ZipFile
-  sentence_url = 'http://www.manythings.org/anki/deu-eng.zip'
-  r = requests.get(sentence_url)
-  z = ZipFile(io.BytesIO(r.content))
-  file = z.read('deu.txt')
-  # Format Data
-  eng_ger_data = file.decode()
-  eng_ger_data = eng_ger_data.encode('ascii',errors='ignore')
-  eng_ger_data = eng_ger_data.decode().split('\n')
-  eng_ger_data = [x.split('\t') for x in eng_ger_data if len(x)>=1]
-  [english_sentence, german_sentence] = [list(x) for x in zip(*eng_ger_data)]
-  print(len(english_sentence))
-  print(len(german_sentence))
-  print(eng_ger_data[10])
-
-the output::
-
+  # English-German 句对句翻译数据
+  >>> import requests
+  >>> import io
+  >>> from zipfile import ZipFile
+  >>> sentence_url = 'http://www.manythings.org/anki/deu-eng.zip'
+  >>> r = requests.get(sentence_url)
+  >>> z = ZipFile(io.BytesIO(r.content))
+  >>> file = z.read('deu.txt')
+  # 格式化数据
+  >>> eng_ger_data = file.decode()
+  >>> eng_ger_data = eng_ger_data.encode('ascii',errors='ignore')
+  >>> eng_ger_data = eng_ger_data.decode().split('\n')
+  >>> eng_ger_data = [x.split('\t') for x in eng_ger_data if len(x)>=1]
+  >>> [english_sentence, german_sentence] = [list(x) for x in zip(*eng_ger_data)]
+  >>> print(len(english_sentence))
   147788
+  >>> print(len(german_sentence))
   147788
+  >>> print(eng_ger_data[10])
   ['I won!', 'Ich hab gewonnen!']
   
 CIFAR-10 数据库
@@ -235,42 +225,23 @@ CIFAR-10 数据库
 
   >>> from PIL import Image
   # 运行下面的命令需要网络，下载可能要花上不上时间
-  >>> (X_train, y_train), (X_test, y_test) = tf.contrib.keras.datasets.cifar10.load_data()
-
-the output:: 
-
+  >>> (x_train, y_train), (x_test, y_test) = tf.keras.datasets.cifar10.load_data()
   Downloading data from http://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-  The ten categories are (in order):
-  
-  Airplane
-  Automobile
-  Bird
-  Car
-  Deer
-  Dog
-  Frog
-  Horse
-  Ship
-  Truck
 
 .. code:: python
   
-  X_train.shape
-  y_train.shape
-  y_train[0,] # this is a frog
-  # Plot the 0-th image (a frog)
-  %matplotlib inline
-  img = Image.fromarray(X_train[0,:,:,:])
-  plt.imshow(img)
-
-the output::
-
+  >>> X_train.shape
   (50000, 32, 32, 3)
+  >>> y_train.shape
   (50000, 1)
-  array([6], dtype=uint8)
+  >>> y_train[0,] # 这是个青蛙
+  # Plot the 0-th image (a frog)
+  $ %matplotlib inline
+  >>> img = Image.fromarray(X_train[0,:,:,:])
+  >>> plt.imshow(img)
   <matplotlib.image.AxesImage at 0x7ffb48a47400>
-  
-  
+
+
 .. raw:: html
 
   <table>
