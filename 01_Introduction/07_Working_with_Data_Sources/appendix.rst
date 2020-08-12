@@ -208,7 +208,7 @@ the output::
 
   <table>
     <tr>
-        <td class="cifar-class-name">airplane</td>
+        <td class="cifar-class-name">飞机</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/airplane1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/airplane2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/airplane3.png" class="cifar-sample" /></td>
@@ -221,7 +221,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/airplane10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">automobile</td>
+        <td class="cifar-class-name">汽车</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/automobile1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/automobile2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/automobile3.png" class="cifar-sample" /></td>
@@ -234,7 +234,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/automobile10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">bird</td>
+        <td class="cifar-class-name">小鸟</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/bird1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/bird2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/bird3.png" class="cifar-sample" /></td>
@@ -247,7 +247,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/bird10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">cat</td>
+        <td class="cifar-class-name">猫</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/cat1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/cat2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/cat3.png" class="cifar-sample" /></td>
@@ -260,7 +260,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/cat10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">deer</td>
+        <td class="cifar-class-name">鹿</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/deer1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/deer2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/deer3.png" class="cifar-sample" /></td>
@@ -273,7 +273,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/deer10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">dog</td>
+        <td class="cifar-class-name">狗</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/dog1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/dog2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/dog3.png" class="cifar-sample" /></td>
@@ -286,7 +286,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/dog10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">frog</td>
+        <td class="cifar-class-name">青蛙</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/frog1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/frog2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/frog3.png" class="cifar-sample" /></td>
@@ -299,7 +299,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/frog10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">horse</td>
+        <td class="cifar-class-name">马</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/horse1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/horse2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/horse3.png" class="cifar-sample" /></td>
@@ -312,7 +312,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/horse10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">ship</td>
+        <td class="cifar-class-name">船</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/ship1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/ship2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/ship3.png" class="cifar-sample" /></td>
@@ -325,7 +325,7 @@ the output::
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/ship10.png" class="cifar-sample" /></td>
     </tr>
     <tr>
-        <td class="cifar-class-name">truck</td>
+        <td class="cifar-class-name">卡车</td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/truck1.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/truck2.png" class="cifar-sample" /></td>
         <td><img src="http://www.cs.toronto.edu/~kriz/cifar-10-sample/truck3.png" class="cifar-sample" /></td>
