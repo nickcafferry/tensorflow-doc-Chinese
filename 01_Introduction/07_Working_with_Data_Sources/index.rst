@@ -3482,7 +3482,7 @@ MNIST Handwriting Dataset (Yann LeCun)
 -------------------------------------
 
 MNIST(Mixed National Institute of Standards and Technology)只是更大NIST手写数据库的子集，但它是图片识别领域的 :strong:`Hello World` . 著名的科学家，Yann LeCun, 将这个数据集存放在 `mnist <http://yann.lecun.com/exdb/mnist/>`_ . 但是因为它经常用，所以很多数据库，包括TensorFlow, 也将它囊括进去了。
-数据集MNIST来自美国国家标准与技术研究所(NIST),其分为训练集和测试集，训练集有60000张图片，测试集有10000张图片,每张图片都有标签。数据集开源地址: `MNIST <http://yann.lecun.com/exdb/mnist/>`_ ，共有四部分::
+数据集MNIST来自美国国家标准与技术研究所(NIST),其分为训练集和测试集，训练集有60000张图片，测试集有10000张图片,每张图片都有标签。数据集开源地址: `MNIST <http://yann.lecun.com/exdb/mnist/>`_ ，共有四部分.
   
   -  `train-images-idx3-ubyte.gz <http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz>`_  (训练集样本)
   -  `train-labels-idx1-ubyte.gz <http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz>`_  (训练集标签)
