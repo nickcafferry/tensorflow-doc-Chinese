@@ -120,7 +120,7 @@ TensorFlow如何工作
 .. raw:: html
        
        <video width="560" height="315" controls>
-           <source src="/01_Introduction//videos/Intro1.mp4" type="video/mp4">
+           <source src="https://github.com/nickcafferry/manim_document_zh/blob/gh-pages/_static/manim_3fed/AnimationOnSurroundingRectangleExample.mp4" type="video/mp4">
        </video>
 
 
