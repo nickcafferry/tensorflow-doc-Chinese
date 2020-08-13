@@ -118,9 +118,9 @@ TensorFlow如何工作
 
 
 .. raw:: html
-
-       <video preload="auto" controls="controls" style="max-width:100%; display:block !important; position:relative;margin: 0 auto; width: 1100px;">
-              <source src="https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/videos/Intro1.mp4" type="video/mp4">
+       
+       <video width="560" height="315" controls>
+           <source src="videos/Intro1.mp4" type="video/mp4">
        </video>
 
 
