@@ -17,9 +17,8 @@ jobs:
     - name: Clone pre repositories
       run: |
         cd ..
-        git clone -b manim https://github.com/manim-kindergarten/manim_document_zh.git manim
+        git clone -b push https://github.com/nickcafferry/tensorflow-doc-zh.git manim
         cd manim
-        git clone https://github.com/manim-kindergarten/manim_sandbox.git
     
     - name: Install setuptools
       run: |
@@ -47,10 +46,10 @@ jobs:
     
     - name: Build document with Sphinx
       run: |
-        export PATH="$PATH:/home/runner/.local/bin:/home/runner/manim_document_zh/manim"
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner//tensorflow-doc-zh/manim"
         make html
         cd build/html
-        echo "manim.ml" > CNAME
+        echo "tensorflow-ml.org" > CNAME
         
     - name: Deploy to GitHub pages
       uses: JamesIves/github-pages-deploy-action@master
