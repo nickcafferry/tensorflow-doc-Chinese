@@ -46,7 +46,7 @@ jobs:
     
     - name: Build document with Sphinx
       run: |
-        export PATH="$PATH:/home/runner/.local/bin:/home/runner//tensorflow-doc-zh/manim"
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/manim"
         make html
         cd build/html
         echo "tensorflow-ml.org" > CNAME
