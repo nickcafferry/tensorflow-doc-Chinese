@@ -1,0 +1,58 @@
+name: Github Action for manim rendering
+description: GitHub Action to render manim videos
+author: Tony Wang
+inputs:
+  source_file:
+    description: The source user file to render videos from
+    required: true
+  scene_names:
+    description: The scene names you want to render in the source_file
+    required: true
+    default: -a
+  args:
+    description: Arguments to be passed to manim cli
+    required: true
+    default: -w
+  manim_repo:
+    description: The manim engine repo you want to use to render
+    default: https://github.com/manim-kindergarten/manim
+  community_ver:
+    description: Whether the manim repo is a fork of ManimCommunity/manim or not
+    default: false
+  extra_packages:
+    description: Install extra python packages by pip
+  extra_system_packages:
+    description: Install extra packages by apk
+  extra_repos:
+    description: Clone extra repo to workspace
+  pre_render:
+    description: Arbitrary bash codes to be executed before rendering
+  post_render:
+    description: Arbitrary bash codes to be executed after rendering
+  merge_assets:
+    description: If two repo both has assets/ merge it
+    default: true
+  fonts_dir:
+    description: The .ttf files dir relative to this current repo if you want to install extra fonts
+outputs:
+  video_path:
+    description: The video folder path of rendered videos
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.source_file }}
+    - ${{ inputs.scene_names }}
+    - ${{ inputs.args }}
+    - ${{ inputs.manim_repo }}
+    - ${{ inputs.extra_packages }}
+    - ${{ inputs.extra_system_packages }}
+    - ${{ inputs.pre_render }}
+    - ${{ inputs.post_render }}
+    - ${{ inputs.merge_assets }}
+    - ${{ inputs.fonts_dir }}
+    - ${{ inputs.extra_repos }}
+    - ${{ inputs.community_ver }}
+branding:
+  icon: camera
+  color: blue
