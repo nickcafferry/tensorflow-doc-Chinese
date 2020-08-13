@@ -120,7 +120,7 @@ TensorFlow如何工作
 .. raw:: html
        
        <video width="560" height="315" controls>
-           <source src="../videos/Intro1.mp4" type="video/mp4">
+           <source src="/01_Introduction//videos/Intro1.mp4" type="video/mp4">
        </video>
 
 
