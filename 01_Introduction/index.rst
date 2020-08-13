@@ -119,19 +119,12 @@ TensorFlow如何工作
 
 .. raw:: html
 
-       <?xml version="1.0" encoding="utf-8" ?>
-       <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                    xmlns:o="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
-                    x:Class="VideoPlayerSamples.VideoPlayerBasicExamplePage"
-                    Title="Basic Video Player">
-
-           <o:VideoPlayer Source="https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/videos/Intro1.mp4" />
-
-       </ContentPage>
+       <video preload="auto" controls="controls" style="max-width:100%; display:block !important; position:relative;margin: 0 auto; width: 1100px;">
+              <source src="https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/videos/Intro1.mp4" type="video/mp4">
+       </video>
 
 
-</ContentPage>
+
 本章学习模块
 -----------
 
