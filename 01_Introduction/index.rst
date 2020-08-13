@@ -120,7 +120,7 @@ TensorFlow如何工作
 .. raw:: html
 
     <video width="560" height="315" controls>
-        <source src="https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/videos/Intro1.mp4" type="video/mp4">
+        <source src="https://github.com/nickcafferry/manim_document_zh/blob/master/source/assets/plots_3D/ParametricCurve1.mp4" type="video/mp4">
     </video>
 
 本章学习模块
