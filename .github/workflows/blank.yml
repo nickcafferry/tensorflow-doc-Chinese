@@ -1,9 +1,16 @@
+name: Test Github Action
+
+on: [push, pull_request]
+
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Github Action for manim rendering
-      - uses: manim-kindergarten/manim_action_renderer@v1.2
+      - uses: manim-kindergarten/manim_action_renderer@master
+      - name: Github Action for manim rendering
         id: renderer
         with:
           source_file: example_scenes.py
