@@ -15,7 +15,8 @@ jobs:
           scene_names: "WriteStuff"
           args: "--high_quality"
           fonts_dir: test/fonts/
-          extra_repos: "https://github.com/manim-kindergarten/manim_sandbox"
+          extra_repos: "https://github.com/manim-kindergarten/manim_sandbox",
+                       "https://github.com/cigar666/my_manim_projects"
       - name: Save output as artifacts
         uses: actions/upload-artifact@v2
         if: success()
