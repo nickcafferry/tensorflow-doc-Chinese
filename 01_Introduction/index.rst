@@ -117,14 +117,6 @@ TensorFlow如何工作
 大多数都是官方资源和文章，文章都是TensorFlow的文章和深度学习的资源。
 
 
-.. raw:: html
-       
-       <video width="560" height="315" controls>
-           <source src="https://github.com/nickcafferry/manim_document_zh/blob/gh-pages/_static/manim_3fed/AnimationOnSurroundingRectangleExample.mp4" type="video/mp4">
-       </video>
-
-
-
 本章学习模块
 -----------
 
