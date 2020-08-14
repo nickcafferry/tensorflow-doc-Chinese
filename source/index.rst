@@ -58,6 +58,13 @@ TensorFlow (i.e., TF)::
    - :ref:`第十一章: TensorFlow的更多功能 <label11>`, 通过阐述如何运行k-means, genetic算法来展示TensorFlow的多面性, 解决系统的常微分方程. 我们也展示Tensorboard的多处使用, 以及如何显示计算图度量.
 
 -------------
+让我们从一个TensorFlow的视屏开始吧！
+
+.. raw:: html
+
+    <video width="560" height="315" controls>
+        <source src="_static/Intro1.mp4" type="video/mp4">
+    </video>
 
 目录
 ====
