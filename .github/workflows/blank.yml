@@ -16,7 +16,7 @@ jobs:
         id: renderer
         with:
           source_file: test/example_scenes.py
-          scene_names: "WriteStuff"
+          scene_names: "Explain_Arc"
           args: "--high_quality"
           fonts_dir: test/fonts/
           extra_repos: "https://github.com/manim-kindergarten/manim_sandbox"
