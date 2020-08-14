@@ -67,14 +67,14 @@ TensorFlow (i.e., TF)::
    :maxdepth: 5
    :caption: 从TensorFlow开始 (Getting Started)
    
-   ../01_Introduction/index
+   ./../01_Introduction/index
 
 .. _label2:
 .. toctree::
    :maxdepth: 3
    :caption: TensorFlow方式 (TensorFlow Way)
    
-   ../02_TensorFlow_Way/index
+   ./../02_TensorFlow_Way/index
 
 .. _label3:
 .. toctree::
