@@ -74,77 +74,77 @@ TensorFlow (i.e., TF)::
    :maxdepth: 5
    :caption: 从TensorFlow开始 (Getting Started)
    
-   https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/index.rst
+   01_Introduction/index
 
 .. _label2:
 .. toctree::
    :maxdepth: 3
    :caption: TensorFlow方式 (TensorFlow Way)
    
-   https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/02_TensorFlow_Way/index.rst
+   02_TensorFlow_Way/index
 
 .. _label3:
 .. toctree::
    :maxdepth: 3
    :caption: 线性回归 (Linear Regression)
    
-   ../03_Linear_Regression/index
+   03_Linear_Regression/index
 
 .. _label4:
 .. toctree::
    :maxdepth: 3
    :caption: 支持向量机(Support Vector Machines)
    
-   ../04_Support_Vector_Machines/index
+   04_Support_Vector_Machines/index
 
 .. _label5:
 .. toctree::
    :maxdepth: 3
    :caption: 最近邻法 (Nearest Neighbor Methods)
    
-   ../05_Nearest_Neighbor_Methods/index
+   05_Nearest_Neighbor_Methods/index
 
 .. _label6:
 .. toctree::
    :maxdepth: 3
    :caption: 神经元网络 (Neural Networks)
    
-   ../06_Neural_Networks/index
+   06_Neural_Networks/index
 
 .. _label7:
 .. toctree::
    :maxdepth: 3
    :caption: 自然语言处理(NLP)
    
-   ../07_Natural_Language_Processing/index
+   07_Natural_Language_Processing/index
 
 .. _label8:
 .. toctree::
    :maxdepth: 3
    :caption: 卷积神经网络(CNN)
    
-   ../08_Convolutional_Neural_Networks/index
+   08_Convolutional_Neural_Networks/index
 
 .. _label9:
 .. toctree::
    :maxdepth: 3
    :caption: 递归神经网络(RNN)
    
-   ../09_Recurrent_Neural_Networks/index
+   09_Recurrent_Neural_Networks/index
 
 .. _label10:
 .. toctree::
    :maxdepth: 3
    :caption: TensorFlow的应用技巧
    
-   ../10_Taking_TensorFlow_to_Production/index
+   10_Taking_TensorFlow_to_Production/index
 
 .. _label11:
 .. toctree::
    :maxdepth: 3
    :caption: TensorFlow的更多功能
    
-   ../11_More_with_TensorFlow/index
+   11_More_with_TensorFlow/index
 
 
 许可证(License)
