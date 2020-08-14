@@ -3,7 +3,7 @@ name: Build up document
 on:
   push:
     branches:
-      - push
+      - master
 
 jobs:
   build_docs_and_deploy:
