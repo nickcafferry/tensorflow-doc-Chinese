@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Clone pre repositories
+        run: |
+          cd ..
+          git clone https://github.com/cigar666/my_manim_projects.git my_manim_projects
       - name: Test rendering example_scenes.py
         uses: ./
         id: renderer
@@ -16,11 +20,6 @@ jobs:
           args: "--high_quality"
           fonts_dir: test/fonts/
           extra_repos: "https://github.com/manim-kindergarten/manim_sandbox"
-      - name: Clone pre repositories
-        run: |
-          cd ..
-          git clone https://github.com/cigar666/my_manim_projects.git manim
-          cd manim
       - name: Save output as artifacts
         uses: actions/upload-artifact@v2
         if: success()
