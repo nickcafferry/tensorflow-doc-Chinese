@@ -62,7 +62,7 @@ TensorFlow (i.e., TF)::
 
 .. raw:: html
 
-    <video width="660" height="380" controls>
+    <video width="680" height="400" controls>
         <source src="_static/Intro1.mp4" type="video/mp4">
     </video>
 
