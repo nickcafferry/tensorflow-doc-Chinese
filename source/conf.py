@@ -2,15 +2,15 @@
 
 import sys
 import os
-sys.path.insert(0, os.path.abspath("../../tensorflowml/"))
+sys.path.insert(0, os.path.abspath("../../manim/"))
 
 project = 'tensorflow'
 copyright = '- Wei MEI (Nick Cafferry).'
 author = 'Wei MEI'
 author = 'Nick McClure'
 
-version = '0.1.0'
-release = '0.1.0'
+version = '0.1.3'
+release = '0.1.3'
 
 extensions = [
     'sphinx.ext.todo',
@@ -36,8 +36,8 @@ pygments_style = 'default'
 
 html_static_path = ['assets']
 html_theme = 'sphinx_rtd_theme'
-html_favicon = '/source/GCC.png'
-html_logo = '/source/GCC.png'
+html_favicon = '../GCC.png'
+html_logo = '../GCC.png'
 html_theme_options = {
     'logo_only': False,
     'style_nav_header_background': '#343131',
