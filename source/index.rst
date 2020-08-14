@@ -72,15 +72,16 @@ TensorFlow (i.e., TF)::
 .. _label1:
 .. toctree::
    :maxdepth: 5
+   :caption: 从TensorFlow开始 (Getting Started)
    
-   从TensorFlow开始 (Getting Started) <https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/index.rst>
+   https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/01_Introduction/index.rst
 
 .. _label2:
 .. toctree::
    :maxdepth: 3
    :caption: TensorFlow方式 (TensorFlow Way)
    
-   <https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/02_TensorFlow_Way/index.rst>
+   https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/02_TensorFlow_Way/index.rst
 
 .. _label3:
 .. toctree::
