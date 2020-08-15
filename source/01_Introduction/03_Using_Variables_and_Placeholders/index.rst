@@ -233,3 +233,15 @@
 下载本节 :download:`Jupyter Notebook </01_Introduction/02_Creating_and_Using_Tensors/tensorflow2.1tutorialch1sec2&3.ipynb>`
 
 .. image:: /01_Introduction/images/03_placeholder.png
+
+
+TensorFlow, Python和Javascript
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+除了 Python 之外，你能够基于 JavaScript 使用 TensorFlow.js 创建 TensorFlow 模型。TensorFlow 还支持其他各种语言，不过支持程度不太相同，包括：Swift、R 和 Julia。目前，Python 和 JavaScript 是最完整的实现语言。
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/Intro3.mp4" type="video/mp4">
+    </video>
