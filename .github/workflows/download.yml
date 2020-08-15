@@ -29,5 +29,5 @@ jobs:
       if: success()
       with:
         name: download_videos
-        path: '~/you_get'
+        path: ~/you_get
 
