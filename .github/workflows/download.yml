@@ -18,16 +18,16 @@ jobs:
       id: videos
       run: |
         cd ..
-        mkdir you_get
-        cd you_get/
+        mkdir -p ~/you_get
+        cd ~/you_get/
         pip3 install you-get
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you_get"
-        you-get -o ./videos 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
+        you-get -i 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
     
     - name: Save output as artifacts
       uses: actions/upload-artifact@v2
       if: success()
       with:
         name: download_videos
-        path: ${{ steps.videos.you_get }}
+        path: '~/you_get/'
 
