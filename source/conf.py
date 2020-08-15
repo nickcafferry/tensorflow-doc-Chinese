@@ -4,10 +4,10 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath("../../manim/"))
 
-project = 'tensorflow'
-copyright = '- Wei MEI (Nick Cafferry).'
-author = 'Wei MEI'
-author = 'Nick McClure'
+project = u'tensorflow'
+copyright = u'- Wei MEI (Nick Cafferry).'
+author = u'Wei MEI'
+#author = 'Nick McClure'
 
 version = '0.1.3'
 release = '0.1.3'
