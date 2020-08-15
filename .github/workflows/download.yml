@@ -1,1 +1,30 @@
+name: download videos
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_docs_and_deploy:
+    runs-on: ubuntu-latest
+    name: download
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    
+    - name: Install You-get
+      run: |
+        cd ..
+        mkdir you_get
+        cd you_get/
+        pip3 install you-get
+        mkdir videos
+    
+    - name: download videos
+      run: |
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you-get"
+        you-get -o ./videos https://www.bilibili.com/video/av8786599/
+        
 
