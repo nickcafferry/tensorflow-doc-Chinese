@@ -33,5 +33,5 @@ jobs:
       if: success()
       with:
         name: Videos_cmver
-        path: ${{ steps.videos.outputs.video_path }}
+        path: ${{ github.workspace }}
 
