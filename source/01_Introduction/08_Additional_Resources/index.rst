@@ -368,9 +368,9 @@ Official Resources
         </div>
       </div>
     </footer>
-    <script src="bundle.js"></script>
+    <script src="_static/playground_gh_pages/bundle.js"></script>
     <!-- Google analytics -->
-    <script src="analytics.js"></script>
+    <script src="_static/playground_gh_pages/analytics.js"></script>
   </body>
   </html>
  
