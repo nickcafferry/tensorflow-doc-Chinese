@@ -62,7 +62,7 @@ TensorFlow (i.e., TF)::
 
 .. raw:: html
 
-    <video poster="https://hztp.hotjob.cn/wt/component1000/corp/FAWVW/images/faw-vw/index3.jpg" preload="auto" width="690" height="402" controls>
+    <video poster="https://hztp.hotjob.cn/wt/component1000/corp/FAWVW/images/faw-vw/index3.jpg" preload="auto" width="690" height="402" controls="controls">
         <source src="_static/Intro1.mp4" type="video/mp4">
     </video>
 
