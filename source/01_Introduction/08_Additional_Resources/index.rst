@@ -41,3 +41,12 @@ Arxiv Papers
  - `Distributed TensorFlow with MPI <https://arxiv.org/abs/1603.02339>`_
  - `Comparative Study of Deep Learning Software Frameworks <https://arxiv.org/abs/1511.06435>`_
  - `Wide & Deep Learning for Recommender Systems <https://arxiv.org/abs/1606.07792>`_
+
+Colab如何将训练麻瓜?
+-----------------
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/videos/1stModel(IntroML)/IntroML3.mp4" type="video/mp4">
+    </video>
