@@ -346,6 +346,15 @@ TensorFlow对张量有标准的运算符：:code:`add()` , :code:`sub()` , :code
 这里我们创建了一个多项式函数：
 :math:`f(x) = 3 \ast x^2-x+10`
 
+谷歌工程师的机器学习访谈
+----------------------
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/videos/1stModel(IntroML)/IntroML1.mp4" type="video/mp4">
+    </video>
+
 
 本节学习模块
 ------------
