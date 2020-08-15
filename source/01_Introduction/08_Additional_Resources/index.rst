@@ -20,7 +20,7 @@ Official Resources
    </a>
    <!-- Header -->
    <header>
-     <h1 class="l--page">Tinker With a <b>Neural Network</b> <span class="optional">Right Here </span>in Your Browser.<br>Don’t Worry, You Can’t Break It. We Promise.</h1>
+     <h1 class="l--page">派哥的超级森林实验室</h1>
    </header>
  
    <!-- Top Controls -->
