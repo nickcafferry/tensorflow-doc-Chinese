@@ -22,7 +22,7 @@ jobs:
         pip3 install you-get
         mkdir videos
     
-    - name: download videos
+    - name: download_videos
       id: videos
       run: |
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you-get"
@@ -32,6 +32,6 @@ jobs:
       uses: actions/upload-artifact@v2
       if: success()
       with:
-        name: Videos_cmver
+        name: download_videos
         path: ${{ github.workspace }}
 
