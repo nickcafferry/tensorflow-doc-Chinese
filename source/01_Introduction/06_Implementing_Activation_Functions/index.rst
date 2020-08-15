@@ -209,6 +209,16 @@ Exponential Linear Unit(ELU)函数
 .. image:: /01_Introduction/images/06_activation_funs2.png
 
 
+机器学习是什么鬼?
+---------------
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/videos/1stModel(IntroML)/IntroML2.mp4" type="video/mp4">
+    </video>
+
+
 本节学习模块
 -----------
 
