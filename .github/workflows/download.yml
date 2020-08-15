@@ -15,18 +15,11 @@ jobs:
       uses: actions/checkout@master
     
     - name: Install You-get
-      run: |
-        cd ..
-        mkdir you_get
-        cd you_get/
-        pip3 install you-get
-        
-    
-    - name: download_videos
       id: videos
       run: |
+        cd ..
+        pip3 install you-get
         you-get -o ./videos 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
-        
     
     - name: Save output as artifacts
       uses: actions/upload-artifact@v2
