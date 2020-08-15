@@ -26,7 +26,7 @@ jobs:
       id: videos
       run: |
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you-get"
-        you-get -o ./videos https://www.bilibili.com/video/av8786599/
+        you-get -o ./videos https://www.bilibili.com/read/cv4360/
     
     - name: Save output as artifacts
       uses: actions/upload-artifact@v2
