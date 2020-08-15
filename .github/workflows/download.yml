@@ -19,6 +19,7 @@ jobs:
       run: |
         cd ..
         pip3 install you-get
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/"
         you-get -o ./videos 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
     
     - name: Save output as artifacts
