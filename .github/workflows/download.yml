@@ -23,8 +23,15 @@ jobs:
         mkdir videos
     
     - name: download videos
+      id: videos
       run: |
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you-get"
         you-get -o ./videos https://www.bilibili.com/video/av8786599/
-        
+    
+    - name: Save output as artifacts
+      uses: actions/upload-artifact@v2
+      if: success()
+      with:
+        name: Videos_cmver
+        path: ${{ steps.videos.outputs.video_path }}
 
