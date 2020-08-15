@@ -10,7 +10,7 @@ Official Resources
 .. raw:: html
 
     <title>A Neural Network Playground</title>
-    <link rel="stylesheet" source=""_static/playground_gh_pages/bundle.css" type="text/css">
+    <link rel="stylesheet" source="https://github.com/nickcafferry/tensorflow-doc-zh/blob/master/source/assets/playground_gh_pages/bundle.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons" rel="stylesheet" type="text/css">
     <script src="_static/playground_gh_pages/lib.js"></script>
   </head>
