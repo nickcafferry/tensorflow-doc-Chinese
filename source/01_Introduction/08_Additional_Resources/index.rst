@@ -1,46 +1,46 @@
-Official Resources
+官方资源
 ------------------
 
- -  `TensorFlow Python API <https://www.tensorflow.org/api_docs/python/>`_
- -  `TensorFlow on Github <https://github.com/tensorflow/tensorflow>`_
- -  `TensorFlow Tutorials <https://www.tensorflow.org/tutorials/>`_
- -  `Udacity Deep Learning Class <https://www.udacity.com/course/deep-learning--ud730>`_
- -  `TensorFlow Playground <http://playground.tensorflow.org/>`_
+ -  `TensorFlow Python API(应用程序接口) <https://www.tensorflow.org/api_docs/python/>`_
+ -  `TensorFlow Github源代码 <https://github.com/tensorflow/tensorflow>`_
+ -  `TensorFlow 学习介绍 <https://www.tensorflow.org/tutorials/>`_
+ -  `Udacity 深度学习课程 <https://www.udacity.com/course/deep-learning--ud730>`_
+ -  `TensorFlow 操场 <http://playground.tensorflow.org/>`_
 
  
 
-Github Tutorials and Examples
+Github学习指导和例子
 -----------------------------
 
- - `Tutorials by pkmital <https://github.com/pkmital/tensorflow_tutorials>`_
- - `Tutorials by nlintz <https://github.com/nlintz/TensorFlow-Tutorials>`_
- - `Examples by americdamien <https://github.com/aymericdamien/TensorFlow-Examples>`_
- - `TensorFlow Workshop by amygdala <https://github.com/amygdala/tensorflow-workshop>`_
+ - `Tutorials (pkmital) <https://github.com/pkmital/tensorflow_tutorials>`_
+ - `Tutorials (nlintz) <https://github.com/nlintz/TensorFlow-Tutorials>`_
+ - `例子 (americdamien) <https://github.com/aymericdamien/TensorFlow-Examples>`_
+ - `TensorFlow 工作坊 (amygdala) <https://github.com/amygdala/tensorflow-workshop>`_
 
-Deep Learning Resources
+深度学习资源
 -----------------------
 
- - `Efficient Back Prop by Yann LeCun, et. al. <http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf>`_
- - `Online Deep Learning Book, MIT Press <http://www.deeplearningbook.org/>`_
- - `An Overview of Gradient Descent Algorithms by Sebastian Ruder <http://sebastianruder.com/optimizing-gradient-descent/>`_
- - `Stochastic Optimization by John Duchi, et. al. <http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf>`_
- - `ADADELTA Method by Matthew Zeiler <http://arxiv.org/abs/1212.5701>`_
- - `A Friendly Introduction to Cross-Entropy Loss by Rob DiPietro <http://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/>`_
+ - `优秀的反向传播 (Yann LeCun, et. al.) <http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf>`_
+ - `在线深度学习书籍(MIT 出版) <http://www.deeplearningbook.org/>`_
+ - `梯度下降算法综述 (Sebastian Ruder) <http://sebastianruder.com/optimizing-gradient-descent/>`_
+ - `随机最优化 (John Duchi, et. al.) <http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf>`_
+ - `AdaDelta算法(Matthew Zeiler) <http://arxiv.org/abs/1212.5701>`_
+ - `交叉熵损失简介(Rob DiPietro) <http://rdipietro.github.io/friendly-intro-to-cross-entropy-loss/>`_
 
 
-Additional Resources
+额外资源
 ---------------------
 
- - `A Curated List of Dedicated TensorFlow Resources <https://github.com/jtoy/awesome-tensorflow/>`_
+ - `专门的TensorFlow资源的宝藏列表 <https://github.com/jtoy/awesome-tensorflow/>`_
 
-Arxiv Papers
+Arxiv 文章(免费)
 -------------
 
- - `TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems <http://arxiv.org/abs/1603.04467>`_
- - `TensorFlow: A system for large-scale machine learning <http://arxiv.org/abs/1605.08695>`_
- - `Distributed TensorFlow with MPI <https://arxiv.org/abs/1603.02339>`_
- - `Comparative Study of Deep Learning Software Frameworks <https://arxiv.org/abs/1511.06435>`_
- - `Wide & Deep Learning for Recommender Systems <https://arxiv.org/abs/1606.07792>`_
+ - `TensorFlow：异构分布式系统上的大规模机器学习 <http://arxiv.org/abs/1603.04467>`_
+ - `TensorFlow：一个大规模机器学习系统 <http://arxiv.org/abs/1605.08695>`_
+ - `基于MPI的分布式TensorFlow <https://arxiv.org/abs/1603.02339>`_
+ - `深度学习软件框架的比较研究 <https://arxiv.org/abs/1511.06435>`_
+ - `推荐系统的广泛深入学习 <https://arxiv.org/abs/1606.07792>`_
 
 Colab如何将训练麻瓜?
 -----------------
