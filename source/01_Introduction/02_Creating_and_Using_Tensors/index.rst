@@ -313,6 +313,17 @@ TensorFlow有一些内置函数可以用创建变量张量。例如我们可以�
 
 下载本节 :download:`Jupyter Notebook </01_Introduction/02_Creating_and_Using_Tensors/tensorflow2.1tutorialch1sec2&3.ipynb>`
 
+
+TensorFlow机器学习的应用
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/Intro3.mp4" type="video/mp4">
+    </video>
+    
+
 本节学习模块
 ^^^^^^^^^^^^^^^^^
 
