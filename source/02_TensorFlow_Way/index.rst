@@ -23,8 +23,8 @@
      position: absolute;
      width: 20%;
    	height: 20%;
-     top: 157px;
-     left: 320px;
+     top: 10px;
+     right: 10px;
    }
    
    #owl {  
