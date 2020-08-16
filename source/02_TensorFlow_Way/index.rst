@@ -29,7 +29,8 @@
    
    #owl {  
      position: absolute;
-   	left: 50%;	 
+   	right:10px;
+      top:10px	 
      -webkit-transform: translate(-50%, 0%);	 
              transform: translate(-50%, 0%);
    }
