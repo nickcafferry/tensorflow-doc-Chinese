@@ -1,4 +1,4 @@
-name: Test Github Action
+name: videos making
 
 on: [push, pull_request]
 
