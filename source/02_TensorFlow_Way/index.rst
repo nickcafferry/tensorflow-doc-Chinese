@@ -20,12 +20,6 @@
       
           <style>
       
-      body{
-        padding:0px;
-        margin:0px;
-        background:hsl(212,50%,50%);
-      }
-      
       </style>
       
           <script src="https://www.html5tricks.com/demo/html5-css3-windmill/js/prefixfree.min.js"></script>
