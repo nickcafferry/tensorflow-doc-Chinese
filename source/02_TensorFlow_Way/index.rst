@@ -23,13 +23,13 @@
      position: absolute;
      width: 20%;
    	height: 20%;
-     top: 10px;
-     right: 10px;
+     top: 1px;
+     right: 70px;
    }
    
    #owl {  
      position: absolute;
-   	right:60px;
+   	right:80px;
       top:1px	 
      -webkit-transform: translate(-50%, 0%);	 
              transform: translate(-50%, 0%);
