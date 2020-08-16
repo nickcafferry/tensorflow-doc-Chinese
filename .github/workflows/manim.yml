@@ -13,7 +13,7 @@ jobs:
         with:
           source_file: test/perf_scenes.py
           scene_names: "Perf1"
-          args: "--high_quality"
+          args: "--low_quality"
           fonts_dir: test/fonts/
           manim_repo: "https://github.com/ManimCommunity/manim"
           community_ver: true
