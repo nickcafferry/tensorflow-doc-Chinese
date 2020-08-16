@@ -29,11 +29,9 @@
       <body>
       <div style="text-align:center;clear:both">
       <script src="https://www.html5tricks.com/gg_bd_ad_720x90.js" type="text/javascript"></script>
-      <script src="https://www.html5tricks.com/follow.js" type="text/javascript"></script>
-      </div>
-            <iframe frameborder="0" scrolling="no" src="https://www.html5tricks.com/demo/html5-css3-windmill/index2.html" width="500px" height="500px"></iframe>
+      <script src="https://www.html5tricks.com/follow.js" type="text/javascript"></script>  
       </body>
-      
+
       </html>
 
 计算图
