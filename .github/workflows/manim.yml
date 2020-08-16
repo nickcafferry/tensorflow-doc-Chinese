@@ -11,8 +11,8 @@ jobs:
         uses: ./
         id: renderer
         with:
-          source_file: test/example_scenes_cmver.py
-          scene_names: "WriteStuff"
+          source_file: test/perf_scenes.py
+          scene_names: "Perf1"
           args: "--high_quality"
           fonts_dir: test/fonts/
           manim_repo: "https://github.com/ManimCommunity/manim"
