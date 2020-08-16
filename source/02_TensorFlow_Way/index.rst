@@ -20,9 +20,11 @@
    }
    
    #container {
-     position: relative;
-     height: 20%;
+     position: absolute;
      width: 20%;
+   	height: 20%;
+     top: 157px;
+     left: 320px;
    }
    
    #owl {  
