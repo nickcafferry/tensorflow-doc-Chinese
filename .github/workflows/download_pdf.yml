@@ -24,12 +24,22 @@ jobs:
         cd ./01_Introduction/08_Additional_Resources/
         ls
         echo '============================================'
-        wget -r A.pdf http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
-        wget -r A.pdf http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf
-        wget -r A.pdf http://arxiv.org/abs/1603.04467
-        wget -r A.pdf http://arxiv.org/abs/1605.08695
-        wget -r A.pdf https://arxiv.org/abs/1603.02339
-        wget -r A.pdf https://arxiv.org/abs/1511.06435
-        wget -r A.pdf https://arxiv.org/abs/1606.07792
+        wget -O Eifficent_back_Prop.pdf http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+        wget -O Stochastic_Optimization.pdf http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf
+        wget -O TF_Heterogeneous_Distributed_Systems.pdf http://arxiv.org/abs/1603.04467
+        wget -O TF_On_ML.pdf http://arxiv.org/abs/1605.08695
+        wget -O Distributed_TensorFlow_with_MPI.pdf https://arxiv.org/abs/1603.02339
+        wget -O Comparative_Study_of_Deep_Learning_Software_Frameworks.pdf https://arxiv.org/abs/1511.06435
+        wget -O Wide_Deep_Learning_for_Recommender_Systems.pdf https://arxiv.org/abs/1606.07792
+        
+        git add Eifficent_back_Prop.pdf
+        git add Stochastic_Optimization.pdf
+        git add TF_Heterogeneous_Distributed_Systems.pdf 
+        git add TF_On_ML.pdf
+        git add Distributed_TensorFlow_with_MPI.pdf
+        git add Comparative_Study_of_Deep_Learning_Software_Frameworks.pdf 
+        git add Wide_Deep_Learning_for_Recommender_Systems.pdf
+        git status 
+        git commit -m "Add some import pdf documents"
         ls
         git push origin master
