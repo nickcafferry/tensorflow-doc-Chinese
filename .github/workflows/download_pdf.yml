@@ -1,4 +1,4 @@
-name: Delete inner xyz files
+name: Download some pdfs
 
 on:
   push:
