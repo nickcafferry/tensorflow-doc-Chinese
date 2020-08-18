@@ -42,7 +42,11 @@ Arxiv 文章(免费)
  - `深度学习软件框架的比较研究 <https://arxiv.org/abs/1511.06435>`_
  - `推荐系统的广泛深入学习 <https://arxiv.org/abs/1606.07792>`_
 
-下载  :download:`TF on heterous distributed systems <../../../01_Introduction/08_Additional_Resources/TF_Heterogeneous_Distributed_Systems.pdf>`
+下载  :download:`TensorFlow：异构分布式系统上的大规模机器学习 <../../../01_Introduction/08_Additional_Resources/TF_Heterogeneous_Distributed_Systems.pdf>`
+下载  :download:`TensorFlow：一个大规模机器学习系统 <../../../01_Introduction/08_Additional_Resources/TF_On_ML.pdf>`
+下载  :download:` 基于MPI的分布式TensorFlow <../../../01_Introduction/08_Additional_Resources/Distributed_TensorFlow_with_MPI.pdf>`
+下载  :download:` 深度学习软件框架的比较研究 <../../../01_Introduction/08_Additional_Resources/Comparative_Study_of_Deep_Learning_Software_Frameworks.pdf>`
+下载  :download:` 推荐系统的广泛深入学习 <../../../01_Introduction/08_Additional_Resources/Wide_Deep_Learning_for_Recommender_Systems.pdf>`
 
 Colab如何将训练麻瓜?
 -----------------
