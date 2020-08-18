@@ -1,0 +1,35 @@
+name: Delete inner xyz files
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_docs_and_deploy:
+    runs-on: ubuntu-latest
+    name: build up document and deploy
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Clone pre repositories
+      run: |
+        ls
+        echo '------------------------------'
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        cd ./01_Introduction/08_Additional_Resources/
+        ls
+        echo '============================================'
+        wget -r A.pdf http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
+        wget -r A.pdf http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf
+        wget -r A.pdf http://arxiv.org/abs/1603.04467
+        wget -r A.pdf http://arxiv.org/abs/1605.08695
+        wget -r A.pdf https://arxiv.org/abs/1603.02339
+        wget -r A.pdf https://arxiv.org/abs/1511.06435
+        wget -r A.pdf https://arxiv.org/abs/1606.07792
+        ls
+        git push origin master
