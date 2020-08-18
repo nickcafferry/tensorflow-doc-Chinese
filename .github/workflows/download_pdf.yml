@@ -26,7 +26,7 @@ jobs:
         echo '============================================'
         wget -O Eifficent_back_Prop.pdf http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf
         wget -O Stochastic_Optimization.pdf http://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf
-        wget -O TF_Heterogeneous_Distributed_Systems.pdf https://arxiv.org/pdf/1603.04467.pdf
+        wget -O TF_Heterogeneous_Distributed_Systems.pdf --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" https://arxiv.org/pdf/1603.04467.pdf
         wget -O TF_On_ML.pdf https://arxiv.org/pdf/1605.08695.pdf
         wget -O Distributed_TensorFlow_with_MPI.pdf https://arxiv.org/pdf/1603.02339.pdf
         wget -O Comparative_Study_of_Deep_Learning_Software_Frameworks.pdf https://arxiv.org/pdf/1511.06435.pdf
