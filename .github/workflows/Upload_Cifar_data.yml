@@ -1,0 +1,35 @@
+name: Upload Cifar-data
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_docs_and_deploy:
+    runs-on: ubuntu-latest
+    name: build up document and deploy
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Clone pre repositories
+      run: |
+        ls
+        echo '------------------------------'
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        cd ./01_Introduction/07_Working_with_Data_Sources/
+        ls
+        echo '============================================'
+        wget -O --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" cifar-10-python.tar.gz https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+        tar -zxvf cifar-10-python.tar.gz
+        cd cifar-10-batches-py/
+        git add -A
+        
+        git status 
+        git commit -m "Add cifar-10-data "
+        ls
+        git push origin master
