@@ -24,8 +24,11 @@ jobs:
         cd ./01_Introduction/07_Working_with_Data_Sources/
         ls
         echo '============================================'
+        mkdir Mnist-Data-Set
+        cd Mnist-Data-Set
         wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" -O Mnist-Data-Set.zip https://modelarts-cnnorth1-market-dataset.obs.cn-north-1.myhuaweicloud.com/dataset-market/Mnist-Data-Set/archiver/Mnist-Data-Set.zip
         unzip Mnist-Data-Set.zip
+        cd ..
         git add -A
         
         git status 
