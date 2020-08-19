@@ -1,10 +1,7 @@
 .. note::
 
-   After we have established the basic objects and methods in TensorFlow, we now want to 
-   establish the components that make up TensorFlow algorithms.  We start by introducing 
-   computational graphs, and then move to loss functions and back propagation.  We end with 
-   creating a simple classifier and then show an example of evaluating regression and 
-   classification algorithms.
+   在我们在TensorFlow中建立基本的对象和方法之后，我们想要建立可以组成TensorFlow算法的成分。我们可以从引入计算图开始，然后我们在转向损失函数和反向传播。在本章的末尾，我们会创造一个简单的分类器然后展示一个回归和分类的算法。
+   
 
 下载本章 :download:`Jupyter Notebook <https://github.com/qmlcode/qml/blob/master/qml/wrappers.py>`
 
