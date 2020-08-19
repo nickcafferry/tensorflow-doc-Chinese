@@ -24,7 +24,7 @@ jobs:
         cd ./01_Introduction/07_Working_with_Data_Sources/
         ls
         echo '============================================'
-        wget -O --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" cifar-10-python.tar.gz https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+        wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" -O cifar-10-python.tar.gz https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
         tar -zxvf cifar-10-python.tar.gz
         cd cifar-10-batches-py/
         git add -A
