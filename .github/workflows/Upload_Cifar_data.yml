@@ -24,7 +24,6 @@ jobs:
         cd ./01_Introduction/07_Working_with_Data_Sources/
         ls
         echo '============================================'
-        mkdir machine-learning-bases
         cd machine-learning-bases
         wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" -r https://archive.ics.uci.edu/ml/machine-learning-databases/
         cd ..
