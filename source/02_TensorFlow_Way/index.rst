@@ -787,9 +787,8 @@
        :maxdepth: 3
        
        /02_TensorFlow_Way/01_Operations_as_a_Computational_Graph/index
-       
-We show how to create an operation on a computational graph and how to visualize it using Tensorboard.
 
+我们会展示如何在计算图中创建一个算符，并用Tensorboard来展示它。
 
 下载本章 :download:`Jupyter Notebook </02_TensorFlow_Way/01_Operations_as_a_Computational_Graph/01_operations_on_a_graph.ipynb>`
 
