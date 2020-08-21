@@ -3507,7 +3507,7 @@ MNIST(Mixed National Institute of Standards and Technology)只是更大NIST手�
   >>> dataset_local_path = project_path + 'dataset/'
   >>> dataset_local_name = dataset_local_path + 'Mnist-Data-Set.zip' 
 
-.. code:: bash
+.. code-block:: bash
   
   $ wget {dataset_url} -P {dataset_local_path}
   $ unzip -d {dataset_local_path} -o {dataset_local_name}
