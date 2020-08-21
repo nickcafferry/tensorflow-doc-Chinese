@@ -20,9 +20,9 @@ extensions = [
     'sphinx.ext.autodoc', 
     'sphinx.ext.coverage',
     'sphinx.ext.napoleon',
-    'sphinx_rtd_theme'
-    'sphinx.ext.graphviz'
-    'sphinx.ext.viewcode'
+    'sphinx_rtd_theme',
+    'sphinx.ext.graphviz',
+    'sphinx.ext.viewcode',
     'sphinx.ext.inheritance_diagram'
     
 ]
