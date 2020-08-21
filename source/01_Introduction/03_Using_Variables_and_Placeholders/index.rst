@@ -220,7 +220,7 @@
    
 下面，我们就可以在CLI(Commmand-Line-Interface)写入：
 
-.. code:: bash
+.. code-block:: bash
    
    $ tensorboard --logdir=/tmp
 
