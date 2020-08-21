@@ -21,6 +21,10 @@ extensions = [
     'sphinx.ext.coverage',
     'sphinx.ext.napoleon',
     'sphinx_rtd_theme'
+    'sphinx.ext.graphviz'
+    'sphinx.ext.viewcode'
+    'sphinx.ext.inheritance_diagram'
+    
 ]
 
 autoclass_content = 'both'
