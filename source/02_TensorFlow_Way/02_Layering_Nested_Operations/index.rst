@@ -13,3 +13,6 @@
 
    "bar" -> "baz" -> "quux";
 
+.. py:function:: enumerate(sequence[, start=0])
+
+   返回一个迭代对象,递归式处理字典结构的索引或是其它类似序列内容
