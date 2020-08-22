@@ -35,3 +35,13 @@
     27.0
    
 步骤1和步骤2在计算图中创建数据和操作，在步骤3中，我们通过计算图输入数据让后打印结果。
+
+
+密集层(Dense Layer)
+====================
+
+.. raw:: html
+
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+        <source src="../../_static/videos/1stModel(IntroML)/IntroML4.mp4" type="video/mp4">
+    </video>
