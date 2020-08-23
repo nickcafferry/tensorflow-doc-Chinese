@@ -3507,9 +3507,8 @@ MNIST(Mixed National Institute of Standards and Technology)只是更大NIST手�
   >>> dataset_local_path = project_path + 'dataset/'
   >>> dataset_local_name = dataset_local_path + 'Mnist-Data-Set.zip' 
 
-.. highlight:: bash
-  
-  
+.. highlight:: sh
+ 
   $ wget {dataset_url} -P {dataset_local_path}
   $ unzip -d {dataset_local_path} -o {dataset_local_name}
   --2020-08-12 10:15:31--  https://modelarts-cnnorth1-market-dataset.obs.cn-north-1.myhuaweicloud.com/dataset-market/Mnist-Data-Set/archiver/Mnist-Data-Set.zip
