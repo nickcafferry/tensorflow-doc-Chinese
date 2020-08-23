@@ -17,9 +17,8 @@ jobs:
     - name: Clone pre repositories
       run: |
         cd ..
-        git clone https://github.com/tensorflow/playground tfplay
-        cd tfplay
-        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tfplay"
+        git clone https://github.com/tensorflow/playground ~/tfplay
+        cd ~/tfplay
         npm i
         npm run build
         
@@ -28,4 +27,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: th-pages
-        FOLDER: home/runner/tfplay
+        FOLDER: ~/tfplay
