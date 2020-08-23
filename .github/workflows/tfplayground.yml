@@ -16,12 +16,16 @@ jobs:
 
     - name: Clone pre repositories
       run: |
+        cd ..
         git clone https://github.com/tensorflow/playground tfplay
         cd tfplay
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tfplay"
         npm i
         npm run build
         
-        git config --global user.email "ucecwme@ucl.ac.uk"
-        git config --global user.name "nickcafferry"
-        git checkout -b tf-pages
-        git subtree push --prefix dist origin tf-pages
+    - name: Deploy to GitHub pages
+      uses: JamesIves/github-pages-deploy-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: th-pages
+        FOLDER: build/html
