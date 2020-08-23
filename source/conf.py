@@ -40,7 +40,6 @@ pygments_style = 'default'
 
 html_static_path = ['assets']
 html_theme = 'sphinx_rtd_theme'
-highlight_language = ['python', 'bash']
 html_favicon = '../GCC.png'
 html_logo = '../GCC.png'
 html_theme_options = {
