@@ -21,5 +21,4 @@ jobs:
         cd tfplay
         npm i
         npm run build
-        npm run serve
-        
+        git subtree push --prefix dist origin tf-pages
