@@ -24,4 +24,6 @@ jobs:
         
         git config --global user.email "ucecwme@ucl.ac.uk"
         git config --global user.name "nickcafferry"
+        git checkout -b tf-pages
+        git commit -m 'created tf-pages'
         git subtree push --prefix dist origin tf-pages
