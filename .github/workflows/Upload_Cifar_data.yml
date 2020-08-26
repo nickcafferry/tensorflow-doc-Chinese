@@ -1,4 +1,4 @@
-name: Upload UCI Machine Learning Bases
+name: Upload Machine Learning Bases
 
 on:
   push:
@@ -25,7 +25,8 @@ jobs:
         ls
         echo '============================================'
         cd machine-learning-bases
-        wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" -r -np -nH -R index.html https://archive.ics.uci.edu/ml/machine-learning-databases/
+        wget --user-agent="Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/534.16 (KHTML, like Gecko) Chrome/10.0.648.204 Safari/534.16" http://gdbtools.unibe.ch:8080/cdn/GDB17.50000000.smi.gz
+        gunzip GDB17.50000000.smi.gz
         cd ..
         git add -A
         
