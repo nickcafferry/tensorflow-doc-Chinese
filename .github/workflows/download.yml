@@ -23,7 +23,7 @@ jobs:
         echo "=========================="
         pip3 install you-get
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/you_get"
-        you-get --itag=242 -o ./you_get/ 'https://www.youtube.com/watch?v=L8Y2_Cq2X5s&index=7&list=PLmImxx8Char9Ig0ZHSyTqGsdhb9weEGam'
+        you-get -o ./you_get/ -i 'https://www.bilibili.com/video/BV1pg4y1i7T9'
         
         ls
         echo '============================================='
@@ -32,8 +32,8 @@ jobs:
         echo '=========================================='
         
         cd ../
-        mkdir tensorflow-doc-zh/source/assets/videos/tensorflow
-        cp -r you_get/. tensorflow-doc-zh/source/assets/videos/tensorflow
+        mkdir tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath
+        cp -r you_get/. tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath
         cd tensorflow-doc-zh/
         git config --global user.email "ucecwme@ucl.ac.uk"
         git config --global user.name "nickcafferry"
