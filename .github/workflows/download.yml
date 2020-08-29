@@ -23,29 +23,23 @@ jobs:
         echo "=========================="
         pip3 install you-get
         export PATH="$PATH:/home/runner/.local/bin:/home/runner/you_get"
-
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=17'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=18'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=19'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=20'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=21'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=22'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=23'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=24'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=25'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=26'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=27'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=28'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=29'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=30'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=31'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=32'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=33'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=34'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=35'
-        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=36'
-        
-        
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=1'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=2'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=3'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=4'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=5'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=6'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=7'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=8'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=9'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=10'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=11'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=12'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=13'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=14'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=15'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=16'
+           
         ls
         echo '============================================='
         cd you_get
@@ -53,7 +47,7 @@ jobs:
         echo '=========================================='
         
         cd ../
-        mkdir tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath
+
         cp -r you_get/. tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath
         cd tensorflow-doc-zh/
         git config --global user.email "ucecwme@ucl.ac.uk"
