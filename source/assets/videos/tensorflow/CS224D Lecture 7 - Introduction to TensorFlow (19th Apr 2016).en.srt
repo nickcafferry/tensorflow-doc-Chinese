@@ -1,0 +1,8056 @@
+1
+00:00:00,000 --> 00:00:06,870
+buddy welcome to children 4d today we'll
+
+2
+00:00:03,629 --> 00:00:09,179
+go over our tensorflow it's a good of an
+
+3
+00:00:06,870 --> 00:00:11,519
+experiment in the sense that I don't
+
+4
+00:00:09,179 --> 00:00:13,170
+think there's ever been a great like
+
+5
+00:00:11,519 --> 00:00:15,839
+deep learning class that already covers
+
+6
+00:00:13,170 --> 00:00:18,660
+tensorflow so we're now really at the
+
+7
+00:00:15,839 --> 00:00:21,090
+cutting edge of technology as such
+
+8
+00:00:18,660 --> 00:00:23,369
+there's no really other good material
+
+9
+00:00:21,090 --> 00:00:25,710
+you can learn from and we're doing this
+
+10
+00:00:23,369 --> 00:00:27,900
+experiment a little bit with you so
+
+11
+00:00:25,710 --> 00:00:30,359
+please feel free to ask questions during
+
+12
+00:00:27,900 --> 00:00:31,500
+this lecture I haven't been able to code
+
+13
+00:00:30,359 --> 00:00:32,969
+as much as I'd like to in the last
+
+14
+00:00:31,500 --> 00:00:35,399
+couple months so broth who's been
+
+15
+00:00:32,969 --> 00:00:37,350
+working with tensorflow extensively the
+
+16
+00:00:35,399 --> 00:00:41,430
+last couple of months that it's been out
+
+17
+00:00:37,350 --> 00:00:43,890
+only is going to give today's lecture in
+
+18
+00:00:41,430 --> 00:00:46,680
+terms of organization today the problem
+
+19
+00:00:43,890 --> 00:00:48,860
+set one is due so hopefully you're all
+
+20
+00:00:46,680 --> 00:00:51,510
+on time we have at most three late days
+
+21
+00:00:48,860 --> 00:00:54,030
+for this problem set if you have any
+
+22
+00:00:51,510 --> 00:00:56,820
+urgent questions who come to office
+
+23
+00:00:54,030 --> 00:00:59,460
+hours I can make some exceptions my
+
+24
+00:00:56,820 --> 00:01:03,210
+office hour today too if you're stuck
+
+25
+00:00:59,460 --> 00:01:06,090
+although ideally mine will be about the
+
+26
+00:01:03,210 --> 00:01:08,220
+project's thanks for all the ones who
+
+27
+00:01:06,090 --> 00:01:10,590
+have come already to project advice
+
+28
+00:01:08,220 --> 00:01:13,920
+office hour I'll try to also keep track
+
+29
+00:01:10,590 --> 00:01:16,500
+now and have a list so if you come let's
+
+30
+00:01:13,920 --> 00:01:18,150
+put down your name to make sure we
+
+31
+00:01:16,500 --> 00:01:21,090
+verify that you came to office hour for
+
+32
+00:01:18,150 --> 00:01:24,900
+the project well release problem set to
+
+33
+00:01:21,090 --> 00:01:25,880
+tomorrow it will be largely based on
+
+34
+00:01:24,900 --> 00:01:27,930
+tensorflow
+
+35
+00:01:25,880 --> 00:01:31,020
+once you know tends to flow very well
+
+36
+00:01:27,930 --> 00:01:34,259
+it's a very easy problem set but that's
+
+37
+00:01:31,020 --> 00:01:38,130
+a big if so hopefully today is useful I
+
+38
+00:01:34,259 --> 00:01:40,290
+think we went over this last night over
+
+39
+00:01:38,130 --> 00:01:42,930
+this lecture and if you pay attention
+
+40
+00:01:40,290 --> 00:01:44,460
+you could almost like copy and paste
+
+41
+00:01:42,930 --> 00:01:45,630
+things and it should always run you
+
+42
+00:01:44,460 --> 00:01:48,149
+should really be able to understand
+
+43
+00:01:45,630 --> 00:01:50,430
+every line code that we'll go over that
+
+44
+00:01:48,149 --> 00:01:52,740
+the Roth will go over so do do ask
+
+45
+00:01:50,430 --> 00:01:54,420
+questions when when they come up also
+
+46
+00:01:52,740 --> 00:01:56,159
+we've had around 40 people or so who
+
+47
+00:01:54,420 --> 00:01:58,860
+feel that the class survey thanks to
+
+48
+00:01:56,159 --> 00:02:01,860
+those 40 it looks like we improve the
+
+49
+00:01:58,860 --> 00:02:03,270
+amount so we're more like 55 to 60% of
+
+50
+00:02:01,860 --> 00:02:05,130
+people think it's the right speed right
+
+51
+00:02:03,270 --> 00:02:06,600
+now if that was a sample bias because
+
+52
+00:02:05,130 --> 00:02:08,369
+all the people who are happy or more
+
+53
+00:02:06,600 --> 00:02:10,470
+likely to take the survey and you're
+
+54
+00:02:08,369 --> 00:02:12,360
+unhappy please do fill it out
+
+55
+00:02:10,470 --> 00:02:15,330
+so we can adjust adjust to speed
+
+56
+00:02:12,360 --> 00:02:18,840
+accordingly because tensorflow is
+
+57
+00:02:15,330 --> 00:02:21,050
+non-trivial to set up and install we'll
+
+58
+00:02:18,840 --> 00:02:22,230
+have specialist sessions about
+
+59
+00:02:21,050 --> 00:02:26,280
+tensorflow
+
+60
+00:02:22,230 --> 00:02:28,260
+this week and then yeah you can always
+
+61
+00:02:26,280 --> 00:02:29,820
+of course ask in any office hour if you
+
+62
+00:02:28,260 --> 00:02:32,220
+have any questions we'll go especially
+
+63
+00:02:29,820 --> 00:02:34,020
+over how to set it up in AWS and now
+
+64
+00:02:32,220 --> 00:02:37,170
+they're very practically a useful skill
+
+65
+00:02:34,020 --> 00:02:39,330
+these days I can essentially start your
+
+66
+00:02:37,170 --> 00:02:41,840
+whole and cluster if you want and run
+
+67
+00:02:39,330 --> 00:02:44,040
+left many more experiments in parallel
+
+68
+00:02:41,840 --> 00:02:47,280
+that's that's about it are there any
+
+69
+00:02:44,040 --> 00:02:54,600
+questions about the organization problem
+
+70
+00:02:47,280 --> 00:02:56,690
+sets of stars No alright and take it
+
+71
+00:02:54,600 --> 00:02:56,690
+away
+
+72
+00:02:56,910 --> 00:03:02,290
+all right so I think let's we could
+
+73
+00:03:01,060 --> 00:03:04,540
+probably get started just by talking
+
+74
+00:03:02,290 --> 00:03:06,730
+about what's the state of deep learning
+
+75
+00:03:04,540 --> 00:03:07,930
+today so for those of you who've been
+
+76
+00:03:06,730 --> 00:03:10,420
+following kind of the deep learning
+
+77
+00:03:07,930 --> 00:03:11,950
+public library there's a kind of a zoo
+
+78
+00:03:10,420 --> 00:03:16,150
+of libraries out there there's like
+
+79
+00:03:11,950 --> 00:03:18,580
+Tiano Kyra's ku DNN MX net etc etc etc
+
+80
+00:03:16,150 --> 00:03:20,350
+and if you'll be if you've been
+
+81
+00:03:18,580 --> 00:03:22,120
+following attention each major company
+
+82
+00:03:20,350 --> 00:03:23,710
+basically has its own deep learning
+
+83
+00:03:22,120 --> 00:03:25,450
+library and many academic labs have
+
+84
+00:03:23,710 --> 00:03:27,370
+their own deep learning libraries so
+
+85
+00:03:25,450 --> 00:03:28,840
+before we even kind of dive into
+
+86
+00:03:27,370 --> 00:03:30,820
+tensorflow you need to start asking the
+
+87
+00:03:28,840 --> 00:03:33,340
+question which deep learning libraries
+
+88
+00:03:30,820 --> 00:03:35,110
+should we use and why should we bother
+
+89
+00:03:33,340 --> 00:03:36,580
+using it what are the kind of axes of
+
+90
+00:03:35,110 --> 00:03:38,440
+deep learning libraries and what are the
+
+91
+00:03:36,580 --> 00:03:39,940
+strengths and weaknesses that all the
+
+92
+00:03:38,440 --> 00:03:42,850
+different deep learning libraries bring
+
+93
+00:03:39,940 --> 00:03:44,470
+to the table so I think there's a few
+
+94
+00:03:42,850 --> 00:03:46,630
+axes you can use to kind of think about
+
+95
+00:03:44,470 --> 00:03:49,360
+deep learning libraries the first one
+
+96
+00:03:46,630 --> 00:03:50,830
+I'd say is when you are specifying a new
+
+97
+00:03:49,360 --> 00:03:53,200
+deep learning model are you writing a
+
+98
+00:03:50,830 --> 00:03:56,020
+config file or are you writing a program
+
+99
+00:03:53,200 --> 00:03:57,880
+so some of you may have experience would
+
+100
+00:03:56,020 --> 00:03:59,470
+say cafe or maybe some of you did an
+
+101
+00:03:57,880 --> 00:04:01,450
+internship at Google a couple years ago
+
+102
+00:03:59,470 --> 00:04:03,340
+and there's the disbelief system and in
+
+103
+00:04:01,450 --> 00:04:04,720
+these systems when you want to make a
+
+104
+00:04:03,340 --> 00:04:06,310
+new deep learning model you're not
+
+105
+00:04:04,720 --> 00:04:08,800
+writing code you're writing basically a
+
+106
+00:04:06,310 --> 00:04:10,990
+JSON file so you write down a JSON file
+
+107
+00:04:08,800 --> 00:04:13,660
+that specifies your complicated model
+
+108
+00:04:10,990 --> 00:04:15,550
+and once you specify this just on file
+
+109
+00:04:13,660 --> 00:04:17,200
+it auto creates the model for you
+
+110
+00:04:15,550 --> 00:04:20,410
+so in some sense this is convenient
+
+111
+00:04:17,200 --> 00:04:22,240
+because you're not you can think of a
+
+112
+00:04:20,410 --> 00:04:24,310
+deep learning model is kind of an object
+
+113
+00:04:22,240 --> 00:04:26,020
+that you specify statically and the nice
+
+114
+00:04:24,310 --> 00:04:27,970
+part is that if somebody else specifies
+
+115
+00:04:26,020 --> 00:04:29,560
+a deep learning model for you you can
+
+116
+00:04:27,970 --> 00:04:32,080
+copy/paste a config file you don't have
+
+117
+00:04:29,560 --> 00:04:33,730
+to write new code now the trade-off is
+
+118
+00:04:32,080 --> 00:04:35,350
+for anybody who's done a lot of things
+
+119
+00:04:33,730 --> 00:04:39,100
+which is on you know that things get
+
+120
+00:04:35,350 --> 00:04:40,570
+hairy quickly from complicated models
+
+121
+00:04:39,100 --> 00:04:43,330
+for things like recurrent neural nets
+
+122
+00:04:40,570 --> 00:04:45,580
+for very deep connell neural nets people
+
+123
+00:04:43,330 --> 00:04:47,530
+use in practice you get giant chess on
+
+124
+00:04:45,580 --> 00:04:49,510
+type files floating around so I think
+
+125
+00:04:47,530 --> 00:04:51,520
+there's a story in the cafe repo which
+
+126
+00:04:49,510 --> 00:04:53,770
+is one of the major deep learning
+
+127
+00:04:51,520 --> 00:04:56,560
+packages there is a 7,000 line
+
+128
+00:04:53,770 --> 00:04:58,510
+configuration file for the resident deep
+
+129
+00:04:56,560 --> 00:05:00,940
+network which is one of the imagenet
+
+130
+00:04:58,510 --> 00:05:02,650
+challenge winners for this last year and
+
+131
+00:05:00,940 --> 00:05:05,440
+the reason is that network has something
+
+132
+00:05:02,650 --> 00:05:08,260
+like 150 layers so they basically copied
+
+133
+00:05:05,440 --> 00:05:10,150
+the JSON config for one layer 150 times
+
+134
+00:05:08,260 --> 00:05:13,450
+so if you go into net you see 150
+
+135
+00:05:10,150 --> 00:05:16,690
+repeats of a config file so things get
+
+136
+00:05:13,450 --> 00:05:18,040
+hairy with config so as people built
+
+137
+00:05:16,690 --> 00:05:19,720
+experience with deep learning became
+
+138
+00:05:18,040 --> 00:05:22,180
+clear that you don't want to have config
+
+139
+00:05:19,720 --> 00:05:23,800
+file descriptions of deep learnings you
+
+140
+00:05:22,180 --> 00:05:25,080
+want to really have it be part of your
+
+141
+00:05:23,800 --> 00:05:27,490
+program you want to be able to use
+
+142
+00:05:25,080 --> 00:05:30,130
+standard programming constructs like for
+
+143
+00:05:27,490 --> 00:05:32,320
+loops or other programmatic constructs
+
+144
+00:05:30,130 --> 00:05:34,030
+to construct the complicated deep
+
+145
+00:05:32,320 --> 00:05:36,880
+networks people tend to use in practice
+
+146
+00:05:34,030 --> 00:05:38,020
+and I think in this problem set you'll
+
+147
+00:05:36,880 --> 00:05:40,900
+see a bit of that will make you
+
+148
+00:05:38,020 --> 00:05:42,340
+construct a recurrent neural net using
+
+149
+00:05:40,900 --> 00:05:44,590
+tensor phone you'll see how easy it is
+
+150
+00:05:42,340 --> 00:05:46,390
+it's basically ten lines of code in a
+
+151
+00:05:44,590 --> 00:05:47,620
+for loop when you do programmatically if
+
+152
+00:05:46,390 --> 00:05:49,630
+you're going to do it with the config
+
+153
+00:05:47,620 --> 00:05:51,250
+file that would be significantly more
+
+154
+00:05:49,630 --> 00:05:54,280
+challenging exercise and I think that
+
+155
+00:05:51,250 --> 00:05:58,540
+was a research paper at some point doing
+
+156
+00:05:54,280 --> 00:06:00,130
+it in cafe so let's assume now that
+
+157
+00:05:58,540 --> 00:06:02,020
+we're gonna stick with programmatic
+
+158
+00:06:00,130 --> 00:06:03,910
+construction of deep learning models the
+
+159
+00:06:02,020 --> 00:06:07,270
+next question is what language should we
+
+160
+00:06:03,910 --> 00:06:08,860
+use so if you've ever done a lot of
+
+161
+00:06:07,270 --> 00:06:11,170
+numerical computing you'll kind of know
+
+162
+00:06:08,860 --> 00:06:12,910
+that numerical programs have to be
+
+163
+00:06:11,170 --> 00:06:15,400
+written in kind of an optimized language
+
+164
+00:06:12,910 --> 00:06:16,990
+so for many years this was Fortran so
+
+165
+00:06:15,400 --> 00:06:18,340
+you'd have kind of mountains of Fortran
+
+166
+00:06:16,990 --> 00:06:20,380
+code sitting in the back end of all
+
+167
+00:06:18,340 --> 00:06:23,740
+these national labs running things like
+
+168
+00:06:20,380 --> 00:06:25,630
+nuclear nuclear simulations and the like
+
+169
+00:06:23,740 --> 00:06:27,220
+so today that's improved a little bit
+
+170
+00:06:25,630 --> 00:06:29,890
+you can actually use C++ to write
+
+171
+00:06:27,220 --> 00:06:31,720
+high-quality numerical code and there's
+
+172
+00:06:29,890 --> 00:06:32,500
+great libraries like eigen that'll make
+
+173
+00:06:31,720 --> 00:06:36,760
+this easy for you
+
+174
+00:06:32,500 --> 00:06:38,200
+but even so writing C++ is not in some
+
+175
+00:06:36,760 --> 00:06:39,580
+ways it's like writing a config file you
+
+176
+00:06:38,200 --> 00:06:41,140
+have to worry about a lot of things that
+
+177
+00:06:39,580 --> 00:06:42,190
+are not directly relevant to the
+
+178
+00:06:41,140 --> 00:06:44,560
+learning tasks at hand
+
+179
+00:06:42,190 --> 00:06:46,480
+things like memory management so in
+
+180
+00:06:44,560 --> 00:06:49,030
+practice most people tend not to write
+
+181
+00:06:46,480 --> 00:06:50,560
+C++ when they're making new deep
+
+182
+00:06:49,030 --> 00:06:52,710
+learning models or even numerical models
+
+183
+00:06:50,560 --> 00:06:56,590
+rather you want to have a high-level
+
+184
+00:06:52,710 --> 00:06:59,080
+kind of wrapper around the C++ that lets
+
+185
+00:06:56,590 --> 00:07:01,570
+you call into the C++ efficiently but
+
+186
+00:06:59,080 --> 00:07:03,100
+lets you use the syntax and the memory
+
+187
+00:07:01,570 --> 00:07:06,070
+management constructs of a high-level
+
+188
+00:07:03,100 --> 00:07:07,750
+programming language so there's really
+
+189
+00:07:06,070 --> 00:07:10,090
+two contenders into deep learning spaces
+
+190
+00:07:07,750 --> 00:07:13,180
+one is blue up and the other is Python
+
+191
+00:07:10,090 --> 00:07:15,130
+so ruins kind of the a game engine
+
+192
+00:07:13,180 --> 00:07:18,700
+wrapper it's designed to have very quick
+
+193
+00:07:15,130 --> 00:07:20,950
+Interop from C to law and the torch
+
+194
+00:07:18,700 --> 00:07:23,900
+library makes good use of Lua to write
+
+195
+00:07:20,950 --> 00:07:26,390
+scripts in it and basically tie directly
+
+196
+00:07:23,900 --> 00:07:28,940
+into the lower-level numerical code so a
+
+197
+00:07:26,390 --> 00:07:30,440
+lot of people really like torch some
+
+198
+00:07:28,940 --> 00:07:33,500
+people have some great stories with it
+
+199
+00:07:30,440 --> 00:07:35,210
+but the downside is torte mouaz not as
+
+200
+00:07:33,500 --> 00:07:36,950
+mature an ecosystem as Python
+
+201
+00:07:35,210 --> 00:07:39,920
+so pythons really were a lot of the
+
+202
+00:07:36,950 --> 00:07:41,120
+scientific community community the kind
+
+203
+00:07:39,920 --> 00:07:42,590
+of programming community the web
+
+204
+00:07:41,120 --> 00:07:43,640
+community resides nowadays and the
+
+205
+00:07:42,590 --> 00:07:45,590
+convenience of having all these
+
+206
+00:07:43,640 --> 00:07:47,570
+libraries at hand well something that we
+
+207
+00:07:45,590 --> 00:07:49,310
+felt we couldn't give up on so we
+
+208
+00:07:47,570 --> 00:07:51,200
+decided all right so let's use a
+
+209
+00:07:49,310 --> 00:07:53,300
+programmatic deep learning model let's
+
+210
+00:07:51,200 --> 00:07:54,470
+use one in Python and what are the
+
+211
+00:07:53,300 --> 00:07:56,390
+choices left
+
+212
+00:07:54,470 --> 00:08:01,700
+what languages what deep learning
+
+213
+00:07:56,390 --> 00:08:02,930
+packages will meet this criteria so for
+
+214
+00:08:01,700 --> 00:08:04,610
+those of you who know a little bit about
+
+215
+00:08:02,930 --> 00:08:06,680
+deep learning trivia there's you might
+
+216
+00:08:04,610 --> 00:08:08,480
+have heard of the package theano so the
+
+217
+00:08:06,680 --> 00:08:10,790
+OTO is kind of a symbolic tensor
+
+218
+00:08:08,480 --> 00:08:12,050
+manipulation package in Python in many
+
+219
+00:08:10,790 --> 00:08:13,610
+ways it's kind of the forerunner of
+
+220
+00:08:12,050 --> 00:08:15,230
+tensorflow and in some ways it's even
+
+221
+00:08:13,610 --> 00:08:16,790
+more advanced in tensorflow it's
+
+222
+00:08:15,230 --> 00:08:20,060
+certainly a more stable package it's
+
+223
+00:08:16,790 --> 00:08:21,590
+been around longer so you can ask why do
+
+224
+00:08:20,060 --> 00:08:24,740
+we use why aren't we using Tianna why
+
+225
+00:08:21,590 --> 00:08:26,060
+are we using tensorflow and part of it I
+
+226
+00:08:24,740 --> 00:08:28,940
+think it's a tensorflow
+
+227
+00:08:26,060 --> 00:08:30,980
+is new it's shiny that's one aspect the
+
+228
+00:08:28,940 --> 00:08:32,510
+other aspect is that tensorflow has kind
+
+229
+00:08:30,980 --> 00:08:35,420
+of more support for building giant
+
+230
+00:08:32,510 --> 00:08:37,010
+models so when you start building very
+
+231
+00:08:35,420 --> 00:08:38,600
+large deep learning systems one thing
+
+232
+00:08:37,010 --> 00:08:41,390
+you might want to do is not just you say
+
+233
+00:08:38,600 --> 00:08:43,100
+one GPU card to train your model but you
+
+234
+00:08:41,390 --> 00:08:44,930
+might want to what use a whole Bank of
+
+235
+00:08:43,100 --> 00:08:46,490
+GPU cards and if you start reading
+
+236
+00:08:44,930 --> 00:08:48,890
+papers in this literature you'll find
+
+237
+00:08:46,490 --> 00:08:51,470
+things like we trained on a bank of
+
+238
+00:08:48,890 --> 00:08:53,000
+sixteen GPUs for a week and you can't do
+
+239
+00:08:51,470 --> 00:08:55,490
+those types of experiments on a single
+
+240
+00:08:53,000 --> 00:08:58,190
+GPU so I think one place where
+
+241
+00:08:55,490 --> 00:09:00,320
+tensorflow really shines is the built-in
+
+242
+00:08:58,190 --> 00:09:01,880
+support for distributed systems so you
+
+243
+00:09:00,320 --> 00:09:03,110
+can kind of build distributed deep
+
+244
+00:09:01,880 --> 00:09:04,550
+learning models and we felt that that
+
+245
+00:09:03,110 --> 00:09:06,980
+was a skill that we wanted you to have
+
+246
+00:09:04,550 --> 00:09:08,210
+and that one's better served by having
+
+247
+00:09:06,980 --> 00:09:10,220
+you've learned tensorflow
+
+248
+00:09:08,210 --> 00:09:11,720
+but if you want to ever write models in
+
+249
+00:09:10,220 --> 00:09:13,880
+Theano you'll be able to use your
+
+250
+00:09:11,720 --> 00:09:15,620
+knowledge of tensor phone basically it's
+
+251
+00:09:13,880 --> 00:09:17,660
+almost a one-to-one mapping not quite
+
+252
+00:09:15,620 --> 00:09:20,330
+but you can you can port that knowledge
+
+253
+00:09:17,660 --> 00:09:21,410
+over so kind of for all these purposes
+
+254
+00:09:20,330 --> 00:09:24,950
+we decided all right let's go with
+
+255
+00:09:21,410 --> 00:09:26,660
+tensor flow and actually but we should
+
+256
+00:09:24,950 --> 00:09:28,640
+see a couple of caveats tensor flow is a
+
+257
+00:09:26,660 --> 00:09:30,770
+very new library so some of you might
+
+258
+00:09:28,640 --> 00:09:33,170
+try googling tensor flow versus Tiano
+
+259
+00:09:30,770 --> 00:09:34,640
+versus ax speed benchmarks and one
+
+260
+00:09:33,170 --> 00:09:36,649
+downside of tensor flow currently is
+
+261
+00:09:34,640 --> 00:09:38,869
+it's that it's actually
+
+262
+00:09:36,649 --> 00:09:40,369
+a reasonable it's a bit slower than most
+
+263
+00:09:38,869 --> 00:09:42,499
+of the other deep learning packages on
+
+264
+00:09:40,369 --> 00:09:46,009
+these benchmarks so you lose something
+
+265
+00:09:42,499 --> 00:09:47,360
+like 50% in speed on a single GPU today
+
+266
+00:09:46,009 --> 00:09:48,769
+but there's I know there's a lot of
+
+267
+00:09:47,360 --> 00:09:51,319
+smart and engineers at Google really
+
+268
+00:09:48,769 --> 00:09:52,670
+trying to hammer away at that so I think
+
+269
+00:09:51,319 --> 00:09:55,369
+that part will be fixed
+
+270
+00:09:52,670 --> 00:09:57,259
+so once assuming these things are fixed
+
+271
+00:09:55,369 --> 00:09:58,220
+that these are kind of we just want to
+
+272
+00:09:57,259 --> 00:09:59,660
+give you kind of a picture of the
+
+273
+00:09:58,220 --> 00:10:03,069
+landscape before we dive deep into
+
+274
+00:09:59,660 --> 00:10:05,959
+tensorflow and start talking about it so
+
+275
+00:10:03,069 --> 00:10:08,779
+now that we've kind of gone over a bag
+
+276
+00:10:05,959 --> 00:10:10,550
+of motivation the question is what is
+
+277
+00:10:08,779 --> 00:10:12,439
+tensor flow now the obvious answer is
+
+278
+00:10:10,550 --> 00:10:14,509
+you know it's a deep learning library it
+
+279
+00:10:12,439 --> 00:10:16,790
+lets you build deep learning models but
+
+280
+00:10:14,509 --> 00:10:18,350
+if it's a deep learning model a library
+
+281
+00:10:16,790 --> 00:10:20,600
+why didn't we call deep flow or
+
+282
+00:10:18,350 --> 00:10:23,899
+something why is it tensor flow and the
+
+283
+00:10:20,600 --> 00:10:25,279
+answer is at its heart tensor flow and
+
+284
+00:10:23,899 --> 00:10:28,300
+Theon or not really deep learning
+
+285
+00:10:25,279 --> 00:10:30,649
+libraries they're basically numerical
+
+286
+00:10:28,300 --> 00:10:32,749
+packages that make it easy to deal with
+
+287
+00:10:30,649 --> 00:10:35,240
+these mathematical constructs known as
+
+288
+00:10:32,749 --> 00:10:37,429
+tensors and the idea is it's a package
+
+289
+00:10:35,240 --> 00:10:39,170
+lets you define arbitrary functions on
+
+290
+00:10:37,429 --> 00:10:42,379
+tensors and lets you take their
+
+291
+00:10:39,170 --> 00:10:44,660
+derivatives easily now that of course
+
+292
+00:10:42,379 --> 00:10:47,689
+begs the question what is a tensor and
+
+293
+00:10:44,660 --> 00:10:49,100
+unless you have kind of makes extensive
+
+294
+00:10:47,689 --> 00:10:51,860
+background in numerical physics you
+
+295
+00:10:49,100 --> 00:10:55,279
+might not be that familiar with the
+
+296
+00:10:51,860 --> 00:10:57,050
+concept of tensor so I'll start by
+
+297
+00:10:55,279 --> 00:11:00,110
+saying the things that a tensor can be a
+
+298
+00:10:57,050 --> 00:11:02,929
+tensor can be a scalar a tensor can be a
+
+299
+00:11:00,110 --> 00:11:06,199
+vector and a tensor can be a matrix and
+
+300
+00:11:02,929 --> 00:11:07,519
+it turns out that when you if you fix
+
+301
+00:11:06,199 --> 00:11:09,649
+your math just right I have some details
+
+302
+00:11:07,519 --> 00:11:12,319
+on the slide and you can look this up or
+
+303
+00:11:09,649 --> 00:11:14,179
+you can go look in Wikipedia a tensor is
+
+304
+00:11:12,319 --> 00:11:16,670
+basically a multi-dimensional area of
+
+305
+00:11:14,179 --> 00:11:19,040
+numbers so for anybody of you who've
+
+306
+00:11:16,670 --> 00:11:21,079
+played with things like Python numpy
+
+307
+00:11:19,040 --> 00:11:24,529
+you'll know that there's very easy ways
+
+308
+00:11:21,079 --> 00:11:27,049
+to define say easy generalizations of
+
+309
+00:11:24,529 --> 00:11:28,730
+matrices kind of multi-dimensional areas
+
+310
+00:11:27,049 --> 00:11:31,040
+where you can say if you have a three
+
+311
+00:11:28,730 --> 00:11:33,829
+dimensional tensor you'd have three
+
+312
+00:11:31,040 --> 00:11:35,689
+index variables ijk so you can kind of
+
+313
+00:11:33,829 --> 00:11:40,970
+think about it as copies of a matrix
+
+314
+00:11:35,689 --> 00:11:44,059
+that you can index into so kind of the
+
+315
+00:11:40,970 --> 00:11:45,949
+goal that the reason that tensors are so
+
+316
+00:11:44,059 --> 00:11:48,750
+interesting useful for machine learning
+
+317
+00:11:45,949 --> 00:11:51,870
+is basically every operation you ever
+
+318
+00:11:48,750 --> 00:11:54,180
+and in any machine learning paper can be
+
+319
+00:11:51,870 --> 00:11:55,860
+written as functions on tensors and in
+
+320
+00:11:54,180 --> 00:11:57,690
+fact now this is a bit of a cute
+
+321
+00:11:55,860 --> 00:12:00,180
+exercise any operation basically in the
+
+322
+00:11:57,690 --> 00:12:02,580
+numerical chemistry numerical physics
+
+323
+00:12:00,180 --> 00:12:03,990
+any numerical literature that you can
+
+324
+00:12:02,580 --> 00:12:06,450
+find can be written as functions on
+
+325
+00:12:03,990 --> 00:12:08,130
+tensors so a neat little thing that
+
+326
+00:12:06,450 --> 00:12:09,660
+they've done in the tensor fodox you can
+
+327
+00:12:08,130 --> 00:12:11,580
+go look this up is they actually have a
+
+328
+00:12:09,660 --> 00:12:13,950
+partial differential equation solver
+
+329
+00:12:11,580 --> 00:12:15,210
+written in tensor flow which is really
+
+330
+00:12:13,950 --> 00:12:16,530
+cute it's the sort of thing that you
+
+331
+00:12:15,210 --> 00:12:17,820
+wouldn't expect a machine learning
+
+332
+00:12:16,530 --> 00:12:19,440
+library to be able to do but it's kind
+
+333
+00:12:17,820 --> 00:12:21,480
+of neat to know that it's there that
+
+334
+00:12:19,440 --> 00:12:22,560
+said it's a terrible PDE solver you
+
+335
+00:12:21,480 --> 00:12:24,420
+don't want actually use it for anything
+
+336
+00:12:22,560 --> 00:12:28,680
+but it's nice to know that you can it's
+
+337
+00:12:24,420 --> 00:12:30,720
+kind of reassuring so another kind of
+
+338
+00:12:28,680 --> 00:12:33,270
+analogy that I'd like to kind of come
+
+339
+00:12:30,720 --> 00:12:35,100
+back to is that a lot of people don't
+
+340
+00:12:33,270 --> 00:12:37,530
+compare deep learning libraries to kind
+
+341
+00:12:35,100 --> 00:12:38,970
+of standard numerical libraries but in
+
+342
+00:12:37,530 --> 00:12:41,370
+some ways that's really the comparison
+
+343
+00:12:38,970 --> 00:12:43,140
+we should be making tensorflow I'd I'd
+
+344
+00:12:41,370 --> 00:12:45,900
+argue is actually more similar to a
+
+345
+00:12:43,140 --> 00:12:48,510
+package like numpy in that both of them
+
+346
+00:12:45,900 --> 00:12:49,620
+are basically libraries built around
+
+347
+00:12:48,510 --> 00:12:52,680
+these n-dimensional
+
+348
+00:12:49,620 --> 00:12:54,450
+meat arrays and the idea is that these
+
+349
+00:12:52,680 --> 00:12:56,580
+multi-dimensional array manipulations
+
+350
+00:12:54,450 --> 00:12:58,290
+are at the heart of both packages so if
+
+351
+00:12:56,580 --> 00:12:59,880
+you know numpy I'm going to argue that
+
+352
+00:12:58,290 --> 00:13:01,890
+it's not that hard to actually figure
+
+353
+00:12:59,880 --> 00:13:04,970
+out tensor flow now the things that
+
+354
+00:13:01,890 --> 00:13:07,620
+tensorflow gives you that numpy doesn't
+
+355
+00:13:04,970 --> 00:13:09,480
+the biggest I'd say is that you can move
+
+356
+00:13:07,620 --> 00:13:11,280
+things on a GPU so there's a lot of code
+
+357
+00:13:09,480 --> 00:13:13,260
+are written in numpy and I've basically
+
+358
+00:13:11,280 --> 00:13:15,210
+been copy pasting it into tensor flow
+
+359
+00:13:13,260 --> 00:13:17,130
+with a few changes and I'm automatically
+
+360
+00:13:15,210 --> 00:13:18,690
+getting GPU usage and getting a 10x
+
+361
+00:13:17,130 --> 00:13:21,480
+speed up in my code which is a really
+
+362
+00:13:18,690 --> 00:13:23,490
+nice perk but of course the other big
+
+363
+00:13:21,480 --> 00:13:25,980
+one is that numpy doesn't really talk
+
+364
+00:13:23,490 --> 00:13:29,250
+about derivatives so if you define a
+
+365
+00:13:25,980 --> 00:13:31,170
+function on a numpy array you're
+
+366
+00:13:29,250 --> 00:13:32,580
+responsible for finding the derivative
+
+367
+00:13:31,170 --> 00:13:34,380
+of that function if you need to and
+
+368
+00:13:32,580 --> 00:13:36,660
+basically like we had to do in the last
+
+369
+00:13:34,380 --> 00:13:38,070
+homework you can find you can do some
+
+370
+00:13:36,660 --> 00:13:41,100
+matrix calculus and figure out those
+
+371
+00:13:38,070 --> 00:13:42,839
+derivatives but as an aside there are
+
+372
+00:13:41,100 --> 00:13:46,830
+Python packages that will automatically
+
+373
+00:13:42,839 --> 00:13:49,080
+differentiate functions on random numpy
+
+374
+00:13:46,830 --> 00:13:51,210
+arrays for you so in some ways tensor
+
+375
+00:13:49,080 --> 00:13:53,160
+floats I'd say GPU version of number
+
+376
+00:13:51,210 --> 00:13:57,839
+high with some extra intelligence baked
+
+377
+00:13:53,160 --> 00:14:00,570
+in for functions so let's kind of do a
+
+378
+00:13:57,839 --> 00:14:02,460
+very very quick recap of numpy
+
+379
+00:14:00,570 --> 00:14:03,540
+now I hope all this is familiar to
+
+380
+00:14:02,460 --> 00:14:04,890
+everybody here otherwise you're gonna
+
+381
+00:14:03,540 --> 00:14:08,820
+have trouble with homework that's due
+
+382
+00:14:04,890 --> 00:14:11,430
+today but the idea is let's numpy gives
+
+383
+00:14:08,820 --> 00:14:13,860
+us a bag of operations we can apply to
+
+384
+00:14:11,430 --> 00:14:15,840
+various matrices so in this case we're
+
+385
+00:14:13,860 --> 00:14:19,020
+doing something like we make a two by
+
+386
+00:14:15,840 --> 00:14:21,810
+two zero matrix one matrix and zero
+
+387
+00:14:19,020 --> 00:14:23,520
+matrix we sum it along an axis or we
+
+388
+00:14:21,810 --> 00:14:25,190
+might reshape it to have another shape
+
+389
+00:14:23,520 --> 00:14:27,660
+so these are kind of the standard array
+
+390
+00:14:25,190 --> 00:14:31,140
+matrix manipulation operations that
+
+391
+00:14:27,660 --> 00:14:34,290
+numpy allows you to do now the neat
+
+392
+00:14:31,140 --> 00:14:37,080
+thing is that you can basically do
+
+393
+00:14:34,290 --> 00:14:40,020
+exactly the same thing in tensor flow so
+
+394
+00:14:37,080 --> 00:14:42,740
+there's a lot of kind of things going on
+
+395
+00:14:40,020 --> 00:14:45,630
+in this slide so let me just kind of
+
+396
+00:14:42,740 --> 00:14:47,880
+kind of talk through what's going on so
+
+397
+00:14:45,630 --> 00:14:50,430
+in the last slide we said let's import
+
+398
+00:14:47,880 --> 00:14:53,370
+numpy as NP in this slide we say import
+
+399
+00:14:50,430 --> 00:14:56,580
+tensor flow is TF the next thing we will
+
+400
+00:14:53,370 --> 00:14:58,290
+do is we'll say there is a bit there are
+
+401
+00:14:56,580 --> 00:15:00,570
+a few bits of cabbage here that aren't
+
+402
+00:14:58,290 --> 00:15:02,460
+directly mapped at numpy and the little
+
+403
+00:15:00,570 --> 00:15:04,680
+arrows on the screen will tell you what
+
+404
+00:15:02,460 --> 00:15:06,660
+these bits of cabbage are for now you
+
+405
+00:15:04,680 --> 00:15:09,600
+can ignore them but kind of the heart is
+
+406
+00:15:06,660 --> 00:15:13,440
+we can call TF zeros to make a 2x2
+
+407
+00:15:09,600 --> 00:15:15,840
+matrix in tensorflow we can call reduce
+
+408
+00:15:13,440 --> 00:15:17,730
+sum which is the analog of the numpy
+
+409
+00:15:15,840 --> 00:15:20,730
+function sum to someone along an axis
+
+410
+00:15:17,730 --> 00:15:23,130
+and we can use get shape which is the
+
+411
+00:15:20,730 --> 00:15:25,170
+analog of shape in numpy and we can use
+
+412
+00:15:23,130 --> 00:15:27,900
+reshape which is the analog of reshape
+
+413
+00:15:25,170 --> 00:15:29,910
+itself so once you kind of have this
+
+414
+00:15:27,900 --> 00:15:31,770
+back and forth between numpy and tensor
+
+415
+00:15:29,910 --> 00:15:33,780
+flow in your head it's not at all hard
+
+416
+00:15:31,770 --> 00:15:35,640
+to start writing tensor flow you just do
+
+417
+00:15:33,780 --> 00:15:38,580
+the same things you do for a numpy and
+
+418
+00:15:35,640 --> 00:15:40,620
+you kind of carry it over and to help
+
+419
+00:15:38,580 --> 00:15:43,290
+you along this process we put together
+
+420
+00:15:40,620 --> 00:15:45,180
+like a small text sharing so a lot of
+
+421
+00:15:43,290 --> 00:15:47,420
+the operations you can do in numpy you
+
+422
+00:15:45,180 --> 00:15:49,500
+can basically carry over to tensor flow
+
+423
+00:15:47,420 --> 00:15:51,960
+tensor for one nice thing is it has
+
+424
+00:15:49,500 --> 00:15:53,580
+syntactic sugar so if you do things in
+
+425
+00:15:51,960 --> 00:15:54,990
+numpy like you have a matrix and you
+
+426
+00:15:53,580 --> 00:15:57,030
+multiply by a scalar and you add another
+
+427
+00:15:54,990 --> 00:15:59,400
+matrix there are these complicated
+
+428
+00:15:57,030 --> 00:16:00,930
+things called numpy broadcast rules that
+
+429
+00:15:59,400 --> 00:16:02,040
+make this all work out most of the time
+
+430
+00:16:00,930 --> 00:16:04,230
+and tensorflow
+
+431
+00:16:02,040 --> 00:16:06,180
+luckily has these same broadcast rules
+
+432
+00:16:04,230 --> 00:16:09,540
+baked in so you can't actually do things
+
+433
+00:16:06,180 --> 00:16:11,280
+like say five times a tensor flow tensor
+
+434
+00:16:09,540 --> 00:16:12,510
+will do what you think it should just
+
+435
+00:16:11,280 --> 00:16:13,170
+like it'll do what you think it should
+
+436
+00:16:12,510 --> 00:16:16,139
+in
+
+437
+00:16:13,170 --> 00:16:17,369
+so kind of has a bit of a confession
+
+438
+00:16:16,139 --> 00:16:19,350
+when I'm writing tensorflow
+
+439
+00:16:17,369 --> 00:16:21,480
+code I usually write in numpy version
+
+440
+00:16:19,350 --> 00:16:23,699
+then I translate each function one at a
+
+441
+00:16:21,480 --> 00:16:24,959
+time and for the homework this might be
+
+442
+00:16:23,699 --> 00:16:26,910
+something you might want to do try
+
+443
+00:16:24,959 --> 00:16:28,769
+writing something like the fordpass of
+
+444
+00:16:26,910 --> 00:16:30,959
+whatever deep network we ask you to
+
+445
+00:16:28,769 --> 00:16:31,649
+implement in numpy then just translate
+
+446
+00:16:30,959 --> 00:16:33,449
+it to tensorflow
+
+447
+00:16:31,649 --> 00:16:35,939
+if you know the function you're looking
+
+448
+00:16:33,449 --> 00:16:37,529
+for the tensorflow api you can it's
+
+449
+00:16:35,939 --> 00:16:39,929
+people on Stack Overflow don't have to
+
+450
+00:16:37,529 --> 00:16:42,179
+work you can say tensorflow version of
+
+451
+00:16:39,929 --> 00:16:43,499
+numpy some and there is in fact the
+
+452
+00:16:42,179 --> 00:16:45,419
+Stack Overflow post that'll tell you
+
+453
+00:16:43,499 --> 00:16:46,889
+exactly what this is so luckily the
+
+454
+00:16:45,419 --> 00:16:49,319
+large community that's built up has
+
+455
+00:16:46,889 --> 00:16:51,509
+already made these things but somewhat
+
+456
+00:16:49,319 --> 00:16:53,429
+digested so you can just use Stack
+
+457
+00:16:51,509 --> 00:16:58,199
+Overflow and Google to figure out these
+
+458
+00:16:53,429 --> 00:16:59,220
+tricks so now though we're gonna start
+
+459
+00:16:58,199 --> 00:17:02,429
+talking about the ways in which
+
+460
+00:16:59,220 --> 00:17:05,189
+tensorflow is not numpy and the first
+
+461
+00:17:02,429 --> 00:17:08,880
+one is that tensorflow requires explicit
+
+462
+00:17:05,189 --> 00:17:12,029
+evaluation what does that mean so when
+
+463
+00:17:08,880 --> 00:17:14,909
+you call NP dots arose and you make a
+
+464
+00:17:12,029 --> 00:17:16,829
+two by two array in numpy you can
+
+465
+00:17:14,909 --> 00:17:18,149
+display it directly it is basically what
+
+466
+00:17:16,829 --> 00:17:20,220
+you think it is when you dive down into
+
+467
+00:17:18,149 --> 00:17:22,769
+the sea it's a block of memory you've
+
+468
+00:17:20,220 --> 00:17:24,569
+allocated that has zeros filled out onto
+
+469
+00:17:22,769 --> 00:17:26,850
+it and it's basically a call to malloc
+
+470
+00:17:24,569 --> 00:17:28,380
+or something like that but if you look
+
+471
+00:17:26,850 --> 00:17:30,840
+at the tensor flow code that is not
+
+472
+00:17:28,380 --> 00:17:33,450
+what's going on when we call TF dot
+
+473
+00:17:30,840 --> 00:17:37,559
+zeroes and we try to print it out we get
+
+474
+00:17:33,450 --> 00:17:39,990
+this weird-looking tensor object so in
+
+475
+00:17:37,559 --> 00:17:42,870
+some ways the heart of tensorflow is
+
+476
+00:17:39,990 --> 00:17:44,669
+that although it looks like we're doing
+
+477
+00:17:42,870 --> 00:17:46,919
+direct operations on various
+
+478
+00:17:44,669 --> 00:17:49,590
+multi-dimensional areas there's actually
+
+479
+00:17:46,919 --> 00:17:51,059
+another hidden step so we'll return to
+
+480
+00:17:49,590 --> 00:17:53,789
+this concept kind of again and again
+
+481
+00:17:51,059 --> 00:17:56,669
+over the course of the rest of this
+
+482
+00:17:53,789 --> 00:17:59,070
+lecture but the idea is that tensor flow
+
+483
+00:17:56,669 --> 00:18:01,110
+is a system for defining operations on
+
+484
+00:17:59,070 --> 00:18:03,690
+these tensors and it forms a structure
+
+485
+00:18:01,110 --> 00:18:05,760
+known as a computation graph and the
+
+486
+00:18:03,690 --> 00:18:08,039
+idea is that you define a computation
+
+487
+00:18:05,760 --> 00:18:09,960
+graph and it's a symbolic entity but the
+
+488
+00:18:08,039 --> 00:18:12,269
+computation graph doesn't have any
+
+489
+00:18:09,960 --> 00:18:15,240
+values till you've run it in some
+
+490
+00:18:12,269 --> 00:18:17,100
+context so the key thing is that when we
+
+491
+00:18:15,240 --> 00:18:19,080
+call dot eval which you might remember
+
+492
+00:18:17,100 --> 00:18:21,389
+from all the slides previously we're
+
+493
+00:18:19,080 --> 00:18:23,549
+implicitly running the tensor flow
+
+494
+00:18:21,389 --> 00:18:24,500
+computation graph in a context and if
+
+495
+00:18:23,549 --> 00:18:26,740
+you remember that
+
+496
+00:18:24,500 --> 00:18:29,090
+bit about Kiev non-interactive session
+
+497
+00:18:26,740 --> 00:18:30,620
+that's a convenience that tensorflow
+
+498
+00:18:29,090 --> 00:18:33,740
+offers for you so it's setting up a
+
+499
+00:18:30,620 --> 00:18:35,650
+global environment so tensorflow
+
+500
+00:18:33,740 --> 00:18:38,030
+computations you can think of it as
+
+501
+00:18:35,650 --> 00:18:40,430
+creating these functions on these
+
+502
+00:18:38,030 --> 00:18:42,320
+multi-dimensional tensors then you're
+
+503
+00:18:40,430 --> 00:18:44,630
+setting up an environment for those
+
+504
+00:18:42,320 --> 00:18:46,610
+computations to exist then you execute
+
+505
+00:18:44,630 --> 00:18:49,520
+those computations in that given
+
+506
+00:18:46,610 --> 00:18:52,040
+environment so when we actually do up
+
+507
+00:18:49,520 --> 00:18:54,110
+here ta da eval we're saying use the
+
+508
+00:18:52,040 --> 00:18:56,600
+global environment execute the
+
+509
+00:18:54,110 --> 00:18:58,430
+computation specified by the tensor ta
+
+510
+00:18:56,600 --> 00:19:01,160
+in the context of this global
+
+511
+00:18:58,430 --> 00:19:03,200
+environment and in this case since ta is
+
+512
+00:19:01,160 --> 00:19:05,720
+just as zeros it does what we think it
+
+513
+00:19:03,200 --> 00:19:07,280
+should it makes a zeros array and it
+
+514
+00:19:05,720 --> 00:19:08,690
+kind of prints it out to screen so
+
+515
+00:19:07,280 --> 00:19:11,390
+that's kind of a critical bit between
+
+516
+00:19:08,690 --> 00:19:13,340
+tensorflow and numpy numpy is actually
+
+517
+00:19:11,390 --> 00:19:16,640
+doing operations on memory the minute
+
+518
+00:19:13,340 --> 00:19:18,830
+you tell to do anything tensorflow and
+
+519
+00:19:16,640 --> 00:19:20,870
+said you're describing operations that
+
+520
+00:19:18,830 --> 00:19:23,060
+you'd like to have happen then in some
+
+521
+00:19:20,870 --> 00:19:25,250
+sense they're compiled and you execute
+
+522
+00:19:23,060 --> 00:19:28,160
+those operations so there's kind of this
+
+523
+00:19:25,250 --> 00:19:29,480
+some symbolic barrier in between you can
+
+524
+00:19:28,160 --> 00:19:31,100
+get around it when you're playing with
+
+525
+00:19:29,480 --> 00:19:34,040
+things but it's very useful to keep in
+
+526
+00:19:31,100 --> 00:19:39,470
+mind that tensorflow is not numpy in
+
+527
+00:19:34,040 --> 00:19:42,170
+this one way so we were just talking
+
+528
+00:19:39,470 --> 00:19:44,840
+about kind of the need for executing
+
+529
+00:19:42,170 --> 00:19:47,750
+tensorflow in a particular context intel
+
+530
+00:19:44,840 --> 00:19:50,000
+in the tentacle library the object that
+
+531
+00:19:47,750 --> 00:19:52,370
+encapsulates this notion of an
+
+532
+00:19:50,000 --> 00:19:54,230
+environment is called a session so the
+
+533
+00:19:52,370 --> 00:19:56,540
+idea is that when you have a tensor flow
+
+534
+00:19:54,230 --> 00:19:58,520
+computation graph and when you define
+
+535
+00:19:56,540 --> 00:20:00,710
+some function on tensors you'd like to
+
+536
+00:19:58,520 --> 00:20:02,810
+have executed then you say I'm going to
+
+537
+00:20:00,710 --> 00:20:04,610
+start up a session then within the
+
+538
+00:20:02,810 --> 00:20:07,400
+course of this session I'm going to
+
+539
+00:20:04,610 --> 00:20:09,020
+execute this computation so in the
+
+540
+00:20:07,400 --> 00:20:11,840
+previous slides we use the function dot
+
+541
+00:20:09,020 --> 00:20:14,060
+eval tensor eval that's actually just
+
+542
+00:20:11,840 --> 00:20:15,920
+syntactic sugar a hundreth the hood what
+
+543
+00:20:14,060 --> 00:20:18,170
+dot eval says is find this session
+
+544
+00:20:15,920 --> 00:20:21,110
+that's currently in scope execute the
+
+545
+00:20:18,170 --> 00:20:24,950
+computation I asked in that session and
+
+546
+00:20:21,110 --> 00:20:26,300
+return me the result so the key bit at
+
+547
+00:20:24,950 --> 00:20:28,550
+the heart of tensor flow is basically
+
+548
+00:20:26,300 --> 00:20:29,870
+session dot run and there's a function
+
+549
+00:20:28,550 --> 00:20:32,500
+we're going to see again and again and
+
+550
+00:20:29,870 --> 00:20:34,310
+session don't run is basically how you
+
+551
+00:20:32,500 --> 00:20:36,200
+interface with the tensor flow
+
+552
+00:20:34,310 --> 00:20:37,470
+computation graph you have this abstract
+
+553
+00:20:36,200 --> 00:20:39,270
+computation you
+
+554
+00:20:37,470 --> 00:20:41,640
+this concrete environment the session
+
+555
+00:20:39,270 --> 00:20:43,200
+and you run the abstract computation in
+
+556
+00:20:41,640 --> 00:20:45,299
+the concrete environment to get a
+
+557
+00:20:43,200 --> 00:20:47,460
+numerical results then this is kind of
+
+558
+00:20:45,299 --> 00:20:48,900
+the workflow that goes on in tensor flow
+
+559
+00:20:47,460 --> 00:20:51,390
+and in this case we have a simple
+
+560
+00:20:48,900 --> 00:20:54,240
+example of doing something like that we
+
+561
+00:20:51,390 --> 00:20:57,330
+set up two constants we multiply the
+
+562
+00:20:54,240 --> 00:21:00,150
+constants and the key thing is that C 8
+
+563
+00:20:57,330 --> 00:21:03,330
+that is a times B is a symbolic value
+
+564
+00:21:00,150 --> 00:21:05,400
+until we create a session and run the
+
+565
+00:21:03,330 --> 00:21:07,380
+computation in that session when we run
+
+566
+00:21:05,400 --> 00:21:09,720
+that computation we get out 30 which is
+
+567
+00:21:07,380 --> 00:21:16,440
+what we'd expect but 30 does not happen
+
+568
+00:21:09,720 --> 00:21:28,650
+until we actually evaluate it here I'm
+
+569
+00:21:16,440 --> 00:21:31,890
+just yes yeah that's that's getting
+
+570
+00:21:28,650 --> 00:21:33,600
+gnarly so interactive session is just to
+
+571
+00:21:31,890 --> 00:21:35,370
+make life friendly for you in the shell
+
+572
+00:21:33,600 --> 00:21:36,929
+it's not what you should be using but if
+
+573
+00:21:35,370 --> 00:21:38,640
+you set up two different sessions and
+
+574
+00:21:36,929 --> 00:21:43,590
+you had a in the first session and B in
+
+575
+00:21:38,640 --> 00:21:45,210
+the second session that gets nasty I'm
+
+576
+00:21:43,590 --> 00:21:46,799
+actually not sure what would happen it's
+
+577
+00:21:45,210 --> 00:21:52,470
+it's the sort of thing that you
+
+578
+00:21:46,799 --> 00:21:54,780
+shouldn't be doing so you're welcome to
+
+579
+00:21:52,470 --> 00:21:56,370
+try like tenth flu is mostly polished
+
+580
+00:21:54,780 --> 00:21:58,289
+but every soften you'll do something and
+
+581
+00:21:56,370 --> 00:22:00,539
+you'll see this explosion of C++ errors
+
+582
+00:21:58,289 --> 00:22:01,950
+on to your screen and that's a sign
+
+583
+00:22:00,539 --> 00:22:03,870
+you're kind of taking the library in
+
+584
+00:22:01,950 --> 00:22:06,770
+directions that doesn't support yet but
+
+585
+00:22:03,870 --> 00:22:08,760
+it's a fun exercise I'd say try it out
+
+586
+00:22:06,770 --> 00:22:10,919
+there is in fact one thing I should
+
+587
+00:22:08,760 --> 00:22:12,600
+mention if you're going to start playing
+
+588
+00:22:10,919 --> 00:22:14,460
+with this well I'll talk a lot today
+
+589
+00:22:12,600 --> 00:22:17,520
+about computation graphs in tensor flow
+
+590
+00:22:14,460 --> 00:22:18,750
+now tensor flow in all the code that
+
+591
+00:22:17,520 --> 00:22:20,970
+will present in this class we're going
+
+592
+00:22:18,750 --> 00:22:22,500
+to have a global computation graph it's
+
+593
+00:22:20,970 --> 00:22:24,030
+going to be an entity that exists in the
+
+594
+00:22:22,500 --> 00:22:25,770
+ether but you can actually manipulate
+
+595
+00:22:24,030 --> 00:22:28,169
+multiple computation graph
+
+596
+00:22:25,770 --> 00:22:29,850
+simultaneously in tensor flow so you
+
+597
+00:22:28,169 --> 00:22:32,429
+could do things like you could set up a
+
+598
+00:22:29,850 --> 00:22:34,380
+in one graph B in another graph and then
+
+599
+00:22:32,429 --> 00:22:38,549
+they wouldn't be able to talk to each
+
+600
+00:22:34,380 --> 00:22:41,200
+other but again not this is sorry this
+
+601
+00:22:38,549 --> 00:22:43,810
+is a bit of an aside
+
+602
+00:22:41,200 --> 00:22:44,470
+tenser object without evaluating it into
+
+603
+00:22:43,810 --> 00:22:49,330
+another session
+
+604
+00:22:44,470 --> 00:22:51,640
+that isn't so the craft the graph exists
+
+605
+00:22:49,330 --> 00:22:55,080
+independent of session so computation
+
+606
+00:22:51,640 --> 00:22:57,940
+graph is an entity that exists so the
+
+607
+00:22:55,080 --> 00:22:59,950
+various tensors exist in the graph they
+
+608
+00:22:57,940 --> 00:23:01,660
+don't require the session to exist but
+
+609
+00:22:59,950 --> 00:23:04,090
+the particular numerical value set to
+
+610
+00:23:01,660 --> 00:23:05,440
+take on in one session need not have any
+
+611
+00:23:04,090 --> 00:23:07,690
+connection with the numerical values to
+
+612
+00:23:05,440 --> 00:23:10,360
+take on in the next session so that's
+
+613
+00:23:07,690 --> 00:23:15,280
+kind of the that's kind of the
+
+614
+00:23:10,360 --> 00:23:16,810
+connection there so here I'm just
+
+615
+00:23:15,280 --> 00:23:18,910
+repeating some things already said
+
+616
+00:23:16,810 --> 00:23:21,370
+interactive session is a useful tool and
+
+617
+00:23:18,910 --> 00:23:23,530
+another thing when you're debugging use
+
+618
+00:23:21,370 --> 00:23:25,270
+ipython use interactive session play
+
+619
+00:23:23,530 --> 00:23:26,980
+with tensors and print them out it's
+
+620
+00:23:25,270 --> 00:23:28,600
+very hard to gain intuition for these
+
+621
+00:23:26,980 --> 00:23:30,490
+things without actually running the
+
+622
+00:23:28,600 --> 00:23:33,250
+computations and interactive session is
+
+623
+00:23:30,490 --> 00:23:35,590
+your friend the other thing again oh
+
+624
+00:23:33,250 --> 00:23:38,200
+here's a bit of looking forward when we
+
+625
+00:23:35,590 --> 00:23:39,850
+say session dot run see we're actually
+
+626
+00:23:38,200 --> 00:23:42,520
+executing what in the tensor flow Docs
+
+627
+00:23:39,850 --> 00:23:44,800
+is called a fetch so fetch is basically
+
+628
+00:23:42,520 --> 00:23:46,990
+you have this abstract computation graph
+
+629
+00:23:44,800 --> 00:23:49,330
+and there's two operations kind of
+
+630
+00:23:46,990 --> 00:23:51,460
+jumping ahead you feed you put data into
+
+631
+00:23:49,330 --> 00:23:53,290
+the computation graph and you fetch you
+
+632
+00:23:51,460 --> 00:23:54,400
+take data out of the graph so you can
+
+633
+00:23:53,290 --> 00:23:57,640
+kind of think of the abstract
+
+634
+00:23:54,400 --> 00:23:59,860
+computation graph as creating a program
+
+635
+00:23:57,640 --> 00:24:01,900
+that you compile then maybe from the
+
+636
+00:23:59,860 --> 00:24:03,910
+command line you feed in some input args
+
+637
+00:24:01,900 --> 00:24:06,490
+to the program you've compiled and then
+
+638
+00:24:03,910 --> 00:24:08,260
+you take some on standard out so by
+
+639
+00:24:06,490 --> 00:24:10,300
+analogy to these shell programs the
+
+640
+00:24:08,260 --> 00:24:12,160
+input args are the feeds which we'll
+
+641
+00:24:10,300 --> 00:24:13,870
+talk about in a couple slides and the
+
+642
+00:24:12,160 --> 00:24:15,520
+output arcs are the fetches which will
+
+643
+00:24:13,870 --> 00:24:17,910
+again come back to in a couple minutes
+
+644
+00:24:15,520 --> 00:24:17,910
+Oh
+
+645
+00:24:18,520 --> 00:24:25,150
+so again just repeating things I
+
+646
+00:24:22,060 --> 00:24:26,830
+basically already said so computation
+
+647
+00:24:25,150 --> 00:24:29,440
+graphs are a central entity in
+
+648
+00:24:26,830 --> 00:24:31,870
+tensorflow computations every time you
+
+649
+00:24:29,440 --> 00:24:33,760
+call a function in tensorflow like when
+
+650
+00:24:31,870 --> 00:24:36,340
+we go back if you remember I said Kiev
+
+651
+00:24:33,760 --> 00:24:38,230
+dot constant or a times B you're
+
+652
+00:24:36,340 --> 00:24:40,480
+actually what that really translates to
+
+653
+00:24:38,230 --> 00:24:42,730
+you're saying is find the global conk
+
+654
+00:24:40,480 --> 00:24:46,210
+graph that is currently in scope add
+
+655
+00:24:42,730 --> 00:24:48,550
+these operations to that graph and hold
+
+656
+00:24:46,210 --> 00:24:51,550
+them within memory within that graph so
+
+657
+00:24:48,550 --> 00:24:53,169
+one kind of I'd say nasty thing about
+
+658
+00:24:51,550 --> 00:24:55,729
+tensorflow is that the
+
+659
+00:24:53,169 --> 00:24:58,159
+functions with respect to a global graph
+
+660
+00:24:55,729 --> 00:25:01,669
+that exists in the background so you're
+
+661
+00:24:58,159 --> 00:25:03,109
+not it's not quite functional in numpy
+
+662
+00:25:01,669 --> 00:25:05,179
+when you say a times B there is no
+
+663
+00:25:03,109 --> 00:25:07,249
+global memory that remembers that you
+
+664
+00:25:05,179 --> 00:25:08,690
+set a times B intensity flow there is
+
+665
+00:25:07,249 --> 00:25:11,059
+this global graph structure that's
+
+666
+00:25:08,690 --> 00:25:12,649
+recording every operation you make so if
+
+667
+00:25:11,059 --> 00:25:15,679
+you get weird things that go on you
+
+668
+00:25:12,649 --> 00:25:17,359
+might just want to sometimes close close
+
+669
+00:25:15,679 --> 00:25:19,190
+your session and restart it or like
+
+670
+00:25:17,359 --> 00:25:21,499
+control C it because there's this
+
+671
+00:25:19,190 --> 00:25:24,229
+implicit notion of memory that's handled
+
+672
+00:25:21,499 --> 00:25:25,580
+through the global graph and we've been
+
+673
+00:25:24,229 --> 00:25:28,279
+talking about this abstractly I put a
+
+674
+00:25:25,580 --> 00:25:29,389
+couple of pictures in following this so
+
+675
+00:25:28,279 --> 00:25:30,710
+hopefully that'll help you gain
+
+676
+00:25:29,389 --> 00:25:34,909
+intuition once you get to some more
+
+677
+00:25:30,710 --> 00:25:36,769
+complicated examples so we've talked
+
+678
+00:25:34,909 --> 00:25:38,479
+about some operations we've shown some
+
+679
+00:25:36,769 --> 00:25:40,729
+basic examples of numerical
+
+680
+00:25:38,479 --> 00:25:42,559
+manipulations you can do in tensor flow
+
+681
+00:25:40,729 --> 00:25:45,710
+and until now most of it's been
+
+682
+00:25:42,559 --> 00:25:47,899
+basically copy/paste from the pot but in
+
+683
+00:25:45,710 --> 00:25:49,879
+some sense tensor flow is more than just
+
+684
+00:25:47,899 --> 00:25:51,259
+an error a manipulation library you
+
+685
+00:25:49,879 --> 00:25:53,960
+could you could say it's basically a
+
+686
+00:25:51,259 --> 00:25:56,719
+prototypical programming language a very
+
+687
+00:25:53,960 --> 00:26:00,320
+simple one and any programming language
+
+688
+00:25:56,719 --> 00:26:01,789
+for that salt has variables so variables
+
+689
+00:26:00,320 --> 00:26:05,119
+in a standard program language are
+
+690
+00:26:01,789 --> 00:26:07,339
+basically boxes that hold state so
+
+691
+00:26:05,119 --> 00:26:09,109
+tensorflow similarly has the notion of
+
+692
+00:26:07,339 --> 00:26:10,549
+variables and when you're building a
+
+693
+00:26:09,109 --> 00:26:12,559
+machine learning model all the
+
+694
+00:26:10,549 --> 00:26:15,200
+parameters in that model you want to
+
+695
+00:26:12,559 --> 00:26:17,389
+hold in tensorflow variables so you can
+
+696
+00:26:15,200 --> 00:26:18,649
+think of say a weight vector in a
+
+697
+00:26:17,389 --> 00:26:19,849
+machine learning computation is
+
+698
+00:26:18,649 --> 00:26:22,399
+something that you want to put in a
+
+699
+00:26:19,849 --> 00:26:24,049
+white box and room go back and forth to
+
+700
+00:26:22,399 --> 00:26:25,969
+that box and put things in and take it
+
+701
+00:26:24,049 --> 00:26:28,219
+out and update it so really the notion
+
+702
+00:26:25,969 --> 00:26:29,869
+of having mutable variables is critical
+
+703
+00:26:28,219 --> 00:26:31,190
+for machine learning and so it's
+
+704
+00:26:29,869 --> 00:26:33,739
+critical for tensile and we have this
+
+705
+00:26:31,190 --> 00:26:35,619
+first class object the variable to
+
+706
+00:26:33,739 --> 00:26:38,089
+really help us get to it
+
+707
+00:26:35,619 --> 00:26:42,379
+so here we're gonna kind of walk through
+
+708
+00:26:38,089 --> 00:26:45,950
+a very simple use case of a variable so
+
+709
+00:26:42,379 --> 00:26:47,359
+a variable is a box and like it's
+
+710
+00:26:45,950 --> 00:26:49,219
+variable in a standard programming
+
+711
+00:26:47,359 --> 00:26:52,909
+language I very well does not have a
+
+712
+00:26:49,219 --> 00:26:54,559
+value until you initialize it so in C or
+
+713
+00:26:52,909 --> 00:26:55,940
+Python if you use a variable without
+
+714
+00:26:54,559 --> 00:26:58,339
+declaring it you're gonna get an error
+
+715
+00:26:55,940 --> 00:26:59,899
+or in Python or JavaScript I think you
+
+716
+00:26:58,339 --> 00:27:01,479
+can actually get away it'll be none or
+
+717
+00:26:59,899 --> 00:27:03,169
+something like that
+
+718
+00:27:01,479 --> 00:27:04,759
+basically that's a good way to think
+
+719
+00:27:03,169 --> 00:27:06,040
+about it a tensorflow variable is
+
+720
+00:27:04,759 --> 00:27:07,390
+basically
+
+721
+00:27:06,040 --> 00:27:09,130
+none it doesn't exist until we
+
+722
+00:27:07,390 --> 00:27:11,800
+initialize it in this case what we're
+
+723
+00:27:09,130 --> 00:27:14,320
+doing is we're setting up I think zeros
+
+724
+00:27:11,800 --> 00:27:16,300
+we're saying I'm gonna make a variable W
+
+725
+00:27:14,320 --> 00:27:18,250
+let's call it weights and this will
+
+726
+00:27:16,300 --> 00:27:19,480
+stand in for say a weight vector of the
+
+727
+00:27:18,250 --> 00:27:22,450
+type we might use in machine learning
+
+728
+00:27:19,480 --> 00:27:24,070
+language program and we're gonna
+
+729
+00:27:22,450 --> 00:27:28,930
+initialize this weight vector with the
+
+730
+00:27:24,070 --> 00:27:30,100
+zeroes matrix so one thing that you
+
+731
+00:27:28,930 --> 00:27:32,230
+kinda have to keep a note is that
+
+732
+00:27:30,100 --> 00:27:34,780
+tensorflow requires you to be explicit
+
+733
+00:27:32,230 --> 00:27:36,730
+about the notion of initialization so in
+
+734
+00:27:34,780 --> 00:27:39,790
+the former examples we've seen of
+
+735
+00:27:36,730 --> 00:27:42,130
+tensorflow we make a various constants
+
+736
+00:27:39,790 --> 00:27:44,860
+and we just run them in the in a session
+
+737
+00:27:42,130 --> 00:27:46,900
+and they come out correctly but you
+
+738
+00:27:44,860 --> 00:27:48,430
+can't do that for variables and the
+
+739
+00:27:46,900 --> 00:27:50,860
+reason in tensorflow logic is that
+
+740
+00:27:48,430 --> 00:27:53,440
+variables don't have meaning until you
+
+741
+00:27:50,860 --> 00:27:55,180
+initialize them so until you explicitly
+
+742
+00:27:53,440 --> 00:27:56,890
+initialize variables in tensorflow
+
+743
+00:27:55,180 --> 00:28:00,130
+and you do that with the call to Kiev
+
+744
+00:27:56,890 --> 00:28:01,780
+don't initialize all variables variables
+
+745
+00:28:00,130 --> 00:28:03,600
+will blow up on you and as you're
+
+746
+00:28:01,780 --> 00:28:05,650
+getting use of this you'll have a few
+
+747
+00:28:03,600 --> 00:28:07,420
+horrible error messages that say
+
+748
+00:28:05,650 --> 00:28:09,100
+something like onion initialize
+
+749
+00:28:07,420 --> 00:28:11,200
+variables cannot meaningfully be used or
+
+750
+00:28:09,100 --> 00:28:12,730
+something like that but the key thing to
+
+751
+00:28:11,200 --> 00:28:15,220
+remember the difference between a
+
+752
+00:28:12,730 --> 00:28:16,660
+constant tensor and a variable tensor is
+
+753
+00:28:15,220 --> 00:28:18,910
+a constant tensor doesn't have to be
+
+754
+00:28:16,660 --> 00:28:21,100
+initialized whereas a variable tensor
+
+755
+00:28:18,910 --> 00:28:22,630
+that is a box that holds value always
+
+756
+00:28:21,100 --> 00:28:25,000
+has to be initialized and you always
+
+757
+00:28:22,630 --> 00:28:27,310
+have to call initialize all variables or
+
+758
+00:28:25,000 --> 00:28:30,400
+it's more advanced cousins before
+
+759
+00:28:27,310 --> 00:28:31,930
+restarting computations on variables but
+
+760
+00:28:30,400 --> 00:28:33,280
+once you once you initialize them you
+
+761
+00:28:31,930 --> 00:28:35,320
+can do basically the same sorts of
+
+762
+00:28:33,280 --> 00:28:37,210
+things so you can use session don't run
+
+763
+00:28:35,320 --> 00:28:39,310
+and feed it in a variable and it'll
+
+764
+00:28:37,210 --> 00:28:40,480
+behave just like session don't run fed
+
+765
+00:28:39,310 --> 00:28:44,490
+in with the tensor and we actually have
+
+766
+00:28:40,480 --> 00:28:44,490
+a simple example of that on screen
+
+767
+00:28:47,279 --> 00:28:55,179
+nope I basically I set everything on the
+
+768
+00:28:52,809 --> 00:28:56,859
+slide there's kind of a dichotomy
+
+769
+00:28:55,179 --> 00:28:59,889
+between constant tensors and variable
+
+770
+00:28:56,859 --> 00:29:02,169
+tensors constant tensors feed in you'll
+
+771
+00:28:59,889 --> 00:29:03,609
+get to go variable tensors you need to
+
+772
+00:29:02,169 --> 00:29:05,709
+initialize something before we can start
+
+773
+00:29:03,609 --> 00:29:07,179
+doing things with that once you
+
+774
+00:29:05,709 --> 00:29:09,820
+initialize a variable it behaves
+
+775
+00:29:07,179 --> 00:29:11,529
+basically like a constant tensor but you
+
+776
+00:29:09,820 --> 00:29:13,749
+can do funkier things you can play
+
+777
+00:29:11,529 --> 00:29:15,489
+around with it and here's a nice example
+
+778
+00:29:13,749 --> 00:29:18,429
+of the sort of things you can do its
+
+779
+00:29:15,489 --> 00:29:21,909
+variables so if you remember back to our
+
+780
+00:29:18,429 --> 00:29:23,229
+on a programming 101 or whatever intro
+
+781
+00:29:21,909 --> 00:29:25,119
+to programming course you took one of
+
+782
+00:29:23,229 --> 00:29:26,619
+the first things you might implement in
+
+783
+00:29:25,119 --> 00:29:28,839
+a programming language is something like
+
+784
+00:29:26,619 --> 00:29:31,299
+the notion of a counter that is we have
+
+785
+00:29:28,839 --> 00:29:33,279
+some variable and let's say we set it to
+
+786
+00:29:31,299 --> 00:29:42,729
+serum and we're going to repeat an
+
+787
+00:29:33,279 --> 00:29:50,889
+operation some number of times and are
+
+788
+00:29:42,729 --> 00:29:52,299
+we good questions yes good question so
+
+789
+00:29:50,889 --> 00:29:54,809
+again it kind of comes back to this
+
+790
+00:29:52,299 --> 00:29:57,429
+notion of a computation graph so
+
+791
+00:29:54,809 --> 00:29:59,139
+remember when we do things in tensorflow
+
+792
+00:29:57,429 --> 00:30:01,809
+we're implicitly storing the
+
+793
+00:29:59,139 --> 00:30:03,339
+computations done in the global graph so
+
+794
+00:30:01,809 --> 00:30:04,599
+once we store something in the craft
+
+795
+00:30:03,339 --> 00:30:06,999
+there's a question of how do we get back
+
+796
+00:30:04,599 --> 00:30:08,679
+to it like maybe I created this graph
+
+797
+00:30:06,999 --> 00:30:11,709
+and another program elsewhere wants to
+
+798
+00:30:08,679 --> 00:30:13,599
+talk to that graph so you need some way
+
+799
+00:30:11,709 --> 00:30:15,549
+of indexing into the graph and the way
+
+800
+00:30:13,599 --> 00:30:17,559
+you index is by the name of the various
+
+801
+00:30:15,549 --> 00:30:19,599
+variables or nodes that are in the graph
+
+802
+00:30:17,559 --> 00:30:23,469
+so it's mostly convenient as a lookup
+
+803
+00:30:19,599 --> 00:30:25,209
+key there's things like there's things
+
+804
+00:30:23,469 --> 00:30:27,609
+like get variable which we'll talk about
+
+805
+00:30:25,209 --> 00:30:29,379
+later which allow you to query the graph
+
+806
+00:30:27,609 --> 00:30:31,209
+and get out a variable from this graph
+
+807
+00:30:29,379 --> 00:30:35,249
+so it's just a convenient way of
+
+808
+00:30:31,209 --> 00:30:35,249
+indexing is a global computation graph
+
+809
+00:30:35,579 --> 00:30:45,639
+yes why is the graph used that's a good
+
+810
+00:30:43,690 --> 00:30:48,029
+question I think the reason it comes
+
+811
+00:30:45,639 --> 00:30:49,929
+down to a graph is actually technical
+
+812
+00:30:48,029 --> 00:30:52,510
+we've covered the backpropagation
+
+813
+00:30:49,929 --> 00:30:55,750
+algorithm in lecture
+
+814
+00:30:52,510 --> 00:30:57,970
+over the last couple weeks and basically
+
+815
+00:30:55,750 --> 00:30:59,680
+it turns out that although we only made
+
+816
+00:30:57,970 --> 00:31:02,200
+you do back propagation to compute the
+
+817
+00:30:59,680 --> 00:31:04,180
+derivatives of these matrix multiplies
+
+818
+00:31:02,200 --> 00:31:06,220
+on the like it turns out that back
+
+819
+00:31:04,180 --> 00:31:08,620
+propagation is actually general and can
+
+820
+00:31:06,220 --> 00:31:11,970
+be extended to graphs so if you have I
+
+821
+00:31:08,620 --> 00:31:13,990
+think a directed acyclic graph you can
+
+822
+00:31:11,970 --> 00:31:15,610
+thinking back to algorithms class you
+
+823
+00:31:13,990 --> 00:31:17,860
+can linearize that into a chain and
+
+824
+00:31:15,610 --> 00:31:21,030
+going forward in the chain you can use
+
+825
+00:31:17,860 --> 00:31:23,500
+the back propagation algorithm to take
+
+826
+00:31:21,030 --> 00:31:25,780
+derivatives backwards through that graph
+
+827
+00:31:23,500 --> 00:31:28,120
+so in some sense kind of from a purely
+
+828
+00:31:25,780 --> 00:31:30,760
+purist perspective a graph is the most
+
+829
+00:31:28,120 --> 00:31:32,770
+general data structure on which you can
+
+830
+00:31:30,760 --> 00:31:33,970
+take the back propagation algorithm so
+
+831
+00:31:32,770 --> 00:31:36,130
+if you're doing it you might as well do
+
+832
+00:31:33,970 --> 00:31:38,460
+it on a graph because it's general the
+
+833
+00:31:36,130 --> 00:31:41,290
+other thing is it's useful in practice
+
+834
+00:31:38,460 --> 00:31:42,880
+recurrent neural nets or graphs kind of
+
+835
+00:31:41,290 --> 00:31:45,580
+complicated commercial networks or
+
+836
+00:31:42,880 --> 00:31:46,900
+graphs there are more complicated deep
+
+837
+00:31:45,580 --> 00:31:48,340
+learning algorithms like attention
+
+838
+00:31:46,900 --> 00:31:52,270
+models which you might say a bit about
+
+839
+00:31:48,340 --> 00:31:54,610
+that are even more complicated graphs so
+
+840
+00:31:52,270 --> 00:31:56,200
+basically you need you need the full
+
+841
+00:31:54,610 --> 00:31:59,170
+generality of graphs because there are
+
+842
+00:31:56,200 --> 00:32:01,180
+papers and useful deep networks or you
+
+843
+00:31:59,170 --> 00:32:02,290
+have graph structures and without that
+
+844
+00:32:01,180 --> 00:32:08,010
+generality you can't implement
+
+845
+00:32:02,290 --> 00:32:08,010
+everything you want to yes
+
+846
+00:32:21,090 --> 00:32:26,200
+so that's actually a very good question
+
+847
+00:32:23,230 --> 00:32:27,910
+um you need to handle it manually it
+
+848
+00:32:26,200 --> 00:32:31,179
+turns out it's very challenging to
+
+849
+00:32:27,910 --> 00:32:33,040
+actually distribute computations across
+
+850
+00:32:31,179 --> 00:32:35,080
+multiple compute units efficiently
+
+851
+00:32:33,040 --> 00:32:36,670
+so what tensorflow does under the hood
+
+852
+00:32:35,080 --> 00:32:38,860
+and we won't need this for the class is
+
+853
+00:32:36,670 --> 00:32:40,540
+that you can actually say put different
+
+854
+00:32:38,860 --> 00:32:42,580
+parts of the graph on different computer
+
+855
+00:32:40,540 --> 00:32:44,710
+substrates so you can say I want these
+
+856
+00:32:42,580 --> 00:32:47,679
+parts of the graph on GPU one I want
+
+857
+00:32:44,710 --> 00:32:49,630
+these parts on GPU two etc etc etc so
+
+858
+00:32:47,679 --> 00:32:52,330
+there are fine grained ways you can kind
+
+859
+00:32:49,630 --> 00:32:54,880
+of spread the graph out yourself over
+
+860
+00:32:52,330 --> 00:32:57,100
+various GPUs but there's no automaticall
+
+861
+00:32:54,880 --> 00:32:58,600
+way that'll do that's like one dream
+
+862
+00:32:57,100 --> 00:33:00,940
+people often have is well can I just
+
+863
+00:32:58,600 --> 00:33:03,010
+define him trillion by trillion matrix
+
+864
+00:33:00,940 --> 00:33:05,080
+and have it spread out into the ether
+
+865
+00:33:03,010 --> 00:33:07,270
+but no you can never do anything like
+
+866
+00:33:05,080 --> 00:33:09,370
+that all operations in the graphs must
+
+867
+00:33:07,270 --> 00:33:10,780
+fit within single GPUs but the nice
+
+868
+00:33:09,370 --> 00:33:12,160
+thing is you can put different parts of
+
+869
+00:33:10,780 --> 00:33:13,960
+the graph on different computer
+
+870
+00:33:12,160 --> 00:33:16,600
+substrates which is why this is a very
+
+871
+00:33:13,960 --> 00:33:19,870
+useful kind of answering your question
+
+872
+00:33:16,600 --> 00:33:23,590
+is well about why crafts it's a very
+
+873
+00:33:19,870 --> 00:33:25,090
+useful technique for handling word
+
+874
+00:33:23,590 --> 00:33:29,429
+computation is done in addition to
+
+875
+00:33:25,090 --> 00:33:29,429
+specifying complex computations
+
+876
+00:33:38,910 --> 00:33:45,930
+so the question is can you have
+
+877
+00:33:41,340 --> 00:33:45,930
+different variables of the same name tag
+
+878
+00:33:46,890 --> 00:33:52,840
+so it depends like we'll come back to
+
+879
+00:33:50,680 --> 00:33:54,670
+this again but there's a notion of scope
+
+880
+00:33:52,840 --> 00:33:57,610
+so you can set up namespaces and
+
+881
+00:33:54,670 --> 00:33:59,860
+tensorflow to have just as in Python you
+
+882
+00:33:57,610 --> 00:34:01,420
+can have say two function two variables
+
+883
+00:33:59,860 --> 00:34:03,010
+at the same name in different functions
+
+884
+00:34:01,420 --> 00:34:05,430
+that don't see each other you can do
+
+885
+00:34:03,010 --> 00:34:10,270
+something similar in tensorflow
+
+886
+00:34:05,430 --> 00:34:12,460
+you I think that a name does actually
+
+887
+00:34:10,270 --> 00:34:14,920
+uniquely specify a tensorflow variable
+
+888
+00:34:12,460 --> 00:34:17,590
+once you expand out all the scoping but
+
+889
+00:34:14,920 --> 00:34:19,510
+in the same scope two things that have
+
+890
+00:34:17,590 --> 00:34:21,970
+the same name do refer to the same
+
+891
+00:34:19,510 --> 00:34:23,590
+object so it does uniquely specify it
+
+892
+00:34:21,970 --> 00:34:25,300
+but you have scoping to allow you to
+
+893
+00:34:23,590 --> 00:34:29,820
+reuse names so you don't need to
+
+894
+00:34:25,300 --> 00:34:29,820
+constantly keep inventing new names yes
+
+895
+00:34:37,410 --> 00:34:51,670
+so the question is use the state and
+
+896
+00:34:41,650 --> 00:34:54,270
+counter so I'm not seeing a counter
+
+897
+00:34:51,670 --> 00:34:55,510
+variable which variable up there oh
+
+898
+00:34:54,270 --> 00:34:57,880
+sorry
+
+899
+00:34:55,510 --> 00:34:59,560
+I see all right this is this is actually
+
+900
+00:34:57,880 --> 00:35:01,360
+getting to a bit of so the question is
+
+901
+00:34:59,560 --> 00:35:04,150
+really there is there variable up there
+
+902
+00:35:01,360 --> 00:35:06,490
+is named counter in the string but it's
+
+903
+00:35:04,150 --> 00:35:07,900
+called state as a Python variable how do
+
+904
+00:35:06,490 --> 00:35:09,240
+these two things talk to each other and
+
+905
+00:35:07,900 --> 00:35:12,190
+this is actually getting to a good point
+
+906
+00:35:09,240 --> 00:35:15,130
+Python namespaces and tensorflow names
+
+907
+00:35:12,190 --> 00:35:16,690
+faces are different entities so counter
+
+908
+00:35:15,130 --> 00:35:19,510
+is an entity in in the tensorflow
+
+909
+00:35:16,690 --> 00:35:21,730
+computational graph whereas state is a
+
+910
+00:35:19,510 --> 00:35:23,350
+local variable in our Python script
+
+911
+00:35:21,730 --> 00:35:25,210
+these two things don't know about each
+
+912
+00:35:23,350 --> 00:35:26,860
+other counter doesn't know that in
+
+913
+00:35:25,210 --> 00:35:29,500
+Python we're talking about it as state
+
+914
+00:35:26,860 --> 00:35:31,660
+but even state you can reference in
+
+915
+00:35:29,500 --> 00:35:33,250
+check counter vise calling dot name
+
+916
+00:35:31,660 --> 00:35:35,620
+state dot name will give you back
+
+917
+00:35:33,250 --> 00:35:38,230
+counter so this is something that can
+
+918
+00:35:35,620 --> 00:35:40,600
+trip you up tensorflow namespaces and
+
+919
+00:35:38,230 --> 00:35:43,300
+tensorflow naming don't talk to python
+
+920
+00:35:40,600 --> 00:35:44,770
+namespaces and python naming so you can
+
+921
+00:35:43,300 --> 00:35:46,380
+think of it as pointers basically
+
+922
+00:35:44,770 --> 00:35:48,599
+there's something on memory
+
+923
+00:35:46,380 --> 00:35:50,190
+in the in the global graph and you have
+
+924
+00:35:48,599 --> 00:35:52,950
+kind of pointers that you can call
+
+925
+00:35:50,190 --> 00:35:56,299
+whatever but that doesn't change what's
+
+926
+00:35:52,950 --> 00:36:01,680
+in the graph unless you do it explicitly
+
+927
+00:35:56,299 --> 00:36:02,720
+or we do we have any more questions all
+
+928
+00:36:01,680 --> 00:36:05,309
+right
+
+929
+00:36:02,720 --> 00:36:08,099
+cool so let's return to talking about
+
+930
+00:36:05,309 --> 00:36:10,440
+this example so the idea of this example
+
+931
+00:36:08,099 --> 00:36:13,559
+hopefully you've had a chance to look at
+
+932
+00:36:10,440 --> 00:36:15,299
+it by now is there is a counter then
+
+933
+00:36:13,559 --> 00:36:17,819
+we're going to increment it and the idea
+
+934
+00:36:15,299 --> 00:36:19,859
+is we start by making a variable to hold
+
+935
+00:36:17,819 --> 00:36:21,749
+the counter and we call it counter in
+
+936
+00:36:19,859 --> 00:36:24,599
+Python we refer to it as a local
+
+937
+00:36:21,749 --> 00:36:27,269
+variable state and what we're doing is
+
+938
+00:36:24,599 --> 00:36:29,549
+we have two operations we have a TF dot
+
+939
+00:36:27,269 --> 00:36:32,400
+add operation and we have a T F dot
+
+940
+00:36:29,549 --> 00:36:35,430
+assign so one thing to note is that when
+
+941
+00:36:32,400 --> 00:36:37,920
+we make this new value that's calling
+
+942
+00:36:35,430 --> 00:36:40,109
+the tensorflow add operation on state
+
+943
+00:36:37,920 --> 00:36:42,450
+and on the constant one we are not
+
+944
+00:36:40,109 --> 00:36:44,160
+updating the original state we're just
+
+945
+00:36:42,450 --> 00:36:45,960
+making a new tensor in the graph that
+
+946
+00:36:44,160 --> 00:36:50,009
+happens to have the value of 1 plus
+
+947
+00:36:45,960 --> 00:36:52,470
+whatever is in the variable counter so
+
+948
+00:36:50,009 --> 00:36:55,109
+it's only when we call a sign to
+
+949
+00:36:52,470 --> 00:36:57,029
+explicitly overwrite what's held within
+
+950
+00:36:55,109 --> 00:36:58,859
+the counter variable that we update it
+
+951
+00:36:57,029 --> 00:37:00,180
+so you can look at the Python
+
+952
+00:36:58,859 --> 00:37:02,220
+translations on the right to give you a
+
+953
+00:37:00,180 --> 00:37:04,470
+rough sense for what's going on please
+
+954
+00:37:02,220 --> 00:37:08,099
+don't take this too literally like this
+
+955
+00:37:04,470 --> 00:37:09,960
+is this is at best a metaphor to help
+
+956
+00:37:08,099 --> 00:37:12,119
+you think about what's going on you
+
+957
+00:37:09,960 --> 00:37:13,470
+shouldn't read too much into the equals
+
+958
+00:37:12,119 --> 00:37:15,150
+plus 1 and all the things that are
+
+959
+00:37:13,470 --> 00:37:17,670
+written in the comments or on the right
+
+960
+00:37:15,150 --> 00:37:19,680
+so most of the time you won't actually
+
+961
+00:37:17,670 --> 00:37:21,119
+have to deal with the sign but if you
+
+962
+00:37:19,680 --> 00:37:22,980
+want to do complicated things where
+
+963
+00:37:21,119 --> 00:37:24,329
+you're updating variables or doing some
+
+964
+00:37:22,980 --> 00:37:26,249
+type of complicated machine learning
+
+965
+00:37:24,329 --> 00:37:29,220
+algorithm this is the type of thing
+
+966
+00:37:26,249 --> 00:37:31,589
+you'd want to do in practice various
+
+967
+00:37:29,220 --> 00:37:32,999
+optimizers that tensorflow has built-in
+
+968
+00:37:31,589 --> 00:37:35,069
+take care of doing these sorts of
+
+969
+00:37:32,999 --> 00:37:37,410
+updates for you so you usually don't
+
+970
+00:37:35,069 --> 00:37:40,849
+have to play with variables yourself
+
+971
+00:37:37,410 --> 00:37:40,849
+unless you want to
+
+972
+00:37:42,850 --> 00:37:51,140
+so we talked a bit about fetches and the
+
+973
+00:37:48,110 --> 00:37:53,120
+idea was that fetches are the way to get
+
+974
+00:37:51,140 --> 00:37:55,160
+informations out of information out of
+
+975
+00:37:53,120 --> 00:37:57,020
+the global computation graph and we've
+
+976
+00:37:55,160 --> 00:38:00,200
+typically been calling session dot run
+
+977
+00:37:57,020 --> 00:38:02,600
+on a 110 sir now you can just feed in a
+
+978
+00:38:00,200 --> 00:38:04,550
+list of lists of tensors and get the
+
+979
+00:38:02,600 --> 00:38:05,990
+values for all those tensors out so
+
+980
+00:38:04,550 --> 00:38:07,280
+nothing new here but the main reason I
+
+981
+00:38:05,990 --> 00:38:09,110
+want to emphasize this is if you read
+
+982
+00:38:07,280 --> 00:38:10,640
+the ten through flow dogs you'll see the
+
+983
+00:38:09,110 --> 00:38:12,500
+term fetch come up repeatedly
+
+984
+00:38:10,640 --> 00:38:14,330
+that's all fetch means you're calling
+
+985
+00:38:12,500 --> 00:38:16,040
+session don't run and you're feeding in
+
+986
+00:38:14,330 --> 00:38:17,480
+a list of tensors and you're gonna get
+
+987
+00:38:16,040 --> 00:38:21,730
+that list of tensors back from the
+
+988
+00:38:17,480 --> 00:38:25,850
+computation the more interesting concept
+
+989
+00:38:21,730 --> 00:38:27,650
+no actually before we go there I'll show
+
+990
+00:38:25,850 --> 00:38:29,690
+you the first picture what a computation
+
+991
+00:38:27,650 --> 00:38:32,180
+graph might look like so the first thing
+
+992
+00:38:29,690 --> 00:38:34,700
+I want to emphasize is this is this is
+
+993
+00:38:32,180 --> 00:38:36,890
+not what's actually going on in tensor
+
+994
+00:38:34,700 --> 00:38:38,600
+flow underneath underneath the hood this
+
+995
+00:38:36,890 --> 00:38:41,330
+is just a picture to help you think
+
+996
+00:38:38,600 --> 00:38:43,520
+about what's going on but if you look at
+
+997
+00:38:41,330 --> 00:38:45,140
+kind of that simple example we put up on
+
+998
+00:38:43,520 --> 00:38:47,990
+the previous slide we have three
+
+999
+00:38:45,140 --> 00:38:50,780
+constant tensors that we've defined and
+
+1000
+00:38:47,990 --> 00:38:52,550
+the idea is that the first constant we
+
+1001
+00:38:50,780 --> 00:38:53,360
+set it to three the second - - and the
+
+1002
+00:38:52,550 --> 00:38:55,160
+third - five
+
+1003
+00:38:53,360 --> 00:38:57,110
+then we take the second and third
+
+1004
+00:38:55,160 --> 00:38:59,570
+constants we add them we get an
+
+1005
+00:38:57,110 --> 00:39:01,880
+intermediate value and then we multiply
+
+1006
+00:38:59,570 --> 00:39:05,180
+it by the first value to get out mole
+
+1007
+00:39:01,880 --> 00:39:06,560
+and the notion of efetch is in the giant
+
+1008
+00:39:05,180 --> 00:39:08,060
+black arrows that are at the bottom of
+
+1009
+00:39:06,560 --> 00:39:09,650
+the screen those are the things were
+
+1010
+00:39:08,060 --> 00:39:11,630
+pulling out of the computation graph
+
+1011
+00:39:09,650 --> 00:39:14,300
+this computation graph has nothing going
+
+1012
+00:39:11,630 --> 00:39:16,190
+in everything that's in there is already
+
+1013
+00:39:14,300 --> 00:39:18,950
+specified within the text of the program
+
+1014
+00:39:16,190 --> 00:39:20,960
+but we'll see examples of where we feed
+
+1015
+00:39:18,950 --> 00:39:22,610
+in data and then we fetch it out but
+
+1016
+00:39:20,960 --> 00:39:24,740
+this is a simple computation graph where
+
+1017
+00:39:22,610 --> 00:39:28,210
+we're just fetching data from the
+
+1018
+00:39:24,740 --> 00:39:31,160
+computation we're asking to execute so
+
+1019
+00:39:28,210 --> 00:39:33,230
+any questions here does this notion of
+
+1020
+00:39:31,160 --> 00:39:35,670
+computation and the graph begin to make
+
+1021
+00:39:33,230 --> 00:39:38,980
+sense yes
+
+1022
+00:39:35,670 --> 00:39:40,869
+we fetch in German and then maybe like
+
+1023
+00:39:38,980 --> 00:39:45,520
+50 lines later after some others that
+
+1024
+00:39:40,869 --> 00:39:48,820
+sweet bit efficient little device which
+
+1025
+00:39:45,520 --> 00:39:50,880
+I was or the stuff in this project I'm
+
+1026
+00:39:48,820 --> 00:39:53,500
+pretty sure it starts from scratch
+
+1027
+00:39:50,880 --> 00:39:55,750
+unless you've updated the variable state
+
+1028
+00:39:53,500 --> 00:39:58,109
+so if you've updated variable sate it
+
+1029
+00:39:55,750 --> 00:40:00,190
+has memory if you don't it's functional
+
+1030
+00:39:58,109 --> 00:40:02,740
+so this is a purely functional
+
+1031
+00:40:00,190 --> 00:40:03,790
+computation graph no memory for people
+
+1032
+00:40:02,740 --> 00:40:05,230
+who've done functional programming
+
+1033
+00:40:03,790 --> 00:40:07,540
+you'll like this this is like you know
+
+1034
+00:40:05,230 --> 00:40:10,390
+maps and reduces and all those good
+
+1035
+00:40:07,540 --> 00:40:13,090
+things but unless you update method
+
+1036
+00:40:10,390 --> 00:40:15,340
+variable state explicitly there is no
+
+1037
+00:40:13,090 --> 00:40:22,270
+there is no change in the memory of the
+
+1038
+00:40:15,340 --> 00:40:24,369
+system all right so now of course the
+
+1039
+00:40:22,270 --> 00:40:25,960
+next question is we know how to fetch
+
+1040
+00:40:24,369 --> 00:40:28,980
+data from a graph how do we put data
+
+1041
+00:40:25,960 --> 00:40:31,000
+into the graph and there's a very simple
+
+1042
+00:40:28,980 --> 00:40:33,070
+trick you can do you can you call
+
+1043
+00:40:31,000 --> 00:40:35,380
+convert to tensor so if you have any
+
+1044
+00:40:33,070 --> 00:40:37,270
+Python lists or you have a Python numpy
+
+1045
+00:40:35,380 --> 00:40:40,690
+array you can just call convert to
+
+1046
+00:40:37,270 --> 00:40:42,400
+tensor within within the tensor flow
+
+1047
+00:40:40,690 --> 00:40:44,140
+computation that will directly pull it
+
+1048
+00:40:42,400 --> 00:40:45,190
+in for you so when you're kind of
+
+1049
+00:40:44,140 --> 00:40:47,320
+messing around in tensor flow in the
+
+1050
+00:40:45,190 --> 00:40:49,540
+command line I suggest you do this just
+
+1051
+00:40:47,320 --> 00:40:51,220
+use numpy to make some data so you know
+
+1052
+00:40:49,540 --> 00:40:53,050
+what it is pull it into tensor phones
+
+1053
+00:40:51,220 --> 00:40:54,460
+start playing with it so this is kind of
+
+1054
+00:40:53,050 --> 00:40:57,670
+a good way to get start a good way to
+
+1055
+00:40:54,460 --> 00:40:59,080
+start playing with things but it is a
+
+1056
+00:40:57,670 --> 00:41:02,859
+little inconvenient if you want to do it
+
+1057
+00:40:59,080 --> 00:41:04,869
+in a program so there is a more rich
+
+1058
+00:41:02,859 --> 00:41:07,150
+built-in notion of how to feed in data
+
+1059
+00:41:04,869 --> 00:41:09,550
+and the key concept is what's called a
+
+1060
+00:41:07,150 --> 00:41:12,040
+placeholder variable so placeholder
+
+1061
+00:41:09,550 --> 00:41:13,660
+variable is a special type of variable
+
+1062
+00:41:12,040 --> 00:41:16,480
+but in some ways it's a dummy variable
+
+1063
+00:41:13,660 --> 00:41:17,859
+in that you're not gonna update a
+
+1064
+00:41:16,480 --> 00:41:20,080
+placeholder or you're not gonna do
+
+1065
+00:41:17,859 --> 00:41:22,240
+anything with it except use it as a
+
+1066
+00:41:20,080 --> 00:41:23,920
+receptacle for the user to put data in
+
+1067
+00:41:22,240 --> 00:41:26,890
+that will be fed through the computation
+
+1068
+00:41:23,920 --> 00:41:29,530
+graph and compute it upon so placeholder
+
+1069
+00:41:26,890 --> 00:41:31,810
+variable is simply an input node in the
+
+1070
+00:41:29,530 --> 00:41:33,670
+computation graph so the computation
+
+1071
+00:41:31,810 --> 00:41:35,260
+graph we saw a couple slides back that
+
+1072
+00:41:33,670 --> 00:41:36,940
+didn't have any input nodes because we
+
+1073
+00:41:35,260 --> 00:41:38,530
+didn't have any input in there but we'll
+
+1074
+00:41:36,940 --> 00:41:41,380
+shortly in a few slides come and see an
+
+1075
+00:41:38,530 --> 00:41:43,660
+example of computations where you do
+
+1076
+00:41:41,380 --> 00:41:45,820
+have placeholder nodes to feed in data
+
+1077
+00:41:43,660 --> 00:41:49,060
+into the network
+
+1078
+00:41:45,820 --> 00:41:51,520
+so here's a very simple idea of how you
+
+1079
+00:41:49,060 --> 00:41:54,670
+might use a placeholder so we're going
+
+1080
+00:41:51,520 --> 00:41:57,940
+to define two placeholders we're gonna
+
+1081
+00:41:54,670 --> 00:41:59,620
+specify their types their floats so the
+
+1082
+00:41:57,940 --> 00:42:01,840
+way you should think about it is input 1
+
+1083
+00:41:59,620 --> 00:42:03,850
+and input 2 or 2 variables whose type
+
+1084
+00:42:01,840 --> 00:42:05,230
+you've declared as a float and there's
+
+1085
+00:42:03,850 --> 00:42:07,900
+nothing more known about them
+
+1086
+00:42:05,230 --> 00:42:10,600
+so when we call output to be the
+
+1087
+00:42:07,900 --> 00:42:13,180
+multiply to be input 1 times input to
+
+1088
+00:42:10,600 --> 00:42:14,800
+output is a purely symbolic variable
+
+1089
+00:42:13,180 --> 00:42:16,450
+because there is no numerical value
+
+1090
+00:42:14,800 --> 00:42:17,500
+associated with it and this is where
+
+1091
+00:42:16,450 --> 00:42:19,690
+it's useful to think about the
+
+1092
+00:42:17,500 --> 00:42:21,910
+computation craft in the computation
+
+1093
+00:42:19,690 --> 00:42:24,940
+graph it's a simple node perfectly well
+
+1094
+00:42:21,910 --> 00:42:27,820
+defined but if you try to do this input
+
+1095
+00:42:24,940 --> 00:42:29,290
+in numpy for example it's not clear how
+
+1096
+00:42:27,820 --> 00:42:31,180
+you do that translation anymore because
+
+1097
+00:42:29,290 --> 00:42:34,720
+there is not a notion of dummy
+
+1098
+00:42:31,180 --> 00:42:37,660
+placeholder values in numpy so the idea
+
+1099
+00:42:34,720 --> 00:42:40,720
+is that we make a concrete instantiation
+
+1100
+00:42:37,660 --> 00:42:42,460
+in the session and we call session don't
+
+1101
+00:42:40,720 --> 00:42:44,530
+run again but there's one new bit in
+
+1102
+00:42:42,460 --> 00:42:47,230
+this and that's the feed debt which is
+
+1103
+00:42:44,530 --> 00:42:50,290
+kind of over in the corner there so the
+
+1104
+00:42:47,230 --> 00:42:53,200
+idea of a feed dictionary is that it's a
+
+1105
+00:42:50,290 --> 00:42:55,720
+mapping from placeholder variables to
+
+1106
+00:42:53,200 --> 00:42:58,930
+concrete numeric values in this case I
+
+1107
+00:42:55,720 --> 00:43:01,000
+think we're setting 3 + 7 7 + 2 to the 2
+
+1108
+00:42:58,930 --> 00:43:03,220
+inputs who are saying input 1 I want
+
+1109
+00:43:01,000 --> 00:43:05,380
+that to be a 7 input 2 I wanted to be a
+
+1110
+00:43:03,220 --> 00:43:07,630
+2 so you can kind of think about it as a
+
+1111
+00:43:05,380 --> 00:43:13,540
+command line program where you have - -
+
+1112
+00:43:07,630 --> 00:43:15,310
+input 1 7 - - input 2 - so each time you
+
+1113
+00:43:13,540 --> 00:43:17,290
+run the program you can use a different
+
+1114
+00:43:15,310 --> 00:43:18,640
+feed dictionary and that's analogous to
+
+1115
+00:43:17,290 --> 00:43:21,700
+kind of calling the program with
+
+1116
+00:43:18,640 --> 00:43:23,860
+different inputs so when you execute the
+
+1117
+00:43:21,700 --> 00:43:26,440
+computation by calling it run and use
+
+1118
+00:43:23,860 --> 00:43:28,570
+the fetch on output you get back the
+
+1119
+00:43:26,440 --> 00:43:30,340
+value of output so you've used to feed
+
+1120
+00:43:28,570 --> 00:43:32,350
+there to feed in value to the
+
+1121
+00:43:30,340 --> 00:43:34,630
+computation graph use a session to
+
+1122
+00:43:32,350 --> 00:43:37,990
+execute that computation and fetch the
+
+1123
+00:43:34,630 --> 00:43:39,610
+value of output and you get out 14 now
+
+1124
+00:43:37,990 --> 00:43:43,180
+this seems like an awful lot of trouble
+
+1125
+00:43:39,610 --> 00:43:44,620
+but this is a very convenient it's a
+
+1126
+00:43:43,180 --> 00:43:46,780
+very convenient metaphor to have and
+
+1127
+00:43:44,620 --> 00:43:53,540
+will find it useful as we kind of go
+
+1128
+00:43:46,780 --> 00:43:55,750
+further into the discussion so yes what
+
+1129
+00:43:53,540 --> 00:43:58,040
+I would say say for example if you
+
+1130
+00:43:55,750 --> 00:44:00,020
+declared them to have different shapes
+
+1131
+00:43:58,040 --> 00:44:02,090
+that were incompatible at what stage
+
+1132
+00:44:00,020 --> 00:44:03,350
+with since they give you an error does
+
+1133
+00:44:02,090 --> 00:44:05,420
+it mean you try to run it or when you're
+
+1134
+00:44:03,350 --> 00:44:09,680
+trying to just do oh well that's a good
+
+1135
+00:44:05,420 --> 00:44:10,910
+question um I think it is when the
+
+1136
+00:44:09,680 --> 00:44:12,350
+question is that if you have
+
+1137
+00:44:10,910 --> 00:44:13,040
+incompatible states and you multiply
+
+1138
+00:44:12,350 --> 00:44:14,630
+them
+
+1139
+00:44:13,040 --> 00:44:16,340
+when does tensorflow give you an error
+
+1140
+00:44:14,630 --> 00:44:18,440
+when it's defined or when it's run I
+
+1141
+00:44:16,340 --> 00:44:20,390
+think it's when it's run I don't think
+
+1142
+00:44:18,440 --> 00:44:22,390
+it has compiled kind of declarative
+
+1143
+00:44:20,390 --> 00:44:24,860
+guarantees when you actually do it I
+
+1144
+00:44:22,390 --> 00:44:25,970
+might be wrong about that though but I
+
+1145
+00:44:24,860 --> 00:44:27,830
+think it's actually when you run in
+
+1146
+00:44:25,970 --> 00:44:30,020
+it'll start blowing up on you and
+
+1147
+00:44:27,830 --> 00:44:31,940
+tensorflow is finicky it does care about
+
+1148
+00:44:30,020 --> 00:44:33,830
+these things numpy is kind of nicer
+
+1149
+00:44:31,940 --> 00:44:35,360
+it'll massage things for you if it makes
+
+1150
+00:44:33,830 --> 00:44:37,550
+sense tensorflow you actually have to
+
+1151
+00:44:35,360 --> 00:44:39,590
+care about these things so I am actually
+
+1152
+00:44:37,550 --> 00:44:41,720
+we're actually running low on time a bit
+
+1153
+00:44:39,590 --> 00:44:43,850
+so I want to get to a big example so I'm
+
+1154
+00:44:41,720 --> 00:44:45,530
+gonna hold off on quad taking questions
+
+1155
+00:44:43,850 --> 00:44:47,360
+for a bit and try to get through to a
+
+1156
+00:44:45,530 --> 00:44:49,040
+simple linear regression example that I
+
+1157
+00:44:47,360 --> 00:44:51,560
+think will help you with the homework so
+
+1158
+00:44:49,040 --> 00:44:56,300
+let's save questions for the end for the
+
+1159
+00:44:51,560 --> 00:44:58,280
+next 20 minutes so here's a kind of one
+
+1160
+00:44:56,300 --> 00:45:00,740
+improved version of the computation
+
+1161
+00:44:58,280 --> 00:45:02,840
+graph we saw previously before we had
+
+1162
+00:45:00,740 --> 00:45:04,640
+kind of a fetch we took data out of the
+
+1163
+00:45:02,840 --> 00:45:06,980
+graph but there was nothing coming in in
+
+1164
+00:45:04,640 --> 00:45:08,450
+this case we have a feed so that's kind
+
+1165
+00:45:06,980 --> 00:45:10,670
+of the dictionary that's put up on top
+
+1166
+00:45:08,450 --> 00:45:12,740
+that specifies the data flowing in so a
+
+1167
+00:45:10,670 --> 00:45:14,780
+way to kind of read this graph is that
+
+1168
+00:45:12,740 --> 00:45:16,460
+the part in the middle is a computation
+
+1169
+00:45:14,780 --> 00:45:19,070
+you have this multiplication off you
+
+1170
+00:45:16,460 --> 00:45:20,870
+have a feed coming in up top that pushes
+
+1171
+00:45:19,070 --> 00:45:24,410
+data into the graph and you have a fetch
+
+1172
+00:45:20,870 --> 00:45:26,210
+that pulls it out in bottom so very very
+
+1173
+00:45:24,410 --> 00:45:27,830
+simple again for this it's not even
+
+1174
+00:45:26,210 --> 00:45:29,270
+worth the trouble almost of drawing it
+
+1175
+00:45:27,830 --> 00:45:31,790
+and when you start getting to more
+
+1176
+00:45:29,270 --> 00:45:33,980
+complicated operations it helps to have
+
+1177
+00:45:31,790 --> 00:45:35,900
+this abstraction and this way of kind of
+
+1178
+00:45:33,980 --> 00:45:40,220
+thinking about these computations when
+
+1179
+00:45:35,900 --> 00:45:42,500
+you're playing with us so before we kind
+
+1180
+00:45:40,220 --> 00:45:44,840
+of go into a more complicated example
+
+1181
+00:45:42,500 --> 00:45:47,120
+there's one concept which you kind of
+
+1182
+00:45:44,840 --> 00:45:49,370
+touched upon in question earlier and
+
+1183
+00:45:47,120 --> 00:45:51,650
+that's named spacing if you have
+
+1184
+00:45:49,370 --> 00:45:52,910
+variables floating around in any
+
+1185
+00:45:51,650 --> 00:45:54,830
+programming language you need some
+
+1186
+00:45:52,910 --> 00:45:58,280
+notion of scope otherwise you're gonna
+
+1187
+00:45:54,830 --> 00:45:59,870
+have like temp 1 temp 7 1039 floating
+
+1188
+00:45:58,280 --> 00:46:01,940
+around so if you don't have some way of
+
+1189
+00:45:59,870 --> 00:46:03,200
+controlling the Scopes of various
+
+1190
+00:46:01,940 --> 00:46:05,120
+variables you're not gonna be able to
+
+1191
+00:46:03,200 --> 00:46:05,660
+build complicated programs and in
+
+1192
+00:46:05,120 --> 00:46:07,250
+tensorflow
+
+1193
+00:46:05,660 --> 00:46:09,860
+the key things we
+
+1194
+00:46:07,250 --> 00:46:11,900
+for that our variable scopes as a
+
+1195
+00:46:09,860 --> 00:46:15,590
+variable scope is basically a simple way
+
+1196
+00:46:11,900 --> 00:46:18,790
+of introducing a scoped environment into
+
+1197
+00:46:15,590 --> 00:46:22,040
+tensorflow and get variable is a way of
+
+1198
+00:46:18,790 --> 00:46:26,000
+retrieving a particular variable that
+
+1199
+00:46:22,040 --> 00:46:27,470
+respects scope so this sounds terribly
+
+1200
+00:46:26,000 --> 00:46:29,740
+abstracts we'll walk through a couple
+
+1201
+00:46:27,470 --> 00:46:32,450
+examples to kind of see what's going on
+
+1202
+00:46:29,740 --> 00:46:33,050
+so underneath the hood the name spacing
+
+1203
+00:46:32,450 --> 00:46:35,180
+in tensorflow
+
+1204
+00:46:33,050 --> 00:46:37,610
+is much like the names facing the file
+
+1205
+00:46:35,180 --> 00:46:40,250
+system it's very simple so we have here
+
+1206
+00:46:37,610 --> 00:46:42,770
+two nested scopes foo and we have bar
+
+1207
+00:46:40,250 --> 00:46:45,050
+and when we nest is what you see is
+
+1208
+00:46:42,770 --> 00:46:47,420
+we're basically just adding foo / as a
+
+1209
+00:46:45,050 --> 00:46:49,610
+prefix to the name of the variable and
+
+1210
+00:46:47,420 --> 00:46:52,580
+here we've called it V and it's in the
+
+1211
+00:46:49,610 --> 00:46:57,170
+foo bar environment so we have foo slash
+
+1212
+00:46:52,580 --> 00:47:00,470
+bar slash V and we have colon 0 to name
+
+1213
+00:46:57,170 --> 00:47:04,490
+that it's to indicate that it's sum the
+
+1214
+00:47:00,470 --> 00:47:07,490
+first variable named V excuse me in that
+
+1215
+00:47:04,490 --> 00:47:08,660
+environment so for our purposes we're
+
+1216
+00:47:07,490 --> 00:47:10,790
+not going to worry too much about the
+
+1217
+00:47:08,660 --> 00:47:12,290
+colon 0 the part I think it's important
+
+1218
+00:47:10,790 --> 00:47:14,570
+for you to count is the food slash bar
+
+1219
+00:47:12,290 --> 00:47:16,640
+slash so you have scoped environments
+
+1220
+00:47:14,570 --> 00:47:19,520
+and you have scoped names that let you
+
+1221
+00:47:16,640 --> 00:47:22,520
+hold models now this won't be terribly
+
+1222
+00:47:19,520 --> 00:47:24,920
+important for simple examples when you
+
+1223
+00:47:22,520 --> 00:47:26,870
+start building complicated structures
+
+1224
+00:47:24,920 --> 00:47:28,910
+complicated recurrent or convolutional
+
+1225
+00:47:26,870 --> 00:47:30,410
+networks it does become important to
+
+1226
+00:47:28,910 --> 00:47:32,030
+start thinking about namespaces because
+
+1227
+00:47:30,410 --> 00:47:33,860
+otherwise you can't build the
+
+1228
+00:47:32,030 --> 00:47:35,300
+complicated deep learning models so this
+
+1229
+00:47:33,860 --> 00:47:36,650
+is a simple programming language
+
+1230
+00:47:35,300 --> 00:47:38,390
+primitives that you should all be very
+
+1231
+00:47:36,650 --> 00:47:43,070
+familiar with and it's a tensorflow
+
+1232
+00:47:38,390 --> 00:47:47,620
+analog of that primitive there is one
+
+1233
+00:47:43,070 --> 00:47:50,330
+other thing that names namespaces do so
+
+1234
+00:47:47,620 --> 00:47:51,800
+one thing in deep learning models that
+
+1235
+00:47:50,330 --> 00:47:54,170
+you often want to do is the notion of
+
+1236
+00:47:51,800 --> 00:47:56,120
+what's called weight sharing so the idea
+
+1237
+00:47:54,170 --> 00:47:58,430
+is that you have some ideas and belief
+
+1238
+00:47:56,120 --> 00:48:01,010
+about how a model works and you might
+
+1239
+00:47:58,430 --> 00:48:03,260
+say that in something like a recurrent
+
+1240
+00:48:01,010 --> 00:48:05,030
+neural net there is some operation and
+
+1241
+00:48:03,260 --> 00:48:07,370
+some transformation that exists at each
+
+1242
+00:48:05,030 --> 00:48:09,140
+step in time and that's how we get from
+
+1243
+00:48:07,370 --> 00:48:10,910
+the present to the future and this
+
+1244
+00:48:09,140 --> 00:48:14,120
+transformation is the same at every time
+
+1245
+00:48:10,910 --> 00:48:16,010
+step and this maybe agrees with our
+
+1246
+00:48:14,120 --> 00:48:18,830
+notion of reality if there's some type
+
+1247
+00:48:16,010 --> 00:48:19,700
+of description of reality there is the
+
+1248
+00:48:18,830 --> 00:48:21,320
+same
+
+1249
+00:48:19,700 --> 00:48:23,839
+underlying process happening at each
+
+1250
+00:48:21,320 --> 00:48:25,040
+step now the way you represent that in a
+
+1251
+00:48:23,839 --> 00:48:26,869
+machine learning model is used to do
+
+1252
+00:48:25,040 --> 00:48:29,420
+something like wait time you say in a
+
+1253
+00:48:26,869 --> 00:48:31,880
+recurrent neural net the weights that we
+
+1254
+00:48:29,420 --> 00:48:33,790
+use at one time step key are the same as
+
+1255
+00:48:31,880 --> 00:48:36,640
+the weights we use at P plus one and
+
+1256
+00:48:33,790 --> 00:48:40,849
+cancer flow has a very convenient way of
+
+1257
+00:48:36,640 --> 00:48:42,560
+viewing with this type of weight reuse
+
+1258
+00:48:40,849 --> 00:48:44,480
+and the idea there is to use the
+
+1259
+00:48:42,560 --> 00:48:46,460
+variable scope to control this so
+
+1260
+00:48:44,480 --> 00:48:48,890
+there's a reuse variable in these
+
+1261
+00:48:46,460 --> 00:48:51,440
+variable scopes and when you set by
+
+1262
+00:48:48,890 --> 00:48:54,230
+default to reuse a set to false so when
+
+1263
+00:48:51,440 --> 00:48:56,570
+you ask for get variable you're making
+
+1264
+00:48:54,230 --> 00:48:58,070
+new variables each time it's creating a
+
+1265
+00:48:56,570 --> 00:49:00,740
+new variable under the hood for you
+
+1266
+00:48:58,070 --> 00:49:04,790
+whenever you said reused to false but
+
+1267
+00:49:00,740 --> 00:49:06,800
+when you set reuse to true you can find
+
+1268
+00:49:04,790 --> 00:49:08,240
+variables you've already created and in
+
+1269
+00:49:06,800 --> 00:49:09,560
+something like a recurrent neural net
+
+1270
+00:49:08,240 --> 00:49:11,570
+where you're going to reuse the same
+
+1271
+00:49:09,560 --> 00:49:13,070
+weights at each time step this is
+
+1272
+00:49:11,570 --> 00:49:16,400
+exactly what you want to have under the
+
+1273
+00:49:13,070 --> 00:49:18,800
+hood so here's a simple case where we
+
+1274
+00:49:16,400 --> 00:49:21,079
+have this scope foo
+
+1275
+00:49:18,800 --> 00:49:23,089
+then we call get variable we make a new
+
+1276
+00:49:21,079 --> 00:49:25,099
+variable there now we say reuse
+
+1277
+00:49:23,089 --> 00:49:27,020
+variables and then we call get variable
+
+1278
+00:49:25,099 --> 00:49:29,390
+again and we get back the exact same
+
+1279
+00:49:27,020 --> 00:49:31,849
+variable we've called if you tried this
+
+1280
+00:49:29,390 --> 00:49:34,760
+without that get scope it'll actually
+
+1281
+00:49:31,849 --> 00:49:36,230
+blow up on you it'll say wait there's
+
+1282
+00:49:34,760 --> 00:49:36,770
+two variables namely I don't know what
+
+1283
+00:49:36,230 --> 00:49:39,650
+to do anymore
+
+1284
+00:49:36,770 --> 00:49:41,270
+BAM and it'll crash but if you set this
+
+1285
+00:49:39,650 --> 00:49:43,250
+then you are basically using weight
+
+1286
+00:49:41,270 --> 00:49:44,720
+sharing and this is very convenient for
+
+1287
+00:49:43,250 --> 00:49:50,660
+building complex models and you'll need
+
+1288
+00:49:44,720 --> 00:49:52,130
+it on part of the homework so we do have
+
+1289
+00:49:50,660 --> 00:49:54,170
+I think sometimes are there any
+
+1290
+00:49:52,130 --> 00:50:01,460
+questions about variable scopes and how
+
+1291
+00:49:54,170 --> 00:50:02,810
+they're used all right cool so I think
+
+1292
+00:50:01,460 --> 00:50:05,210
+we've already talked a bit about what
+
+1293
+00:50:02,810 --> 00:50:06,890
+kit variable does the key idea is that
+
+1294
+00:50:05,210 --> 00:50:08,300
+depending on what's going on in the
+
+1295
+00:50:06,890 --> 00:50:12,680
+global scope it does two different
+
+1296
+00:50:08,300 --> 00:50:14,869
+things the first is that notice that get
+
+1297
+00:50:12,680 --> 00:50:17,000
+variable respect scope implicitly if you
+
+1298
+00:50:14,869 --> 00:50:20,270
+call get variable in scope foo it'll
+
+1299
+00:50:17,000 --> 00:50:22,400
+look for food /v it won't look for bar
+
+1300
+00:50:20,270 --> 00:50:24,650
+/v or any other scope so get variable
+
+1301
+00:50:22,400 --> 00:50:27,500
+respect scope on Rita hood which makes
+
+1302
+00:50:24,650 --> 00:50:30,170
+it sort of a convenience if we use a set
+
+1303
+00:50:27,500 --> 00:50:31,800
+to false get variable creates new
+
+1304
+00:50:30,170 --> 00:50:33,720
+variables for you under the hood
+
+1305
+00:50:31,800 --> 00:50:35,490
+so it's kind of the preferred way of
+
+1306
+00:50:33,720 --> 00:50:37,920
+making new variables deep inside a
+
+1307
+00:50:35,490 --> 00:50:40,680
+tensor flow program but on the other
+
+1308
+00:50:37,920 --> 00:50:42,270
+hand if you set reused true then what
+
+1309
+00:50:40,680 --> 00:50:44,670
+get variables going to do is it's going
+
+1310
+00:50:42,270 --> 00:50:46,080
+to search for a variable that exists in
+
+1311
+00:50:44,670 --> 00:50:48,810
+the computation graph that you've just
+
+1312
+00:50:46,080 --> 00:50:50,790
+created previously and when it doesn't
+
+1313
+00:50:48,810 --> 00:50:52,410
+find it it'll blow up on it'll throw a
+
+1314
+00:50:50,790 --> 00:50:54,600
+value error if it does find it you know
+
+1315
+00:50:52,410 --> 00:50:56,670
+all is good we just find the same
+
+1316
+00:50:54,600 --> 00:50:58,290
+variable again and here we basically
+
+1317
+00:50:56,670 --> 00:51:01,860
+repeat an example much like the one we
+
+1318
+00:50:58,290 --> 00:51:03,360
+showed and we we can kind of come into
+
+1319
+00:51:01,860 --> 00:51:05,220
+and come out of variable scopes at
+
+1320
+00:51:03,360 --> 00:51:07,040
+different parts of the computation so
+
+1321
+00:51:05,220 --> 00:51:09,330
+it's a very nice way if you could say
+
+1322
+00:51:07,040 --> 00:51:11,040
+encapsulating regions in the computation
+
+1323
+00:51:09,330 --> 00:51:12,780
+graph and saying this part of the
+
+1324
+00:51:11,040 --> 00:51:15,390
+computation graph is a conceptual hole
+
+1325
+00:51:12,780 --> 00:51:18,120
+and I can enter and exit that part of
+
+1326
+00:51:15,390 --> 00:51:20,240
+the computation graph so I still think
+
+1327
+00:51:18,120 --> 00:51:23,880
+this is all pretty abstract so let's
+
+1328
+00:51:20,240 --> 00:51:25,110
+jump into I think a simple example and I
+
+1329
+00:51:23,880 --> 00:51:26,910
+think this will help tie all the
+
+1330
+00:51:25,110 --> 00:51:30,330
+concepts we've talked about today
+
+1331
+00:51:26,910 --> 00:51:32,130
+together so in many case in many ways
+
+1332
+00:51:30,330 --> 00:51:34,020
+the simplest prototypical machine
+
+1333
+00:51:32,130 --> 00:51:36,210
+learning algorithm is just linear
+
+1334
+00:51:34,020 --> 00:51:38,460
+regression so you have some input
+
+1335
+00:51:36,210 --> 00:51:39,990
+variable X and there's an output
+
+1336
+00:51:38,460 --> 00:51:43,350
+variable Y and we want to learn a
+
+1337
+00:51:39,990 --> 00:51:46,430
+mapping from X to Y and in this case
+
+1338
+00:51:43,350 --> 00:51:50,310
+we've instantiate it a little bit of
+
+1339
+00:51:46,430 --> 00:51:52,860
+sinusoidal ish data so we have a linear
+
+1340
+00:51:50,310 --> 00:51:54,330
+ish increase in Y as x increases but
+
+1341
+00:51:52,860 --> 00:51:57,030
+there's some type of sinusoidal noise
+
+1342
+00:51:54,330 --> 00:51:59,310
+that's in the data so nothing fancy very
+
+1343
+00:51:57,030 --> 00:52:01,170
+simple one-dimensional learning model so
+
+1344
+00:51:59,310 --> 00:52:03,660
+how do we actually use tensorflow
+
+1345
+00:52:01,170 --> 00:52:05,790
+to build a model on this data and how
+
+1346
+00:52:03,660 --> 00:52:07,590
+are we going to put in all the pieces of
+
+1347
+00:52:05,790 --> 00:52:13,680
+tensorflow mechanics we've learned to
+
+1348
+00:52:07,590 --> 00:52:16,200
+actually construct something so this
+
+1349
+00:52:13,680 --> 00:52:17,760
+slide has mostly cabbage but there's a
+
+1350
+00:52:16,200 --> 00:52:19,230
+couple of concepts we've seen here that
+
+1351
+00:52:17,760 --> 00:52:21,270
+I'll come back to first we need
+
+1352
+00:52:19,230 --> 00:52:23,760
+placeholders if we're going to define a
+
+1353
+00:52:21,270 --> 00:52:25,830
+computation intensive flow we need some
+
+1354
+00:52:23,760 --> 00:52:28,140
+way of putting data into the Machine and
+
+1355
+00:52:25,830 --> 00:52:29,940
+in a machine learning algorithm we have
+
+1356
+00:52:28,140 --> 00:52:31,980
+input training data that we want to feed
+
+1357
+00:52:29,940 --> 00:52:33,660
+into the computation graph so you're
+
+1358
+00:52:31,980 --> 00:52:35,940
+gonna start by making X and white
+
+1359
+00:52:33,660 --> 00:52:37,920
+placeholder variables that'll take in
+
+1360
+00:52:35,940 --> 00:52:39,540
+the training data and the labeled
+
+1361
+00:52:37,920 --> 00:52:42,480
+examples and use them to Train the
+
+1362
+00:52:39,540 --> 00:52:43,710
+machine that we've defined and you see a
+
+1363
+00:52:42,480 --> 00:52:45,070
+little bit in there about tensorflow
+
+1364
+00:52:43,710 --> 00:52:46,630
+being finicky so
+
+1365
+00:52:45,070 --> 00:52:48,730
+we do have to do some reshapes to make
+
+1366
+00:52:46,630 --> 00:52:50,110
+sure the shapes match out nicely and I
+
+1367
+00:52:48,730 --> 00:52:51,280
+think the best way to do this is just
+
+1368
+00:52:50,110 --> 00:52:53,800
+write down what you think is reasonable
+
+1369
+00:52:51,280 --> 00:52:56,320
+it'll blow up on you and just make
+
+1370
+00:52:53,800 --> 00:52:58,030
+whatever small fixes it tells you to so
+
+1371
+00:52:56,320 --> 00:53:00,250
+not that bad in practice but it is
+
+1372
+00:52:58,030 --> 00:53:05,560
+something that hopefully they'll clean
+
+1373
+00:53:00,250 --> 00:53:07,630
+up moving forward so now we kind of come
+
+1374
+00:53:05,560 --> 00:53:10,870
+to the actual heart of the linear
+
+1375
+00:53:07,630 --> 00:53:12,760
+regression algorithm so we have kind of
+
+1376
+00:53:10,870 --> 00:53:15,880
+the model mathematically is we have some
+
+1377
+00:53:12,760 --> 00:53:17,830
+rule some weights W we have some bias
+
+1378
+00:53:15,880 --> 00:53:21,270
+beam and the rule the learnings of
+
+1379
+00:53:17,830 --> 00:53:25,570
+linear function y equals W X plus P and
+
+1380
+00:53:21,270 --> 00:53:27,880
+the idea is that conceptually W and B
+
+1381
+00:53:25,570 --> 00:53:30,310
+all fit within kind of the same scope
+
+1382
+00:53:27,880 --> 00:53:32,620
+there our linear regression module and
+
+1383
+00:53:30,310 --> 00:53:34,560
+when we're having a deep network you
+
+1384
+00:53:32,620 --> 00:53:36,760
+might have say the fully connected part
+
+1385
+00:53:34,560 --> 00:53:38,620
+variable scope you might have the
+
+1386
+00:53:36,760 --> 00:53:40,660
+convolutional variable scope the
+
+1387
+00:53:38,620 --> 00:53:42,430
+recurrent variable scope in this case is
+
+1388
+00:53:40,660 --> 00:53:44,110
+a very simple variable scope that is
+
+1389
+00:53:42,430 --> 00:53:45,940
+just a linear regression variable scope
+
+1390
+00:53:44,110 --> 00:53:48,490
+and we make two variables we make
+
+1391
+00:53:45,940 --> 00:53:50,320
+weights and we make a bias and since
+
+1392
+00:53:48,490 --> 00:53:53,890
+it's a very easy one-dimensional example
+
+1393
+00:53:50,320 --> 00:53:57,910
+we say okay the shape is just 1 by 1 for
+
+1394
+00:53:53,890 --> 00:53:59,710
+W and again 1 by just one for the bias
+
+1395
+00:53:57,910 --> 00:54:03,760
+so these are both 1 dimensional
+
+1396
+00:53:59,710 --> 00:54:07,210
+variables that we put in now we have the
+
+1397
+00:54:03,760 --> 00:54:09,130
+two variables we have the placeholders x
+
+1398
+00:54:07,210 --> 00:54:10,990
+and y for the input data which we define
+
+1399
+00:54:09,130 --> 00:54:14,140
+in the free previous slide we have the
+
+1400
+00:54:10,990 --> 00:54:16,780
+two weights W and V now what is it that
+
+1401
+00:54:14,140 --> 00:54:18,310
+we're actually computing with and in
+
+1402
+00:54:16,780 --> 00:54:20,770
+machine learning the central thing is
+
+1403
+00:54:18,310 --> 00:54:24,100
+you know the loss function J so what is
+
+1404
+00:54:20,770 --> 00:54:27,070
+a function that ties the variables in
+
+1405
+00:54:24,100 --> 00:54:29,140
+the model to the data and here we define
+
+1406
+00:54:27,070 --> 00:54:32,770
+the loss and the loss is simply going to
+
+1407
+00:54:29,140 --> 00:54:35,890
+be the l2 loss we're gonna say Y minus W
+
+1408
+00:54:32,770 --> 00:54:38,170
+X plus B let's take the sum of squares
+
+1409
+00:54:35,890 --> 00:54:42,070
+over all the X and all the Y and that's
+
+1410
+00:54:38,170 --> 00:54:43,240
+gonna be our loss function now how do we
+
+1411
+00:54:42,070 --> 00:54:46,390
+define that in tensorflow
+
+1412
+00:54:43,240 --> 00:54:49,060
+okay we have Y a vector of labels we
+
+1413
+00:54:46,390 --> 00:54:51,970
+have X a vector of inputs and we have W
+
+1414
+00:54:49,060 --> 00:54:55,590
+and B these constants so just do the
+
+1415
+00:54:51,970 --> 00:54:58,910
+tensor arithmetic y minus W X plus P and
+
+1416
+00:54:55,590 --> 00:55:01,910
+square it and now you have a tensor
+
+1417
+00:54:58,910 --> 00:55:04,369
+sighs number of samples which is the
+
+1418
+00:55:01,910 --> 00:55:06,740
+component wise error and then you do a
+
+1419
+00:55:04,369 --> 00:55:09,260
+sum to get out the total loss function
+
+1420
+00:55:06,740 --> 00:55:10,700
+and you can kind of piece together how
+
+1421
+00:55:09,260 --> 00:55:12,349
+this relates to these symbolic
+
+1422
+00:55:10,700 --> 00:55:15,440
+mathematics to reduce some is kind of
+
+1423
+00:55:12,349 --> 00:55:18,589
+like the Sigma and kind of the written
+
+1424
+00:55:15,440 --> 00:55:21,770
+out path and the Y minus W X plus B is
+
+1425
+00:55:18,589 --> 00:55:28,359
+basically the Y minus y pred squared
+
+1426
+00:55:21,770 --> 00:55:28,359
+part so are there any questions here yes
+
+1427
+00:55:30,220 --> 00:55:35,780
+do we need to use the tensorflow ad
+
+1428
+00:55:32,660 --> 00:55:38,299
+function to add B no because this is one
+
+1429
+00:55:35,780 --> 00:55:40,309
+of the nice things tensorflow does some
+
+1430
+00:55:38,299 --> 00:55:43,490
+limited broadcasting operations so it'll
+
+1431
+00:55:40,309 --> 00:55:45,349
+figure out that okay W X is a tensor B
+
+1432
+00:55:43,490 --> 00:55:47,630
+is a tensor do competent wise addition
+
+1433
+00:55:45,349 --> 00:55:50,480
+of the tensor so you don't need to use a
+
+1434
+00:55:47,630 --> 00:56:01,789
+dot add it syntactic sugar takes care of
+
+1435
+00:55:50,480 --> 00:56:03,170
+it yes I think you can it's when you're
+
+1436
+00:56:01,789 --> 00:56:05,539
+using a variable scope it's good
+
+1437
+00:56:03,170 --> 00:56:06,980
+practice use get variable because you
+
+1438
+00:56:05,539 --> 00:56:09,020
+might want to use weights again in
+
+1439
+00:56:06,980 --> 00:56:11,059
+another part of the graph and use get
+
+1440
+00:56:09,020 --> 00:56:13,819
+variable it'll respect these scopes and
+
+1441
+00:56:11,059 --> 00:56:15,079
+it'll handle the underlying namespacing
+
+1442
+00:56:13,819 --> 00:56:16,250
+if you wanted to do it yourself you
+
+1443
+00:56:15,079 --> 00:56:19,369
+probably want to say something like
+
+1444
+00:56:16,250 --> 00:56:21,289
+linear regression colon weights or
+
+1445
+00:56:19,369 --> 00:56:22,730
+something and which gets nasty so this
+
+1446
+00:56:21,289 --> 00:56:26,089
+is just a nice way to do and that you
+
+1447
+00:56:22,730 --> 00:56:27,079
+should do in practice oh and I don't
+
+1448
+00:56:26,089 --> 00:56:28,549
+know if I repeated the question the
+
+1449
+00:56:27,079 --> 00:56:30,950
+question is do we need to use get
+
+1450
+00:56:28,549 --> 00:56:33,289
+variable or do we need to or can we use
+
+1451
+00:56:30,950 --> 00:56:34,640
+dot variable directly and the answer is
+
+1452
+00:56:33,289 --> 00:56:49,789
+you can use it directly it's just mess
+
+1453
+00:56:34,640 --> 00:56:51,529
+here yes sorry sorry I don't understand
+
+1454
+00:56:49,789 --> 00:56:56,809
+the question the reused variable is the
+
+1455
+00:56:51,529 --> 00:57:00,309
+same as copy numpy oh I see I see is it
+
+1456
+00:56:56,809 --> 00:57:03,740
+the same as the copy matrix in numpy um
+
+1457
+00:57:00,309 --> 00:57:05,630
+no so when we call numpy I'll copy we're
+
+1458
+00:57:03,740 --> 00:57:07,849
+actually doing a memory copy there's a
+
+1459
+00:57:05,630 --> 00:57:09,440
+region of memory that is in some matrix
+
+1460
+00:57:07,849 --> 00:57:11,480
+and we're gonna copy it to another
+
+1461
+00:57:09,440 --> 00:57:13,579
+region of memory when we do we use
+
+1462
+00:57:11,480 --> 00:57:15,109
+variable we're saying are we going to
+
+1463
+00:57:13,579 --> 00:57:16,609
+use the same node in the abstract
+
+1464
+00:57:15,109 --> 00:57:18,710
+computation graph or are we gonna use a
+
+1465
+00:57:16,609 --> 00:57:20,119
+new node in the abstract computational
+
+1466
+00:57:18,710 --> 00:57:23,329
+graph so the key thing is remember
+
+1467
+00:57:20,119 --> 00:57:25,339
+nothing happens in memory no computation
+
+1468
+00:57:23,329 --> 00:57:27,410
+is executed until you create a concrete
+
+1469
+00:57:25,339 --> 00:57:30,079
+session so this is all an abstract
+
+1470
+00:57:27,410 --> 00:57:31,549
+construction and this is just a graph
+
+1471
+00:57:30,079 --> 00:57:37,029
+that we're going to that we've defined
+
+1472
+00:57:31,549 --> 00:57:37,029
+symbolically any questions
+
+1473
+00:57:37,200 --> 00:57:46,480
+yes X&Y have to be yes basically because
+
+1474
+00:57:44,680 --> 00:57:48,310
+you want to feed in user data to fit a
+
+1475
+00:57:46,480 --> 00:57:50,020
+model you could make them whatever
+
+1476
+00:57:48,310 --> 00:57:51,670
+variables you wanted to but if you want
+
+1477
+00:57:50,020 --> 00:57:53,560
+to fit a learning model you do need
+
+1478
+00:57:51,670 --> 00:57:58,810
+placeholder very you need you do need x
+
+1479
+00:57:53,560 --> 00:58:01,590
+and y to be placeholder variables cool
+
+1480
+00:57:58,810 --> 00:58:01,590
+all right
+
+1481
+00:58:02,250 --> 00:58:09,849
+so in the form in the previous slide we
+
+1482
+00:58:07,270 --> 00:58:12,130
+defined this variable los and the los
+
+1483
+00:58:09,849 --> 00:58:14,050
+corresponds to the function J that we
+
+1484
+00:58:12,130 --> 00:58:15,550
+use in machine learning practice now of
+
+1485
+00:58:14,050 --> 00:58:17,140
+course as you're all familiar with it's
+
+1486
+00:58:15,550 --> 00:58:20,109
+the key thing you want to do is del J
+
+1487
+00:58:17,140 --> 00:58:21,880
+del W or del J del P that is we want to
+
+1488
+00:58:20,109 --> 00:58:23,890
+be able to find the gradient of the loss
+
+1489
+00:58:21,880 --> 00:58:25,960
+with respect to the parameters that
+
+1490
+00:58:23,890 --> 00:58:28,240
+define the model in order to be able to
+
+1491
+00:58:25,960 --> 00:58:30,970
+learn now how do we do this in tensor
+
+1492
+00:58:28,240 --> 00:58:33,369
+flow so the nice thing is that tensor
+
+1493
+00:58:30,970 --> 00:58:36,340
+flow implements a limited form of
+
+1494
+00:58:33,369 --> 00:58:40,210
+automatic differentiation so for most
+
+1495
+00:58:36,340 --> 00:58:42,820
+cases we don't actually need to minimize
+
+1496
+00:58:40,210 --> 00:58:44,890
+losses ourselves we can instead use
+
+1497
+00:58:42,820 --> 00:58:47,950
+tensor flows built-in suite of minimizer
+
+1498
+00:58:44,890 --> 00:58:50,109
+objects or optimize our objects so the
+
+1499
+00:58:47,950 --> 00:58:51,609
+idea is that an optimizer is just
+
+1500
+00:58:50,109 --> 00:58:53,800
+another node in the abstract
+
+1501
+00:58:51,609 --> 00:58:55,750
+computational graph and it's a special
+
+1502
+00:58:53,800 --> 00:58:59,170
+node and it's one that if you pass in
+
+1503
+00:58:55,750 --> 00:59:02,080
+some scalar tensor in this case los
+
+1504
+00:58:59,170 --> 00:59:04,480
+it'll figure out what it has to do to
+
+1505
+00:59:02,080 --> 00:59:06,250
+optimize that under the hood so if you
+
+1506
+00:59:04,480 --> 00:59:08,170
+remember back to the assign variable
+
+1507
+00:59:06,250 --> 00:59:10,300
+sorry the assign operation in the
+
+1508
+00:59:08,170 --> 00:59:12,010
+counter example underneath the hood the
+
+1509
+00:59:10,300 --> 00:59:13,960
+optimizer is doing something like an
+
+1510
+00:59:12,010 --> 00:59:16,480
+assign operation it computes the
+
+1511
+00:59:13,960 --> 00:59:18,790
+gradient of loss with respect to the
+
+1512
+00:59:16,480 --> 00:59:21,339
+various variables in the network then it
+
+1513
+00:59:18,790 --> 00:59:24,670
+uses a sign to do an update to those
+
+1514
+00:59:21,339 --> 00:59:26,710
+variables and in this case we're using I
+
+1515
+00:59:24,670 --> 00:59:29,260
+think the atom optimizer which is one of
+
+1516
+00:59:26,710 --> 00:59:30,820
+the family of optimizers but for a
+
+1517
+00:59:29,260 --> 00:59:32,800
+simple example you can think of this as
+
+1518
+00:59:30,820 --> 00:59:35,650
+just a gradient descent step there's
+
+1519
+00:59:32,800 --> 00:59:37,450
+some data olds you have some del datum
+
+1520
+00:59:35,650 --> 00:59:39,849
+some update term which you've computed
+
+1521
+00:59:37,450 --> 00:59:43,210
+and you're saying theta nu equals theta
+
+1522
+00:59:39,849 --> 00:59:46,390
+old plus some fraction lambda times the
+
+1523
+00:59:43,210 --> 00:59:48,320
+update del theta so it's the basic
+
+1524
+00:59:46,390 --> 00:59:50,780
+gradient descent step
+
+1525
+00:59:48,320 --> 00:59:53,210
+we've had you implement many times so
+
+1526
+00:59:50,780 --> 00:59:55,640
+underneath the hood you can think of an
+
+1527
+00:59:53,210 --> 00:59:58,070
+optimizers exit as performing this
+
+1528
+00:59:55,640 --> 01:00:07,040
+update for us and it helps save us and
+
+1529
+00:59:58,070 --> 01:00:10,010
+thinking questions so Adam is just a
+
+1530
+01:00:07,040 --> 01:00:12,470
+convenient optimizer you don't need to
+
+1531
+01:00:10,010 --> 01:00:13,850
+worry that's in some ways oh the
+
+1532
+01:00:12,470 --> 01:00:16,850
+question is what is the Adam optimizer
+
+1533
+01:00:13,850 --> 01:00:19,010
+and it is a particular type of optimizer
+
+1534
+01:00:16,850 --> 01:00:21,620
+there are many advanced variants of
+
+1535
+01:00:19,010 --> 01:00:24,170
+creating two-cent that are more or less
+
+1536
+01:00:21,620 --> 01:00:25,760
+stable for different models I think the
+
+1537
+01:00:24,170 --> 01:00:27,230
+reason I chose to use Adam here is I
+
+1538
+01:00:25,760 --> 01:00:29,090
+think you'll use it in the homework and
+
+1539
+01:00:27,230 --> 01:00:31,100
+the nice part about tensorflow is that
+
+1540
+01:00:29,090 --> 01:00:32,420
+it encapsulate s-- a number of these
+
+1541
+01:00:31,100 --> 01:00:33,860
+optimizers for you
+
+1542
+01:00:32,420 --> 01:00:35,540
+so you don't necessarily even need to
+
+1543
+01:00:33,860 --> 01:00:37,700
+know what adam is in order to use it as
+
+1544
+01:00:35,540 --> 01:00:39,740
+long as you can make that API call that
+
+1545
+01:00:37,700 --> 01:00:41,450
+said it's well written paper so I
+
+1546
+01:00:39,740 --> 01:00:43,460
+recommend googling it and checking it
+
+1547
+01:00:41,450 --> 01:00:46,040
+out or asking one of us at office hours
+
+1548
+01:00:43,460 --> 01:00:47,780
+about it but it is a type of gradient
+
+1549
+01:00:46,040 --> 01:00:54,010
+descent algorithm which is useful in
+
+1550
+01:00:47,780 --> 01:00:55,970
+practice all right yes terms of is
+
+1551
+01:00:54,010 --> 01:00:58,880
+partial support for automatic
+
+1552
+01:00:55,970 --> 01:01:01,550
+differentiation Oh like do you know if
+
+1553
+01:00:58,880 --> 01:01:04,070
+it will automatically differentiate the
+
+1554
+01:01:01,550 --> 01:01:07,410
+whole sigmoid function one go or will
+
+1555
+01:01:04,070 --> 01:01:09,059
+you compose it into you know the song
+
+1556
+01:01:07,410 --> 01:01:11,849
+Division like how optimizes our
+
+1557
+01:01:09,059 --> 01:01:13,470
+automatic that's actually the question
+
+1558
+01:01:11,849 --> 01:01:15,059
+is how optimizes automatic
+
+1559
+01:01:13,470 --> 01:01:16,819
+differentiation if you have something
+
+1560
+01:01:15,059 --> 01:01:18,960
+like the sigmoid is it going to
+
+1561
+01:01:16,819 --> 01:01:20,519
+decompose it internally or is it going
+
+1562
+01:01:18,960 --> 01:01:22,980
+to do a more optimized thing to handle
+
+1563
+01:01:20,519 --> 01:01:26,250
+it and the question the answer is it
+
+1564
+01:01:22,980 --> 01:01:28,049
+really depends so I think for something
+
+1565
+01:01:26,250 --> 01:01:29,609
+like sigmoid I think you can you can
+
+1566
+01:01:28,049 --> 01:01:34,680
+implement it yourself Viking you can use
+
+1567
+01:01:29,609 --> 01:01:38,160
+tensor flow dot X and various things and
+
+1568
+01:01:34,680 --> 01:01:40,140
+in fact no we don't ask you to do that
+
+1569
+01:01:38,160 --> 01:01:43,529
+in this one we ask you to implement
+
+1570
+01:01:40,140 --> 01:01:44,970
+softmax in this homework with tensor
+
+1571
+01:01:43,529 --> 01:01:48,900
+flow and we ask you to do it using
+
+1572
+01:01:44,970 --> 01:01:50,250
+tensor flow primitives but for simple
+
+1573
+01:01:48,900 --> 01:01:52,440
+things is a fine if you have a very
+
+1574
+01:01:50,250 --> 01:01:54,990
+complex operation it might become slow
+
+1575
+01:01:52,440 --> 01:01:56,279
+doing it the fully general way so I
+
+1576
+01:01:54,990 --> 01:01:58,109
+think underneath the hood you can
+
+1577
+01:01:56,279 --> 01:01:59,759
+actually replace some of these
+
+1578
+01:01:58,109 --> 01:02:02,460
+operations and have kind of shortcuts
+
+1579
+01:01:59,759 --> 01:02:04,349
+and the U but for this you need to write
+
+1580
+01:02:02,460 --> 01:02:07,200
+new tensor flow code in the C++ API
+
+1581
+01:02:04,349 --> 01:02:08,549
+under the hood so you can do it but it's
+
+1582
+01:02:07,200 --> 01:02:11,789
+more like if you're a developer working
+
+1583
+01:02:08,549 --> 01:02:12,930
+on tensor flow if you're a user you
+
+1584
+01:02:11,789 --> 01:02:14,309
+should try to kind of stick with the
+
+1585
+01:02:12,930 --> 01:02:16,079
+primitives because since it's much
+
+1586
+01:02:14,309 --> 01:02:19,740
+easier it might be slower but it's
+
+1587
+01:02:16,079 --> 01:02:21,390
+probably good for a first prototype that
+
+1588
+01:02:19,740 --> 01:02:25,200
+or you can buy Bank of GPUs and just use
+
+1589
+01:02:21,390 --> 01:02:26,190
+that and it's all ok all right any more
+
+1590
+01:02:25,200 --> 01:02:28,609
+questions
+
+1591
+01:02:26,190 --> 01:02:31,019
+so we should move on because this is
+
+1592
+01:02:28,609 --> 01:02:33,210
+actually still pretty simple this is
+
+1593
+01:02:31,019 --> 01:02:34,950
+just one gradient descent step that
+
+1594
+01:02:33,210 --> 01:02:37,769
+we're showing here how do you actually
+
+1595
+01:02:34,950 --> 01:02:41,009
+learn a model and this is where it
+
+1596
+01:02:37,769 --> 01:02:43,799
+starts to get a little gnarly there's a
+
+1597
+01:02:41,009 --> 01:02:46,710
+lot of things going on in this slide so
+
+1598
+01:02:43,799 --> 01:02:48,539
+I'll just say a little bit about the
+
+1599
+01:02:46,710 --> 01:02:51,539
+general idea without diving into details
+
+1600
+01:02:48,539 --> 01:02:53,130
+when you're doing learning with gradient
+
+1601
+01:02:51,539 --> 01:02:55,170
+descent the idea is that there's some
+
+1602
+01:02:53,130 --> 01:02:57,990
+number of steps you're doing and in each
+
+1603
+01:02:55,170 --> 01:03:00,569
+step you're taking a fraction of the
+
+1604
+01:02:57,990 --> 01:03:02,609
+input data and upon that fraction the
+
+1605
+01:03:00,569 --> 01:03:05,099
+input data you're computing the
+
+1606
+01:03:02,609 --> 01:03:06,960
+derivative of the loss function on that
+
+1607
+01:03:05,099 --> 01:03:09,359
+input data with respect to the
+
+1608
+01:03:06,960 --> 01:03:11,220
+parameters that came in and based on
+
+1609
+01:03:09,359 --> 01:03:14,250
+those derivatives you're going to do an
+
+1610
+01:03:11,220 --> 01:03:17,069
+update to the variables that you're
+
+1611
+01:03:14,250 --> 01:03:19,559
+stored and this tensor flow code
+
+1612
+01:03:17,069 --> 01:03:20,610
+basically does exactly this for you it's
+
+1613
+01:03:19,559 --> 01:03:22,650
+saying that there
+
+1614
+01:03:20,610 --> 01:03:25,620
+some number of steps 500 which we're
+
+1615
+01:03:22,650 --> 01:03:28,530
+gonna take at each step we're gonna take
+
+1616
+01:03:25,620 --> 01:03:29,700
+our input numpy arrays and by the way
+
+1617
+01:03:28,530 --> 01:03:31,920
+this one the really nice things about
+
+1618
+01:03:29,700 --> 01:03:34,110
+programmatic design deep learning api's
+
+1619
+01:03:31,920 --> 01:03:36,510
+is you can do things like I'm just gonna
+
+1620
+01:03:34,110 --> 01:03:38,760
+randomly sample my numpy matrix using
+
+1621
+01:03:36,510 --> 01:03:41,040
+random choice whereas if you're gonna do
+
+1622
+01:03:38,760 --> 01:03:43,560
+it in a proto proto-language you have to
+
+1623
+01:03:41,040 --> 01:03:45,660
+do horrible things like write down
+
+1624
+01:03:43,560 --> 01:03:47,700
+random files on disk where you've
+
+1625
+01:03:45,660 --> 01:03:50,460
+pre-show fell'd and then written down a
+
+1626
+01:03:47,700 --> 01:03:52,950
+shuffled version on disk or as here it's
+
+1627
+01:03:50,460 --> 01:03:54,870
+so much nicer you use numpy to do random
+
+1628
+01:03:52,950 --> 01:03:57,720
+sub-samples for you and you can do
+
+1629
+01:03:54,870 --> 01:04:00,300
+things on the fly so we take a random
+
+1630
+01:03:57,720 --> 01:04:03,270
+sub sample I think our batch size here
+
+1631
+01:04:00,300 --> 01:04:05,220
+is whatever our batch sizes and then we
+
+1632
+01:04:03,270 --> 01:04:07,860
+say alright let's just use the optimizer
+
+1633
+01:04:05,220 --> 01:04:10,170
+that we defined in the previous step to
+
+1634
+01:04:07,860 --> 01:04:12,420
+take one gradient descent step on this
+
+1635
+01:04:10,170 --> 01:04:16,350
+mini batch so this is kind of composing
+
+1636
+01:04:12,420 --> 01:04:20,130
+all the various operations so this is
+
+1637
+01:04:16,350 --> 01:04:21,990
+kind of abstract so it might be nicer to
+
+1638
+01:04:20,130 --> 01:04:24,330
+kind of look at it visually what is
+
+1639
+01:04:21,990 --> 01:04:26,520
+actually going on so this is a
+
+1640
+01:04:24,330 --> 01:04:28,470
+complicated diagram so let's kind of
+
+1641
+01:04:26,520 --> 01:04:30,150
+break it into parts so if you remember
+
+1642
+01:04:28,470 --> 01:04:33,090
+sort of the visual language that we've
+
+1643
+01:04:30,150 --> 01:04:34,640
+set up fetches or the black fat arrows
+
+1644
+01:04:33,090 --> 01:04:37,440
+there are things that come out of graph
+
+1645
+01:04:34,640 --> 01:04:39,660
+the orange things coming in up top are
+
+1646
+01:04:37,440 --> 01:04:42,600
+the feeds it's already put data into the
+
+1647
+01:04:39,660 --> 01:04:45,030
+graph so the idea of this graph is that
+
+1648
+01:04:42,600 --> 01:04:47,280
+we're computing this cost function which
+
+1649
+01:04:45,030 --> 01:04:50,100
+we put up on the screen and we feed in
+
+1650
+01:04:47,280 --> 01:04:52,230
+some datum that is the mini batch of
+
+1651
+01:04:50,100 --> 01:04:55,440
+data that we're putting in we pulse it
+
+1652
+01:04:52,230 --> 01:04:58,140
+through the graph and we fetch out and
+
+1653
+01:04:55,440 --> 01:05:02,340
+we fetch out the optimizer and the idea
+
+1654
+01:04:58,140 --> 01:05:06,690
+is that one fetch of data from the graph
+
+1655
+01:05:02,340 --> 01:05:08,370
+given a feed of the mini batch is going
+
+1656
+01:05:06,690 --> 01:05:11,400
+to execute a single step of gradient
+
+1657
+01:05:08,370 --> 01:05:13,320
+descent so the for loop that we saw in
+
+1658
+01:05:11,400 --> 01:05:14,910
+the previous slide is basically you
+
+1659
+01:05:13,320 --> 01:05:17,160
+could say I kind of like to think about
+
+1660
+01:05:14,910 --> 01:05:18,900
+as a wave almost like you're putting in
+
+1661
+01:05:17,160 --> 01:05:20,850
+data it's like pulsing forward through
+
+1662
+01:05:18,900 --> 01:05:24,960
+the graph and you fetch it out and your
+
+1663
+01:05:20,850 --> 01:05:26,730
+repeating is like data motion 500 times
+
+1664
+01:05:24,960 --> 01:05:29,370
+in the computation and that's what
+
+1665
+01:05:26,730 --> 01:05:31,590
+tensor flow is it's a system for
+
+1666
+01:05:29,370 --> 01:05:33,240
+defining computational graphs to compute
+
+1667
+01:05:31,590 --> 01:05:34,200
+functions and in this case the function
+
+1668
+01:05:33,240 --> 01:05:35,520
+we
+
+1669
+01:05:34,200 --> 01:05:38,430
+computing which might be easier to read
+
+1670
+01:05:35,520 --> 01:05:40,650
+from the math is just as l/2 losting we
+
+1671
+01:05:38,430 --> 01:05:42,720
+defined this function as a graph we put
+
+1672
+01:05:40,650 --> 01:05:45,570
+in data and we pulse it through the
+
+1673
+01:05:42,720 --> 01:05:47,550
+graph and we pull out the loss and we
+
+1674
+01:05:45,570 --> 01:05:49,740
+use a special optimizer to update the
+
+1675
+01:05:47,550 --> 01:05:52,589
+internal state and we do this 500 times
+
+1676
+01:05:49,740 --> 01:05:54,450
+in a for loop and this is kind of the
+
+1677
+01:05:52,589 --> 01:05:56,730
+heart of what is going on in tensor flow
+
+1678
+01:05:54,450 --> 01:05:58,950
+so I think here I'm going to pause and
+
+1679
+01:05:56,730 --> 01:06:01,260
+take questions because I this is the
+
+1680
+01:05:58,950 --> 01:06:09,079
+critical bit of what's going on in 10
+
+1681
+01:06:01,260 --> 01:06:09,079
+suppose so floor open yes
+
+1682
+01:06:15,220 --> 01:06:21,980
+so why is there a underscore just like
+
+1683
+01:06:18,650 --> 01:06:23,810
+you don't care about ah so the
+
+1684
+01:06:21,980 --> 01:06:26,120
+underscore the question is why is there
+
+1685
+01:06:23,810 --> 01:06:28,760
+an underscore and that's just a pythonic
+
+1686
+01:06:26,120 --> 01:06:31,880
+style if there's a variable that for
+
+1687
+01:06:28,760 --> 01:06:33,500
+some reason you need to have returned to
+
+1688
+01:06:31,880 --> 01:06:35,720
+you but you don't really care what the
+
+1689
+01:06:33,500 --> 01:06:38,000
+value is you use an underscore in this
+
+1690
+01:06:35,720 --> 01:06:40,250
+case that's the optimizer operation so
+
+1691
+01:06:38,000 --> 01:06:42,590
+we want to fetch the optimizer operation
+
+1692
+01:06:40,250 --> 01:06:44,000
+from the graph but in some sense we
+
+1693
+01:06:42,590 --> 01:06:45,890
+don't care what it returns we just
+
+1694
+01:06:44,000 --> 01:06:49,250
+wanted to do the update to the internal
+
+1695
+01:06:45,890 --> 01:06:51,230
+state so this is actually a way of just
+
+1696
+01:06:49,250 --> 01:06:52,760
+writing documenting in our program we
+
+1697
+01:06:51,230 --> 01:06:54,740
+don't really care what's the output of
+
+1698
+01:06:52,760 --> 01:07:03,280
+the optimizer operation we just wanted
+
+1699
+01:06:54,740 --> 01:07:03,280
+to update an internal state but then yes
+
+1700
+01:07:08,170 --> 01:07:15,080
+so an operation in this case one the
+
+1701
+01:07:13,280 --> 01:07:16,970
+optimizers for example there's a
+
+1702
+01:07:15,080 --> 01:07:19,940
+gradient descent optimizer an atom
+
+1703
+01:07:16,970 --> 01:07:22,010
+optimizer those are operations so we
+
+1704
+01:07:19,940 --> 01:07:24,410
+didn't really go into what a tensorflow
+
+1705
+01:07:22,010 --> 01:07:26,000
+operation is but they're just you can
+
+1706
+01:07:24,410 --> 01:07:28,220
+think of as parts of the computation
+
+1707
+01:07:26,000 --> 01:07:30,110
+graph that do things like update
+
+1708
+01:07:28,220 --> 01:07:31,550
+internal state but they're just parts of
+
+1709
+01:07:30,110 --> 01:07:33,650
+the computation graph like everything
+
+1710
+01:07:31,550 --> 01:07:35,810
+else and I think in fact addition or
+
+1711
+01:07:33,650 --> 01:07:36,950
+multiplication is an operation they
+
+1712
+01:07:35,810 --> 01:07:38,780
+don't even have to update its as some
+
+1713
+01:07:36,950 --> 01:07:41,300
+transformation of tensors that's
+
+1714
+01:07:38,780 --> 01:07:43,070
+computed internally within the graph and
+
+1715
+01:07:41,300 --> 01:07:45,470
+the question was what is an operation
+
+1716
+01:07:43,070 --> 01:07:47,290
+and do we have to know much about it no
+
+1717
+01:07:45,470 --> 01:07:50,290
+not really it's just a part of the Kraft
+
+1718
+01:07:47,290 --> 01:07:50,290
+yes
+
+1719
+01:07:52,300 --> 01:07:57,130
+parallel and just updating herdsman yeah
+
+1720
+01:07:55,330 --> 01:07:59,320
+that's a good question so the question
+
+1721
+01:07:57,130 --> 01:08:01,180
+is is there a way to make this four loop
+
+1722
+01:07:59,320 --> 01:08:02,560
+run in parallel and just have tensorflow
+
+1723
+01:08:01,180 --> 01:08:06,220
+take care of that underneath the hood
+
+1724
+01:08:02,560 --> 01:08:09,190
+for us I think the way you do this is
+
+1725
+01:08:06,220 --> 01:08:13,450
+basically that's a good question
+
+1726
+01:08:09,190 --> 01:08:15,040
+you could there is a way to do this
+
+1727
+01:08:13,450 --> 01:08:17,650
+there is a way to set it up and do it
+
+1728
+01:08:15,040 --> 01:08:20,260
+distributed creating descent workers and
+
+1729
+01:08:17,650 --> 01:08:21,670
+I think I'm little fuzzy on this but I
+
+1730
+01:08:20,260 --> 01:08:23,230
+think you define a function and there's
+
+1731
+01:08:21,670 --> 01:08:25,690
+some type of broadcast you say that
+
+1732
+01:08:23,230 --> 01:08:27,549
+you're gonna do it on a variety of GPUs
+
+1733
+01:08:25,690 --> 01:08:29,290
+I don't know I haven't looked into this
+
+1734
+01:08:27,549 --> 01:08:31,480
+carefully and it just came out in the
+
+1735
+01:08:29,290 --> 01:08:49,750
+supported API so I'm gonna punt on this
+
+1736
+01:08:31,480 --> 01:08:52,450
+but yes so the question is why do random
+
+1737
+01:08:49,750 --> 01:08:54,460
+choice in gradient descent usually
+
+1738
+01:08:52,450 --> 01:08:56,380
+random choice is actually helpful for
+
+1739
+01:08:54,460 --> 01:08:58,930
+maintaining stability of a learning
+
+1740
+01:08:56,380 --> 01:09:00,670
+model and when this becomes really
+
+1741
+01:08:58,930 --> 01:09:02,410
+useful is if you have something if
+
+1742
+01:09:00,670 --> 01:09:04,030
+different parts of the data are
+
+1743
+01:09:02,410 --> 01:09:05,589
+qualitatively different from other parts
+
+1744
+01:09:04,030 --> 01:09:08,230
+of the data and you have a large enough
+
+1745
+01:09:05,589 --> 01:09:10,390
+data set models exhibit what's known as
+
+1746
+01:09:08,230 --> 01:09:12,250
+forgetting so like if you start saying
+
+1747
+01:09:10,390 --> 01:09:13,930
+with the data from two years ago
+
+1748
+01:09:12,250 --> 01:09:15,430
+and you work your way up to sequentially
+
+1749
+01:09:13,930 --> 01:09:17,859
+to the data from yesterday the
+
+1750
+01:09:15,430 --> 01:09:19,120
+distribution of data from two years ago
+
+1751
+01:09:17,859 --> 01:09:21,490
+might be really different from
+
+1752
+01:09:19,120 --> 01:09:22,780
+distribution today so there's a lot of
+
+1753
+01:09:21,490 --> 01:09:24,190
+forgetting that could happen you could
+
+1754
+01:09:22,780 --> 01:09:25,630
+forget the patterns that came in the
+
+1755
+01:09:24,190 --> 01:09:27,190
+past because you're learning the
+
+1756
+01:09:25,630 --> 01:09:29,260
+patterns in the present but if you do
+
+1757
+01:09:27,190 --> 01:09:31,839
+kind of this jumbled shuffle you have to
+
+1758
+01:09:29,260 --> 01:09:33,100
+account for all the data you have to
+
+1759
+01:09:31,839 --> 01:09:35,260
+account for a random sample the data
+
+1760
+01:09:33,100 --> 01:09:37,060
+which means the model can't forget so in
+
+1761
+01:09:35,260 --> 01:09:39,310
+practice it's healthier to do a random
+
+1762
+01:09:37,060 --> 01:09:41,680
+sub choice when doing an update to the
+
+1763
+01:09:39,310 --> 01:09:44,370
+model use that ensures you've got
+
+1764
+01:09:41,680 --> 01:09:44,370
+everything in there
+
+1765
+01:09:48,760 --> 01:10:03,740
+questions are we good yes so the
+
+1766
+01:10:02,030 --> 01:10:07,180
+question is a random choice versus a
+
+1767
+01:10:03,740 --> 01:10:09,950
+random shuffle ah I see I see I see okay
+
+1768
+01:10:07,180 --> 01:10:12,080
+so why not just randomly shuffle the
+
+1769
+01:10:09,950 --> 01:10:13,580
+data once and not worry about it yes
+
+1770
+01:10:12,080 --> 01:10:15,530
+absolutely you can do that there is no
+
+1771
+01:10:13,580 --> 01:10:16,880
+difference in practice this is just
+
+1772
+01:10:15,530 --> 01:10:19,070
+convenient and I was hacking together
+
+1773
+01:10:16,880 --> 01:10:20,600
+Python scripts I was like why not if you
+
+1774
+01:10:19,070 --> 01:10:22,040
+have a large enough data set you might
+
+1775
+01:10:20,600 --> 01:10:23,530
+not want to do this choice in real time
+
+1776
+01:10:22,040 --> 01:10:26,420
+use that will get you cash problems
+
+1777
+01:10:23,530 --> 01:10:28,160
+you're right so it is for large data
+
+1778
+01:10:26,420 --> 01:10:31,870
+sets it's probably smarter to do a
+
+1779
+01:10:28,160 --> 01:10:31,870
+shuffle before time and write it down
+
+1780
+01:10:37,210 --> 01:10:40,210
+yes
+
+1781
+01:10:49,570 --> 01:10:54,350
+so the question is is there practical
+
+1782
+01:10:52,400 --> 01:10:56,989
+suggestion for what a batch size should
+
+1783
+01:10:54,350 --> 01:11:01,190
+be and the answer I found is something
+
+1784
+01:10:56,989 --> 01:11:02,600
+like small powers of 2 32 64 128 there
+
+1785
+01:11:01,190 --> 01:11:05,210
+is really it's in some sense it's a
+
+1786
+01:11:02,600 --> 01:11:06,800
+hyper parameter it's some aspect of the
+
+1787
+01:11:05,210 --> 01:11:08,840
+model training that really depends on
+
+1788
+01:11:06,800 --> 01:11:12,800
+your hardware on your particular data
+
+1789
+01:11:08,840 --> 01:11:14,540
+set you just I'd say try out a few on
+
+1790
+01:11:12,800 --> 01:11:16,400
+your validation set see what works
+
+1791
+01:11:14,540 --> 01:11:18,080
+better most of the time it doesn't make
+
+1792
+01:11:16,400 --> 01:11:20,210
+a big difference like yeah batch size
+
+1793
+01:11:18,080 --> 01:11:22,580
+one probably don't want that batch size
+
+1794
+01:11:20,210 --> 01:11:24,860
+50,000 and probably don't want that but
+
+1795
+01:11:22,580 --> 01:11:29,000
+anything in kind of the smaller regime
+
+1796
+01:11:24,860 --> 01:11:30,860
+it's mostly it's mostly all the same you
+
+1797
+01:11:29,000 --> 01:11:32,690
+can try out a few things it's basically
+
+1798
+01:11:30,860 --> 01:11:37,699
+hyper parameter try it out empirically
+
+1799
+01:11:32,690 --> 01:11:40,070
+there's no real good rule of thumb all
+
+1800
+01:11:37,699 --> 01:11:41,659
+right we do have a few more slides so
+
+1801
+01:11:40,070 --> 01:11:50,360
+I'm gonna break your if there are no
+
+1802
+01:11:41,659 --> 01:11:53,630
+more questions okay so here again we
+
+1803
+01:11:50,360 --> 01:11:56,270
+have this complicated graph thing and it
+
+1804
+01:11:53,630 --> 01:11:58,010
+fits a nice model so you can see if the
+
+1805
+01:11:56,270 --> 01:12:00,080
+straight line so machine learning works
+
+1806
+01:11:58,010 --> 01:12:01,880
+tensorflow is great we're done we're out
+
+1807
+01:12:00,080 --> 01:12:04,820
+of a job you know this you can write
+
+1808
+01:12:01,880 --> 01:12:06,650
+tiny scripts so basically this is kind
+
+1809
+01:12:04,820 --> 01:12:09,139
+of a toy learning example in tensorflow
+
+1810
+01:12:06,650 --> 01:12:10,460
+but all the programs that you'll write
+
+1811
+01:12:09,139 --> 01:12:12,440
+for doing non-trivial learning in
+
+1812
+01:12:10,460 --> 01:12:14,330
+tensorflow will have very much the same
+
+1813
+01:12:12,440 --> 01:12:16,429
+structure you'll have these for loops
+
+1814
+01:12:14,330 --> 01:12:18,139
+you'll perform you'll define this
+
+1815
+01:12:16,429 --> 01:12:20,179
+computation graph that is your model up
+
+1816
+01:12:18,139 --> 01:12:22,730
+front you'll take in your data in
+
+1817
+01:12:20,179 --> 01:12:24,350
+placeholders you'll add eat yoga for
+
+1818
+01:12:22,730 --> 01:12:26,960
+loop in which it takes some fraction
+
+1819
+01:12:24,350 --> 01:12:28,790
+that data then you'll run the graph one
+
+1820
+01:12:26,960 --> 01:12:31,219
+time that is the model that will update
+
+1821
+01:12:28,790 --> 01:12:33,699
+the parameters in that model and you'll
+
+1822
+01:12:31,219 --> 01:12:37,610
+repeat until you feel you're done and
+
+1823
+01:12:33,699 --> 01:12:38,840
+what done is depends there's many in
+
+1824
+01:12:37,610 --> 01:12:40,369
+practice you should be doing something
+
+1825
+01:12:38,840 --> 01:12:42,500
+like tracking error on a validation set
+
+1826
+01:12:40,369 --> 01:12:44,090
+because this was a tiny toy example we
+
+1827
+01:12:42,500 --> 01:12:45,500
+didn't do that but in practice you
+
+1828
+01:12:44,090 --> 01:12:46,699
+should not be doing what I'm doing on
+
+1829
+01:12:45,500 --> 01:12:48,650
+the screen you should be doing something
+
+1830
+01:12:46,699 --> 01:12:50,480
+healthier and the homework does make you
+
+1831
+01:12:48,650 --> 01:12:54,350
+actually look at error on a validation
+
+1832
+01:12:50,480 --> 01:12:55,760
+set but for now this is okay so the one
+
+1833
+01:12:54,350 --> 01:12:57,980
+thing we really didn't talk too much
+
+1834
+01:12:55,760 --> 01:12:59,880
+about today is that how does this
+
+1835
+01:12:57,980 --> 01:13:01,469
+automatic differentiation happen on
+
+1836
+01:12:59,880 --> 01:13:03,389
+the hood and I think we touched upon a
+
+1837
+01:13:01,469 --> 01:13:05,550
+little bit in a question in that it's
+
+1838
+01:13:03,389 --> 01:13:07,080
+just a back propagation algorithm that
+
+1839
+01:13:05,550 --> 01:13:09,659
+you've already learned a bit about and
+
+1840
+01:13:07,080 --> 01:13:11,699
+the idea is that when people were
+
+1841
+01:13:09,659 --> 01:13:13,469
+defining tensorflow as they define
+
+1842
+01:13:11,699 --> 01:13:16,080
+things like addition multiplication or
+
+1843
+01:13:13,469 --> 01:13:17,969
+exponentiation for each operation each
+
+1844
+01:13:16,080 --> 01:13:20,540
+primitive they wrote down a gradient
+
+1845
+01:13:17,969 --> 01:13:22,889
+function associated with it so each
+
+1846
+01:13:20,540 --> 01:13:24,659
+tensorflow primitive underneath the hood
+
+1847
+01:13:22,889 --> 01:13:27,090
+has had somebody write down a pair of
+
+1848
+01:13:24,659 --> 01:13:29,250
+gradient function so if you have
+
+1849
+01:13:27,090 --> 01:13:30,420
+exponential you have a gradient of
+
+1850
+01:13:29,250 --> 01:13:31,980
+exponential function if you have
+
+1851
+01:13:30,420 --> 01:13:34,620
+addition you have a gradient of addition
+
+1852
+01:13:31,980 --> 01:13:36,270
+function and the idea is that when you
+
+1853
+01:13:34,620 --> 01:13:38,940
+build up a graph with these primitive
+
+1854
+01:13:36,270 --> 01:13:41,040
+nodes you when you're doing the forward
+
+1855
+01:13:38,940 --> 01:13:43,230
+pass you use the function addition
+
+1856
+01:13:41,040 --> 01:13:44,969
+multiplication exponentiation when
+
+1857
+01:13:43,230 --> 01:13:46,860
+you're doing the backward pass as in
+
+1858
+01:13:44,969 --> 01:13:49,170
+back propagation you use the paired
+
+1859
+01:13:46,860 --> 01:13:51,210
+gradient function and you use that just
+
+1860
+01:13:49,170 --> 01:13:52,889
+to use the calculus chain rule and
+
+1861
+01:13:51,210 --> 01:13:55,280
+propagate information through the graph
+
+1862
+01:13:52,889 --> 01:13:57,989
+so there's nothing that magical in fact
+
+1863
+01:13:55,280 --> 01:13:59,719
+it's not that hard homework exercise to
+
+1864
+01:13:57,989 --> 01:14:03,120
+just do this and write like a mini
+
+1865
+01:13:59,719 --> 01:14:04,889
+automatic differentiation and for I I
+
+1866
+01:14:03,120 --> 01:14:06,120
+I'm actually the one writing the song
+
+1867
+01:14:04,889 --> 01:14:07,170
+yourselves thinking of XI we're having
+
+1868
+01:14:06,120 --> 01:14:09,780
+something like that in there but I
+
+1869
+01:14:07,170 --> 01:14:11,250
+decided not to but it's not that bad
+
+1870
+01:14:09,780 --> 01:14:12,870
+it's something you could do and it's
+
+1871
+01:14:11,250 --> 01:14:14,880
+something that you shouldn't think about
+
+1872
+01:14:12,870 --> 01:14:16,800
+ten circles magic it's just doing some
+
+1873
+01:14:14,880 --> 01:14:18,300
+simple math underneath the hood but it's
+
+1874
+01:14:16,800 --> 01:14:19,070
+nicely implemented so you don't have to
+
+1875
+01:14:18,300 --> 01:14:22,440
+worry about it
+
+1876
+01:14:19,070 --> 01:14:24,480
+so practical suggestions I think we've
+
+1877
+01:14:22,440 --> 01:14:26,370
+touched on many of these already I think
+
+1878
+01:14:24,480 --> 01:14:27,989
+the key thing is that when you're
+
+1879
+01:14:26,370 --> 01:14:29,610
+getting used to tensor flow it helps to
+
+1880
+01:14:27,989 --> 01:14:31,949
+think about it as sort of a numpy
+
+1881
+01:14:29,610 --> 01:14:35,040
+wrapper try doing things like writing
+
+1882
+01:14:31,949 --> 01:14:38,489
+functions and numpy convert the numpy
+
+1883
+01:14:35,040 --> 01:14:39,929
+areas to tensors print things out things
+
+1884
+01:14:38,489 --> 01:14:42,330
+that will trip you up tensor flow is
+
+1885
+01:14:39,929 --> 01:14:45,389
+fastidious about things like shapes and
+
+1886
+01:14:42,330 --> 01:14:47,760
+types so you will get things like in 32
+
+1887
+01:14:45,389 --> 01:14:49,739
+given where float 32 is expected simple
+
+1888
+01:14:47,760 --> 01:14:51,480
+things like that just it's not serious
+
+1889
+01:14:49,739 --> 01:14:53,550
+just figure out what tensorflow is
+
+1890
+01:14:51,480 --> 01:14:56,639
+asking for what it's expecting and it'll
+
+1891
+01:14:53,550 --> 01:14:59,040
+work out one thing that won't trip you
+
+1892
+01:14:56,639 --> 01:15:01,320
+up is that some operations that are very
+
+1893
+01:14:59,040 --> 01:15:03,780
+natural in numpy are not directly
+
+1894
+01:15:01,320 --> 01:15:06,179
+supported in tensor flow so numpy you
+
+1895
+01:15:03,780 --> 01:15:07,920
+can do nice things like index into it
+
+1896
+01:15:06,179 --> 01:15:09,989
+multi-dimensional area with another
+
+1897
+01:15:07,920 --> 01:15:11,820
+multi-dimensional array and if you're
+
+1898
+01:15:09,989 --> 01:15:12,090
+going to implement softmax in the vector
+
+1899
+01:15:11,820 --> 01:15:14,520
+eyes
+
+1900
+01:15:12,090 --> 01:15:16,920
+version in numpy there's a very natural
+
+1901
+01:15:14,520 --> 01:15:18,270
+way to do this and some of you might
+
+1902
+01:15:16,920 --> 01:15:20,130
+have even used it in the last term work
+
+1903
+01:15:18,270 --> 01:15:22,110
+that natural implementation will
+
+1904
+01:15:20,130 --> 01:15:23,580
+actually work out in tensor flow there's
+
+1905
+01:15:22,110 --> 01:15:25,170
+like open github issues and people
+
+1906
+01:15:23,580 --> 01:15:27,630
+complaining so I think they'll fix it
+
+1907
+01:15:25,170 --> 01:15:29,100
+but you'll have to be smart so a lot of
+
+1908
+01:15:27,630 --> 01:15:32,430
+beginning with tensor flow is about
+
+1909
+01:15:29,100 --> 01:15:34,110
+knowing how to start from the numpy
+
+1910
+01:15:32,430 --> 01:15:36,180
+version and then distort it to work
+
+1911
+01:15:34,110 --> 01:15:37,920
+within the tensor flow API and we'll
+
+1912
+01:15:36,180 --> 01:15:39,360
+give you some exercises that'll make you
+
+1913
+01:15:37,920 --> 01:15:41,300
+work through this process and kind of
+
+1914
+01:15:39,360 --> 01:15:44,490
+internalize it
+
+1915
+01:15:41,300 --> 01:15:46,350
+the other thing again is interactive
+
+1916
+01:15:44,490 --> 01:15:50,010
+interactive session is your friend use
+
+1917
+01:15:46,350 --> 01:15:52,740
+ipython debug things the tensor flow API
+
+1918
+01:15:50,010 --> 01:15:55,680
+is a little dense at time so it helps to
+
+1919
+01:15:52,740 --> 01:15:57,510
+know what you're looking for so try
+
+1920
+01:15:55,680 --> 01:15:59,970
+writing a version in numpy do a
+
+1921
+01:15:57,510 --> 01:16:03,060
+translation one at a time use tools
+
+1922
+01:15:59,970 --> 01:16:04,590
+other people have already built to help
+
+1923
+01:16:03,060 --> 01:16:06,600
+you just look at it and Stack Overflow
+
+1924
+01:16:04,590 --> 01:16:08,010
+or something so kind of doing the
+
+1925
+01:16:06,600 --> 01:16:11,160
+translation is easier than trying to
+
+1926
+01:16:08,010 --> 01:16:13,170
+write it from scratch another thing
+
+1927
+01:16:11,160 --> 01:16:15,420
+which we didn't touch on in this lecture
+
+1928
+01:16:13,170 --> 01:16:17,160
+tall is tensor board so one of the
+
+1929
+01:16:15,420 --> 01:16:19,230
+really nice things about tensor flow is
+
+1930
+01:16:17,160 --> 01:16:21,510
+it gives you kind of a visualization
+
+1931
+01:16:19,230 --> 01:16:23,700
+toolkit to look at models you've created
+
+1932
+01:16:21,510 --> 01:16:25,920
+and to look at the learning process as
+
+1933
+01:16:23,700 --> 01:16:27,660
+it's happening now we're not going to
+
+1934
+01:16:25,920 --> 01:16:30,090
+use that much in the class the main
+
+1935
+01:16:27,660 --> 01:16:32,730
+reason is that tensor board is kind of
+
+1936
+01:16:30,090 --> 01:16:34,170
+built to run on your localhost if you
+
+1937
+01:16:32,730 --> 01:16:35,790
+want to use it running on a remote
+
+1938
+01:16:34,170 --> 01:16:37,830
+server you need to do things like SSH
+
+1939
+01:16:35,790 --> 01:16:39,690
+port forwarding which gets a little
+
+1940
+01:16:37,830 --> 01:16:41,970
+hairy and we didn't really want to make
+
+1941
+01:16:39,690 --> 01:16:43,230
+you deal with it it's a nice tool if
+
+1942
+01:16:41,970 --> 01:16:45,120
+you're gonna do your projects you might
+
+1943
+01:16:43,230 --> 01:16:46,650
+look at it if you're having trouble but
+
+1944
+01:16:45,120 --> 01:16:48,660
+you don't need to do it for anything
+
+1945
+01:16:46,650 --> 01:16:49,770
+that you'll use in this class but we
+
+1946
+01:16:48,660 --> 01:16:54,030
+encourage you to play with it on your
+
+1947
+01:16:49,770 --> 01:16:55,920
+own time so kind of the most important
+
+1948
+01:16:54,030 --> 01:16:58,170
+question the last minute is work can you
+
+1949
+01:16:55,920 --> 01:16:59,460
+use tensor flow at Stanford and the
+
+1950
+01:16:58,170 --> 01:17:01,530
+answer I think for most of you is just
+
+1951
+01:16:59,460 --> 01:17:03,660
+go on corn it's up on corn now so you
+
+1952
+01:17:01,530 --> 01:17:05,580
+should be able to log in to corn load up
+
+1953
+01:17:03,660 --> 01:17:08,130
+the tensor flow module and run the
+
+1954
+01:17:05,580 --> 01:17:10,890
+computation and for the homework we
+
+1955
+01:17:08,130 --> 01:17:12,360
+don't need you to use a GPU you should
+
+1956
+01:17:10,890 --> 01:17:14,970
+be able to run all the homework on the
+
+1957
+01:17:12,360 --> 01:17:16,860
+CPU corn implementation if you do have
+
+1958
+01:17:14,970 --> 01:17:18,570
+access to a Stanford GPU clustered
+
+1959
+01:17:16,860 --> 01:17:20,430
+something like Sherlock or Xtreme
+
+1960
+01:17:18,570 --> 01:17:21,879
+feel free to use it like it'll make life
+
+1961
+01:17:20,430 --> 01:17:24,579
+faster but
+
+1962
+01:17:21,879 --> 01:17:26,889
+the homework should he's made to be
+
+1963
+01:17:24,579 --> 01:17:27,699
+runnable on a cpu implementation and you
+
+1964
+01:17:26,889 --> 01:17:30,280
+should be fine
+
+1965
+01:17:27,699 --> 01:17:34,809
+if you want to do things like experiment
+
+1966
+01:17:30,280 --> 01:17:36,820
+with with AWS and GPUs will have a
+
+1967
+01:17:34,809 --> 01:17:38,649
+special we'll have a special session
+
+1968
+01:17:36,820 --> 01:17:40,840
+Xiao Jing one of the keys is going to
+
+1969
+01:17:38,649 --> 01:17:42,459
+host the session discussing telling you
+
+1970
+01:17:40,840 --> 01:17:44,649
+how to get up on a table yes and we have
+
+1971
+01:17:42,459 --> 01:17:47,039
+a machine image that will make it easier
+
+1972
+01:17:44,649 --> 01:17:51,070
+to easy for you start running tensorflow
+
+1973
+01:17:47,039 --> 01:17:53,109
+so go to his session on Sunday and as a
+
+1974
+01:17:51,070 --> 01:17:55,119
+final thing here is a little hint for
+
+1975
+01:17:53,109 --> 01:17:57,809
+the homework so in the homework you'll
+
+1976
+01:17:55,119 --> 01:18:02,289
+have to define embedding matrices and
+
+1977
+01:17:57,809 --> 01:18:04,449
+these are some it's your just some
+
+1978
+01:18:02,289 --> 01:18:06,369
+functions that you might find useful so
+
+1979
+01:18:04,449 --> 01:18:07,659
+just take a look at the slides if you're
+
+1980
+01:18:06,369 --> 01:18:09,519
+stuck on the homework and with that I
+
+1981
+01:18:07,659 --> 01:18:30,899
+think we're done are there any last
+
+1982
+01:18:09,519 --> 01:18:32,889
+questions yes that's a good question
+
+1983
+01:18:30,899 --> 01:18:36,789
+easiest way just remove it from the
+
+1984
+01:18:32,889 --> 01:18:39,760
+graph I think there is a way to set a
+
+1985
+01:18:36,789 --> 01:18:41,260
+variable to be non learned I'm not sure
+
+1986
+01:18:39,760 --> 01:18:43,599
+about the API version but I think you
+
+1987
+01:18:41,260 --> 01:18:45,899
+can do this in practice ifs employees
+
+1988
+01:18:43,599 --> 01:18:48,639
+just comment out that part of the code
+
+1989
+01:18:45,899 --> 01:18:50,530
+but the question is how do you ask
+
+1990
+01:18:48,639 --> 01:18:53,349
+certain parts of the computation graph
+
+1991
+01:18:50,530 --> 01:18:54,459
+not to be optimized and I am reasonably
+
+1992
+01:18:53,349 --> 01:18:56,729
+certain there's a way to do this but I
+
+1993
+01:18:54,459 --> 01:18:59,729
+don't know off the top of my head
+
+1994
+01:18:56,729 --> 01:18:59,729
+question
+
+1995
+01:19:01,330 --> 01:19:07,800
+honey does tension to handle the pointy
+
+1996
+01:19:04,420 --> 01:19:09,730
+bits good question so if you have a
+
+1997
+01:19:07,800 --> 01:19:12,460
+non-differentiable loss function like ER
+
+1998
+01:19:09,730 --> 01:19:13,900
+lu does tensorflow handle it and yes it
+
+1999
+01:19:12,460 --> 01:19:15,880
+does underneath the hood it handles it
+
+2000
+01:19:13,900 --> 01:19:17,410
+by ignoring it it turns out that you
+
+2001
+01:19:15,880 --> 01:19:19,570
+almost never hit the point of it so you
+
+2002
+01:19:17,410 --> 01:19:22,030
+can just pretend it's all hunky-dory and
+
+2003
+01:19:19,570 --> 01:19:23,980
+it works out basically all the time and
+
+2004
+01:19:22,030 --> 01:19:25,390
+on the pointy bits you just pick one of
+
+2005
+01:19:23,980 --> 01:19:27,850
+the sides to kind of pick your
+
+2006
+01:19:25,390 --> 01:19:29,680
+derivative and it the convergence proves
+
+2007
+01:19:27,850 --> 01:19:31,810
+like for those of you are interested
+
+2008
+01:19:29,680 --> 01:19:33,280
+Steve Boyd's class talks about this in
+
+2009
+01:19:31,810 --> 01:19:35,320
+convex optimization there's like sub
+
+2010
+01:19:33,280 --> 01:19:36,940
+gradient convergence theorem so things
+
+2011
+01:19:35,320 --> 01:19:38,950
+all work out on the pointy bits in
+
+2012
+01:19:36,940 --> 01:19:43,300
+practice you just pretend it's out there
+
+2013
+01:19:38,950 --> 01:19:46,020
+and it's fine all right cool well thank
+
+2014
+01:19:43,300 --> 01:19:46,020
+you for listening everybody
+
