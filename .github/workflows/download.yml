@@ -18,16 +18,30 @@ jobs:
       id: videos
       run: |
         cd ..
-        mkdir -p ~/you_get
-        cd ~/you_get/
+        mkdir you_get
+        ls 
+        echo "=========================="
         pip3 install you-get
-        export PATH="$PATH:/home/runner/.local/bin:/home/runner/tensorflow-doc-zh/you_get"
-        you-get -o ~/you_get/ 'https://youtu.be/GZBIPwdGtkk?list=PLBkISg6QfSX9HL6us70IBs9slFciFFa4W'
-    
-    - name: Save output as artifacts
-      uses: actions/upload-artifact@v2
-      if: success()
-      with:
-        name: download_videos
-        path: ~/you_get/
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/you_get"
+        you-get -o ./you_get/ 'https://www.youtube.com/watch?v=L8Y2_Cq2X5s&index=7&list=PLmImxx8Char9Ig0ZHSyTqGsdhb9weEGam'
+        
+        ls
+        echo '============================================='
+        cd you_get
+        ls
+        echo '=========================================='
+        
+        cd ../
+        mkdir tensorflow-doc-zh/source/assets/videos/tensorflow
+        cp -r you_get/. tensorflow-doc-zh/source/assets/videos/tensorflow
+        cd tensorflow-doc-zh/
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        cd source/assets/videos/
+        git add -A
+        git status 
+        git commit -m "Add some videos"
+        ls
+        git push origin master
 
