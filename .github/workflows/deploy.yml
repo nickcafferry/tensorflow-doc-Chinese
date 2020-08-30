@@ -1,4 +1,4 @@
-name: Build up document
+name: deployment
 
 on:
   push:
