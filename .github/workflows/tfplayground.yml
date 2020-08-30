@@ -1,4 +1,4 @@
-name: tfplayground
+name: move some videos
 
 on:
   push:
@@ -16,15 +16,16 @@ jobs:
 
     - name: Clone pre repositories
       run: |
-        cd ..
-        git clone https://github.com/tensorflow/playground ~/tfplay
-        cd ~/tfplay
-        npm i
-        npm run build
-        
-    - name: Deploy to GitHub pages
-      uses: JamesIves/github-pages-deploy-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: th-pages
-        FOLDER: ~/tfplay
+        ls
+        echo '------------------------------'
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        mkdir /tensorflow-doc-zh/videos 
+        cp -r tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath/. tensorflow-doc-zh/videos/
+        cd ./tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath/
+        ls
+        echo '============================================'
+        git rm -rf *
+        git commit -m "remove some videos"
+        git push origin master
