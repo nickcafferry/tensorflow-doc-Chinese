@@ -51,7 +51,7 @@ html_sidebars = {
    'using/windows': ['windowssidebar.html', 'searchbox.html'],
 }
 html_additional_pages = {
-    'playground': 'assets/playground_gh_pages/index.html',
+    'playground': 'playground.html',
 }
 
 import tensorflow
