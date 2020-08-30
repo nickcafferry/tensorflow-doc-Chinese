@@ -21,9 +21,9 @@ jobs:
         git config --global user.email "ucecwme@ucl.ac.uk"
         git config --global user.name "nickcafferry"
         git init
-        mkdir tensorflow-doc-zh/videos 
-        cp -r tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath/. tensorflow-doc-zh/videos/
-        cd ./tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath/
+        mkdir videos 
+        cp -r source/assets/videos/ImperialCollegeMath/. videos/
+        cd source/assets/videos/ImperialCollegeMath/
         ls
         echo '============================================'
         git rm -rf *
