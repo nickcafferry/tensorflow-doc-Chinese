@@ -27,5 +27,6 @@ jobs:
         ls
         echo '============================================'
         git rm -rf *
+        cd ../../../../
         git commit -m "remove some videos"
         git push origin master
