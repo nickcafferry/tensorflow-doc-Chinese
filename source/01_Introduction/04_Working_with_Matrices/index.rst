@@ -198,7 +198,7 @@ Python和Colab的初级知识
 .. raw:: html
 
     <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
-        <source src="../../_static/Intro5.mp4" type="video/mp4">
+        <source src="../../_static/videos/Intro2ML/TFIntro5.mp4" type="video/mp4">
     </video>
 
 
