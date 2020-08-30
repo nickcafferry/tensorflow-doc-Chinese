@@ -50,5 +50,8 @@ html_sidebars = {
    '**': ['globaltoc.html', 'sourcelink.html', 'searchbox.html'],
    'using/windows': ['windowssidebar.html', 'searchbox.html'],
 }
+html_additional_pages = {
+    'playground': 'assets/playground_gh_pages/index.html',
+}
 
 import tensorflow
