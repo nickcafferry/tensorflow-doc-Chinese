@@ -64,6 +64,6 @@ Colab如何将训练麻瓜?
 
 .. raw:: html
 
-    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <video poster="../../_static/images/GCC.png" width="690" height="663" controls="controls">
         <source src="../../_static/videos/1stModel(IntroML)/IntroML3.mp4" type="video/mp4">
     </video>
