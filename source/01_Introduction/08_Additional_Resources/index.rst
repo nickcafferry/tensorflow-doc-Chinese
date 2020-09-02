@@ -5,8 +5,15 @@
  -  `TensorFlow Github源代码 <https://github.com/tensorflow/tensorflow>`_
  -  `TensorFlow 学习介绍 <https://www.tensorflow.org/tutorials/>`_
  -  `Udacity 深度学习课程 <https://www.udacity.com/course/deep-learning--ud730>`_
- -  `TensorFlow 操场 <http://playground.tensorflow.org/>`_
+ -  `TensorFlow playground <http://playground.tensorflow.org/>`_
 
+.. raw:: html
+
+    <div class="slideshow">
+
+            <iframe style="border: none; width: 100%; height: 300px" name="embedded_tensorflow_anywhere" src="../../_static/playground_gh_pages/index.html"></iframe>
+
+        </div>
  
 
 Github学习指导和例子
