@@ -11,7 +11,7 @@
 
     <div class="slideshow">
 
-            <iframe style="border: none; width: 100%; height: 300px" name="embedded_tensorflow_anywhere" src="../../_static/playground_gh_pages/index.html"></iframe>
+            <iframe style="border: none; width:100%; height:663px" name="embedded_tensorflow_anywhere" src="../../_static/playground_gh_pages/index.html"></iframe>
 
         </div>
  
@@ -64,6 +64,6 @@ Colab如何将训练麻瓜?
 
 .. raw:: html
 
-    <video poster="../../_static/images/GCC.png" width="690" height="663" controls="controls">
+    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
         <source src="../../_static/videos/1stModel(IntroML)/IntroML3.mp4" type="video/mp4">
     </video>
