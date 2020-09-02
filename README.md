@@ -1,4 +1,4 @@
-![deployment](https://github.com/nickcafferry/tensorflow-doc-zh/workflows/deployment/badge.svg)
+![deployment](https://github.com/nickcafferry/tensorflow-doc-zh/workflows/deploy/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/tensorflow-ml/badge/?version=latest)](https://tensorflow-ml.readthedocs.io/zh/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
 [![Python version](https://img.shields.io/badge/python-3.7,%203.8-brightgreen.svg)](https://www.python.org/)
