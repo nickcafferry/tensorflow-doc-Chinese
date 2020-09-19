@@ -17,6 +17,7 @@ before_install:
   - pip3 install coverage
   - pip3 install codecov
   - pip3 install -U tox-travis
+  - pip3 install tensorflow
 install:
   - |
     python3 setup.py build
