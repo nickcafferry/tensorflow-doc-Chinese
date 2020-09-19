@@ -32,9 +32,8 @@ jobs:
         unzip ErrorHandling.zip
         git add -A
         git rm -f ErrorHandling.zip
+        git commit -m "Add some photos "
   
         cd ../../../../
-        git status 
-        git commit -m "Add some photos "
         ls
         git push origin master
