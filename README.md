@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/nickcafferry/tensorflow-doc-Chinese.svg?branch=master)](https://travis-ci.com/nickcafferry/tensorflow-doc-Chinese)
+[![codecov](https://codecov.io/gh/nickcafferry/tensorflow-doc-Chinese/branch/master/graph/badge.svg)](https://codecov.io/gh/nickcafferry/tensorflow-doc-Chinese)
 ![deployment](https://github.com/nickcafferry/tensorflow-doc-zh/workflows/deploy/badge.svg)
 [![Documentation Status](https://readthedocs.org/projects/tensorflow-ml/badge/?version=latest)](https://tensorflow-ml.readthedocs.io/zh/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
