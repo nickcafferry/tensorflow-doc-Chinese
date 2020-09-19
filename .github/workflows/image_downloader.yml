@@ -23,17 +23,13 @@ jobs:
         git init
         cd ./source/assets/images/
         mkdir tensorflow_cookbook
-        cd tensorflow_cookbook
-        
+        cd tensorflow_cookbook/
         ls
         echo '============================================'
-        
         wget -O ErrorHandling.zip https://onlineconvertfree.com/upload/converter/190920/IotJ9B9/TensorFlow_Machine_Learning_Cookbook.zip
         unzip ErrorHandling.zip
         git add -A
-        git rm -f ErrorHandling.zip
         git commit -m "Add some photos "
-  
         cd ../../../../
         ls
         git push origin master
