@@ -1,0 +1,62 @@
+name: download videos
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_docs_and_deploy:
+    runs-on: ubuntu-latest
+    name: download
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    
+    - name: Install You-get
+      id: videos
+      run: |
+        cd ..
+        mkdir you_get
+        ls 
+        echo "=========================="
+        pip3 install you-get
+        export PATH="$PATH:/home/runner/.local/bin:/home/runner/you_get"
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=1'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=2'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=3'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=4'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=5'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=6'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=7'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=8'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=9'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=10'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=11'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=12'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=13'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=14'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=15'
+        you-get -o ./you_get/ 'https://www.bilibili.com/video/BV1pg4y1i7T9?p=16'
+           
+        ls
+        echo '============================================='
+        cd you_get
+        ls
+        echo '=========================================='
+        
+        cd ../
+
+        cp -r you_get/. tensorflow-doc-zh/source/assets/videos/ImperialCollegeMath
+        cd tensorflow-doc-zh/
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        cd source/assets/videos/
+        git add -A
+        git status 
+        git commit -m "Add some videos"
+        ls
+        git push origin master
+

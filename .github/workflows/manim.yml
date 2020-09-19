@@ -1,0 +1,26 @@
+name: videos making
+
+on: [push, pull_request]
+
+jobs:
+  test-cmver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Test Community version
+        uses: ./
+        id: renderer
+        with:
+          source_file: test/perf_scenes.py
+          scene_names: "Perf1"
+          args: "--low_quality"
+          fonts_dir: test/fonts/
+          manim_repo: "https://github.com/ManimCommunity/manim"
+          community_ver: true
+      - name: Save output as artifacts
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: Videos_cmver
+          path: ${{ steps.renderer.outputs.video_path }}
+

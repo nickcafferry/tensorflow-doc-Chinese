@@ -1,0 +1,35 @@
+name: images downloader
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build_docs_and_deploy:
+    runs-on: ubuntu-latest
+    name: build up document and deploy
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Clone pre repositories
+      run: |
+        ls
+        echo '------------------------------'
+        git config --global user.email "ucecwme@ucl.ac.uk"
+        git config --global user.name "nickcafferry"
+        git init
+        cd ./source/assets/images/
+        mkdir tensorflow_cookbook
+        cd tensorflow_cookbook/
+        ls
+        echo '============================================'
+        wget -O ErrorHandling.zip https://onlineconvertfree.com/upload/converter/190920/IotJ9B9/TensorFlow_Machine_Learning_Cookbook.zip
+        unzip ErrorHandling.zip
+        git add -A
+        git commit -m "Add some photos "
+        cd ../../../../
+        ls
+        git push origin master
