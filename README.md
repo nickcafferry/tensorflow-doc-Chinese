@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/nickcafferry/tensorflow-doc-Chinese.svg?branch=master)](https://travis-ci.com/nickcafferry/tensorflow-doc-Chinese)
 [![codecov](https://codecov.io/gh/nickcafferry/tensorflow-doc-Chinese/branch/master/graph/badge.svg)](https://codecov.io/gh/nickcafferry/tensorflow-doc-Chinese)
 ![deployment](https://github.com/nickcafferry/tensorflow-doc-zh/workflows/deploy/badge.svg)
-[![Documentation Status](https://readthedocs.org/projects/tensorflow-ml/badge/?version=latest)](https://tensorflow-ml.readthedocs.io/zh/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/tensorflow-doc-chinese/badge/?version=latest)](https://tensorflow-doc-chinese.readthedocs.io/zh_CN/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
 [![TensorFlow](https://img.shields.io/badge/tensorflow-2.2-brightgreen.svg)](https://github.com/tensorflow/tensorflow)
 [![Huawei Cloud](https://img.shields.io/badge/platform-huawei%20cloud-blue)](https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fconsole.huaweicloud.com%2Fconsole%2F%3Flocale%3Dzh-cn#/login)
