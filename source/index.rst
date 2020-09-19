@@ -149,7 +149,7 @@ TensorFlow (i.e., TF)::
 
 .. _label12:
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 5
    :caption: TF Cookbook
    
    bookindex
