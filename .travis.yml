@@ -1,13 +1,35 @@
-dist: trusty
 language: python
-addons:
-  apt:
-    update: true
+sudo: required
+
 python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
   - "3.8"
-# command to install dependencies
+  
+before_install:
+  - sudo apt-get update -qq
+  
+before_install:
+  - pip3 install you-get
+  - pip3 install requests
+  - pip3 install coverage
+  - pip3 install codecov
+  - pip3 install -U tox-travis
 install:
-  - "pip install -r requirements.txt"
-# command to run tests
+  - |
+    python3 setup.py build
+    python3 setup.py sdist
+    python3 setup.py bdist
+    python3 setup.py bdist_egg
+    python3 setup.py install
+    
 script:
-  - python test_script.py
+ - ls
+ - coverage debug sys
+ - coverage run source/conf.py
+ - codecov
+ - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
