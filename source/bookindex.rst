@@ -5,7 +5,7 @@
    :maxdepth: 5
    :caption:
    
-   bookcoverindex
+   images/bookcoverindex
    
 
 第一章
