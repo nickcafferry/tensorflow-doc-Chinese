@@ -3,7 +3,6 @@
 
 .. toctree::
    :maxdepth: 5
-   :caption:
    
    images/bookcoverindex
    
