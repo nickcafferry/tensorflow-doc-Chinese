@@ -26,10 +26,13 @@ jobs:
         cd tensorflow_cookbook/
         git rm -f *
         git commit -m "remove all the pics"
-        cd ../../../../
+        cd /home/runner/work/tensorflow-doc-Chinese/tensorflow-doc-Chinese/
         git push origin master
         
-        cd ./source/assets/images/tensorflow_cookbook/
+        
+        cd source/assets/images/
+        mkdir book_images
+        cd book_images/
         ls
         echo '============================================'
         wget -O ErrorHandling.zip https://onlineconvertfree.com/upload/converter/220920/VCdm1ug/TensorFlow_Machine_Learning_Cookbook.tiff
