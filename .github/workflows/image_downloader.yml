@@ -24,8 +24,10 @@ jobs:
         cd ./source/assets/images/
         
         cd tensorflow_cookbook/
-        git rm -f *
+        git rm -rf *
         git commit -m "remove all the pics"
+        echo "----------------------------------"
+        echo "print the current work directory:"
         cd /home/runner/work/tensorflow-doc-Chinese/tensorflow-doc-Chinese/
         git push origin master
         
