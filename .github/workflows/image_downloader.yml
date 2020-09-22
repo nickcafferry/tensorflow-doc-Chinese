@@ -28,7 +28,8 @@ jobs:
         git commit -m "remove all the pics"
         echo "----------------------------------"
         echo "print the current work directory:"
-        cd /home/runner/work/tensorflow-doc-Chinese/tensorflow-doc-Chinese/
+        ls
+        cd /home/runner/work/tensorflow-doc-Chinese/tensorflow-doc-Chinese/.git/
         git push origin master
         
         
