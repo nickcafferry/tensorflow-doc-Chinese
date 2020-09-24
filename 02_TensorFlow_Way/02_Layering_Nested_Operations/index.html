@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>准备 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="矩阵转置" href="../../03_Linear_Regression/index.html" />
+    <link rel="prev" title="计算图中操作" href="../01_Operations_as_a_Computational_Graph/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">计算图</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#id2">分层嵌套操作</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">准备</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">计算图</a> &raquo;</li>
+        
+      <li>准备</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/02_TensorFlow_Way/02_Layering_Nested_Operations/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>既然我们说到了多层操作，我们会介绍如何将不同的可以传播数据的层连接起来。</p>
+<div class="section" id="id1">
+<h1>准备<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>这里，我们会介绍如何以最佳的方式连接不同的层，包括用户自定义的层。我们所采用的数据是小型随机图像的一些
+代表。因为最好理解的方式是将这些放到简单的例子中，以及我们如何运用内置的层去完成计算。我们会用一个小型的
+移动窗口来捕捉2维图片，然后通过一个用户自定义的操作层来输出数据。</p>
+<p>在这一节中，我们会看到计算图可能会变得很大，然后很难观察。为了解决这一难题，我们引入命名操作和创建作用域的方法。</p>
+digraph foo {
+&quot;bar&quot; -&gt; &quot;baz&quot; -&gt; &quot;quux&quot;;
+}
+<dl class="py function">
+<dt id="enumerate">
+<code class="sig-name descname">enumerate</code><span class="sig-paren">(</span><em class="sig-param">sequence</em><span class="optional">[</span>, <em class="sig-param">start=0</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#enumerate" title="Permalink to this definition">¶</a></dt>
+<dd><p>返回一个迭代对象,递归式处理字典结构的索引或是其它类似序列内容</p>
+</dd></dl>
+
+<video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <source src="../../_static/videos/Intro2ML/TFIntro1.mp4" type="video/mp4">
+</video></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../03_Linear_Regression/index.html" class="btn btn-neutral float-right" title="矩阵转置" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../01_Operations_as_a_Computational_Graph/index.html" class="btn btn-neutral float-left" title="计算图中操作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

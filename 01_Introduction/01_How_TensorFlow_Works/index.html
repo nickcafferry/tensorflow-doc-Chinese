@@ -1,0 +1,874 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>引言 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="计算图" href="../02_Creating_and_Using_Tensors/index.html" />
+    <link rel="prev" title="TensorFlow如何工作" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">TensorFlow如何工作</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">引言</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">TensorFlow是如何运行的</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">通用TensorFlow算法概览</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">导入或产生数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">转换和规范化数据</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">设置算法参数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">变量和占位符的初始化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">定义模型结构</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">声明损失函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">模型的初始化和训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">模型的评估(可选)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">预测新结果(可选)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">总结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">你知道吗？</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">TensorFlow如何工作</a> &raquo;</li>
+        
+      <li>引言</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/01_Introduction/01_How_TensorFlow_Works/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>引言<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Google在2015年11月完成了对TensorFlow的开源。自从那之后，<a class="reference external" href="https://github.com/tensorflow/tensorflow">TensorFlow</a>
+已经是Github上机器学习starred最多的仓库。</p>
+<p>为什么选择TensorFlow ? TensorFlow的受欢迎程度归因于很多方面，但是主要是因为它的计算图概念，自动微分和TensorFlow的
+Python API 的架构。这些都使得程序员用TensorFlow来解决实际问题更加便捷。</p>
+<p>Google的TensorFlow引擎有一个解决问题的独特方式。这种独特的方式使得解决机器学习问题非常有效。下面，我们会介绍TensorFlow
+如何运行的基本步骤。</p>
+</div>
+<div class="section" id="id2">
+<h1>TensorFlow是如何运行的<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>在一开始的时候, TensorFlow中的计算可能看起来毫无必要的复杂. 但其实其中是有原因的: 也正因为TensorFlow处理计算的方式，发展
+更为复杂的计算也就相对来说更为简单。这一节呢，会带领你领略一个TensorFlow算法通常工作的方式.</p>
+<p>现在呢，TensorFlow已经被所有的主流操作系统(Windows, Linux 和 Mac)所支持。通过这本书呢，我们只关心TensorFlow的Python库
+这本书呢，会用到 <a class="reference external" href="https://www.python.org">Python 3.x</a> 和 <a class="reference external" href="https://www.tensorflow.org">Tensorflow 0.12 +</a> (我们这里会用
+Python 3.7 和 TensorFlow 1.8 版本)。虽然说TensorFlow可以在CPU上运行，但是它在GPU(Graphic Processing Unit)运行得更快。
+英伟达(Nvidia) Compute Capability 3.0+的显卡现在也支持TensorFlow。如果你想要在GPU上运行，你需要下载并安装 <a class="reference external" href="https://developer.nvidia.com/cuda-downloads">Nvidia Cuda Toolkit</a>。 有些章节可能还依赖安装Scipy, Numpy和Scikit-learn。你可以通过下载下面的requirements.txt, 然后运行下面的命令，
+来满足这些条件。</p>
+<p>下载 <code class="xref download docutils literal notranslate"><span class="pre">requirements.txt</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ pip install -r requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>通用TensorFlow算法概览<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>这里呢，我们会简单介绍一下TensorFlow算法的工作流程。大多数机器学习算法都遵循此流程。</p>
+<div class="section" id="id4">
+<h2>导入或产生数据<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>我们所有的机器学习算法都取决于数据。在这本书中我们要么自己产生数据，要么使用外部数据源。有时候呢，因为我们想要知道算法所
+塑造的模型是否能产生期望的结果，所以有时候依赖产生的数据更好一点(因为它有参考的对象)。其他的时候呢，我们需要获取公众数据，
+方法我们会在这章的第八部分提到。</p>
+</div>
+<div class="section" id="id5">
+<h2>转换和规范化数据<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>有时候，数据并不是TensorFlow所能处理的正确维度。在我们使用之前，我们必须将数据进行转换。大多数算法期待的是正则化数据，
+我们在这里也会用到。TensorFlow有一些内置函数可以帮助你实现数据正则化。比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 低版本TensorFlow的用法</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">batch_norm_with_global_normalization</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="c1"># TensorFlow 2.2的用法</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">batch_normalization</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.nn.batch_normalization用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.nn.batch_normalization"></span><p>Batch normalization.</p>
+<p>Normalizes a tensor by <cite>mean</cite> and <cite>variance</cite>, and applies (optionally) a
+<cite>scale</cite> \(gamma\) to it, as well as an <cite>offset</cite> \(beta\):</p>
+<p>\(frac{gamma(x-mu)}{sigma}+beta\)</p>
+<p><cite>mean</cite>, <cite>variance</cite>, <cite>offset</cite> and <cite>scale</cite> are all expected to be of one of two
+shapes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>In all generality, they can have the same number of dimensions as the
+input <cite>x</cite>, with identical sizes as <cite>x</cite> for the dimensions that are not
+normalized over (the 'depth' dimension(s)), and dimension 1 for the
+others which are being normalized over.
+<cite>mean</cite> and <cite>variance</cite> in this case would typically be the outputs of
+<cite>tf.nn.moments(..., keepdims=True)</cite> during training, or running averages
+thereof during inference.</p></li>
+<li><p>In the common case where the 'depth' dimension is the last dimension in
+the input tensor <cite>x</cite>, they may be one dimensional tensors of the same
+size as the 'depth' dimension.
+This is the case for example for the common <cite>[batch, depth]</cite> layout of
+fully-connected layers, and <cite>[batch, height, width, depth]</cite> for
+convolutions.
+<cite>mean</cite> and <cite>variance</cite> in this case would typically be the outputs of
+<cite>tf.nn.moments(..., keepdims=False)</cite> during training, or running averages
+thereof during inference.</p></li>
+</ul>
+</div></blockquote>
+<p>See equation 11 in Algorithm 2 of source:
+[Batch Normalization: Accelerating Deep Network Training by
+Reducing Internal Covariate Shift; S. Ioffe, C. Szegedy]
+(<a class="reference external" href="http://arxiv.org/abs/1502.03167">http://arxiv.org/abs/1502.03167</a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">param x</dt>
+<dd class="field-odd"><p>Input <cite>Tensor</cite> of arbitrary dimensionality.</p>
+</dd>
+<dt class="field-even">param mean</dt>
+<dd class="field-even"><p>A mean <cite>Tensor</cite>.</p>
+</dd>
+<dt class="field-odd">param variance</dt>
+<dd class="field-odd"><p>A variance <cite>Tensor</cite>.</p>
+</dd>
+<dt class="field-even">param offset</dt>
+<dd class="field-even"><p>An offset <cite>Tensor</cite>, often denoted \(beta\) in equations, or
+None. If present, will be added to the normalized tensor.</p>
+</dd>
+<dt class="field-odd">param scale</dt>
+<dd class="field-odd"><p>A scale <cite>Tensor</cite>, often denoted \(gamma\) in equations, or
+<cite>None</cite>. If present, the scale is applied to the normalized tensor.</p>
+</dd>
+<dt class="field-even">param variance_epsilon</dt>
+<dd class="field-even"><p>A small float number to avoid dividing by 0.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for this operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>the normalized, scaled, offset tensor.</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<p>Batch Normalization - Accelerating Deep Network Training by Reducing
+Internal Covariate Shift:</p>
+<blockquote>
+<div><p>[Ioffe et al., 2015](<a class="reference external" href="http://arxiv.org/abs/1502.03167">http://arxiv.org/abs/1502.03167</a>)
+([pdf](<a class="reference external" href="http://proceedings.mlr.press/v37/ioffe15.pdf">http://proceedings.mlr.press/v37/ioffe15.pdf</a>))</p>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h2>设置算法参数<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>我们使用的算法通常会有一些参数是需要我们一直保持不变的。例如，迭代次数，学习速率，或者其他的设定的参数。为了方便读者或
+用户很便捷找到它们，通常将它们放在一起初始化是个很好的典范。比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>变量和占位符的初始化<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>TensorFlow是需要我们告诉它，哪些是可以改变的，哪些是不可以改变的。在损失函数最小化的优化过程中，TensorFlow会改变一些变量。
+为了实现这些，我们需要通过占位符(placeholders)来传入数据。变量和占位符的大小和类型都是需要我们进行初始化的，这样呢，TensorFlow
+就会知道应该怎么优化。例如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">input_size</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_input</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">])</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.constant用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.constant"></span><p>Creates a constant tensor from a tensor-like object.</p>
+<p>Note: All eager <cite>tf.Tensor</cite> values are immutable (in contrast to
+<cite>tf.Variable</cite>). There is nothing especially _constant_ about the value
+returned from <cite>tf.constant</cite>. This function it is not fundamentally different
+from <cite>tf.convert_to_tensor</cite>. The name <cite>tf.constant</cite> comes from the symbolic
+APIs (like <cite>tf.data</cite> or keras functional models) where the <cite>value</cite> is embeded
+in a <cite>Const</cite> node in the <cite>tf.Graph</cite>. <cite>tf.constant</cite> is useful for asserting
+that the value can be embedded that way.</p>
+<p>If the argument <cite>dtype</cite> is not specified, then the type is inferred from
+the type of <cite>value</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Constant 1-D Tensor from a python list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(6,), dtype=int32,</span>
+<span class="go">    numpy=array([1, 2, 3, 4, 5, 6], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or a numpy array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int64, numpy=</span>
+<span class="go">  array([[1, 2, 3],</span>
+<span class="go">         [4, 5, 6]])&gt;</span>
+</pre></div>
+</div>
+<p>If <cite>dtype</cite> is specified the resulting tensor values are cast to the requested
+<cite>dtype</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(6,), dtype=float64,</span>
+<span class="go">    numpy=array([1., 2., 3., 4., 5., 6.])&gt;</span>
+</pre></div>
+</div>
+<p>If <cite>shape</cite> is set, the <cite>value</cite> is reshaped to match. Scalars are expanded to
+fill the <cite>shape</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">  &lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">  array([[0, 0, 0],</span>
+<span class="go">         [0, 0, 0]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">  array([[1, 2, 3],</span>
+<span class="go">         [4, 5, 6]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p><cite>tf.constant</cite> has no effect if an eager Tensor is passed as the <cite>value</cite>, it
+even transmits gradients:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="go">array([2.], dtype=float32)</span>
+</pre></div>
+</div>
+<p>But, since <cite>tf.constant</cite> embeds the value in the <cite>tf.Graph</cite> this fails for
+symbolic tensors:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">NotImplementedError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+<p><cite>tf.constant</cite> will _always_ create CPU (host) tensors. In order to create
+tensors on other devices, use <cite>tf.identity</cite>. (If the <cite>value</cite> is an eager
+Tensor, however, the tensor will be returned unmodified as mentioned above.)</p>
+<p>Related Ops:</p>
+<ul>
+<li><p><cite>tf.convert_to_tensor</cite> is similar but:
+* It has no <cite>shape</cite> argument.
+* Symbolic tensors are allowed to pass through.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><cite>tf.fill</cite>: differs in a few ways:
+*   <cite>tf.constant</cite> supports arbitrary constants, not just uniform scalar</p>
+<blockquote>
+<div><p>Tensors like <cite>tf.fill</cite>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><cite>tf.fill</cite> creates an Op in the graph that is expanded at runtime, so it
+can efficiently represent large tensors.</p></li>
+<li><p>Since <cite>tf.fill</cite> does not embed the value, it can produce dynamically
+sized outputs.</p></li>
+</ul>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>A constant value (or list) of output type <cite>dtype</cite>.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the elements of the resulting tensor.</p>
+</dd>
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>Optional dimensions of resulting tensor.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>Optional name for the tensor.</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A Constant Tensor.</p>
+</dd>
+<dt class="field-even">raises TypeError</dt>
+<dd class="field-even"><p>if shape is incorrectly specified or unsupported.</p>
+</dd>
+<dt class="field-odd">raises ValueError</dt>
+<dd class="field-odd"><p>if called on a symbolic tensor.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.float32用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.float32"></span><p>Represents the type of the elements in a <cite>Tensor</cite>.</p>
+<p>The following <cite>DType</cite> objects are defined:</p>
+<ul class="simple">
+<li><p><cite>tf.float16</cite>: 16-bit half-precision floating-point.</p></li>
+<li><p><cite>tf.float32</cite>: 32-bit single-precision floating-point.</p></li>
+<li><p><cite>tf.float64</cite>: 64-bit double-precision floating-point.</p></li>
+<li><p><cite>tf.bfloat16</cite>: 16-bit truncated floating-point.</p></li>
+<li><p><cite>tf.complex64</cite>: 64-bit single-precision complex.</p></li>
+<li><p><cite>tf.complex128</cite>: 128-bit double-precision complex.</p></li>
+<li><p><cite>tf.int8</cite>: 8-bit signed integer.</p></li>
+<li><p><cite>tf.uint8</cite>: 8-bit unsigned integer.</p></li>
+<li><p><cite>tf.uint16</cite>: 16-bit unsigned integer.</p></li>
+<li><p><cite>tf.uint32</cite>: 32-bit unsigned integer.</p></li>
+<li><p><cite>tf.uint64</cite>: 64-bit unsigned integer.</p></li>
+<li><p><cite>tf.int16</cite>: 16-bit signed integer.</p></li>
+<li><p><cite>tf.int32</cite>: 32-bit signed integer.</p></li>
+<li><p><cite>tf.int64</cite>: 64-bit signed integer.</p></li>
+<li><p><cite>tf.bool</cite>: Boolean.</p></li>
+<li><p><cite>tf.string</cite>: String.</p></li>
+<li><p><cite>tf.qint8</cite>: Quantized 8-bit signed integer.</p></li>
+<li><p><cite>tf.quint8</cite>: Quantized 8-bit unsigned integer.</p></li>
+<li><p><cite>tf.qint16</cite>: Quantized 16-bit signed integer.</p></li>
+<li><p><cite>tf.quint16</cite>: Quantized 16-bit unsigned integer.</p></li>
+<li><p><cite>tf.qint32</cite>: Quantized 32-bit signed integer.</p></li>
+<li><p><cite>tf.resource</cite>: Handle to a mutable resource.</p></li>
+<li><p><cite>tf.variant</cite>: Values of arbitrary types.</p></li>
+</ul>
+<p>The <cite>tf.as_dtype()</cite> function converts numpy types and string type
+names to a <cite>DType</cite> object.</p>
+</div>
+<div class="section" id="id8">
+<h2>定义模型结构<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>在我们有了数据，并且将我们的变量和占位符进行初始化之后，我们就可以定义模型了。这个，我们可以通过建立一个计算图来完成。
+我们告诉TensorFlow哪些操作需要在变量和占位符上完成，以实现我们的模型预测。关于计算图，我们会在第二章详细描述。
+在这里我们，我们先看一下定义模型结构的例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 低版本TensorFlow的用法</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">x_input</span><span class="p">,</span> <span class="n">weight_matrix</span><span class="p">),</span> <span class="n">b_matrix</span><span class="p">)</span>
+<span class="c1"># TensorFlow2.2的用法</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x_input</span><span class="p">,</span> <span class="n">weight_matrix</span><span class="p">),</span> <span class="n">b_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.add用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.add"></span><p>Returns x + y element-wise.</p>
+<p><em>NOTE</em>: <cite>math.add</cite> supports broadcasting. <cite>AddN</cite> does not. More about broadcasting
+[here](<a class="reference external" href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</a>)</p>
+<dl class="field-list simple">
+<dt class="field-odd">param x</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>bfloat16</cite>, <cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>uint8</cite>, <cite>int8</cite>, <cite>int16</cite>, <cite>int32</cite>, <cite>int64</cite>, <cite>complex64</cite>, <cite>complex128</cite>, <cite>string</cite>.</p>
+</dd>
+<dt class="field-even">param y</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite>. Must have the same type as <cite>x</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite>. Has the same type as <cite>x</cite>.</p>
+</dd>
+</dl>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.multiply用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.multiply"></span><p>Returns an element-wise x * y.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(4,), dtype=..., numpy=array([ 1,  4,  9, 16], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p>Since <cite>tf.math.multiply</cite> will convert its arguments to <cite>Tensor`s, you can also
+pass in non-`Tensor</cite> arguments:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=42&gt;</span>
+</pre></div>
+</div>
+<p>If <cite>x.shape</cite> is not thes same as <cite>y.shape</cite>, they will be broadcast to a
+compatible shape. (More about broadcasting
+[here](<a class="reference external" href="https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">https://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</a>).)</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>  <span class="c1"># Taking advantage of operator overriding</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=</span>
+<span class="go">array([[1., 1.],</span>
+<span class="go">     [1., 1.]], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param x</dt>
+<dd class="field-odd"><p>A Tensor. Must be one of the following types: <cite>bfloat16</cite>,
+<cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>uint8</cite>, <cite>int8</cite>, <cite>uint16</cite>,
+<cite>int16</cite>, <cite>int32</cite>, <cite>int64</cite>, <cite>complex64</cite>, <cite>complex128</cite>.</p>
+</dd>
+<dt class="field-even">param y</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite>. Must have the same type as <cite>x</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+</dl>
+<p>Returns:</p>
+<p>A <cite>Tensor</cite>.  Has the same type as <cite>x</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">raises * InvalidArgumentError</dt>
+<dd class="field-odd"><p>When <cite>x</cite> and <cite>y</cite> have incomptatible shapes or types.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id9">
+<h2>声明损失函数<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>在定义模型之后，我们就可以用TensorFlow算出结果了。这时候，我们需要定义一个损失函数。损失函数是非常重要的，因为它告诉我们
+我们的预测离真实值差多少。在第二章第五节中，我们会对损失函数的类型进行详细的讲解。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; loss = tf.reduce_mean(tf.square(y_actual – y_pred))
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.reduce_mean用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.reduce_mean"></span><p>Computes the mean of elements across dimensions of a tensor.</p>
+<p>Reduces <cite>input_tensor</cite> along the dimensions given in <cite>axis</cite> by computing the
+mean of elements across the dimensions in <cite>axis</cite>.
+Unless <cite>keepdims</cite> is true, the rank of the tensor is reduced by 1 for each
+entry in <cite>axis</cite>. If <cite>keepdims</cite> is true, the reduced dimensions are retained
+with length 1.</p>
+<p>If <cite>axis</cite> is None, all dimensions are reduced, and a tensor with a single
+element is returned.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=float32, numpy=1.5&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2,), dtype=float32, numpy=array([1.5, 1.5], dtype=float32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2,), dtype=float32, numpy=array([1., 2.], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param input_tensor</dt>
+<dd class="field-odd"><p>The tensor to reduce. Should have numeric type.</p>
+</dd>
+<dt class="field-even">param axis</dt>
+<dd class="field-even"><p>The dimensions to reduce. If <cite>None</cite> (the default), reduces all
+dimensions. Must be in the range <cite>[-rank(input_tensor),
+rank(input_tensor))</cite>.</p>
+</dd>
+<dt class="field-odd">param keepdims</dt>
+<dd class="field-odd"><p>If true, retains reduced dimensions with length 1.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>The reduced tensor.</p>
+</dd>
+</dl>
+<p>&#64;compatibility(numpy)
+Equivalent to np.mean</p>
+<p>Please note that <cite>np.mean</cite> has a <cite>dtype</cite> parameter that could be used to
+specify the output type. By default this is <cite>dtype=float64</cite>. On the other
+hand, <cite>tf.reduce_mean</cite> has an aggressive type inference from <cite>input_tensor</cite>,
+for example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=float32, numpy=0.5&gt;</span>
+</pre></div>
+</div>
+<p>&#64;end_compatibility</p>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.square用法介绍</p>
+</div>
+<span class="target" id="module-tensorflow.square"></span><p>Computes square of x element-wise.</p>
+<p>I.e., \(y = x * x = x^2\).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">square</span><span class="p">([</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(3,), dtype=float32, numpy=array([4., 0., 9.], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list">
+<dt class="field-odd">param x</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>bfloat16</cite>, <cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>int32</cite>, <cite>int64</cite>, <cite>complex64</cite>, <cite>complex128</cite>.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Has the same type as <cite>x</cite>.</p>
+<p>If <cite>x</cite> is a <cite>SparseTensor</cite>, returns
+<cite>SparseTensor(x.indices, tf.math.square(x.values, ...), x.dense_shape)</cite></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id10">
+<h2>模型的初始化和训练<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>既然我们现在设置好了一切，我们可以创建一个实例或者计算图，然后通过占位符将数据传入，并通过训练让TensorFlow改变变量
+来更好预测我们的训练数据。这里举出一个初始化计算图的一种方式：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">(</span><span class="n">graph</span><span class="o">=</span><span class="n">graph</span><span class="p">)</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="go">         ...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="go">         ...</span>
+</pre></div>
+</div>
+<p>需要注意的是，我们也可以这样初始化计算图：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; session = tf.Session(graph=graph)
+&gt;&gt;&gt; session.run(…)
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>模型的评估(可选)<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p>一旦我们建立并训练模型，我们应当通过查看它的新数据的预测情况，来评估这个模型。</p>
+</div>
+<div class="section" id="id12">
+<h2>预测新结果(可选)<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<p>同样，知道如何预测性新的，不可知的数据也很重要。幸运的是，如果我们完成模型的训练之后，我们可以通过训练后的模型
+来做这些事情。</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>总结<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<p>在TensorFlow中，我们在程序进行训练并改变变量来预测变量之前，必须先建立数据，变量，占位符以及模型。 TensorFlow通过
+计算图来完成这些。我们告诉它去最小化损失函数，而TensorFlow要通过改变变量来实现这一目标。TensorFlow知道如何改变变量，
+这是因为它一直在关注模型的计算，然后自动计算每个变量的梯度。也正因为如此，我们也就知道改变它以及尝试不同数据的类型又
+多么简单。</p>
+<p>总的来说，算法在TensorFlow中会被设计成为循环的算法。我们把这个循环建成计算图，然后通过占位符来输入数据，计算计算图的
+输出结果，用损失函数来比较输出结果，通过自动反向传播来改变模型中的变量，最后不断重复整个过程，直到达到设定的标准。</p>
+</div>
+<div class="section" id="id14">
+<h1>你知道吗？<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h1>
+<p>在学习机器学习知识时，你将遇到很多不同的术语，例如人工智能、机器学习、神经网络和深度学习。这些术语到底是什么意思，它们之间有何关系？</p>
+<p>下面我们来简单介绍下这些术语:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> - 人工智能：一种计算机科学分支，旨在让计算机达到人类的智慧。实现这一目标有很多方式，包括机器学习和深度学习。
+
+-  机器学习：一系列相关技术，用于训练计算机执行特定的任务。
+
+-  神经网络：一种机器学习结构，灵感来自人类大脑的神经元网络。神经网络是深度学习的基本概念。
+
+-  深度学习：机器学习的一个分支，利用多层神经网络实现目标。通常“机器学习”和“深度学习”可以相互指代。
+</pre></div>
+</div>
+<p>机器学习和深度学习也有很多分支和特殊技术。一个典型示例是监督式学习和非监督式学习。</p>
+<p>简而言之，在监督式学习过程中，你知道你希望计算机学习什么，而在非监督式学习过程中，你会让计算机自己去判断要学习什么。监督式学习是最常见的机器学习类型，并且将是这门课程的侧重点。</p>
+<video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <source src="../../_static/videos/Intro2ML/TFIntro2.mp4" type="video/mp4">
+</video></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../02_Creating_and_Using_Tensors/index.html" class="btn btn-neutral float-right" title="计算图" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../index.html" class="btn btn-neutral float-left" title="TensorFlow如何工作" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

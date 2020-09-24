@@ -1,0 +1,1323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.gradients_util &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.gradients_util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.gradients_util</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Implements the graph generation for computation of gradients.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">xrange</span><span class="p">,</span> <span class="nb">zip</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">attr_value_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">backprop</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">backprop_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">constant_op</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">function</span> <span class="k">as</span> <span class="n">framework_function</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework.func_graph</span> <span class="k">import</span> <span class="n">FuncGraph</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_state</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">default_gradient</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">functional_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">resource_variable_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops.unconnected_gradients</span> <span class="k">import</span> <span class="n">UnconnectedGradients</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="k">import</span> <span class="n">tf_logging</span> <span class="k">as</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">compat</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">object_identity</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.compat</span> <span class="k">import</span> <span class="n">collections_abc</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">def</span> <span class="nf">_MarkReachedOps</span><span class="p">(</span><span class="n">from_ops</span><span class="p">,</span> <span class="n">reached_ops</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Mark all ops reached from &quot;from_ops&quot;.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    from_ops: list of Operations.</span>
+<span class="sd">    reached_ops: set of Operations.</span>
+<span class="sd">    func_graphs: list of FuncGraphs. This method will traverse through</span>
+<span class="sd">      these functions if they capture from_ops or any reachable ops.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
+  <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">from_ops</span><span class="p">)</span>
+  <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">op</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">reached_ops</span><span class="p">:</span>
+      <span class="n">reached_ops</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">_IsBackpropagatable</span><span class="p">(</span><span class="n">output</span><span class="p">):</span>
+          <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_Consumers</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_PendingCount</span><span class="p">(</span><span class="n">to_ops</span><span class="p">,</span> <span class="n">from_ops</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">,</span>
+                  <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initialize the pending count for ops between two lists of Operations.</span>
+
+<span class="sd">  &#39;pending_count[op]&#39; indicates the number of backprop inputs</span>
+<span class="sd">  to this operation.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    to_ops: list of Operations.</span>
+<span class="sd">    from_ops: list of Operations.</span>
+<span class="sd">    colocate_gradients_with_ops: Python bool.  See docstring of gradients().</span>
+<span class="sd">    func_graphs: list of FuncGraphs. This method will traverse through</span>
+<span class="sd">      these functions if they capture from_ops or any reachable ops. This is</span>
+<span class="sd">      useful if to_ops occur in a function and from_ops are in an outer function</span>
+<span class="sd">      or graph.</span>
+<span class="sd">    xs_set: ObjectIdentitySet of Tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple containing: (1) the subset of to_ops reachable from from_ops by a</span>
+<span class="sd">    path of zero or more backpropagatable tensors, (2) a mapping from operation</span>
+<span class="sd">    to the number of backprop inputs to that op, and (3) a ControlFlowState</span>
+<span class="sd">    object which is not None if the ops between from_ops and to_ops contain</span>
+<span class="sd">    control flow loops.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Mark reachable ops from from_ops.</span>
+  <span class="n">reached_ops</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="n">_MarkReachedOps</span><span class="p">(</span><span class="n">from_ops</span><span class="p">,</span> <span class="n">reached_ops</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">)</span>
+  <span class="c1"># X in reached_ops iff X is reachable from from_ops by a path of zero or more</span>
+  <span class="c1"># backpropagatable tensors.</span>
+
+  <span class="n">reachable_to_ops</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">to_ops</span> <span class="k">if</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">reached_ops</span><span class="p">)</span>
+
+  <span class="c1"># Mark between ops.</span>
+  <span class="n">between_ops</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="n">between_op_list</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
+  <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">to_ops</span><span class="p">)</span>
+  <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="c1"># We are interested in this op.</span>
+    <span class="k">if</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">reached_ops</span><span class="p">:</span>
+      <span class="n">between_ops</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+      <span class="n">between_op_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+      <span class="c1"># Clear the boolean so we won&#39;t add the inputs again.</span>
+      <span class="n">reached_ops</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">_NonEagerInputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inp</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+  <span class="c1"># X in between_ops iff X is on a path of zero or more backpropagatable tensors</span>
+  <span class="c1"># between from_ops and to_ops</span>
+
+  <span class="c1"># &#39;loop_state&#39; is None if there are no while loops.</span>
+  <span class="n">loop_state</span> <span class="o">=</span> <span class="n">control_flow_state</span><span class="o">.</span><span class="n">MaybeCreateControlFlowState</span><span class="p">(</span>
+      <span class="n">between_op_list</span><span class="p">,</span> <span class="n">between_ops</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">)</span>
+
+  <span class="c1"># Initialize pending count for between ops.</span>
+  <span class="n">pending_count</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">between_op_list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_NonEagerInputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">op</span> <span class="ow">in</span> <span class="n">between_ops</span><span class="p">:</span>
+        <span class="n">pending_count</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+  <span class="k">return</span> <span class="n">reachable_to_ops</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">loop_state</span>
+
+
+<span class="k">def</span> <span class="nf">_AsList</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="k">else</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_DefaultGradYs</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">,</span>
+                   <span class="n">ys</span><span class="p">,</span>
+                   <span class="n">colocate_gradients_with_ops</span><span class="p">,</span>
+                   <span class="n">gradient_uid</span><span class="o">=</span><span class="s2">&quot;__unsupported__&quot;</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Fill in default values for grad_ys.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    grad_ys: List of gradients, can contain None.</span>
+<span class="sd">    ys: List of tensors.</span>
+<span class="sd">    colocate_gradients_with_ops: If True, try colocating gradients with</span>
+<span class="sd">      the corresponding op.</span>
+<span class="sd">    gradient_uid: A unique identifier within the graph indicating</span>
+<span class="sd">      which invocation of gradients is being executed. Used to cluster</span>
+<span class="sd">      ops for compilation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of gradients to use, without None.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If sizes of gradients and inputs don&#39;t match</span>
+<span class="sd">    TypeError: If type of any gradient is not valid for its input.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Passed </span><span class="si">%d</span><span class="s2"> grad_ys for </span><span class="si">%d</span><span class="s2"> ys&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)))</span>
+  <span class="n">grad_ys</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_n_to_tensor_or_indexed_slices</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_y&quot;</span><span class="p">)</span>
+  <span class="n">new_grad_ys</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">grad_y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">grad_ys</span><span class="p">)):</span>
+    <span class="k">with</span> <span class="n">_maybe_colocate_with</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">grad_y</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_complex</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+              <span class="s2">&quot;Gradients of complex tensors must set grad_ys (y.dtype = </span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span>
+              <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">new_grad_ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">array_ops</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span>
+                <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y</span><span class="p">),</span>
+                <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_ys_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)))</span>
+        <span class="k">continue</span>
+      <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_floating</span> <span class="ow">or</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_floating</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+              <span class="s2">&quot;Gradient type </span><span class="si">%s</span><span class="s2"> generated for real or &quot;</span>
+              <span class="s2">&quot;integer-valued tensor </span><span class="si">%s</span><span class="s2"> with type </span><span class="si">%s</span><span class="s2"> must be &quot;</span>
+              <span class="s2">&quot;real or integer&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+                                   <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">elif</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_complex</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">is_complex</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+              <span class="s2">&quot;Gradient type </span><span class="si">%s</span><span class="s2"> generated for complex-valued &quot;</span>
+              <span class="s2">&quot;tensor </span><span class="si">%s</span><span class="s2"> with type </span><span class="si">%s</span><span class="s2"> must be real&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span>
+                  <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">elif</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+              <span class="s2">&quot;Gradient type </span><span class="si">%s</span><span class="s2"> generated for variant &quot;</span>
+              <span class="s2">&quot;tensor </span><span class="si">%s</span><span class="s2"> with type </span><span class="si">%s</span><span class="s2"> must be variant&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span>
+                  <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">elif</span> <span class="n">y</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span><span class="p">:</span>
+        <span class="c1"># We assume y is the handle of a ResourceVariable. The gradient of a</span>
+        <span class="c1"># ResourceVariable should be a numeric value, not another resource.</span>
+        <span class="k">if</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input gradient </span><span class="si">%s</span><span class="s2"> for resource tensor </span><span class="si">%s</span><span class="s2"> should not &quot;</span>
+                          <span class="s2">&quot;be a resource&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">grad_y</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="s2">&quot;Tensor </span><span class="si">%s</span><span class="s2"> with type </span><span class="si">%s</span><span class="s2"> must be numeric &quot;</span>
+            <span class="s2">&quot;to obtain a default gradient&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="c1"># Create a grad_y tensor in the name scope of the gradient.</span>
+      <span class="c1"># Required for TensorArrays to identify which gradient call a</span>
+      <span class="c1"># grad_y value is coming from.</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grad_y</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">):</span>
+        <span class="n">new_grad_ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">(</span>
+                <span class="n">indices</span><span class="o">=</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span>
+                    <span class="n">grad_y</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_ys_</span><span class="si">%d</span><span class="s2">_indices&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+                         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grad_y</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span>
+                         <span class="n">grad_y</span><span class="o">.</span><span class="n">indices</span><span class="p">),</span>
+                <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span>
+                    <span class="n">grad_y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_ys_</span><span class="si">%d</span><span class="s2">_values&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span>
+                        <span class="n">grad_y</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span> <span class="n">grad_y</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+                <span class="n">dense_shape</span><span class="o">=</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span>
+                    <span class="n">grad_y</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_ys_</span><span class="si">%d</span><span class="s2">_shape&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+                             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">grad_y</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">else</span>
+                             <span class="n">grad_y</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_grad_ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">grad_y</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;grad_ys_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">new_grad_ys</span>
+
+
+<span class="k">def</span> <span class="nf">_IsBackpropagatable</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">backprop_util</span><span class="o">.</span><span class="n">IsTrainable</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">dtype</span><span class="o">.</span><span class="n">base_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span>
+
+
+<span class="k">def</span> <span class="nf">_VerifyGeneratedGradients</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Verify that gradients are valid in number and type.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    grads: List of generated gradients.</span>
+<span class="sd">    op: Operation for which the gradients where generated.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: if sizes of gradients and inputs don&#39;t match.</span>
+<span class="sd">    TypeError: if type of any gradient is not valid for its input.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># While ops have inputs added to them during the gradient computation, so we</span>
+  <span class="c1"># skip the below check. See while_v2 for details.</span>
+  <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;While&quot;</span> <span class="ow">or</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;StatelessWhile&quot;</span><span class="p">:</span>
+    <span class="k">return</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">grads</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Num gradients </span><span class="si">%d</span><span class="s2"> generated for op </span><span class="si">%s</span><span class="s2"> do not match num &quot;</span>
+                     <span class="s2">&quot;inputs </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grads</span><span class="p">),</span> <span class="n">op</span><span class="o">.</span><span class="n">node_def</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">_StopOps</span><span class="p">(</span><span class="n">from_ops</span><span class="p">,</span> <span class="n">stop_gradient_ops</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;The set of ops that terminate the gradient computation.</span>
+
+<span class="sd">  This computes the frontier of the forward graph *before* which backprop</span>
+<span class="sd">  should stop. Operations in the returned set will not be differentiated.</span>
+<span class="sd">  This set is defined as the subset of `from_ops` containing ops that have</span>
+<span class="sd">  no predecessor in `from_ops`. `pending_count` is the result of</span>
+<span class="sd">  `_PendingCount(xs, from_ops)`. An &#39;op&#39; has predecessors in `from_ops`</span>
+<span class="sd">  iff pending_count[op] &gt; 0.</span>
+
+<span class="sd">  In addition, none of `stop_gradient_ops` will be differentiated.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    from_ops: list of Operations.</span>
+<span class="sd">    stop_gradient_ops: list of Operations never to backprop through.</span>
+<span class="sd">    pending_count: mapping from operation to number of backprop inputs.</span>
+<span class="sd">    xs_set: ObjectIdentitySet of Tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The set of operations.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">stop_ops</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">from_ops</span><span class="p">:</span>
+    <span class="n">is_stop_op</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">_NonEagerInputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">pending_count</span><span class="p">[</span><span class="n">inp</span><span class="o">.</span><span class="n">op</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">is_stop_op</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">is_stop_op</span><span class="p">:</span>
+      <span class="n">stop_ops</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+  <span class="n">stop_ops</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">stop_gradient_ops</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">stop_ops</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">_maybe_colocate_with</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Context to colocate with `op` if `colocate_gradients_with_ops`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">colocate_gradients_with_ops</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">_colocate_with_for_gradient</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">):</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="k">yield</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">yield</span>
+
+
+<span class="k">def</span> <span class="nf">_IsPartitionedCall</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;PartitionedCall&quot;</span> <span class="ow">or</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;StatefulPartitionedCall&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_SymGrad</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">out_grads</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Backprop through a function call node op given its outputs&#39; gradients.&quot;&quot;&quot;</span>
+  <span class="n">f_in</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span> <span class="o">+</span> <span class="n">out_grads</span>
+  <span class="n">f_types</span> <span class="o">=</span> <span class="p">[</span><span class="n">default_gradient</span><span class="o">.</span><span class="n">get_zeros_dtype</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">]</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">NameAttrList</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">_IsPartitionedCall</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span>
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">node_def</span><span class="o">.</span><span class="n">attr</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">node_def</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+  <span class="n">in_grads</span> <span class="o">=</span> <span class="n">functional_ops</span><span class="o">.</span><span class="n">symbolic_gradient</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">f_in</span><span class="p">,</span> <span class="n">Tout</span><span class="o">=</span><span class="n">f_types</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">in_grads</span>
+
+
+<span class="k">def</span> <span class="nf">_MaybeCompile</span><span class="p">(</span><span class="n">scope</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">grad_fn</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compile the calculation in grad_fn if op was marked as compiled.&quot;&quot;&quot;</span>
+  <span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">xla_compile</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;_XlaCompile&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">b</span>
+    <span class="n">xla_separate_compiled_gradients</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span>
+        <span class="s2">&quot;_XlaSeparateCompiledGradients&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">b</span>
+    <span class="n">xla_scope</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="s2">&quot;_XlaScope&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">xla_compile</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;_XlaCompile&quot;</span><span class="p">)</span>
+      <span class="n">xla_separate_compiled_gradients</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span>
+          <span class="s2">&quot;_XlaSeparateCompiledGradients&quot;</span><span class="p">)</span>
+      <span class="n">xla_scope</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;_XlaScope&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">grad_fn</span><span class="p">()</span>  <span class="c1"># Exit early</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">xla_compile</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">grad_fn</span><span class="p">()</span>  <span class="c1"># Exit early</span>
+
+  <span class="c1"># If the gradients are supposed to be compiled separately, we give them a</span>
+  <span class="c1"># _XlaScope name that is based on the name_scope of the gradients.  Otherwise</span>
+  <span class="c1"># they just inherit the existing _XlaScope name, which lets them be merged</span>
+  <span class="c1"># together with the non-gradient computation.</span>
+  <span class="k">if</span> <span class="n">xla_separate_compiled_gradients</span><span class="p">:</span>
+    <span class="n">xla_grad_scope</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_grad_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">xla_scope</span><span class="p">,</span> <span class="n">scope</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">xla_grad_scope</span> <span class="o">=</span> <span class="n">xla_scope</span>
+
+  <span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;_XlaCompile&quot;</span><span class="p">:</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="n">xla_compile</span><span class="p">),</span>
+      <span class="s2">&quot;_XlaScope&quot;</span><span class="p">:</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">xla_grad_scope</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+  <span class="p">}</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">_attr_scope</span><span class="p">(</span><span class="n">attrs</span><span class="p">):</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">return</span> <span class="n">grad_fn</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_RaiseNoGradWrtInitialLoopValError</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">from_ops</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Raises an error if we backprop through a loop var.&quot;&quot;&quot;</span>
+  <span class="c1"># Find the nearest &#39;to_op&#39; reachable from &#39;op&#39; to provide a more helpful error</span>
+  <span class="c1"># message.</span>
+  <span class="n">target_op</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="n">queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">([</span><span class="n">op</span><span class="p">])</span>
+  <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+  <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+    <span class="n">curr_op</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">curr_op</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span> <span class="k">continue</span>
+    <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">curr_op</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">curr_op</span> <span class="ow">in</span> <span class="n">from_ops</span><span class="p">:</span>
+      <span class="n">target_op</span> <span class="o">=</span> <span class="n">curr_op</span>
+      <span class="k">break</span>
+    <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">op</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">_NonEagerInputs</span><span class="p">(</span><span class="n">curr_op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">))</span>
+  <span class="k">assert</span> <span class="n">target_op</span>
+  <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+      <span class="s2">&quot;Cannot compute gradient inside while loop with respect to op &#39;</span><span class="si">%s</span><span class="s2">&#39;. &quot;</span>
+      <span class="s2">&quot;We do not support taking the gradient wrt or through the initial value &quot;</span>
+      <span class="s2">&quot;of a loop variable. Gradients can be computed through loop invariants &quot;</span>
+      <span class="s2">&quot;or wrt the input parameters to the loop body.&quot;</span>
+      <span class="o">%</span> <span class="n">target_op</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_IsFunction</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">FuncGraph</span><span class="p">)</span> <span class="ow">or</span>
+          <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">framework_function</span><span class="o">.</span><span class="n">_FuncGraph</span><span class="p">))</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+
+<span class="k">def</span> <span class="nf">_Captures</span><span class="p">(</span><span class="n">func_graph</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func_graph</span><span class="p">,</span> <span class="n">FuncGraph</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">func_graph</span><span class="o">.</span><span class="n">captures</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">func_graph</span><span class="p">,</span> <span class="n">framework_function</span><span class="o">.</span><span class="n">_FuncGraph</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">return</span> <span class="n">func_graph</span><span class="o">.</span><span class="n">captures</span>
+
+
+<span class="k">def</span> <span class="nf">_MaybeCaptured</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;If t is a captured value placeholder, returns the original captured value.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t: Tensor</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor, potentially from a different Graph/FuncGraph.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">)</span> <span class="ow">and</span>
+      <span class="n">_IsFunction</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span> <span class="ow">and</span> <span class="n">t</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Placeholder&quot;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">input_t</span><span class="p">,</span> <span class="n">placeholder_t</span> <span class="ow">in</span> <span class="n">_Captures</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="n">placeholder_t</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_MaybeCaptured</span><span class="p">(</span><span class="n">input_t</span><span class="p">)</span>
+  <span class="c1"># pylint: enable=protected-access</span>
+  <span class="k">return</span> <span class="n">t</span>
+
+
+<span class="k">def</span> <span class="nf">_NonEagerInputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the inputs of op, crossing closure boundaries where necessary.</span>
+
+<span class="sd">  Does not return any captured EagerTensors, i.e., the number of tensors</span>
+<span class="sd">  returned may be less than than the actual number of inputs.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    op: Operation</span>
+<span class="sd">    xs_set: ObjectIdentitySet of Tensors we are differentiating w.r.t.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of tensors. The tensors may be from multiple Graph/FuncGraphs if op</span>
+<span class="sd">    is in a FuncGraph and has captured inputs.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">_Inputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">)]</span>
+
+
+<span class="c1"># TODO(skyewm): plumbing xs through everywhere is ugly, consider making</span>
+<span class="c1"># _GradientsHelper a class with xs as a member variable.</span>
+<span class="k">def</span> <span class="nf">_Inputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the inputs of op, crossing closure boundaries where necessary.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    op: Operation</span>
+<span class="sd">    xs_set: ObjectIdentitySet of Tensors we are differentiating w.r.t.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of tensors. The tensors may be from multiple Graph/FuncGraphs if op</span>
+<span class="sd">    is in a FuncGraph and has captured inputs.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">_IsFunction</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="p">):</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+      <span class="c1"># If we&#39;re differentiating w.r.t. `t`, do not attempt to traverse through</span>
+      <span class="c1"># it to a captured value. The algorithm needs to &quot;see&quot; `t` in this case,</span>
+      <span class="c1"># even if it&#39;s a function input for a captured value, whereas usually we&#39;d</span>
+      <span class="c1"># like to traverse through these closures as if the captured value was the</span>
+      <span class="c1"># direct input to op.</span>
+      <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xs_set</span><span class="p">:</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">_MaybeCaptured</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+      <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">inputs</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span>
+
+
+<span class="k">def</span> <span class="nf">_Consumers</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the consumers of t, crossing closure boundaries where necessary.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t: Tensor</span>
+<span class="sd">    func_graphs: a list of FuncGraphs that may have captured t.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of tensors. The tensors will be from the current graph and/or</span>
+<span class="sd">    func_graphs.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">consumers</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">consumers</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">func_graphs</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">input_t</span><span class="p">,</span> <span class="n">placeholder</span> <span class="ow">in</span> <span class="n">_Captures</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">input_t</span> <span class="ow">is</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">consumers</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">_Consumers</span><span class="p">(</span><span class="n">placeholder</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">consumers</span>
+
+
+<span class="k">def</span> <span class="nf">_GradientsHelper</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span>
+                     <span class="n">xs</span><span class="p">,</span>
+                     <span class="n">grad_ys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gradients&quot;</span><span class="p">,</span>
+                     <span class="n">colocate_gradients_with_ops</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                     <span class="n">gate_gradients</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                     <span class="n">aggregation_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">stop_gradients</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">unconnected_gradients</span><span class="o">=</span><span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">NONE</span><span class="p">,</span>
+                     <span class="n">src_graph</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Implementation of gradients().&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;tf.gradients is not supported when eager execution &quot;</span>
+                       <span class="s2">&quot;is enabled. Use tf.GradientTape instead.&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">src_graph</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">src_graph</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">unconnected_gradients</span> <span class="o">=</span> <span class="n">UnconnectedGradients</span><span class="p">(</span><span class="n">unconnected_gradients</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;Unknown value for unconnected_gradients: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unconnected_gradients</span><span class="p">)</span>
+
+  <span class="c1"># If src_graph is a _FuncGraph (i.e. a function body), gather it and all</span>
+  <span class="c1"># ancestor graphs. This is necessary for correctly handling captured values.</span>
+  <span class="n">func_graphs</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">curr_graph</span> <span class="o">=</span> <span class="n">src_graph</span>
+  <span class="k">while</span> <span class="n">_IsFunction</span><span class="p">(</span><span class="n">curr_graph</span><span class="p">):</span>
+    <span class="n">func_graphs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_graph</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">curr_graph</span><span class="p">,</span> <span class="n">FuncGraph</span><span class="p">):</span>
+      <span class="n">curr_graph</span> <span class="o">=</span> <span class="n">curr_graph</span><span class="o">.</span><span class="n">outer_graph</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">curr_graph</span><span class="p">,</span> <span class="n">framework_function</span><span class="o">.</span><span class="n">_FuncGraph</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">curr_graph</span> <span class="o">=</span> <span class="n">curr_graph</span><span class="o">.</span><span class="n">_outer_graph</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+  <span class="n">ys</span> <span class="o">=</span> <span class="n">_AsList</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+  <span class="n">xs</span> <span class="o">=</span> <span class="n">_AsList</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+  <span class="n">stop_gradients</span> <span class="o">=</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">stop_gradients</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">_AsList</span><span class="p">(</span><span class="n">stop_gradients</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">grad_ys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">grad_ys</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">grad_ys</span> <span class="o">=</span> <span class="n">_AsList</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span>
+      <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;gradients&quot;</span><span class="p">,</span>
+      <span class="nb">list</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">stop_gradients</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">))</span> <span class="k">as</span> <span class="n">grad_scope</span><span class="p">:</span>
+    <span class="c1"># Get a uid for this call to gradients that can be used to help</span>
+    <span class="c1"># cluster ops for compilation.</span>
+    <span class="n">gradient_uid</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">unique_name</span><span class="p">(</span><span class="s2">&quot;uid&quot;</span><span class="p">)</span>
+    <span class="n">ys</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_n_to_tensor_or_indexed_slices</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">x</span><span class="o">.</span><span class="n">handle</span> <span class="k">if</span> <span class="n">resource_variable_ops</span><span class="o">.</span><span class="n">is_resource_variable</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span>
+    <span class="p">]</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">internal_convert_n_to_tensor_or_indexed_slices</span><span class="p">(</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">as_ref</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">xs_set</span> <span class="o">=</span> <span class="n">object_identity</span><span class="o">.</span><span class="n">ObjectIdentitySet</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">grad_ys</span> <span class="o">=</span> <span class="n">_DefaultGradYs</span><span class="p">(</span><span class="n">grad_ys</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">,</span>
+                             <span class="n">gradient_uid</span><span class="p">)</span>
+
+    <span class="c1"># The approach we take here is as follows: Create a list of all ops in the</span>
+    <span class="c1"># subgraph between the ys and xs.  Visit these ops in reverse order of ids</span>
+    <span class="c1"># to ensure that when we visit an op the gradients w.r.t its outputs have</span>
+    <span class="c1"># been collected.  Then aggregate these gradients if needed, call the op&#39;s</span>
+    <span class="c1"># gradient function, and add the generated gradients to the gradients for</span>
+    <span class="c1"># its input.</span>
+
+    <span class="c1"># Initialize the pending count for ops in the connected subgraph from ys</span>
+    <span class="c1"># to the xs.</span>
+    <span class="n">to_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">op</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">ys</span><span class="p">]</span>
+    <span class="n">from_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">op</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+    <span class="n">stop_gradient_ops</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">op</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">stop_gradients</span><span class="p">]</span>
+    <span class="n">reachable_to_ops</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">loop_state</span> <span class="o">=</span> <span class="n">_PendingCount</span><span class="p">(</span>
+        <span class="n">to_ops</span><span class="p">,</span> <span class="n">from_ops</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">,</span> <span class="n">func_graphs</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">)</span>
+
+    <span class="c1"># Iterate over the collected ops.</span>
+    <span class="c1">#</span>
+    <span class="c1"># grads: op =&gt; list of gradients received on each output endpoint of the</span>
+    <span class="c1"># op.  The gradients for each endpoint are initially collected as a list.</span>
+    <span class="c1"># When it is time to call the op&#39;s gradient function, for each endpoint we</span>
+    <span class="c1"># aggregate the list of received gradients into a Add() Operation if there</span>
+    <span class="c1"># is more than one.</span>
+    <span class="n">grads</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># Add the initial gradients for the ys.</span>
+    <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">grad_y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ys</span><span class="p">,</span> <span class="n">grad_ys</span><span class="p">):</span>
+      <span class="n">_SetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">grad_y</span><span class="p">)</span>
+
+    <span class="c1"># Initialize queue with to_ops.</span>
+    <span class="n">queue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">deque</span><span class="p">()</span>
+    <span class="c1"># Add the ops in &#39;to_ops&#39; into the queue.</span>
+    <span class="n">to_ops_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">to_ops</span><span class="p">:</span>
+      <span class="c1"># &#39;ready&#39; handles the case where one output gradient relies on</span>
+      <span class="c1"># another output&#39;s gradient.</span>
+      <span class="n">ready</span> <span class="o">=</span> <span class="p">(</span><span class="n">pending_count</span><span class="p">[</span><span class="n">op</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">ready</span> <span class="ow">and</span> <span class="n">op</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">to_ops_set</span> <span class="ow">and</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">reachable_to_ops</span><span class="p">:</span>
+        <span class="n">to_ops_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+      <span class="n">loop_exits</span> <span class="o">=</span> <span class="n">loop_state</span><span class="o">.</span><span class="n">ProcessUnusedLoopExits</span><span class="p">(</span><span class="n">pending_count</span><span class="p">,</span> <span class="n">to_ops_set</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">loop_exits</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">backprop_util</span><span class="o">.</span><span class="n">IsTrainable</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+          <span class="n">_SetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">loop_state</span><span class="o">.</span><span class="n">ZerosLikeForExit</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+          <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+
+    <span class="n">stop_ops</span> <span class="o">=</span> <span class="n">_StopOps</span><span class="p">(</span><span class="n">from_ops</span><span class="p">,</span> <span class="n">stop_gradient_ops</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+      <span class="c1"># generate gradient subgraph for op.</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+      <span class="k">with</span> <span class="n">_maybe_colocate_with</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">,</span> <span class="n">colocate_gradients_with_ops</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+          <span class="n">loop_state</span><span class="o">.</span><span class="n">EnterGradWhileContext</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">out_grads</span> <span class="o">=</span> <span class="n">_AggregatedGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">,</span> <span class="n">loop_state</span><span class="p">,</span>
+                                     <span class="n">aggregation_method</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+          <span class="n">loop_state</span><span class="o">.</span><span class="n">ExitGradWhileContext</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">grad_fn</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">func_call</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">is_partitioned_call</span> <span class="o">=</span> <span class="n">_IsPartitionedCall</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+        <span class="c1"># pylint: disable=protected-access</span>
+        <span class="n">is_func_call</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">src_graph</span><span class="o">.</span><span class="n">_is_function</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">type</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_partitioned_call</span><span class="p">)</span>
+        <span class="c1"># pylint: enable=protected-access</span>
+        <span class="n">has_out_grads</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">or</span> <span class="n">g</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">out_grads</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">has_out_grads</span> <span class="ow">and</span> <span class="p">(</span><span class="n">op</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_ops</span><span class="p">):</span>
+          <span class="k">try</span><span class="p">:</span>
+            <span class="n">grad_fn</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_gradient_function</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+          <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">is_func_call</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">is_partitioned_call</span><span class="p">:</span>
+                <span class="n">func_call</span> <span class="o">=</span> <span class="n">src_graph</span><span class="o">.</span><span class="n">_get_function</span><span class="p">(</span>  <span class="c1"># pylint: disable=protected-access</span>
+                    <span class="n">compat</span><span class="o">.</span><span class="n">as_bytes</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;f&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+              <span class="k">else</span><span class="p">:</span>
+                <span class="n">func_call</span> <span class="o">=</span> <span class="n">src_graph</span><span class="o">.</span><span class="n">_get_function</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">type</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+              <span class="c1"># Note that __defun is not set if the graph is</span>
+              <span class="c1"># imported. If it&#39;s set, we prefer to access the original</span>
+              <span class="c1"># defun.</span>
+              <span class="n">func_call</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="s2">&quot;__defun&quot;</span><span class="p">,</span> <span class="n">func_call</span><span class="p">)</span>
+              <span class="n">grad_fn</span> <span class="o">=</span> <span class="n">func_call</span><span class="o">.</span><span class="n">python_grad_func</span>
+            <span class="k">else</span><span class="p">:</span>
+              <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span>
+                  <span class="s2">&quot;No gradient defined for operation &#39;</span><span class="si">%s</span><span class="s2">&#39; (op type: </span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+          <span class="n">loop_state</span><span class="o">.</span><span class="n">EnterGradWhileContext</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># NOTE(skyewm): We don&#39;t support computing gradients wrt a loop variable</span>
+        <span class="c1"># unless it&#39;s within the context of a single iteration (i.e. the</span>
+        <span class="c1"># gradient is wrt to the loop parameter in the body function, not wrt or</span>
+        <span class="c1"># through the initial value). This means if we&#39;re in a while loop</span>
+        <span class="c1"># context, we should never see a switch node from this context.</span>
+        <span class="c1"># pylint: disable=protected-access</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">control_flow_util</span><span class="o">.</span><span class="n">IsSwitch</span><span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">_control_flow_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">_control_flow_context</span><span class="o">.</span><span class="n">IsWhileContext</span><span class="p">()</span> <span class="ow">and</span>
+            <span class="n">op</span><span class="o">.</span><span class="n">_control_flow_context</span> <span class="o">==</span>
+            <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">_get_control_flow_context</span><span class="p">()):</span>
+          <span class="n">_RaiseNoGradWrtInitialLoopValError</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">from_ops</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">)</span>
+        <span class="c1"># pylint: enable=protected-access</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">grad_fn</span> <span class="ow">or</span> <span class="n">is_func_call</span><span class="p">)</span> <span class="ow">and</span> <span class="n">has_out_grads</span><span class="p">:</span>
+          <span class="c1"># NOTE: If _AggregatedGrads didn&#39;t compute a value for the i&#39;th</span>
+          <span class="c1"># output, it means that the cost does not depend on output[i],</span>
+          <span class="c1"># therefore dC/doutput[i] is 0.</span>
+          <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">out_grad</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out_grads</span><span class="p">):</span>
+            <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">out_grad</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="p">(</span><span class="ow">not</span> <span class="n">grad_fn</span> <span class="ow">and</span> <span class="n">is_func_call</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="n">backprop_util</span><span class="o">.</span><span class="n">IsTrainable</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+              <span class="c1"># Only trainable outputs or outputs for a function call that</span>
+              <span class="c1"># will use SymbolicGradient get a zero gradient. Gradient</span>
+              <span class="c1"># functions should ignore the gradient for other outputs.</span>
+              <span class="c1"># TODO(apassos) gradients of resource handles might be an</span>
+              <span class="c1"># issue here because of zeros.</span>
+              <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+                <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">loop_state</span><span class="o">.</span><span class="n">ZerosLikeV1WhileLoop</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+              <span class="k">elif</span> <span class="n">default_gradient</span><span class="o">.</span><span class="n">supports_default_grad</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">i</span><span class="p">]):</span>
+                <span class="c1"># TODO(b/143286622): The supports_default_grad check is needed</span>
+                <span class="c1"># because While op emits non-differentiable resource tensors</span>
+                <span class="c1"># as outputs. Remove this check when that is not the case.</span>
+                <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">control_flow_state</span><span class="o">.</span><span class="n">ZerosLike</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+          <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_grad&quot;</span><span class="p">):</span>
+            <span class="c1"># pylint: disable=protected-access</span>
+            <span class="k">with</span> <span class="n">src_graph</span><span class="o">.</span><span class="n">_original_op</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+              <span class="c1"># pylint: enable=protected-access</span>
+              <span class="k">if</span> <span class="n">grad_fn</span><span class="p">:</span>
+                <span class="c1"># If grad_fn was found, do not use SymbolicGradient even for</span>
+                <span class="c1"># functions.</span>
+                <span class="n">in_grads</span> <span class="o">=</span> <span class="n">_MaybeCompile</span><span class="p">(</span><span class="n">grad_scope</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">func_call</span><span class="p">,</span>
+                                         <span class="k">lambda</span><span class="p">:</span> <span class="n">grad_fn</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="n">out_grads</span><span class="p">))</span>
+              <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># For function call ops, we add a &#39;SymbolicGradient&#39;</span>
+                <span class="c1"># node to the graph to compute gradients.</span>
+                <span class="n">in_grads</span> <span class="o">=</span> <span class="n">_MaybeCompile</span><span class="p">(</span><span class="n">grad_scope</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">func_call</span><span class="p">,</span>
+                                         <span class="k">lambda</span><span class="p">:</span> <span class="n">_SymGrad</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">out_grads</span><span class="p">))</span>
+              <span class="n">in_grads</span> <span class="o">=</span> <span class="n">_AsList</span><span class="p">(</span><span class="n">in_grads</span><span class="p">)</span>
+              <span class="n">_VerifyGeneratedGradients</span><span class="p">(</span><span class="n">in_grads</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+              <span class="k">if</span> <span class="n">gate_gradients</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">in_grads</span>
+                                         <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="kc">None</span><span class="p">):</span>
+                  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">_colocate_with_for_gradient</span><span class="p">(</span>  <span class="c1"># pylint: disable=protected-access</span>
+                      <span class="kc">None</span><span class="p">,</span>
+                      <span class="n">gradient_uid</span><span class="p">,</span>
+                      <span class="n">ignore_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="n">in_grads</span> <span class="o">=</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">tuple</span><span class="p">(</span><span class="n">in_grads</span><span class="p">)</span>
+          <span class="n">_LogOpGradients</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">out_grads</span><span class="p">,</span> <span class="n">in_grads</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="c1"># If no grad_fn is defined or none of out_grads is available,</span>
+          <span class="c1"># just propagate a list of None backwards.</span>
+          <span class="n">in_grads</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">_Inputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">))</span>
+        <span class="c1"># Note: we don&#39;t filter out eager inputs here because the inputs need to</span>
+        <span class="c1"># line up with in_grads.</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">t_in</span><span class="p">,</span> <span class="n">in_grad</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">_Inputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">),</span> <span class="n">in_grads</span><span class="p">)):</span>
+          <span class="k">if</span> <span class="n">in_grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">in_grad</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span>
+                <span class="n">t_in</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span><span class="p">):</span>
+              <span class="k">try</span><span class="p">:</span>
+                <span class="n">in_grad</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">t_in</span><span class="o">.</span><span class="n">get_shape</span><span class="p">())</span>
+              <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Incompatible shapes between op input and calculated &quot;</span>
+                    <span class="s2">&quot;input gradient.  Forward operation: </span><span class="si">%s</span><span class="s2">.  Input index: </span><span class="si">%d</span><span class="s2">. &quot;</span>
+                    <span class="s2">&quot;Original input shape: </span><span class="si">%s</span><span class="s2">.  &quot;</span>
+                    <span class="s2">&quot;Calculated input gradient shape: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                    <span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">t_in</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">in_grad</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_in</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+              <span class="n">_SetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">t_in</span><span class="p">,</span> <span class="n">in_grad</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+          <span class="n">loop_state</span><span class="o">.</span><span class="n">ExitGradWhileContext</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+      <span class="c1"># Update pending count for the inputs of op and enqueue ready ops.</span>
+      <span class="n">_UpdatePendingAndEnqueueReady</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">queue</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">loop_state</span><span class="p">,</span>
+                                    <span class="n">xs_set</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+    <span class="n">loop_state</span><span class="o">.</span><span class="n">PostProcessing</span><span class="p">()</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">_GetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">unconnected_gradients</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_HasAnyNotNoneGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Return true iff op has real gradient.&quot;&quot;&quot;</span>
+  <span class="n">out_grads</span> <span class="o">=</span> <span class="n">_GetGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">out_grad</span> <span class="ow">in</span> <span class="n">out_grads</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">out_grad</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="n">collections_abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">):</span>
+      <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">out_grad</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">_UpdatePendingAndEnqueueReady</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">,</span> <span class="n">queue</span><span class="p">,</span> <span class="n">pending_count</span><span class="p">,</span> <span class="n">loop_state</span><span class="p">,</span>
+                                  <span class="n">xs_set</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Update pending count for the inputs of op and enqueue ready ops.&quot;&quot;&quot;</span>
+  <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_NonEagerInputs</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">xs_set</span><span class="p">):</span>
+    <span class="n">pending_count</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="n">ready</span> <span class="o">=</span> <span class="p">(</span><span class="n">pending_count</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">loop_state</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">ready</span><span class="p">:</span>
+      <span class="n">ready</span> <span class="o">=</span> <span class="n">pending_count</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">control_flow_util</span><span class="o">.</span><span class="n">IsLoopSwitch</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ready</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">control_flow_util</span><span class="o">.</span><span class="n">IsLoopExit</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">):</span>
+        <span class="c1"># if x is an exit without real gradient, defer processing them.</span>
+        <span class="n">grad_state</span> <span class="o">=</span> <span class="n">loop_state</span><span class="o">.</span><span class="n">GetGradState</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">,</span> <span class="n">before</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">grad_state</span><span class="o">.</span><span class="n">deferred_exits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">grad_state</span><span class="o">.</span><span class="n">pending_exits_count</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">grad_state</span><span class="o">.</span><span class="n">pending_exits_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="c1"># We now have all the exits so process them.</span>
+          <span class="n">has_not_none_grad</span> <span class="o">=</span> <span class="kc">False</span>
+          <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">grad_state</span><span class="o">.</span><span class="n">deferred_exits</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">_HasAnyNotNoneGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">):</span>
+              <span class="n">has_not_none_grad</span> <span class="o">=</span> <span class="kc">True</span>
+              <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+              <span class="n">grad_state</span><span class="o">.</span><span class="n">unused_exits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">has_not_none_grad</span><span class="p">:</span>
+            <span class="c1"># For an unused exit, if it has trainable outputs, backprop</span>
+            <span class="c1"># a zero gradient. Otherwise, just ignore it.</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">grad_state</span><span class="o">.</span><span class="n">unused_exits</span><span class="p">:</span>
+              <span class="k">if</span> <span class="n">backprop_util</span><span class="o">.</span><span class="n">IsTrainable</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+                <span class="n">_SetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">loop_state</span><span class="o">.</span><span class="n">ZerosLikeForExit</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+              <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+          <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># All exits are &quot;unused&quot; so use None as gradient.</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">grad_state</span><span class="o">.</span><span class="n">unused_exits</span><span class="p">:</span>
+              <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_SetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">grad</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets gradient &quot;grad&quot; in &quot;grads&quot; for tensor &quot;t&quot;.&quot;&quot;&quot;</span>
+  <span class="n">op</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">op</span>
+  <span class="n">op_grads</span> <span class="o">=</span> <span class="n">grads</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">op_grads</span><span class="p">:</span>
+    <span class="n">op_grads</span> <span class="o">=</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">outputs</span><span class="p">))]</span>
+    <span class="n">grads</span><span class="p">[</span><span class="n">op</span><span class="p">]</span> <span class="o">=</span> <span class="n">op_grads</span>
+  <span class="n">t_grads</span> <span class="o">=</span> <span class="n">op_grads</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">value_index</span><span class="p">]</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_grads</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">t_grads</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">control_flow_util</span><span class="o">.</span><span class="n">IsLoopSwitch</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+    <span class="n">op_grads</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">value_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">grad</span>
+
+
+<span class="k">def</span> <span class="nf">_GetGrad</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">unconnected_gradients</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Gets gradient for tensor &quot;t&quot;.&quot;&quot;&quot;</span>
+  <span class="n">op</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">op</span>
+  <span class="n">op_grads</span> <span class="o">=</span> <span class="n">grads</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">op_grads</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">unconnected_gradients</span> <span class="o">==</span> <span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">ZERO</span><span class="p">:</span>
+      <span class="n">t_dtype</span> <span class="o">=</span> <span class="n">default_gradient</span><span class="o">.</span><span class="n">get_zeros_dtype</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span>
+            <span class="n">resource_variable_ops</span><span class="o">.</span><span class="n">variable_shape</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">t_dtype</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">t_dtype</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">unconnected_gradients</span> <span class="o">==</span> <span class="n">UnconnectedGradients</span><span class="o">.</span><span class="n">NONE</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Unknown value for unconnected_gradients: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">unconnected_gradients</span><span class="p">)</span>
+
+  <span class="n">t_grad</span> <span class="o">=</span> <span class="n">op_grads</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">value_index</span><span class="p">]</span>
+  <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+      <span class="n">t_grad</span><span class="p">,</span> <span class="nb">list</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;gradients list should have been aggregated by now.&quot;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">t_grad</span>
+
+
+<span class="k">def</span> <span class="nf">_GetGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Gets all gradients for op.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">grads</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">grads</span><span class="p">[</span><span class="n">op</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[[]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">outputs</span><span class="p">))]</span>
+
+
+<span class="k">def</span> <span class="nf">_AccumulatorShape</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">unknown_shape</span><span class="p">()</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">get_shape</span><span class="p">())</span>
+  <span class="k">return</span> <span class="n">shape</span>
+
+
+<span class="k">def</span> <span class="nf">_LogOpGradients</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">out_grads</span><span class="p">,</span> <span class="n">in_grads</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Log the in and out grads of an op.&quot;&quot;&quot;</span>
+  <span class="n">logging</span><span class="o">.</span><span class="n">vlog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Gradient for &#39;&quot;</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_FilterGrad</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="n">logging</span><span class="o">.</span><span class="n">vlog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;  in  --&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out_grads</span> <span class="k">if</span> <span class="n">_FilterGrad</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+  <span class="n">logging</span><span class="o">.</span><span class="n">vlog</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;  out --&gt; </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+               <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">in_grads</span> <span class="k">if</span> <span class="n">_FilterGrad</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">_MultiDeviceAddN</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Adds tensors from potentially multiple devices.&quot;&quot;&quot;</span>
+  <span class="c1"># Basic function structure comes from control_flow_ops.group().</span>
+  <span class="c1"># Sort tensors according to their devices.</span>
+  <span class="n">tensors_on_device</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">[])</span>
+  <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="n">tensor_list</span><span class="p">:</span>
+    <span class="n">tensors_on_device</span><span class="p">[</span><span class="n">tensor</span><span class="o">.</span><span class="n">device</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+
+  <span class="c1"># For each device, add the tensors on that device first.</span>
+  <span class="c1"># Then gather the partial sums from multiple devices.</span>
+  <span class="c1"># TODO(sjhwang): Create hierarchical aggregation tree as pbar&#39;s suggestion.</span>
+  <span class="c1"># E.g., aggregate per GPU, then per task, and so on.</span>
+  <span class="n">summands</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="k">def</span> <span class="nf">DeviceKey</span><span class="p">(</span><span class="n">dev</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">dev</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">dev</span>
+
+  <span class="k">for</span> <span class="n">dev</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">tensors_on_device</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">DeviceKey</span><span class="p">):</span>
+    <span class="n">tensors</span> <span class="o">=</span> <span class="n">tensors_on_device</span><span class="p">[</span><span class="n">dev</span><span class="p">]</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">_colocate_with_for_gradient</span><span class="p">(</span>  <span class="c1"># pylint: disable=protected-access</span>
+        <span class="n">tensors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="p">,</span>
+        <span class="n">gradient_uid</span><span class="p">,</span>
+        <span class="n">ignore_existing</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+      <span class="n">summands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">tensors</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">add_n</span><span class="p">(</span><span class="n">summands</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="AggregationMethod"><a class="viewcode-back" href="../../../../index.html#tensorflow.AggregationMethod">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;AggregationMethod&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AggregationMethod</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;A class listing aggregation methods used to combine gradients.</span>
+
+<span class="sd">  Computing partial derivatives can require aggregating gradient</span>
+<span class="sd">  contributions. This class lists the various methods that can</span>
+<span class="sd">  be used to combine gradients in the graph.</span>
+
+<span class="sd">  The following aggregation methods are part of the stable API for</span>
+<span class="sd">  aggregating gradients:</span>
+
+<span class="sd">  *  `ADD_N`: All of the gradient terms are summed as part of one</span>
+<span class="sd">     operation using the &quot;AddN&quot; op (see `tf.add_n`). This</span>
+<span class="sd">     method has the property that all gradients must be ready and</span>
+<span class="sd">     buffered separately in memory before any aggregation is performed.</span>
+<span class="sd">  *  `DEFAULT`: The system-chosen default aggregation method.</span>
+
+<span class="sd">  The following aggregation methods are experimental and may not</span>
+<span class="sd">  be supported in future releases:</span>
+
+<span class="sd">  * `EXPERIMENTAL_TREE`: Gradient terms are summed in pairs using</span>
+<span class="sd">    using the &quot;AddN&quot; op. This method of summing gradients may reduce</span>
+<span class="sd">    performance, but it can improve memory utilization because the</span>
+<span class="sd">    gradients can be released earlier.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">ADD_N</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">DEFAULT</span> <span class="o">=</span> <span class="n">ADD_N</span>
+  <span class="c1"># The following are experimental and may not be supported in future releases.</span>
+  <span class="n">EXPERIMENTAL_TREE</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">EXPERIMENTAL_ACCUMULATE_N</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># An alias for EXPERIMENTAL_ADD_N = 1</span></div>
+
+
+<span class="k">def</span> <span class="nf">_AggregatedGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span>
+                     <span class="n">op</span><span class="p">,</span>
+                     <span class="n">gradient_uid</span><span class="p">,</span>
+                     <span class="n">loop_state</span><span class="p">,</span>
+                     <span class="n">aggregation_method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Get the aggregated gradients for op.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    grads: The map of memoized gradients.</span>
+<span class="sd">    op: The op to get gradients for.</span>
+<span class="sd">    gradient_uid: A unique identifier within the graph indicating</span>
+<span class="sd">      which invocation of gradients is being executed. Used to cluster</span>
+<span class="sd">      ops for compilation.</span>
+<span class="sd">    loop_state: An object for maintaining the state of the while loops in the</span>
+<span class="sd">                graph. It is of type ControlFlowState. None if the graph</span>
+<span class="sd">                contains no while loops.</span>
+<span class="sd">    aggregation_method: Specifies the method used to combine gradient terms.</span>
+<span class="sd">      Accepted values are constants defined in the class `AggregationMethod`.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of gradients, one per each output of `op`. If the gradients</span>
+<span class="sd">      for a particular output is a list, this function aggregates it</span>
+<span class="sd">      before returning.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if the incoming grads are not Tensors or IndexedSlices.</span>
+<span class="sd">    ValueError: if the arguments are invalid.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">aggregation_method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">aggregation_method</span> <span class="o">=</span> <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">DEFAULT</span>
+  <span class="k">if</span> <span class="n">aggregation_method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+      <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">ADD_N</span><span class="p">,</span> <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">EXPERIMENTAL_TREE</span><span class="p">,</span>
+      <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">EXPERIMENTAL_ACCUMULATE_N</span>
+  <span class="p">]:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;Invalid aggregation_method specified </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">aggregation_method</span><span class="p">)</span>
+  <span class="n">out_grads</span> <span class="o">=</span> <span class="n">_GetGrads</span><span class="p">(</span><span class="n">grads</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">out_grad</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">out_grads</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">loop_state</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)):</span>
+        <span class="k">assert</span> <span class="n">control_flow_util</span><span class="o">.</span><span class="n">IsLoopSwitch</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+        <span class="k">continue</span>
+    <span class="c1"># Grads have to be Tensors or IndexedSlices</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="n">collections_abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">out_grad</span>
+        <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">)):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;gradients have to be either all Tensors &quot;</span>
+                      <span class="s2">&quot;or all IndexedSlices&quot;</span><span class="p">)</span>
+    <span class="c1"># Aggregate multiple gradients, and convert [] to None.</span>
+    <span class="k">if</span> <span class="n">out_grad</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out_grad</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">used</span> <span class="o">=</span> <span class="s2">&quot;nop&quot;</span>
+        <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">out_grad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">out_grad</span> <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">tensor_shape</span> <span class="o">=</span> <span class="n">_AccumulatorShape</span><span class="p">(</span><span class="n">out_grad</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">aggregation_method</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">EXPERIMENTAL_TREE</span><span class="p">,</span>
+            <span class="n">AggregationMethod</span><span class="o">.</span><span class="n">EXPERIMENTAL_ACCUMULATE_N</span>
+        <span class="p">]:</span>
+          <span class="c1"># Aggregate all gradients by doing pairwise sums: this may</span>
+          <span class="c1"># reduce performance, but it can improve memory because the</span>
+          <span class="c1"># gradients can be released earlier.</span>
+          <span class="c1">#</span>
+          <span class="c1"># TODO(vrv): Consider replacing this with a version of</span>
+          <span class="c1"># tf.AddN() that eagerly frees its inputs as soon as they are</span>
+          <span class="c1"># ready, so the order of this tree does not become a problem.</span>
+          <span class="n">used</span> <span class="o">=</span> <span class="s2">&quot;tree&quot;</span>
+          <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_gradient_sum&quot;</span><span class="p">):</span>
+            <span class="n">running_sum</span> <span class="o">=</span> <span class="n">out_grad</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">grad</span> <span class="ow">in</span> <span class="n">out_grad</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+              <span class="n">running_sum</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">add_n</span><span class="p">([</span><span class="n">running_sum</span><span class="p">,</span> <span class="n">grad</span><span class="p">])</span>
+            <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">running_sum</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">used</span> <span class="o">=</span> <span class="s2">&quot;add_n&quot;</span>
+          <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_MultiDeviceAddN</span><span class="p">(</span><span class="n">out_grad</span><span class="p">,</span> <span class="n">gradient_uid</span><span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">vlog</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;  _AggregatedGrads </span><span class="si">%d</span><span class="s2"> x </span><span class="si">%s</span><span class="s2"> using </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">out_grad</span><span class="p">),</span>
+                     <span class="n">tensor_shape</span><span class="p">,</span> <span class="n">used</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">backprop</span><span class="o">.</span><span class="n">aggregate_indexed_slices_gradients</span><span class="p">(</span><span class="n">out_grad</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">else</span><span class="p">:</span>  <span class="c1"># not out_grad</span>
+      <span class="c1"># out_grads[i] is [], thus its aggregation is simply None.</span>
+      <span class="n">out_grads</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">out_grads</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

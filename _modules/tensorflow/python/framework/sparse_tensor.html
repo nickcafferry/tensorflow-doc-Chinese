@@ -1,0 +1,821 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.sparse_tensor &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.sparse_tensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.sparse_tensor</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Sparse tensors.&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=g-bad-name</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">pywrap_tensorflow</span>  <span class="c1"># pylint: disable=unused-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">_pywrap_utils</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">tf2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">composite_tensor</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">constant_op</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_like</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_spec</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">type_spec</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_sparse_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># pylint: disable=protected-access</span>
+<span class="n">_TensorLike</span> <span class="o">=</span> <span class="n">tensor_like</span><span class="o">.</span><span class="n">_TensorLike</span>
+<span class="n">_eval_using_default_session</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">_eval_using_default_session</span>
+<span class="n">_override_helper</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">_override_helper</span>
+<span class="c1"># pylint: enable=protected-access</span>
+
+
+<div class="viewcode-block" id="SparseTensor"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensor">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;sparse.SparseTensor&quot;</span><span class="p">,</span> <span class="s2">&quot;SparseTensor&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SparseTensor</span><span class="p">(</span><span class="n">_TensorLike</span><span class="p">,</span> <span class="n">composite_tensor</span><span class="o">.</span><span class="n">CompositeTensor</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Represents a sparse tensor.</span>
+
+<span class="sd">  TensorFlow represents a sparse tensor as three separate dense tensors:</span>
+<span class="sd">  `indices`, `values`, and `dense_shape`.  In Python, the three tensors are</span>
+<span class="sd">  collected into a `SparseTensor` class for ease of use.  If you have separate</span>
+<span class="sd">  `indices`, `values`, and `dense_shape` tensors, wrap them in a `SparseTensor`</span>
+<span class="sd">  object before passing to the ops below.</span>
+
+<span class="sd">  Concretely, the sparse tensor `SparseTensor(indices, values, dense_shape)`</span>
+<span class="sd">  comprises the following components, where `N` and `ndims` are the number</span>
+<span class="sd">  of values and number of dimensions in the `SparseTensor`, respectively:</span>
+
+<span class="sd">  * `indices`: A 2-D int64 tensor of shape `[N, ndims]`, which specifies the</span>
+<span class="sd">    indices of the elements in the sparse tensor that contain nonzero values</span>
+<span class="sd">    (elements are zero-indexed). For example, `indices=[[1,3], [2,4]]` specifies</span>
+<span class="sd">    that the elements with indexes of [1,3] and [2,4] have nonzero values.</span>
+
+<span class="sd">  * `values`: A 1-D tensor of any type and shape `[N]`, which supplies the</span>
+<span class="sd">    values for each element in `indices`. For example, given `indices=[[1,3],</span>
+<span class="sd">    [2,4]]`, the parameter `values=[18, 3.6]` specifies that element [1,3] of</span>
+<span class="sd">    the sparse tensor has a value of 18, and element [2,4] of the tensor has a</span>
+<span class="sd">    value of 3.6.</span>
+
+<span class="sd">  * `dense_shape`: A 1-D int64 tensor of shape `[ndims]`, which specifies the</span>
+<span class="sd">    dense_shape of the sparse tensor. Takes a list indicating the number of</span>
+<span class="sd">    elements in each dimension. For example, `dense_shape=[3,6]` specifies a</span>
+<span class="sd">    two-dimensional 3x6 tensor, `dense_shape=[2,3,4]` specifies a</span>
+<span class="sd">    three-dimensional 2x3x4 tensor, and `dense_shape=[9]` specifies a</span>
+<span class="sd">    one-dimensional tensor with 9 elements.</span>
+
+<span class="sd">  The corresponding dense tensor satisfies:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  dense.shape = dense_shape</span>
+<span class="sd">  dense[tuple(indices[i])] = values[i]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  By convention, `indices` should be sorted in row-major order (or equivalently</span>
+<span class="sd">  lexicographic order on the tuples `indices[i]`). This is not enforced when</span>
+<span class="sd">  `SparseTensor` objects are constructed, but most ops assume correct ordering.</span>
+<span class="sd">  If the ordering of sparse tensor `st` is wrong, a fixed version can be</span>
+<span class="sd">  obtained by calling `tf.sparse.reorder(st)`.</span>
+
+<span class="sd">  Example: The sparse tensor</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  SparseTensor(indices=[[0, 0], [1, 2]], values=[1, 2], dense_shape=[3, 4])</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  represents the dense tensor</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  [[1, 0, 0, 0]</span>
+<span class="sd">   [0, 0, 2, 0]</span>
+<span class="sd">   [0, 0, 0, 0]]</span>
+<span class="sd">  ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="SparseTensor.from_value"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensor.from_value">[docs]</a>  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">from_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">sparse_tensor_value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_sparse</span><span class="p">(</span><span class="n">sparse_tensor_value</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Neither a SparseTensor nor SparseTensorValue: </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span>
+                      <span class="n">sparse_tensor_value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SparseTensor</span><span class="p">(</span>
+        <span class="n">indices</span><span class="o">=</span><span class="n">sparse_tensor_value</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="n">sparse_tensor_value</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+        <span class="n">dense_shape</span><span class="o">=</span><span class="n">sparse_tensor_value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)</span></div>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a `SparseTensor`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      indices: A 2-D int64 tensor of shape `[N, ndims]`.</span>
+<span class="sd">      values: A 1-D tensor of any type and shape `[N]`.</span>
+<span class="sd">      dense_shape: A 1-D int64 tensor of shape `[ndims]`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: When building an eager SparseTensor if `dense_shape` is</span>
+<span class="sd">        unknown or contains unknown elements (None or -1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;SparseTensor&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span><span class="p">]):</span>
+      <span class="n">indices</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+          <span class="n">indices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;indices&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+      <span class="c1"># TODO(touts): Consider adding mutable_values() when &#39;values&#39;</span>
+      <span class="c1"># is a VariableOp and updating users of SparseTensor.</span>
+      <span class="n">values</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;values&quot;</span><span class="p">)</span>
+
+      <span class="c1"># Can&#39;t check `if context.executing_eagerly()` here because sparse</span>
+      <span class="c1"># placeholders can still be used in eager context, when building a</span>
+      <span class="c1"># functional model.</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+          <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+              <span class="n">dense_shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense_shape&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+          <span class="n">dense_shape_default</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unable to create eager SparseTensor. Check that &quot;</span>
+                           <span class="s2">&quot;your shape is correctly defined. Eager &quot;</span>
+                           <span class="s2">&quot;SparseTensors don&#39;t support unknown dimesions.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                           <span class="s2">&quot;got shape:</span><span class="se">\n</span><span class="s2">    </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">))</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+          <span class="n">dense_shape_default</span> <span class="o">=</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">dense_shape_default</span> <span class="o">=</span> <span class="p">[]</span>
+          <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dense_shape</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+              <span class="c1"># There is code passing lists of constant tensors.</span>
+              <span class="n">dim</span> <span class="o">=</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">constant_value</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+              <span class="c1"># -1 may be passed for unknown shapes.</span>
+              <span class="n">dim</span> <span class="o">=</span> <span class="kc">None</span>
+
+            <span class="n">dense_shape_default</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+        <span class="n">dense_shape_default</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">(</span><span class="n">dense_shape_default</span><span class="p">)</span>
+
+        <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+            <span class="n">dense_shape</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dense_shape&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span> <span class="o">=</span> <span class="n">indices</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_values</span> <span class="o">=</span> <span class="n">values</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape</span> <span class="o">=</span> <span class="n">dense_shape</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape_default</span> <span class="o">=</span> <span class="n">dense_shape_default</span>
+
+    <span class="n">indices_shape</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">with_rank</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">values_shape</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">with_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">dense_shape_shape</span> <span class="o">=</span> <span class="n">dense_shape</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">with_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Assert number of rows in indices match the number of elements in values.</span>
+    <span class="n">indices_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">values_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="c1"># Assert number of columns in indices matches the number of elements in</span>
+    <span class="c1"># dense_shape.</span>
+    <span class="n">indices_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">dense_shape_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<div class="viewcode-block" id="SparseTensor.get_shape"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensor.get_shape">[docs]</a>  <span class="k">def</span> <span class="nf">get_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the `TensorShape` representing the shape of the dense tensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TensorShape` object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape_default</span></div>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">indices</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The indices of non-zero values in the represented dense tensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A 2-D Tensor of int64 with dense_shape `[N, ndims]`, where `N` is the</span>
+<span class="sd">        number of non-zero values in the tensor, and `ndims` is the rank.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The non-zero values in the represented dense tensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A 1-D Tensor of any data type.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">op</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The `Operation` that produces `values` as an output.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="o">.</span><span class="n">op</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The `DType` of elements in this tensor.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="o">.</span><span class="n">dtype</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">dense_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A 1-D Tensor of int64 representing the shape of the dense tensor.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the `TensorShape` representing the shape of the dense tensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TensorShape` object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape_default</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">graph</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The `Graph` that contains the index, value, and dense_shape tensors.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="o">.</span><span class="n">graph</span>
+
+  <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;SparseTensor(indices=</span><span class="si">%s</span><span class="s2">, values=</span><span class="si">%s</span><span class="s2">, dense_shape=</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dense_shape</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SparseTensor.eval"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensor.eval">[docs]</a>  <span class="k">def</span> <span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Evaluates this sparse tensor in a `Session`.</span>
+
+<span class="sd">    Calling this method will execute all preceding operations that</span>
+<span class="sd">    produce the inputs needed for the operation that produces this</span>
+<span class="sd">    tensor.</span>
+
+<span class="sd">    *N.B.* Before invoking `SparseTensor.eval()`, its graph must have been</span>
+<span class="sd">    launched in a session, and either a default session must be</span>
+<span class="sd">    available, or `session` must be specified explicitly.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      feed_dict: A dictionary that maps `Tensor` objects to feed values. See</span>
+<span class="sd">        `tf.Session.run` for a description of the valid feed values.</span>
+<span class="sd">      session: (Optional.) The `Session` to be used to evaluate this sparse</span>
+<span class="sd">        tensor. If none, the default session will be used.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `SparseTensorValue` object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">_eval_using_default_session</span><span class="p">(</span>
+        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">],</span> <span class="n">feed_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span>
+        <span class="n">session</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SparseTensorValue</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span><span class="p">)</span></div>
+
+  <span class="nd">@staticmethod</span>
+  <span class="k">def</span> <span class="nf">_override_operator</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+    <span class="n">_override_helper</span><span class="p">(</span><span class="n">SparseTensor</span><span class="p">,</span> <span class="n">operator</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_type_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">SparseTensorSpec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_shape_invariant_to_type_spec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+    <span class="c1"># From the tf.while_loop docs: &quot;If a loop variable is a SparseTensor, the</span>
+    <span class="c1"># shape invariant must be TensorShape([r]) where r is the rank of the dense</span>
+    <span class="c1"># tensor represented by the sparse tensor. It means the shapes of the three</span>
+    <span class="c1"># tensors of the SparseTensor are ([None], [None, r], [r]). NOTE: The shape</span>
+    <span class="c1"># invariant here is the shape of the SparseTensor.dense_shape property. It</span>
+    <span class="c1"># must be the shape of a vector.</span>
+    <span class="k">if</span> <span class="n">shape</span><span class="o">.</span><span class="n">ndims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">shape</span><span class="o">.</span><span class="n">ndims</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected a shape with 1 dimension&quot;</span><span class="p">)</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">SparseTensorSpec</span><span class="p">(</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">unknown_shape</span><span class="p">(</span><span class="n">rank</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SparseTensor.consumers"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensor.consumers">[docs]</a>  <span class="k">def</span> <span class="nf">consumers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_consumers</span><span class="p">()</span></div></div>
+
+
+<span class="n">SparseTensorValue</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;SparseTensorValue&quot;</span><span class="p">,</span>
+                                           <span class="p">[</span><span class="s2">&quot;indices&quot;</span><span class="p">,</span> <span class="s2">&quot;values&quot;</span><span class="p">,</span> <span class="s2">&quot;dense_shape&quot;</span><span class="p">])</span>
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SparseTensorValue&quot;</span><span class="p">])(</span><span class="n">SparseTensorValue</span><span class="p">)</span>
+<span class="n">_pywrap_utils</span><span class="o">.</span><span class="n">RegisterType</span><span class="p">(</span><span class="s2">&quot;SparseTensorValue&quot;</span><span class="p">,</span> <span class="n">SparseTensorValue</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SparseTensorSpec"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensorSpec">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;SparseTensorSpec&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">SparseTensorSpec</span><span class="p">(</span><span class="n">type_spec</span><span class="o">.</span><span class="n">BatchableTypeSpec</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Type specification for a `tf.SparseTensor`.&quot;&quot;&quot;</span>
+
+  <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_shape&quot;</span><span class="p">,</span> <span class="s2">&quot;_dtype&quot;</span><span class="p">]</span>
+
+  <span class="n">value_type</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="k">lambda</span> <span class="bp">self</span><span class="p">:</span> <span class="n">SparseTensor</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Constructs a type specification for a `tf.SparseTensor`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: The dense shape of the `SparseTensor`, or `None` to allow</span>
+<span class="sd">        any dense shape.</span>
+<span class="sd">      dtype: `tf.DType` of values in the `SparseTensor`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">as_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The `tf.dtypes.DType` specified by this type for the SparseTensor.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The `tf.TensorShape` specified by this type for the SparseTensor.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_component_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">ndims</span>
+    <span class="n">num_values</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">tensor_spec</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">([</span><span class="n">num_values</span><span class="p">,</span> <span class="n">rank</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span>
+        <span class="n">tensor_spec</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">([</span><span class="n">num_values</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">),</span>
+        <span class="n">tensor_spec</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">([</span><span class="n">rank</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">)]</span>
+
+  <span class="k">def</span> <span class="nf">_to_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SparseTensorValue</span><span class="p">):</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">SparseTensor</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">value</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">_from_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tensor_list</span><span class="p">)</span> <span class="ow">and</span>
+        <span class="ow">not</span> <span class="n">tf2</span><span class="o">.</span><span class="n">enabled</span><span class="p">()):</span>
+      <span class="k">return</span> <span class="n">SparseTensorValue</span><span class="p">(</span><span class="o">*</span><span class="n">tensor_list</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">SparseTensor</span><span class="p">(</span><span class="o">*</span><span class="n">tensor_list</span><span class="p">)</span>
+
+  <span class="c1"># The SparseTensorSpec tensor_list encoding uses (de)serialize_sparse ops</span>
+  <span class="c1"># to (un)box the component tensors in a way that allows for batching &amp;</span>
+  <span class="c1"># unbatching.</span>
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_flat_tensor_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># NOTE(mrry): The default flat shape of a boxed `SparseTensor` is `(3,)`,</span>
+    <span class="c1"># but a `SparseTensorSpec` can also represent a batch of boxed</span>
+    <span class="c1"># `SparseTensor` objects with shape `(..., 3)` (and batches of batches,</span>
+    <span class="c1"># etc.), so the flat shape must be unknown.</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tensor_spec</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">)]</span>
+
+  <span class="k">def</span> <span class="nf">_to_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">SparseTensor</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">gen_sparse_ops</span><span class="o">.</span><span class="n">serialize_sparse</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">,</span>
+        <span class="n">out_type</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">)]</span>
+
+  <span class="k">def</span> <span class="nf">_to_batched_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">)</span><span class="o">.</span><span class="n">ndims</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Unbatching a sparse tensor is only supported for rank &gt;= 1&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">gen_sparse_ops</span><span class="o">.</span><span class="n">serialize_many_sparse</span><span class="p">(</span>
+        <span class="n">value</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">,</span>
+        <span class="n">out_type</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">)]</span>
+
+  <span class="k">def</span> <span class="nf">_from_compatible_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">):</span>
+    <span class="n">tensor_list</span> <span class="o">=</span> <span class="n">gen_sparse_ops</span><span class="o">.</span><span class="n">deserialize_sparse</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
+    <span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">tensor_list</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">ndims</span>
+    <span class="n">indices</span><span class="o">.</span><span class="n">set_shape</span><span class="p">([</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="p">])</span>
+    <span class="c1"># We restore the dense_shape from the SparseTypeSpec. This is necessary</span>
+    <span class="c1"># for shape inference when using placeholder SparseTensors in function</span>
+    <span class="c1"># tracing.</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+          <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+          <span class="nb">any</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">)):</span>
+      <span class="c1"># array_ops imports sparse_tensor.py. Local import to avoid import cycle.</span>
+      <span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>  <span class="c1"># pylint: disable=g-import-not-at-top</span>
+      <span class="n">pieces</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">dense_shape</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">rank</span><span class="p">)</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">pieces</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dense_shape</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+      <span class="n">dense_shape</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">dense_shape</span><span class="o">.</span><span class="n">set_shape</span><span class="p">([</span><span class="n">rank</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">SparseTensor</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">dense_shape</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">SparseTensorSpec</span><span class="p">(</span>
+        <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([</span><span class="n">batch_size</span><span class="p">])</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="p">),</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_unbatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="o">.</span><span class="n">ndims</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unbatching a tensor is only supported for rank &gt;= 1&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SparseTensorSpec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dtype</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_shapes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shape</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">SparseTensor</span>
+
+<div class="viewcode-block" id="SparseTensorSpec.from_value"><a class="viewcode-back" href="../../../../index.html#tensorflow.SparseTensorSpec.from_value">[docs]</a>  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">from_value</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SparseTensor</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SparseTensorValue</span><span class="p">):</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="n">SparseTensor</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected SparseTensor or SparseTensorValue&quot;</span><span class="p">)</span></div></div>
+
+
+<span class="c1"># TODO(b/133606651) Delete the SparseTensor registration when CompositeTensor</span>
+<span class="c1"># is updated to define a _type_spec field (since registration will be</span>
+<span class="c1"># automatic).  Do *not* delete the SparseTensorValue registration.</span>
+<span class="n">type_spec</span><span class="o">.</span><span class="n">register_type_spec_from_value_converter</span><span class="p">(</span>
+    <span class="n">SparseTensor</span><span class="p">,</span> <span class="n">SparseTensorSpec</span><span class="o">.</span><span class="n">from_value</span><span class="p">)</span>
+<span class="n">type_spec</span><span class="o">.</span><span class="n">register_type_spec_from_value_converter</span><span class="p">(</span>
+    <span class="n">SparseTensorValue</span><span class="p">,</span> <span class="n">SparseTensorSpec</span><span class="o">.</span><span class="n">from_value</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;convert_to_tensor_or_sparse_tensor&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">convert_to_tensor_or_sparse_tensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Converts value to a `SparseTensor` or `Tensor`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: A `SparseTensor`, `SparseTensorValue`, or an object whose type has a</span>
+<span class="sd">      registered `Tensor` conversion function.</span>
+<span class="sd">    dtype: Optional element type for the returned tensor. If missing, the type</span>
+<span class="sd">      is inferred from the type of `value`.</span>
+<span class="sd">    name: Optional name to use if a new `Tensor` is created.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `SparseTensor` or `Tensor` based on `value`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    RuntimeError: If result type is incompatible with `dtype`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SparseTensorValue</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">SparseTensor</span><span class="o">.</span><span class="n">from_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">SparseTensor</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Sparse dtype: requested = </span><span class="si">%s</span><span class="s2">, actual = </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">value</span>
+  <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">is_sparse</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Check whether `x` is sparse.</span>
+
+<span class="sd">  Check whether an object is a `tf.SparseTensor` or</span>
+<span class="sd">  `tf.compat.v1.SparseTensorValue`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A python object to check.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    `True` iff `x` is a `tf.SparseTensor` or `tf.compat.v1.SparseTensorValue`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">SparseTensor</span><span class="p">,</span> <span class="n">SparseTensorValue</span><span class="p">))</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

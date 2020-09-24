@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>创建变量和占位符 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="创建一个矩阵" href="../04_Working_with_Matrices/index.html" />
+    <link rel="prev" title="计算图" href="../02_Creating_and_Using_Tensors/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#id2">使用占位符和变量</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">创建变量和占位符</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">创建特定的变量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">基于其他张量的形状创建张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">常数填充变量张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#range">基于序列和range来创建变量张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">随机数变量张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorboard">在TensorBoard中进行变量创建的可视化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorflow-pythonjavascript">TensorFlow, Python和Javascript</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">TensorFlow如何工作</a> &raquo;</li>
+        
+      <li>创建变量和占位符</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/01_Introduction/03_Using_Variables_and_Placeholders/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>创建变量和占位符<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>现在我们知道如何创建张量，我们可以进一步探讨如何将张量用 <code class="docutils literal notranslate"><span class="pre">Variable()</span></code> 函数打包来创建相应的变量。</p>
+<p>我们也可以将任何 <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">array</span></code> 转变成Python的列表，或者将常数用 <code class="docutils literal notranslate"><span class="pre">convert_to_tensor()</span></code> 转化成张量。值得注意的是， <code class="docutils literal notranslate"><span class="pre">convert_to_tensor</span></code> 也接受张量，以便我们想通过函数来计算。</p>
+<p>区分占位符和变量是十分重要的。变量是算法的参数而TensorFlow一直都在改变这些变量来优化算法。占位符是允许你输入特定类型和大小的数据的一类对象，这类对象的结果取决于计算图的计算结果，比如计算结果的期望值。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">my_var</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">FailedPreconditionError</span>: <span class="n">2 root error(s) found.</span>
+</pre></div>
+</div>
+<p>需要注意的是，直接运行 <code class="docutils literal notranslate"><span class="pre">sess.run(my_var)</span></code> 会产生一个错误。因为TensorFlows是运用计算图来运作的，我们需要对变量进行初始化才能输出结果。后面，我们可能会碰到很多
+初始化操作。对于这个代码来说，我们可以调用 <code class="docutils literal notranslate"><span class="pre">my_var.initializer</span></code> 来对一个变量初始化。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">my_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">my_var</span><span class="p">)</span>
+<span class="go">array([[ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
+<span class="go">      0.,  0.,  0.,  0.,  0.,  0.,  0.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p>初始化是用对应的方法将变量放在计算图上。这里有一简单初始化的实例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_var1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="go"># 初始化全局变量</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">initialize_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">initialize_op</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>可以通过Tensorboard来查看创建并初始化变量之后的计算图。</p>
+<p>占位符，顾名思义，就是占据一定的位置，用于在计算图中输入数据。占位符可以通过 <code class="docutils literal notranslate"><span class="pre">feed_dict</span></code> 参数来输入数据。为了将占位符放在计算图上，我们至少对占位符进行一次运算。我们初始化图谱，把 <code class="docutils literal notranslate"><span class="pre">x</span></code> 声明成一个占位符，将 <code class="docutils literal notranslate"><span class="pre">y</span></code> 定义成与 <code class="docutils literal notranslate"><span class="pre">x</span></code> 相等，也就是返回 <code class="docutils literal notranslate"><span class="pre">x</span></code> ，然后将数据传入 <code class="docutils literal notranslate"><span class="pre">x</span></code> 的占位符并运行等式操作 <code class="code docutils literal notranslate"><span class="pre">y=x</span></code> 。值得注意的是，TensorFlow不会返回一个在feed dictionary中自引占位符(现版本是可以返回的)。下面是举一个例子：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x_vals</span><span class="p">})</span>
+<span class="go">array([[0.8200612 , 0.53398275],</span>
+<span class="go"> [0.5647656 , 0.84022015]], dtype=float32)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">feed_dict</span><span class="o">=</span><span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="n">x_vals</span><span class="p">})</span>
+<span class="go">array([[0.8200612 , 0.53398275],</span>
+<span class="go"> [0.5647656 , 0.84022015]], dtype=float32)</span>
+</pre></div>
+</div>
+<p>在计算图运行的过程中，我们还需要告诉TensorFlow何时初始化我们创建的变量。TensorFlow必须知道何时何处初始化变量。尽管每个变量名都有 <code class="code docutils literal notranslate"><span class="pre">initializer</span></code> 方法， 但是通常情况下，最普遍的方法就是用 <code class="code docutils literal notranslate"><span class="pre">helper</span></code> 函数，也就是 <code class="code docutils literal notranslate"><span class="pre">global_variables_initializer()</span></code> 。 这个函数在计算图中创建了一个操作，让所有的变量都进行了初始化:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">initializer_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>但是如果我们想基于初始化另一个变量的结果来对我们想要创建的变量进行初始化，我们需要按照顺序进行初始化，比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">first_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">first_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="go"># 取决于第一个变量</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">second_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">first_var</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">second_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>创建特定的变量<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>首先，让我们通过声明行与列的大小来创建特定大小的变量吧。😈</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">col_dim</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>将变量初始化为0填充张量或1填充张量。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ones_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">]))</span>
+</pre></div>
+</div>
+<p>同样，我们也需要将变量进行初始化然后才能输出结果。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zero_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zero_var</span><span class="p">))</span>
+<span class="go">[[ 0.  0.  0.]</span>
+<span class="go">[ 0.  0.  0.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_var</span><span class="p">))</span>
+<span class="go">[[ 1.  1.  1.]</span>
+<span class="go">[ 1.  1.  1.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h1>基于其他张量的形状创建张量<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<p>如果一个变量张量的形状取决于另一个变量张量，那么我们可以用TensorFlow的内置函数 <code class="code docutils literal notranslate"><span class="pre">ones_like()</span></code> 和 <code class="code docutils literal notranslate"><span class="pre">zeros_like()</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zero_similar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">zero_var</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ones_similar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">ones_var</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_similar</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zero_similar</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_similar</span><span class="p">))</span>
+<span class="go">[[ 1.  1.  1.]</span>
+<span class="go">[ 1.  1.  1.]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zero_similar</span><span class="p">))</span>
+<span class="go">[[ 0.  0.  0.]</span>
+<span class="go">[ 0.  0.  0.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>常数填充变量张量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<p>这里我们展示一下如何创建常数填充变量张量</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fill_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">fill</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fill_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">fill_var</span><span class="p">))</span>
+<span class="go">[[-1 -1 -1]</span>
+<span class="go">[-1 -1 -1]]</span>
+</pre></div>
+</div>
+<p>我们也可以通过一个数组或者常数列表来创建一个变量张量。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 通过常数列表来创建张量</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">const_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">]))</span>
+<span class="c1"># 通过常数数组来创建变量张量</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">const_fill_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">]))</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">const_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">const_fill_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">const_var</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">8</span> <span class="mi">6</span> <span class="mi">7</span> <span class="mi">5</span> <span class="mi">3</span> <span class="mi">0</span> <span class="mi">9</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">const_fill_var</span><span class="p">))</span>
+<span class="p">[[</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="range">
+<h1>基于序列和range来创建变量张量<a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h1>
+<p>我们也可以通过TensorFlow中序列产生函数来创建张量。TensorFlow的函数 <code class="code docutils literal notranslate"><span class="pre">linspace()</span></code> 和 <code class="code docutils literal notranslate"><span class="pre">range()</span></code> 的运行方式和 <code class="docutils literal notranslate"><span class="pre">python</span></code> 和 <code class="docutils literal notranslate"><span class="pre">numpy</span></code> 中是一样的。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TensorFlow的中linspace</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">linear_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1"># Generates [0.0, 0.5, 1.0] includes the end</span>
+
+<span class="c1"># TensorFlow的range</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sequence_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1"># Generates [6, 9, 12] doesn&#39;t include the end</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">linear_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sequence_var</span><span class="o">.</span><span class="n">initializer</span><span class="p">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">linear_var</span><span class="p">))</span>
+<span class="p">[</span> <span class="mf">0.</span>   <span class="mf">0.5</span>  <span class="mf">1.</span> <span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">sequence_var</span><span class="p">))</span>
+<span class="p">[</span><span class="mi">6</span>  <span class="mi">9</span> <span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h1>随机数变量张量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<p>我们也可以创建随机数变量张量。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rnorm_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">],</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">runif_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">],</span> <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">rnorm_var</span><span class="p">))</span>
+<span class="go">[[ 1.1772728   1.36544371 -0.89566803]</span>
+<span class="go"> [-0.02099477 -0.17081328  0.2029814 ]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">runif_var</span><span class="p">))</span>
+<span class="go">[[ 2.54200077  1.42822504  1.34831095]</span>
+<span class="go">[ 2.28473616  0.36273813  0.70220995]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tensorboard">
+<h1>在TensorBoard中进行变量创建的可视化<a class="headerlink" href="#tensorboard" title="Permalink to this headline">¶</a></h1>
+<p>为了在Tensorboard中可视化变量创建的过程(第十一章有详细的介绍)，我们需要重设计算图并进行全局变量初始化操作。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 重设计算图</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">ops</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+
+<span class="c1"># 开始一个graph session</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+
+<span class="c1"># 创建变量张量</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">my_var</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">]))</span>
+
+<span class="c1"># 将summary加到Tensorboard上</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">merged</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">merge_all</span><span class="p">()</span>
+
+<span class="c1"># 初始化图形写入</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">writer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">FileWriter</span><span class="p">(</span><span class="s2">&quot;/tmp/variable_logs&quot;</span><span class="p">,</span> <span class="n">graph</span><span class="o">=</span><span class="n">sess</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+
+<span class="c1"># 全局变量初始器</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">initialize_op</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
+
+<span class="c1"># 变量初始化</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">initialize_op</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>下面，我们就可以在CLI(Commmand-Line-Interface)写入：</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tensorboard --logdir<span class="o">=</span>/tmp
+</pre></div>
+</div>
+<p>它会告诉我们网页链接，去查看Tensorboard。默认的值为: <a class="reference external" href="http://localhost:6006/">http://localhost:6006/</a></p>
+<img alt="../../_images/02_variable.png" src="../../_images/02_variable.png" />
+<p>在这张图上，我们可以看到只有一个变量，这个变量初始化成零张量。灰色的区域是操作符和涉及到的常数的详细图解。右上角是省略的计算图。如果想要了解更多关于计算图的知识，请参考第十章第一部分。</p>
+<p>下载本节 <a class="reference download internal" download="" href="../../_downloads/2cb539644ae372a22af6d814716a60e0/tensorflow2.1tutorialch1sec2&amp;3.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code></a></p>
+<img alt="../../_images/03_placeholder.png" src="../../_images/03_placeholder.png" />
+</div>
+<div class="section" id="tensorflow-pythonjavascript">
+<h1>TensorFlow, Python和Javascript<a class="headerlink" href="#tensorflow-pythonjavascript" title="Permalink to this headline">¶</a></h1>
+<p>除了 Python 之外，你能够基于 JavaScript 使用 TensorFlow.js 创建 TensorFlow 模型。TensorFlow 还支持其他各种语言，不过支持程度不太相同，包括：Swift、R 和 Julia。目前，Python 和 JavaScript 是最完整的实现语言。</p>
+<video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <source src="../../_static/videos/Intro2ML/TFIntro4.mp4" type="video/mp4">
+</video></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../04_Working_with_Matrices/index.html" class="btn btn-neutral float-right" title="创建一个矩阵" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../02_Creating_and_Using_Tensors/index.html" class="btn btn-neutral float-left" title="计算图" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

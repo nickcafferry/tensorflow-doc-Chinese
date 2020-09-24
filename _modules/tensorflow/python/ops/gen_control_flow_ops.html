@@ -1,0 +1,1182 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.gen_control_flow_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.gen_control_flow_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.gen_control_flow_ops</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Python wrappers around TensorFlow ops.</span>
+
+<span class="sd">This file is MACHINE GENERATED! Do not edit.</span>
+<span class="sd">Original C++ source file: control_flow_ops.cc</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">pywrap_tfe</span> <span class="k">as</span> <span class="n">pywrap_tfe</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span> <span class="k">as</span> <span class="n">_context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">core</span> <span class="k">as</span> <span class="n">_core</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">execute</span> <span class="k">as</span> <span class="n">_execute</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span> <span class="k">as</span> <span class="n">_dtypes</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">op_def_registry</span> <span class="k">as</span> <span class="n">_op_def_registry</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span> <span class="k">as</span> <span class="n">_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">op_def_library</span> <span class="k">as</span> <span class="n">_op_def_library</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.deprecation</span> <span class="k">import</span> <span class="n">deprecated_endpoints</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">dispatch</span> <span class="k">as</span> <span class="n">_dispatch</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">def</span> <span class="nf">abort</span><span class="p">(</span><span class="n">error_msg</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">exit_without_error</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Raise a exception to abort the process when called.</span>
+
+<span class="sd">  If exit_without_error is true, the process will exit normally,</span>
+<span class="sd">  otherwise it will exit with a SIGABORT signal.</span>
+
+<span class="sd">  Returns nothing but an exception.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    error_msg: An optional `string`. Defaults to `&quot;&quot;`.</span>
+<span class="sd">      A string which is the message associated with the exception.</span>
+<span class="sd">    exit_without_error: An optional `bool`. Defaults to `False`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The created Operation.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Abort&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="s2">&quot;error_msg&quot;</span><span class="p">,</span> <span class="n">error_msg</span><span class="p">,</span> <span class="s2">&quot;exit_without_error&quot;</span><span class="p">,</span>
+        <span class="n">exit_without_error</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">abort_eager_fallback</span><span class="p">(</span>
+            <span class="n">error_msg</span><span class="o">=</span><span class="n">error_msg</span><span class="p">,</span> <span class="n">exit_without_error</span><span class="o">=</span><span class="n">exit_without_error</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">error_msg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">error_msg</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">error_msg</span><span class="p">,</span> <span class="s2">&quot;error_msg&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">exit_without_error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">exit_without_error</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">exit_without_error</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_bool</span><span class="p">(</span><span class="n">exit_without_error</span><span class="p">,</span> <span class="s2">&quot;exit_without_error&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Abort&quot;</span><span class="p">,</span> <span class="n">error_msg</span><span class="o">=</span><span class="n">error_msg</span><span class="p">,</span> <span class="n">exit_without_error</span><span class="o">=</span><span class="n">exit_without_error</span><span class="p">,</span>
+                 <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_op</span>
+<span class="n">Abort</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Abort&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">abort</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">abort_eager_fallback</span><span class="p">(</span><span class="n">error_msg</span><span class="p">,</span> <span class="n">exit_without_error</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">error_msg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">error_msg</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">error_msg</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">error_msg</span><span class="p">,</span> <span class="s2">&quot;error_msg&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">exit_without_error</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">exit_without_error</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">exit_without_error</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_bool</span><span class="p">(</span><span class="n">exit_without_error</span><span class="p">,</span> <span class="s2">&quot;exit_without_error&quot;</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;error_msg&quot;</span><span class="p">,</span> <span class="n">error_msg</span><span class="p">,</span> <span class="s2">&quot;exit_without_error&quot;</span><span class="p">,</span> <span class="n">exit_without_error</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Abort&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">control_trigger</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Does nothing. Serves as a control trigger for scheduling.</span>
+
+<span class="sd">  Only useful as a placeholder for control edges.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The created Operation.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;ControlTrigger&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">control_trigger_eager_fallback</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;ControlTrigger&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_op</span>
+<span class="n">ControlTrigger</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.ControlTrigger&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">control_trigger</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">control_trigger_eager_fallback</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;ControlTrigger&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">enter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates or finds a child frame, and makes `data` available to the child frame.</span>
+
+<span class="sd">  This op is used together with `Exit` to create loops in the graph.</span>
+<span class="sd">  The unique `frame_name` is used by the `Executor` to identify frames. If</span>
+<span class="sd">  `is_constant` is true, `output` is a constant in the child frame; otherwise</span>
+<span class="sd">  it may be changed in the child frame. At most `parallel_iterations` iterations</span>
+<span class="sd">  are run in parallel in the child frame.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A `Tensor`. The tensor to be made available to the child frame.</span>
+<span class="sd">    frame_name: A `string`. The name of the child frame.</span>
+<span class="sd">    is_constant: An optional `bool`. Defaults to `False`.</span>
+<span class="sd">      If true, the output is constant within the child frame.</span>
+<span class="sd">    parallel_iterations: An optional `int`. Defaults to `10`.</span>
+<span class="sd">      The number of iterations allowed to run in parallel.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Enter&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">,</span>
+        <span class="n">is_constant</span><span class="p">,</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">enter_eager_fallback</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="o">=</span><span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="o">=</span><span class="n">is_constant</span><span class="p">,</span>
+            <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">frame_name</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">frame_name</span><span class="p">,</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">is_constant</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">is_constant</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">is_constant</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_bool</span><span class="p">(</span><span class="n">is_constant</span><span class="p">,</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">parallel_iterations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Enter&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="o">=</span><span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="o">=</span><span class="n">is_constant</span><span class="p">,</span>
+                 <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;frame_name&quot;</span><span class="p">),</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_bool</span><span class="p">(</span><span class="s2">&quot;is_constant&quot;</span><span class="p">),</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;parallel_iterations&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Enter&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">Enter</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Enter&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">enter</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">enter_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">frame_name</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">frame_name</span><span class="p">,</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">is_constant</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">is_constant</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">is_constant</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_bool</span><span class="p">(</span><span class="n">is_constant</span><span class="p">,</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">parallel_iterations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">data</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">,</span>
+  <span class="n">is_constant</span><span class="p">,</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Enter&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Enter&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">_exit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Exits the current frame to its parent frame.</span>
+
+<span class="sd">  Exit makes its input `data` available to the parent frame.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A `Tensor`. The tensor to be made available to the parent frame.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span>
+        <span class="n">data</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_exit_eager_fallback</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">Exit</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Exit&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">_exit</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_exit_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">data</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Exit&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">loop_cond</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards the input to the output.</span>
+
+<span class="sd">  This operator represents the loop termination condition used by the</span>
+<span class="sd">  &quot;pivot&quot; switches of a loop.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    input: A `Tensor` of type `bool`.</span>
+<span class="sd">      A boolean scalar, representing the branch predicate of the Switch op.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `bool`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;LoopCond&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="nb">input</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">loop_cond_eager_fallback</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;LoopCond&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;LoopCond&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">LoopCond</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.LoopCond&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">loop_cond</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">loop_cond_eager_fallback</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="nb">input</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;LoopCond&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;LoopCond&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">_MergeOutput</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;Merge&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;value_index&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards the value of an available tensor from `inputs` to `output`.</span>
+
+<span class="sd">  `Merge` waits for at least one of the tensors in `inputs` to become available.</span>
+<span class="sd">  It is usually combined with `Switch` to implement branching.</span>
+
+<span class="sd">  `Merge` forwards the first tensor to become available to `output`, and sets</span>
+<span class="sd">  `value_index` to its index in `inputs`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    inputs: A list of at least 1 `Tensor` objects with the same type.</span>
+<span class="sd">      The input tensors, exactly one of which will become available.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple of `Tensor` objects (output, value_index).</span>
+
+<span class="sd">    output: A `Tensor`. Has the same type as `inputs`.</span>
+<span class="sd">    value_index: A `Tensor` of type `int32`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">_MergeOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">merge_eager_fallback</span><span class="p">(</span>
+            <span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;merge&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_MergeOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">Merge</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Merge&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">merge</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">merge_eager_fallback</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;merge&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="n">inputs</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">),</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_attr_N</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Merge&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_MergeOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">next_iteration</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Makes its input available to the next iteration.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A `Tensor`. The tensor to be made available to the next iteration.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;NextIteration&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">next_iteration_eager_fallback</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;NextIteration&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;NextIteration&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">NextIteration</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.NextIteration&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">next_iteration</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">next_iteration_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">data</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;NextIteration&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;NextIteration&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<div class="viewcode-block" id="no_op"><a class="viewcode-back" href="../../../../index.html#tensorflow.no_op">[docs]</a><span class="nd">@_dispatch</span><span class="o">.</span><span class="n">add_dispatch_list</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;no_op&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">no_op</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Does nothing. Only useful as a placeholder for control edges.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The created Operation.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;NoOp&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">no_op_eager_fallback</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+      <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span>
+              <span class="n">no_op</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">OpDispatcher</span><span class="o">.</span><span class="n">NOT_SUPPORTED</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">result</span>
+        <span class="k">raise</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;NoOp&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span>
+          <span class="n">no_op</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">OpDispatcher</span><span class="o">.</span><span class="n">NOT_SUPPORTED</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">result</span>
+    <span class="k">raise</span>
+  <span class="k">return</span> <span class="n">_op</span></div>
+<span class="n">NoOp</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.NoOp&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">no_op</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">no_op_eager_fallback</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;NoOp&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">ref_enter</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Creates or finds a child frame, and makes `data` available to the child frame.</span>
+
+<span class="sd">  The unique `frame_name` is used by the `Executor` to identify frames. If</span>
+<span class="sd">  `is_constant` is true, `output` is a constant in the child frame; otherwise</span>
+<span class="sd">  it may be changed in the child frame. At most `parallel_iterations` iterations</span>
+<span class="sd">  are run in parallel in the child frame.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A mutable `Tensor`.</span>
+<span class="sd">      The tensor to be made available to the child frame.</span>
+<span class="sd">    frame_name: A `string`. The name of the child frame.</span>
+<span class="sd">    is_constant: An optional `bool`. Defaults to `False`.</span>
+<span class="sd">      If true, the output is constant within the child frame.</span>
+<span class="sd">    parallel_iterations: An optional `int`. Defaults to `10`.</span>
+<span class="sd">      The number of iterations allowed to run in parallel.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A mutable `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_enter op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">frame_name</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">frame_name</span><span class="p">,</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">is_constant</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">is_constant</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">is_constant</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_bool</span><span class="p">(</span><span class="n">is_constant</span><span class="p">,</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">parallel_iterations</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="n">parallel_iterations</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefEnter&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="o">=</span><span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="o">=</span><span class="n">is_constant</span><span class="p">,</span>
+                    <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;frame_name&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;frame_name&quot;</span><span class="p">),</span> <span class="s2">&quot;is_constant&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_bool</span><span class="p">(</span><span class="s2">&quot;is_constant&quot;</span><span class="p">),</span> <span class="s2">&quot;parallel_iterations&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;parallel_iterations&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefEnter&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefEnter</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefEnter&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_enter</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_enter_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">frame_name</span><span class="p">,</span> <span class="n">is_constant</span><span class="p">,</span> <span class="n">parallel_iterations</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_enter op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ref_exit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Exits the current frame to its parent frame.</span>
+
+<span class="sd">  Exit makes its input `data` available to the parent frame.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A mutable `Tensor`.</span>
+<span class="sd">      The tensor to be made available to the parent frame.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A mutable `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_exit op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefExit&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefExit&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefExit</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefExit&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_exit</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_exit_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_exit op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+<span class="n">_RefMergeOutput</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;RefMerge&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;value_index&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">ref_merge</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards the value of an available tensor from `inputs` to `output`.</span>
+
+<span class="sd">  `Merge` waits for at least one of the tensors in `inputs` to become available.</span>
+<span class="sd">  It is usually combined with `Switch` to implement branching.</span>
+
+<span class="sd">  `Merge` forwards the first tensor for become available to `output`, and sets</span>
+<span class="sd">  `value_index` to its index in `inputs`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    inputs: A list of at least 1 mutable `Tensor` objects with the same type.</span>
+<span class="sd">      The input tensors, exactly one of which will become available.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple of `Tensor` objects (output, value_index).</span>
+
+<span class="sd">    output: A mutable `Tensor`. Has the same type as `inputs`.</span>
+<span class="sd">    value_index: A `Tensor` of type `int32`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_merge op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;ref_merge&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefMerge&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefMerge&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_RefMergeOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefMerge</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefMerge&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_merge</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_merge_eager_fallback</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_merge op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ref_next_iteration</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Makes its input available to the next iteration.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A mutable `Tensor`.</span>
+<span class="sd">      The tensor to be made available to the next iteration.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A mutable `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_next_iteration op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefNextIteration&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefNextIteration&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefNextIteration</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefNextIteration&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_next_iteration</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_next_iteration_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_next_iteration op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ref_select</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards the `index`th element of `inputs` to `output`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    index: A `Tensor` of type `int32`.</span>
+<span class="sd">      A scalar that determines the input that gets selected.</span>
+<span class="sd">    inputs: A list of at least 1 mutable `Tensor` objects with the same type.</span>
+<span class="sd">      A list of ref tensors, one of which will be forwarded to `output`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A mutable `Tensor`. Has the same type as `inputs`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_select op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;ref_select&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefSelect&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefSelect&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefSelect</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefSelect&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_select</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_select_eager_fallback</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_select op does not support eager execution. Arg &#39;output&#39; is a ref.&quot;</span><span class="p">)</span>
+<span class="n">_RefSwitchOutput</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;RefSwitch&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;output_false&quot;</span><span class="p">,</span> <span class="s2">&quot;output_true&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">ref_switch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards the ref tensor `data` to the output port determined by `pred`.</span>
+
+<span class="sd">  If `pred` is true, the `data` input is forwarded to `output_true`. Otherwise,</span>
+<span class="sd">  the data goes to `output_false`.</span>
+
+<span class="sd">  See also `Switch` and `Merge`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A mutable `Tensor`.</span>
+<span class="sd">      The ref tensor to be forwarded to the appropriate output.</span>
+<span class="sd">    pred: A `Tensor` of type `bool`.</span>
+<span class="sd">      A scalar that specifies which output port will receive data.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple of `Tensor` objects (output_false, output_true).</span>
+
+<span class="sd">    output_false: A mutable `Tensor`. Has the same type as `data`.</span>
+<span class="sd">    output_true: A mutable `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_switch op does not support eager execution. Arg &#39;output_true&#39; is a ref.&quot;</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;RefSwitch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;RefSwitch&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_RefSwitchOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">RefSwitch</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.RefSwitch&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">ref_switch</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ref_switch_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;ref_switch op does not support eager execution. Arg &#39;output_true&#39; is a ref.&quot;</span><span class="p">)</span>
+<span class="n">_SwitchOutput</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span>
+    <span class="s2">&quot;Switch&quot;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">&quot;output_false&quot;</span><span class="p">,</span> <span class="s2">&quot;output_true&quot;</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">switch</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Forwards `data` to the output port determined by `pred`.</span>
+
+<span class="sd">  If `pred` is true, the `data` input is forwarded to `output_true`. Otherwise,</span>
+<span class="sd">  the data goes to `output_false`.</span>
+
+<span class="sd">  See also `RefSwitch` and `Merge`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    data: A `Tensor`. The tensor to be forwarded to the appropriate output.</span>
+<span class="sd">    pred: A `Tensor` of type `bool`.</span>
+<span class="sd">      A scalar that specifies which output port will receive data.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple of `Tensor` objects (output_false, output_true).</span>
+
+<span class="sd">    output_false: A `Tensor`. Has the same type as `data`.</span>
+<span class="sd">    output_true: A `Tensor`. Has the same type as `data`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">_SwitchOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">switch_eager_fallback</span><span class="p">(</span>
+            <span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="o">=</span><span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_SwitchOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">Switch</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Switch&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">switch</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">switch_eager_fallback</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">data</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">pred</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">data</span><span class="p">,</span> <span class="n">pred</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Switch&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_SwitchOutput</span><span class="o">.</span><span class="n">_make</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

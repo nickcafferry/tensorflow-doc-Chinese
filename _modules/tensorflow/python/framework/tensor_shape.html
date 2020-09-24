@@ -1,0 +1,1577 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.tensor_shape &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.tensor_shape</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.tensor_shape</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Helper classes for tensor shape inference.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">tensor_shape_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">tf2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">monitoring</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="n">_TENSORSHAPE_V2_OVERRIDE</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">_api_usage_gauge</span> <span class="o">=</span> <span class="n">monitoring</span><span class="o">.</span><span class="n">BoolGauge</span><span class="p">(</span>
+    <span class="s2">&quot;/tensorflow/api/v2_tensorshape&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Whether tensor_shape.enable_v2_tensorshape() is called.&quot;</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable_v2_tensorshape&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">enable_v2_tensorshape</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;In TensorFlow 2.0, iterating over a TensorShape instance returns values.</span>
+
+<span class="sd">  This enables the new behavior.</span>
+
+<span class="sd">  Concretely, `tensor_shape[i]` returned a Dimension instance in V1, but</span>
+<span class="sd">  it V2 it returns either an integer, or None.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  ```</span>
+<span class="sd">  #######################</span>
+<span class="sd">  # If you had this in V1:</span>
+<span class="sd">  value = tensor_shape[i].value</span>
+
+<span class="sd">  # Do this in V2 instead:</span>
+<span class="sd">  value = tensor_shape[i]</span>
+
+<span class="sd">  #######################</span>
+<span class="sd">  # If you had this in V1:</span>
+<span class="sd">  for dim in tensor_shape:</span>
+<span class="sd">    value = dim.value</span>
+<span class="sd">    print(value)</span>
+
+<span class="sd">  # Do this in V2 instead:</span>
+<span class="sd">  for value in tensor_shape:</span>
+<span class="sd">    print(value)</span>
+
+<span class="sd">  #######################</span>
+<span class="sd">  # If you had this in V1:</span>
+<span class="sd">  dim = tensor_shape[i]</span>
+<span class="sd">  dim.assert_is_compatible_with(other_shape)  # or using any other shape method</span>
+
+<span class="sd">  # Do this in V2 instead:</span>
+<span class="sd">  if tensor_shape.rank is None:</span>
+<span class="sd">    dim = Dimension(None)</span>
+<span class="sd">  else:</span>
+<span class="sd">    dim = tensor_shape.dims[i]</span>
+<span class="sd">  dim.assert_is_compatible_with(other_shape)  # or using any other shape method</span>
+
+<span class="sd">  # The V2 suggestion above is more explicit, which will save you from</span>
+<span class="sd">  # the following trap (present in V1):</span>
+<span class="sd">  # you might do in-place modifications to `dim` and expect them to be reflected</span>
+<span class="sd">  # in `tensor_shape[i]`, but they would not be.</span>
+<span class="sd">  ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">global</span> <span class="n">_TENSORSHAPE_V2_OVERRIDE</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="n">_TENSORSHAPE_V2_OVERRIDE</span> <span class="o">=</span> <span class="kc">True</span>
+  <span class="n">_api_usage_gauge</span><span class="o">.</span><span class="n">get_cell</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable_v2_tensorshape&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">disable_v2_tensorshape</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Disables the V2 TensorShape behavior and reverts to V1 behavior.</span>
+
+<span class="sd">  See docstring for `enable_v2_tensorshape` for details about the new behavior.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">global</span> <span class="n">_TENSORSHAPE_V2_OVERRIDE</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="n">_TENSORSHAPE_V2_OVERRIDE</span> <span class="o">=</span> <span class="kc">False</span>
+  <span class="n">_api_usage_gauge</span><span class="o">.</span><span class="n">get_cell</span><span class="p">()</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span>
+    <span class="s2">&quot;compat.dimension_value&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dimension_value&quot;</span><span class="p">,</span> <span class="s2">&quot;compat.dimension_value&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">dimension_value</span><span class="p">(</span><span class="n">dimension</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compatibility utility required to allow for both V1 and V2 behavior in TF.</span>
+
+<span class="sd">  Until the release of TF 2.0, we need the legacy behavior of `TensorShape` to</span>
+<span class="sd">  coexist with the new behavior. This utility is a bridge between the two.</span>
+
+<span class="sd">  When accessing the value of a TensorShape dimension,</span>
+<span class="sd">  use this utility, like this:</span>
+
+<span class="sd">  ```</span>
+<span class="sd">  # If you had this in your V1 code:</span>
+<span class="sd">  value = tensor_shape[i].value</span>
+
+<span class="sd">  # Use `dimension_value` as direct replacement compatible with both V1 &amp; V2:</span>
+<span class="sd">  value = dimension_value(tensor_shape[i])</span>
+
+<span class="sd">  # This would be the V2 equivalent:</span>
+<span class="sd">  value = tensor_shape[i]  # Warning: this will return the dim value in V2!</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    dimension: Either a `Dimension` instance, an integer, or None.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A plain value, i.e. an integer or None.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dimension</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dimension</span><span class="o">.</span><span class="n">value</span>
+  <span class="k">return</span> <span class="n">dimension</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span>
+    <span class="s2">&quot;compat.dimension_at_index&quot;</span><span class="p">,</span>
+    <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dimension_at_index&quot;</span><span class="p">,</span> <span class="s2">&quot;compat.dimension_at_index&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">dimension_at_index</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Compatibility utility required to allow for both V1 and V2 behavior in TF.</span>
+
+<span class="sd">  Until the release of TF 2.0, we need the legacy behavior of `TensorShape` to</span>
+<span class="sd">  coexist with the new behavior. This utility is a bridge between the two.</span>
+
+<span class="sd">  If you want to retrieve the Dimension instance corresponding to a certain</span>
+<span class="sd">  index in a TensorShape instance, use this utility, like this:</span>
+
+<span class="sd">  ```</span>
+<span class="sd">  # If you had this in your V1 code:</span>
+<span class="sd">  dim = tensor_shape[i]</span>
+
+<span class="sd">  # Use `dimension_at_index` as direct replacement compatible with both V1 &amp; V2:</span>
+<span class="sd">  dim = dimension_at_index(tensor_shape, i)</span>
+
+<span class="sd">  # Another possibility would be this, but WARNING: it only works if the</span>
+<span class="sd">  # tensor_shape instance has a defined rank.</span>
+<span class="sd">  dim = tensor_shape.dims[i]  # `dims` may be None if the rank is undefined!</span>
+
+<span class="sd">  # In native V2 code, we recommend instead being more explicit:</span>
+<span class="sd">  if tensor_shape.rank is None:</span>
+<span class="sd">    dim = Dimension(None)</span>
+<span class="sd">  else:</span>
+<span class="sd">    dim = tensor_shape.dims[i]</span>
+
+<span class="sd">  # Being more explicit will save you from the following trap (present in V1):</span>
+<span class="sd">  # you might do in-place modifications to `dim` and expect them to be reflected</span>
+<span class="sd">  # in `tensor_shape[i]`, but they would not be (as the Dimension object was</span>
+<span class="sd">  # instantiated on the fly.</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    shape: A TensorShape instance.</span>
+<span class="sd">    index: An integer index.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A dimension object.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">TensorShape</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">shape</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Dimension&quot;</span><span class="p">])</span>
+<span class="k">class</span> <span class="nc">Dimension</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Represents the value of one dimension in a TensorShape.&quot;&quot;&quot;</span>
+
+  <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_value&quot;</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a new Dimension with the given value.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># int(...) compensates for the int/long dichotomy on Python 2.X.</span>
+        <span class="c1"># TODO(b/143206389): Remove once we fully migrate to 3.X.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="fm">__index__</span><span class="p">())</span>
+      <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span>
+            <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Dimension value must be integer or None or have &quot;</span>
+                      <span class="s2">&quot;an __index__ method, got </span><span class="si">{!r}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">)),</span>
+            <span class="kc">None</span><span class="p">)</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Dimension </span><span class="si">%d</span><span class="s2"> must be &gt;= 0&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Dimension(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="nb">repr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+    <span class="k">return</span> <span class="s2">&quot;?&quot;</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns true if `other` has the same known value as this Dimension.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns true if `other` has a different known value from `self`.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__int__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+  <span class="c1"># This is needed for Windows.</span>
+  <span class="c1"># See https://github.com/tensorflow/tensorflow/pull/9780</span>
+  <span class="k">def</span> <span class="nf">__long__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+  <span class="k">def</span> <span class="nf">__index__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># Allow use in Python 3 range</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The value of this dimension, or None if it is unknown.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span>
+
+  <span class="k">def</span> <span class="nf">is_compatible_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns true if `other` is compatible with this Dimension.</span>
+
+<span class="sd">    Two known Dimensions are compatible if they have the same value.</span>
+<span class="sd">    An unknown Dimension is compatible with all other Dimensions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      True if this Dimension and `other` are compatible.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">assert_is_compatible_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises an exception if `other` is not compatible with this Dimension.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` and `other` are not compatible (see</span>
+<span class="sd">        is_compatible_with).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Dimensions </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2"> are not compatible&quot;</span> <span class="o">%</span>
+                       <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">merge_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a Dimension that combines the information in `self` and `other`.</span>
+
+<span class="sd">    Dimensions are combined as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(n)   .merge_with(tf.compat.v1.Dimension(n))     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(n)</span>
+<span class="sd">    tf.compat.v1.Dimension(n)   .merge_with(tf.compat.v1.Dimension(None))  ==</span>
+<span class="sd">    tf.compat.v1.Dimension(n)</span>
+<span class="sd">    tf.compat.v1.Dimension(None).merge_with(tf.compat.v1.Dimension(n))     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(n)</span>
+<span class="sd">    # equivalent to tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None).merge_with(tf.compat.v1.Dimension(None))</span>
+
+<span class="sd">    # raises ValueError for n != m</span>
+<span class="sd">    tf.compat.v1.Dimension(n)   .merge_with(tf.compat.v1.Dimension(m))</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension containing the combined information of `self` and</span>
+<span class="sd">      `other`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` and `other` are not compatible (see</span>
+<span class="sd">        is_compatible_with).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">assert_is_compatible_with</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the sum of `self` and `other`.</span>
+
+<span class="sd">    Dimensions are summed as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    + tf.compat.v1.Dimension(n)     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(m + n)</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    + tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) + tf.compat.v1.Dimension(n)     # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) + tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the sum of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the sum of `other` and `self`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the sum of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span> <span class="o">+</span> <span class="n">other</span>
+
+  <span class="k">def</span> <span class="nf">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the subtraction of `other` from `self`.</span>
+
+<span class="sd">    Dimensions are subtracted as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    - tf.compat.v1.Dimension(n)     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(m - n)</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    - tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) - tf.compat.v1.Dimension(n)     # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) - tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the subtraction of `other` from `self`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">-</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the subtraction of `self` from `other`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the subtraction of `self` from `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the product of `self` and `other`.</span>
+
+<span class="sd">    Dimensions are summed as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    * tf.compat.v1.Dimension(n)     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(m * n)</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    * tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) * tf.compat.v1.Dimension(n)     # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) * tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the product of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">*</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the product of `self` and `other`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is the product of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span> <span class="o">*</span> <span class="n">other</span>
+
+  <span class="k">def</span> <span class="nf">__floordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the quotient of `self` and `other` rounded down.</span>
+
+<span class="sd">    Dimensions are divided as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    // tf.compat.v1.Dimension(n)     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(m // n)</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    // tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) // tf.compat.v1.Dimension(n)     # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) // tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `Dimension` whose value is the integer quotient of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">//</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__rfloordiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the quotient of `other` and `self` rounded down.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `Dimension` whose value is the integer quotient of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__div__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;DEPRECATED: Use `__floordiv__` via `x // y` instead.</span>
+
+<span class="sd">    This function exists only for backwards compatibility purposes; new code</span>
+<span class="sd">    should use `__floordiv__` via the syntax `x // y`.  Using `x // y`</span>
+<span class="sd">    communicates clearly that the result rounds down, and is forward compatible</span>
+<span class="sd">    to Python 3.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `Dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `Dimension` whose value is the integer quotient of `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span> <span class="o">//</span> <span class="n">other</span>
+
+  <span class="k">def</span> <span class="nf">__rdiv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use `__floordiv__` via `x // y` instead.</span>
+
+<span class="sd">    This function exists only to have a better error message. Instead of:</span>
+<span class="sd">    `TypeError: unsupported operand type(s) for /: &#39;int&#39; and &#39;Dimension&#39;`,</span>
+<span class="sd">    this function will explicitly call for usage of `//` instead.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `Dimension`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      TypeError.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unsupported operand type(s) for /: &#39;</span><span class="si">{}</span><span class="s2">&#39; and &#39;Dimension&#39;, &quot;</span>
+                    <span class="s2">&quot;please use // instead&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use `__floordiv__` via `x // y` instead.</span>
+
+<span class="sd">    This function exists only to have a better error message. Instead of:</span>
+<span class="sd">    `TypeError: unsupported operand type(s) for /: &#39;Dimension&#39; and &#39;int&#39;`,</span>
+<span class="sd">    this function will explicitly call for usage of `//` instead.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `Dimension`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      TypeError.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unsupported operand type(s) for /: &#39;Dimension&#39; and &#39;</span><span class="si">{}</span><span class="s2">&#39;, &quot;</span>
+                    <span class="s2">&quot;please use // instead&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Use `__floordiv__` via `x // y` instead.</span>
+
+<span class="sd">    This function exists only to have a better error message. Instead of:</span>
+<span class="sd">    `TypeError: unsupported operand type(s) for /: &#39;int&#39; and &#39;Dimension&#39;`,</span>
+<span class="sd">    this function will explicitly call for usage of `//` instead.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `Dimension`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      TypeError.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;unsupported operand type(s) for /: &#39;</span><span class="si">{}</span><span class="s2">&#39; and &#39;Dimension&#39;, &quot;</span>
+                    <span class="s2">&quot;please use // instead&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns `self` modulo `other`.</span>
+
+<span class="sd">    Dimension modulo are computed as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    % tf.compat.v1.Dimension(n)     ==</span>
+<span class="sd">    tf.compat.v1.Dimension(m % n)</span>
+<span class="sd">    tf.compat.v1.Dimension(m)    % tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) % tf.compat.v1.Dimension(n)     # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    tf.compat.v1.Dimension(None) % tf.compat.v1.Dimension(None)  # equiv. to</span>
+<span class="sd">    tf.compat.v1.Dimension(None)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is `self` modulo `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">%</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__rmod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns `other` modulo `self`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension, or a value accepted by `as_dimension`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A Dimension whose value is `other` modulo `self`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">other</span> <span class="o">%</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is known to be less than `other`.</span>
+
+<span class="sd">    Dimensions are compared as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &lt; tf.compat.v1.Dimension(n))    == (m &lt; n)</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &lt; tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &lt; tf.compat.v1.Dimension(n))    == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &lt; tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The value of `self.value &lt; other.value` if both are known, otherwise</span>
+<span class="sd">      None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&lt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is known to be less than or equal to `other`.</span>
+
+<span class="sd">    Dimensions are compared as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &lt;= tf.compat.v1.Dimension(n))    == (m &lt;= n)</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &lt;= tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &lt;= tf.compat.v1.Dimension(n))    == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &lt;= tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The value of `self.value &lt;= other.value` if both are known, otherwise</span>
+<span class="sd">      None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&lt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is known to be greater than `other`.</span>
+
+<span class="sd">    Dimensions are compared as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &gt; tf.compat.v1.Dimension(n))    == (m &gt; n)</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &gt; tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &gt; tf.compat.v1.Dimension(n))    == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &gt; tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The value of `self.value &gt; other.value` if both are known, otherwise</span>
+<span class="sd">      None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&gt;</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is known to be greater than or equal to `other`.</span>
+
+<span class="sd">    Dimensions are compared as follows:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &gt;= tf.compat.v1.Dimension(n))    == (m &gt;= n)</span>
+<span class="sd">    (tf.compat.v1.Dimension(m)    &gt;= tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &gt;= tf.compat.v1.Dimension(n))    == None</span>
+<span class="sd">    (tf.compat.v1.Dimension(None) &gt;= tf.compat.v1.Dimension(None)) == None</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another Dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The value of `self.value &gt;= other.value` if both are known, otherwise</span>
+<span class="sd">      None.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_dimension</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_value</span> <span class="o">&gt;=</span> <span class="n">other</span><span class="o">.</span><span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Dimension</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_value</span><span class="p">,)</span>
+
+
+<span class="k">def</span> <span class="nf">as_dimension</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Converts the given value to a Dimension.</span>
+
+<span class="sd">  A Dimension input will be returned unmodified.</span>
+<span class="sd">  An input of `None` will be converted to an unknown Dimension.</span>
+<span class="sd">  An integer input will be converted to a Dimension with that value.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: The value to be converted.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A Dimension corresponding to the given value.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">value</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TensorShape"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;TensorShape&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TensorShape</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Represents the shape of a `Tensor`.</span>
+
+<span class="sd">  A `TensorShape` represents a possibly-partial shape specification for a</span>
+<span class="sd">  `Tensor`. It may be one of the following:</span>
+
+<span class="sd">  * *Fully-known shape:* has a known number of dimensions and a known size</span>
+<span class="sd">    for each dimension. e.g. `TensorShape([16, 256])`</span>
+<span class="sd">  * *Partially-known shape:* has a known number of dimensions, and an unknown</span>
+<span class="sd">    size for one or more dimension. e.g. `TensorShape([None, 256])`</span>
+<span class="sd">  * *Unknown shape:* has an unknown number of dimensions, and an unknown</span>
+<span class="sd">    size in all dimensions. e.g. `TensorShape(None)`</span>
+
+<span class="sd">  If a tensor is produced by an operation of type `&quot;Foo&quot;`, its shape</span>
+<span class="sd">  may be inferred if there is a registered shape function for</span>
+<span class="sd">  `&quot;Foo&quot;`. See [Shape</span>
+<span class="sd">  functions](https://tensorflow.org/extend/adding_an_op#shape_functions_in_c)</span>
+<span class="sd">  for details of shape functions and how to register them. Alternatively,</span>
+<span class="sd">  the shape may be set explicitly using `tf.Tensor.set_shape`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;_dims&quot;</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dims</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a new TensorShape with the given dimensions.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      dims: A list of Dimensions, or None if the shape is unspecified.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      TypeError: If dims cannot be converted to a list of dimensions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">tensor_shape_pb2</span><span class="o">.</span><span class="n">TensorShapeProto</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">dims</span><span class="o">.</span><span class="n">unknown_rank</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="kc">None</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="c1"># Protos store variable-size dimensions as -1</span>
+            <span class="n">as_dimension</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">size</span> <span class="k">if</span> <span class="n">dim</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">dims</span><span class="o">.</span><span class="n">dim</span>
+        <span class="p">]</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">TensorShape</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="n">dims</span><span class="o">.</span><span class="n">dims</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">dims_iter</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="c1"># Treat as a singleton dimension</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">as_dimension</span><span class="p">(</span><span class="n">dims</span><span class="p">)]</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">as_dimension</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dims_iter</span><span class="p">]</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_v2_behavior</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">_TENSORSHAPE_V2_OVERRIDE</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">tf2</span><span class="o">.</span><span class="n">enabled</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">_TENSORSHAPE_V2_OVERRIDE</span>
+
+  <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;TensorShape(</span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">]</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;TensorShape(None)&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s2">&quot;TensorShape(</span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span>
+
+  <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s2">&quot;&lt;unknown&gt;&quot;</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">,)&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">,)&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">rank</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the rank of this shape, or None if it is unspecified.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">dims</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Deprecated.  Returns list of dimensions for this shape.</span>
+
+<span class="sd">    Suggest `TensorShape.as_list` instead.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A list containing `tf.compat.v1.Dimension`s, or None if the shape is</span>
+<span class="sd">      unspecified.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">ndims</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Deprecated accessor for `rank`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span>
+
+  <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the rank of this shape, or raises ValueError if unspecified.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot take the length of shape with unknown rank.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if this shape contains non-zero information.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+  <span class="c1"># Python 3 wants __bool__, Python 2.7 wants __nonzero__</span>
+  <span class="n">__nonzero__</span> <span class="o">=</span> <span class="fm">__bool__</span>
+
+  <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns `self.dims` if the rank is known, otherwise raises ValueError.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot iterate over a shape with unknown rank.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the value of a dimension or a shape, depending on the key.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      key: If `key` is an integer, returns the dimension at that index;</span>
+<span class="sd">        otherwise if `key` is a slice, returns a TensorShape whose dimensions</span>
+<span class="sd">        are those selected by the slice from `self`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      An integer if `key` is an integer, or a `TensorShape` if `key` is a</span>
+<span class="sd">      slice.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `key` is a slice and `self` is completely unknown and</span>
+<span class="sd">        the step is set.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+          <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">):</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">start</span> <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">start</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">stop</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">stop</span>
+
+        <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">step</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="c1"># TODO(mrry): Handle these maybe.</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Steps are not yet handled&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">stop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="c1"># NOTE(mrry): This implies that TensorShape(None) is compatible with</span>
+          <span class="c1"># TensorShape(None)[1:], which is obviously not true. It would be</span>
+          <span class="c1"># possible to track the number of dimensions symbolically,</span>
+          <span class="c1"># and perhaps we should do that.</span>
+          <span class="k">return</span> <span class="n">unknown_shape</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="n">start</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">stop</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="c1"># TODO(mrry): Handle this better, as it will be useful for handling</span>
+          <span class="c1"># suffixes of otherwise unknown shapes.</span>
+          <span class="k">return</span> <span class="n">unknown_shape</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">unknown_shape</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">stop</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_v2_behavior</span><span class="p">:</span>
+          <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TensorShape.num_elements"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.num_elements">[docs]</a>  <span class="k">def</span> <span class="nf">num_elements</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the total number of elements, or none for incomplete shapes.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span>
+      <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">:</span>
+        <span class="n">size</span> <span class="o">*=</span> <span class="n">dim</span><span class="o">.</span><span class="n">value</span>
+      <span class="k">return</span> <span class="n">size</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="TensorShape.merge_with"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.merge_with">[docs]</a>  <span class="k">def</span> <span class="nf">merge_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a `TensorShape` combining the information in `self` and `other`.</span>
+
+<span class="sd">    The dimensions in `self` and `other` are merged elementwise,</span>
+<span class="sd">    according to the rules defined for `Dimension.merge_with()`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `TensorShape`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TensorShape` containing the combined information of `self` and</span>
+<span class="sd">      `other`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` and `other` are not compatible.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">other</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assert_same_rank</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+        <span class="n">new_dims</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">dim</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">):</span>
+          <span class="n">new_dims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">other</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="n">new_dims</span><span class="p">)</span>
+      <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shapes </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2"> are not compatible&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span></div>
+
+  <span class="k">def</span> <span class="nf">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TensorShape</span><span class="p">):</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">TensorShape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">TensorShape</span><span class="p">):</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">TensorShape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">other</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TensorShape.concatenate"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.concatenate">[docs]</a>  <span class="k">def</span> <span class="nf">concatenate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the concatenation of the dimension in `self` and `other`.</span>
+
+<span class="sd">    *N.B.* If either `self` or `other` is completely unknown,</span>
+<span class="sd">    concatenation will discard information about the other shape. In</span>
+<span class="sd">    future, we might support concatenation that preserves this</span>
+<span class="sd">    information for use with slicing.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `TensorShape`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TensorShape` whose dimensions are the concatenation of the</span>
+<span class="sd">      dimensions in `self` and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO(mrry): Handle the case where we concatenate a known shape with a</span>
+    <span class="c1"># completely unknown shape, so that we can use the partial information.</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">unknown_shape</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TensorShape.assert_same_rank"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.assert_same_rank">[docs]</a>  <span class="k">def</span> <span class="nf">assert_same_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises an exception if `self` and `other` do not have compatible ranks.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `TensorShape`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` and `other` do not represent shapes with the</span>
+<span class="sd">        same rank.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shapes </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2"> must have the same rank&quot;</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TensorShape.assert_has_rank"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.assert_has_rank">[docs]</a>  <span class="k">def</span> <span class="nf">assert_has_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises an exception if `self` is not compatible with the given `rank`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      rank: An integer.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` does not represent a shape with the given `rank`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shape </span><span class="si">%s</span><span class="s2"> must have rank </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TensorShape.with_rank"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.with_rank">[docs]</a>  <span class="k">def</span> <span class="nf">with_rank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a shape based on `self` with the given rank.</span>
+
+<span class="sd">    This method promotes a completely unknown shape to one with a</span>
+<span class="sd">    known rank.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      rank: An integer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A shape that is at least as specific as `self` with the given rank.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` does not represent a shape with the given `rank`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">unknown_shape</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="n">rank</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shape </span><span class="si">%s</span><span class="s2"> must have rank </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TensorShape.with_rank_at_least"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.with_rank_at_least">[docs]</a>  <span class="k">def</span> <span class="nf">with_rank_at_least</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a shape based on `self` with at least the given rank.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      rank: An integer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A shape that is at least as specific as `self` with at least the given</span>
+<span class="sd">      rank.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` does not represent a shape with at least the given</span>
+<span class="sd">        `rank`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="n">rank</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shape </span><span class="si">%s</span><span class="s2"> must have rank at least </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="TensorShape.with_rank_at_most"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.with_rank_at_most">[docs]</a>  <span class="k">def</span> <span class="nf">with_rank_at_most</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a shape based on `self` with at most the given rank.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      rank: An integer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A shape that is at least as specific as `self` with at most the given</span>
+<span class="sd">      rank.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` does not represent a shape with at most the given</span>
+<span class="sd">        `rank`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">&gt;</span> <span class="n">rank</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shape </span><span class="si">%s</span><span class="s2"> must have rank at most </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="TensorShape.is_compatible_with"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.is_compatible_with">[docs]</a>  <span class="k">def</span> <span class="nf">is_compatible_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True iff `self` is compatible with `other`.</span>
+
+<span class="sd">    Two possibly-partially-defined shapes are compatible if there</span>
+<span class="sd">    exists a fully-defined shape that both shapes can represent. Thus,</span>
+<span class="sd">    compatibility allows the shape inference code to reason about</span>
+<span class="sd">    partially-defined shapes. For example:</span>
+
+<span class="sd">    * TensorShape(None) is compatible with all shapes.</span>
+
+<span class="sd">    * TensorShape([None, None]) is compatible with all two-dimensional</span>
+<span class="sd">      shapes, such as TensorShape([32, 784]), and also TensorShape(None). It is</span>
+<span class="sd">      not compatible with, for example, TensorShape([None]) or</span>
+<span class="sd">      TensorShape([None, None, None]).</span>
+
+<span class="sd">    * TensorShape([32, None]) is compatible with all two-dimensional shapes</span>
+<span class="sd">      with size 32 in the 0th dimension, and also TensorShape([None, None])</span>
+<span class="sd">      and TensorShape(None). It is not compatible with, for example,</span>
+<span class="sd">      TensorShape([32]), TensorShape([32, None, 1]) or TensorShape([64, None]).</span>
+
+<span class="sd">    * TensorShape([32, 784]) is compatible with itself, and also</span>
+<span class="sd">      TensorShape([32, None]), TensorShape([None, 784]), TensorShape([None,</span>
+<span class="sd">      None]) and TensorShape(None). It is not compatible with, for example,</span>
+<span class="sd">      TensorShape([32, 1, 784]) or TensorShape([None]).</span>
+
+<span class="sd">    The compatibility relation is reflexive and symmetric, but not</span>
+<span class="sd">    transitive. For example, TensorShape([32, 784]) is compatible with</span>
+<span class="sd">    TensorShape(None), and TensorShape(None) is compatible with</span>
+<span class="sd">    TensorShape([4, 4]), but TensorShape([32, 784]) is not compatible with</span>
+<span class="sd">    TensorShape([4, 4]).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another TensorShape.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      True iff `self` is compatible with `other`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+      <span class="k">for</span> <span class="n">x_dim</span><span class="p">,</span> <span class="n">y_dim</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">x_dim</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">y_dim</span><span class="p">):</span>
+          <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="TensorShape.assert_is_compatible_with"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.assert_is_compatible_with">[docs]</a>  <span class="k">def</span> <span class="nf">assert_is_compatible_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises exception if `self` and `other` do not represent the same shape.</span>
+
+<span class="sd">    This method can be used to assert that there exists a shape that both</span>
+<span class="sd">    `self` and `other` represent.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another TensorShape.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` and `other` do not represent the same shape.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shapes </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2"> are incompatible&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TensorShape.most_specific_compatible_shape"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.most_specific_compatible_shape">[docs]</a>  <span class="k">def</span> <span class="nf">most_specific_compatible_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the most specific TensorShape compatible with `self` and `other`.</span>
+
+<span class="sd">    * TensorShape([None, 1]) is the most specific TensorShape compatible with</span>
+<span class="sd">      both TensorShape([2, 1]) and TensorShape([5, 1]). Note that</span>
+<span class="sd">      TensorShape(None) is also compatible with above mentioned TensorShapes.</span>
+
+<span class="sd">    * TensorShape([1, 2, 3]) is the most specific TensorShape compatible with</span>
+<span class="sd">      both TensorShape([1, 2, 3]) and TensorShape([1, 2, 3]). There are more</span>
+<span class="sd">      less specific TensorShapes compatible with above mentioned TensorShapes,</span>
+<span class="sd">      e.g. TensorShape([1, 2, None]), TensorShape(None).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: Another `TensorShape`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TensorShape` which is the most specific compatible shape of `self`</span>
+<span class="sd">      and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">unknown_shape</span><span class="p">()</span>
+
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">[(</span><span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">))]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span><span class="p">)):</span>
+      <span class="k">if</span> <span class="n">d1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">d2</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">d1</span> <span class="o">==</span> <span class="n">d2</span><span class="p">:</span>
+        <span class="n">dims</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">d1</span>
+    <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TensorShape.is_fully_defined"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.is_fully_defined">[docs]</a>  <span class="k">def</span> <span class="nf">is_fully_defined</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True iff `self` is fully defined in every dimension.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+            <span class="nb">all</span><span class="p">(</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="TensorShape.assert_is_fully_defined"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.assert_is_fully_defined">[docs]</a>  <span class="k">def</span> <span class="nf">assert_is_fully_defined</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raises an exception if `self` is not fully defined in every dimension.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` does not have a known value for every dimension.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Shape </span><span class="si">%s</span><span class="s2"> is not fully defined&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="TensorShape.as_list"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.as_list">[docs]</a>  <span class="k">def</span> <span class="nf">as_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a list of integers or `None` for each dimension.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A list of integers or `None` for each dimension.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `self` is an unknown shape with an unknown rank.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;as_list() is not defined on an unknown TensorShape.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="TensorShape.as_proto"><a class="viewcode-back" href="../../../../index.html#tensorflow.TensorShape.as_proto">[docs]</a>  <span class="k">def</span> <span class="nf">as_proto</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns this shape as a `TensorShapeProto`.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">tensor_shape_pb2</span><span class="o">.</span><span class="n">TensorShapeProto</span><span class="p">(</span><span class="n">unknown_rank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">tensor_shape_pb2</span><span class="o">.</span><span class="n">TensorShapeProto</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span>
+          <span class="n">tensor_shape_pb2</span><span class="o">.</span><span class="n">TensorShapeProto</span><span class="o">.</span><span class="n">Dim</span><span class="p">(</span>
+              <span class="n">size</span><span class="o">=-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span>
+      <span class="p">])</span></div>
+
+  <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is equivalent to `other`.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span>
+
+  <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns True if `self` is known to be different from `other`.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">other</span> <span class="o">=</span> <span class="n">as_shape</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">NotImplemented</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The inequality of unknown TensorShapes is undefined.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">rank</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_dims</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">dims</span>
+
+  <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">TensorShape</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_dims</span><span class="p">,)</span>
+
+  <span class="k">def</span> <span class="nf">__concat__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">as_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Converts the given object to a TensorShape.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">TensorShape</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">shape</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">unknown_shape</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns an unknown TensorShape, optionally with a known rank.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    rank: (Optional) If specified, the number of dimensions in the shape.</span>
+<span class="sd">    **kwargs: For backwards compatibility.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    An unknown TensorShape.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: In case of invalid arguments.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="s2">&quot;ndims&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="n">rank</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;ndims&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unknown argument: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">TensorShape</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">TensorShape</span><span class="p">([</span><span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span> <span class="o">*</span> <span class="n">rank</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

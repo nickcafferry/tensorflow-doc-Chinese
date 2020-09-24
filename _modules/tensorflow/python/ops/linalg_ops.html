@@ -1,0 +1,1100 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.linalg_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.linalg_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.linalg_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Operations for linear algebra.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_linalg_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">linalg_ops_impl</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">map_fn</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="c1"># pylint: disable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops.gen_linalg_ops</span> <span class="k">import</span> <span class="o">*</span>
+<span class="c1"># pylint: enable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">deprecation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># Names below are lower_case.</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+
+
+<span class="k">def</span> <span class="nf">_RegularizedGramianCholesky</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">,</span> <span class="n">first_kind</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes Cholesky factorization of regularized gramian matrix.</span>
+
+<span class="sd">  Below we will use the following notation for each pair of matrix and</span>
+<span class="sd">  right-hand sides in the batch:</span>
+
+<span class="sd">  `matrix`=\\(A \in \Re^{m \times n}\\),</span>
+<span class="sd">  `output`=\\(C  \in \Re^{\min(m, n) \times \min(m,n)}\\),</span>
+<span class="sd">  `l2_regularizer`=\\(\lambda\\).</span>
+
+<span class="sd">  If `first_kind` is True, returns the Cholesky factorization \\(L\\) such that</span>
+<span class="sd">  \\(L L^H =  A^H A + \lambda I\\).</span>
+<span class="sd">  If `first_kind` is False, returns the Cholesky factorization \\(L\\) such that</span>
+<span class="sd">  \\(L L^H =  A A^H + \lambda I\\).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    matrix: `Tensor` of shape `[..., M, N]`.</span>
+<span class="sd">    l2_regularizer: 0-D `double` `Tensor`. Ignored if `fast=False`.</span>
+<span class="sd">    first_kind: bool. Controls what gramian matrix to factor.</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    output: `Tensor` of shape `[..., min(M,N), min(M,N)]` whose inner-most 2</span>
+<span class="sd">      dimensions contain the Cholesky factors \\(L\\) described above.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="n">gramian</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span>
+      <span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">adjoint_a</span><span class="o">=</span><span class="n">first_kind</span><span class="p">,</span> <span class="n">adjoint_b</span><span class="o">=</span><span class="ow">not</span> <span class="n">first_kind</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">l2_regularizer</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">or</span> <span class="n">l2_regularizer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">matrix_shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">first_kind</span><span class="p">:</span>
+      <span class="n">small_dim</span> <span class="o">=</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">small_dim</span> <span class="o">=</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">identity</span> <span class="o">=</span> <span class="n">eye</span><span class="p">(</span><span class="n">small_dim</span><span class="p">,</span> <span class="n">batch_shape</span><span class="o">=</span><span class="n">batch_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">small_dim_static</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">first_kind</span> <span class="k">else</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">identity</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">small_dim_static</span><span class="p">,</span> <span class="n">small_dim_static</span><span class="p">]))</span>
+    <span class="n">gramian</span> <span class="o">+=</span> <span class="n">l2_regularizer</span> <span class="o">*</span> <span class="n">identity</span>
+  <span class="k">return</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">gramian</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span>
+    <span class="s1">&#39;linalg.triangular_solve&#39;</span><span class="p">,</span>
+    <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.triangular_solve&#39;</span><span class="p">,</span> <span class="s1">&#39;matrix_triangular_solve&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">matrix_triangular_solve</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Solve systems of linear equations with upper or lower triangular matrices.</span>
+
+<span class="sd">  `matrix` is a tensor of shape `[..., M, M]` whose inner-most 2 dimensions form</span>
+<span class="sd">  square matrices. If `lower` is `True` then the strictly upper triangular part</span>
+<span class="sd">  of each inner-most matrix is assumed to be zero and not accessed. If `lower`</span>
+<span class="sd">  is `False` then the strictly lower triangular part of each inner-most matrix</span>
+<span class="sd">  is assumed to be zero and not accessed. `rhs` is a tensor of shape</span>
+<span class="sd">  `[..., M, N]`.</span>
+
+<span class="sd">  The output is a tensor of shape `[..., M, N]`. If `adjoint` is `True` then the</span>
+<span class="sd">  innermost matrices in output satisfy matrix equations `</span>
+<span class="sd">  sum_k matrix[..., i, k] * output[..., k, j] = rhs[..., i, j]`.</span>
+<span class="sd">  If `adjoint` is `False` then the</span>
+<span class="sd">  innermost matrices in output satisfy matrix equations</span>
+<span class="sd">  `sum_k adjoint(matrix[..., i, k]) * output[..., k, j] = rhs[..., i, j]`.</span>
+
+<span class="sd">  Example:</span>
+
+<span class="sd">  &gt;&gt;&gt; a = tf.constant([[3,  0,  0,  0],</span>
+<span class="sd">  ...   [2,  1,  0,  0],</span>
+<span class="sd">  ...   [1,  0,  1,  0],</span>
+<span class="sd">  ...   [1,  1,  1,  1]], dtype=tf.float32)</span>
+
+<span class="sd">  &gt;&gt;&gt; b = tf.constant([[4], [2], [4], [2]], dtype=tf.float32)</span>
+<span class="sd">  &gt;&gt;&gt; x = tf.linalg.triangular_solve(a, b, lower=True)</span>
+<span class="sd">  &gt;&gt;&gt; x</span>
+<span class="sd">  &lt;tf.Tensor: shape=(4, 1), dtype=float32, numpy=</span>
+<span class="sd">  array([[ 1.3333334 ],</span>
+<span class="sd">         [-0.66666675],</span>
+<span class="sd">         [ 2.6666665 ],</span>
+<span class="sd">         [-1.3333331 ]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; tf.matmul(a, x)</span>
+<span class="sd">  &lt;tf.Tensor: shape=(4, 1), dtype=float32, numpy=</span>
+<span class="sd">  array([[4.],</span>
+<span class="sd">         [2.],</span>
+<span class="sd">         [4.],</span>
+<span class="sd">         [2.]], dtype=float32)&gt;</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    matrix: A `Tensor`. Must be one of the following types: `float64`,</span>
+<span class="sd">      `float32`, `half`, `complex64`, `complex128`. Shape is `[..., M, M]`.</span>
+<span class="sd">    rhs: A `Tensor`. Must have the same type as `matrix`. Shape is `[..., M,</span>
+<span class="sd">      N]`.</span>
+<span class="sd">    lower: An optional `bool`. Defaults to `True`. Boolean indicating whether</span>
+<span class="sd">      the innermost matrices in matrix are lower or upper triangular.</span>
+<span class="sd">    adjoint: An optional `bool`. Defaults to `False`. Boolean indicating whether</span>
+<span class="sd">      to solve with matrix or its (block-wise) adjoint.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type as matrix, and shape is `[..., M, N]`.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;triangular_solve&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">matrix_triangular_solve</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="n">lower</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="n">adjoint</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span>
+    <span class="s1">&#39;linalg.cholesky_solve&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.cholesky_solve&#39;</span><span class="p">,</span> <span class="s1">&#39;cholesky_solve&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;cholesky_solve&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">cholesky_solve</span><span class="p">(</span><span class="n">chol</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Solves systems of linear eqns `A X = RHS`, given Cholesky factorizations.</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # Solve 10 separate 2x2 linear systems:</span>
+<span class="sd">  A = ... # shape 10 x 2 x 2</span>
+<span class="sd">  RHS = ... # shape 10 x 2 x 1</span>
+<span class="sd">  chol = tf.linalg.cholesky(A)  # shape 10 x 2 x 2</span>
+<span class="sd">  X = tf.linalg.cholesky_solve(chol, RHS)  # shape 10 x 2 x 1</span>
+<span class="sd">  # tf.matmul(A, X) ~ RHS</span>
+<span class="sd">  X[3, :, 0]  # Solution to the linear system A[3, :, :] x = RHS[3, :, 0]</span>
+
+<span class="sd">  # Solve five linear systems (K = 5) for every member of the length 10 batch.</span>
+<span class="sd">  A = ... # shape 10 x 2 x 2</span>
+<span class="sd">  RHS = ... # shape 10 x 2 x 5</span>
+<span class="sd">  ...</span>
+<span class="sd">  X[3, :, 2]  # Solution to the linear system A[3, :, :] x = RHS[3, :, 2]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    chol:  A `Tensor`.  Must be `float32` or `float64`, shape is `[..., M, M]`.</span>
+<span class="sd">      Cholesky factorization of `A`, e.g. `chol = tf.linalg.cholesky(A)`.</span>
+<span class="sd">      For that reason, only the lower triangular parts (including the diagonal)</span>
+<span class="sd">      of the last two dimensions of `chol` are used.  The strictly upper part is</span>
+<span class="sd">      assumed to be zero and not accessed.</span>
+<span class="sd">    rhs:  A `Tensor`, same type as `chol`, shape is `[..., M, K]`.</span>
+<span class="sd">    name:  A name to give this `Op`.  Defaults to `cholesky_solve`.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Solution to `A x = rhs`, shape `[..., M, K]`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># To solve C C^* x = rhs, we</span>
+  <span class="c1"># 1. Solve C y = rhs for y, thus y = C^* x</span>
+  <span class="c1"># 2. Solve C^* x = y for x</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;cholesky_solve&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">chol</span><span class="p">,</span> <span class="n">rhs</span><span class="p">]):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">matrix_triangular_solve</span><span class="p">(</span>
+        <span class="n">chol</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">matrix_triangular_solve</span><span class="p">(</span>
+        <span class="n">chol</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">adjoint</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+<div class="viewcode-block" id="eye"><a class="viewcode-back" href="../../../../index.html#tensorflow.eye">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;eye&#39;</span><span class="p">,</span> <span class="s1">&#39;linalg.eye&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">eye</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span>
+        <span class="n">num_columns</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">batch_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Construct an identity matrix, or a batch of matrices.</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # Construct one identity matrix.</span>
+<span class="sd">  tf.eye(2)</span>
+<span class="sd">  ==&gt; [[1., 0.],</span>
+<span class="sd">       [0., 1.]]</span>
+
+<span class="sd">  # Construct a batch of 3 identity matrices, each 2 x 2.</span>
+<span class="sd">  # batch_identity[i, :, :] is a 2 x 2 identity matrix, i = 0, 1, 2.</span>
+<span class="sd">  batch_identity = tf.eye(2, batch_shape=[3])</span>
+
+<span class="sd">  # Construct one 2 x 3 &quot;identity&quot; matrix</span>
+<span class="sd">  tf.eye(2, num_columns=3)</span>
+<span class="sd">  ==&gt; [[ 1.,  0.,  0.],</span>
+<span class="sd">       [ 0.,  1.,  0.]]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    num_rows: Non-negative `int32` scalar `Tensor` giving the number of rows</span>
+<span class="sd">      in each batch matrix.</span>
+<span class="sd">    num_columns: Optional non-negative `int32` scalar `Tensor` giving the number</span>
+<span class="sd">      of columns in each batch matrix.  Defaults to `num_rows`.</span>
+<span class="sd">    batch_shape:  A list or tuple of Python integers or a 1-D `int32` `Tensor`.</span>
+<span class="sd">      If provided, the returned `Tensor` will have leading batch dimensions of</span>
+<span class="sd">      this shape.</span>
+<span class="sd">    dtype:  The type of an element in the resulting `Tensor`</span>
+<span class="sd">    name:  A name for this `Op`.  Defaults to &quot;eye&quot;.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of shape `batch_shape + [num_rows, num_columns]`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">linalg_ops_impl</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">num_rows</span><span class="p">,</span>
+                             <span class="n">num_columns</span><span class="o">=</span><span class="n">num_columns</span><span class="p">,</span>
+                             <span class="n">batch_shape</span><span class="o">=</span><span class="n">batch_shape</span><span class="p">,</span>
+                             <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span>
+                             <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.lstsq&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.lstsq&#39;</span><span class="p">,</span> <span class="s1">&#39;matrix_solve_ls&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;matrix_solve_ls&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">matrix_solve_ls</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">fast</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Solves one or more linear least-squares problems.</span>
+
+<span class="sd">  `matrix` is a tensor of shape `[..., M, N]` whose inner-most 2 dimensions</span>
+<span class="sd">  form `M`-by-`N` matrices. Rhs is a tensor of shape `[..., M, K]` whose</span>
+<span class="sd">  inner-most 2 dimensions form `M`-by-`K` matrices.  The computed output is a</span>
+<span class="sd">  `Tensor` of shape `[..., N, K]` whose inner-most 2 dimensions form `M`-by-`K`</span>
+<span class="sd">  matrices that solve the equations</span>
+<span class="sd">  `matrix[..., :, :] * output[..., :, :] = rhs[..., :, :]` in the least squares</span>
+<span class="sd">  sense.</span>
+
+<span class="sd">  Below we will use the following notation for each pair of matrix and</span>
+<span class="sd">  right-hand sides in the batch:</span>
+
+<span class="sd">  `matrix`=\\(A \in \Re^{m \times n}\\),</span>
+<span class="sd">  `rhs`=\\(B  \in \Re^{m \times k}\\),</span>
+<span class="sd">  `output`=\\(X  \in \Re^{n \times k}\\),</span>
+<span class="sd">  `l2_regularizer`=\\(\lambda\\).</span>
+
+<span class="sd">  If `fast` is `True`, then the solution is computed by solving the normal</span>
+<span class="sd">  equations using Cholesky decomposition. Specifically, if \\(m \ge n\\) then</span>
+<span class="sd">  \\(X = (A^T A + \lambda I)^{-1} A^T B\\), which solves the least-squares</span>
+<span class="sd">  problem \\(X = \mathrm{argmin}_{Z \in \Re^{n \times k}} ||A Z - B||_F^2 +</span>
+<span class="sd">  \lambda ||Z||_F^2\\). If \\(m \lt n\\) then `output` is computed as</span>
+<span class="sd">  \\(X = A^T (A A^T + \lambda I)^{-1} B\\), which (for \\(\lambda = 0\\)) is</span>
+<span class="sd">  the minimum-norm solution to the under-determined linear system, i.e.</span>
+<span class="sd">  \\(X = \mathrm{argmin}_{Z \in \Re^{n \times k}} ||Z||_F^2 \\), subject to</span>
+<span class="sd">  \\(A Z = B\\). Notice that the fast path is only numerically stable when</span>
+<span class="sd">  \\(A\\) is numerically full rank and has a condition number</span>
+<span class="sd">  \\(\mathrm{cond}(A) \lt \frac{1}{\sqrt{\epsilon_{mach}}}\\) or\\(\lambda\\)</span>
+<span class="sd">  is sufficiently large.</span>
+
+<span class="sd">  If `fast` is `False` an algorithm based on the numerically robust complete</span>
+<span class="sd">  orthogonal decomposition is used. This computes the minimum-norm</span>
+<span class="sd">  least-squares solution, even when \\(A\\) is rank deficient. This path is</span>
+<span class="sd">  typically 6-7 times slower than the fast path. If `fast` is `False` then</span>
+<span class="sd">  `l2_regularizer` is ignored.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    matrix: `Tensor` of shape `[..., M, N]`.</span>
+<span class="sd">    rhs: `Tensor` of shape `[..., M, K]`.</span>
+<span class="sd">    l2_regularizer: 0-D `double` `Tensor`. Ignored if `fast=False`.</span>
+<span class="sd">    fast: bool. Defaults to `True`.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    output: `Tensor` of shape `[..., N, K]` whose inner-most 2 dimensions form</span>
+<span class="sd">      `M`-by-`K` matrices that solve the equations</span>
+<span class="sd">      `matrix[..., :, :] * output[..., :, :] = rhs[..., :, :]` in the least</span>
+<span class="sd">      squares sense.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    NotImplementedError: linalg.lstsq is currently disabled for complex128</span>
+<span class="sd">    and l2_regularizer != 0 due to poor accuracy.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="c1"># pylint: disable=long-lambda</span>
+  <span class="k">def</span> <span class="nf">_use_composite_impl</span><span class="p">(</span><span class="n">fast</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Determines whether to use the composite or specialized CPU kernel.</span>
+
+<span class="sd">    When the total size of the tensor is larger than the cache size and the</span>
+<span class="sd">    batch size is large compared to the smallest matrix dimension, then the</span>
+<span class="sd">    composite implementation is inefficient since it has to read the entire</span>
+<span class="sd">    tensor from memory multiple times. In this case we fall back to the</span>
+<span class="sd">    original CPU kernel, which does all the computational steps on each</span>
+<span class="sd">    matrix separately.</span>
+
+<span class="sd">    Only fast mode is supported by the composite impl, so `False` is returned</span>
+<span class="sd">    if `fast` is `False`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      fast: bool indicating if fast mode in the solver was requested.</span>
+<span class="sd">      tensor_shape: The shape of the tensor.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      True if the composite impl should be used. False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">fast</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">batch_shape</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="k">return</span> <span class="kc">True</span>
+    <span class="n">tensor_size</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">num_elements</span><span class="p">()</span> <span class="o">*</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">is_io_bound</span> <span class="o">=</span> <span class="n">batch_shape</span><span class="o">.</span><span class="n">num_elements</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">matrix_shape</span><span class="p">)</span>
+    <span class="n">L2_CACHE_SIZE_GUESSTIMATE</span> <span class="o">=</span> <span class="mi">256000</span>
+    <span class="k">if</span> <span class="n">tensor_size</span> <span class="o">&gt;</span> <span class="n">L2_CACHE_SIZE_GUESSTIMATE</span> <span class="ow">and</span> <span class="n">is_io_bound</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="k">def</span> <span class="nf">_overdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes (A^H*A + l2_regularizer)^{-1} * A^H * rhs.&quot;&quot;&quot;</span>
+    <span class="n">chol</span> <span class="o">=</span> <span class="n">_RegularizedGramianCholesky</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="o">=</span><span class="n">l2_regularizer</span><span class="p">,</span> <span class="n">first_kind</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cholesky_solve</span><span class="p">(</span><span class="n">chol</span><span class="p">,</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">adjoint_a</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">_underdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes A^H * (A*A^H + l2_regularizer)^{-1} * rhs.&quot;&quot;&quot;</span>
+    <span class="n">chol</span> <span class="o">=</span> <span class="n">_RegularizedGramianCholesky</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="o">=</span><span class="n">l2_regularizer</span><span class="p">,</span> <span class="n">first_kind</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">cholesky_solve</span><span class="p">(</span><span class="n">chol</span><span class="p">,</span> <span class="n">rhs</span><span class="p">),</span> <span class="n">adjoint_a</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_composite_impl</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Composite implementation of matrix_solve_ls that supports GPU.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;matrix_solve_ls&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">]):</span>
+      <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+      <span class="k">if</span> <span class="n">matrix_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+          <span class="k">return</span> <span class="n">_overdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">_underdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># We have to defer determining the shape to runtime and use</span>
+        <span class="c1"># conditional execution of the appropriate graph.</span>
+        <span class="n">matrix_shape</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">matrix</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span>
+            <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">matrix_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+            <span class="k">lambda</span><span class="p">:</span> <span class="n">_overdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">),</span>
+            <span class="k">lambda</span><span class="p">:</span> <span class="n">_underdetermined</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">))</span>
+
+  <span class="n">matrix</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;matrix&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">matrix</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span> <span class="ow">and</span> <span class="n">l2_regularizer</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="c1"># TODO(rmlarsen): Investigate and fix accuracy bug.</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;matrix_solve_ls is currently disabled for &#39;</span>
+                              <span class="s1">&#39;complex128 and l2_regularizer != 0 due to &#39;</span>
+                              <span class="s1">&#39;poor accuracy.&#39;</span><span class="p">)</span>
+  <span class="n">tensor_shape</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">_use_composite_impl</span><span class="p">(</span><span class="n">fast</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">_composite_impl</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">matrix_solve_ls</span><span class="p">(</span>
+        <span class="n">matrix</span><span class="p">,</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">l2_regularizer</span><span class="p">,</span> <span class="n">fast</span><span class="o">=</span><span class="n">fast</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="eig"><a class="viewcode-back" href="../../../../index.html#tensorflow.eig">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.eig&#39;</span><span class="p">,</span> <span class="s1">&#39;eig&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span> <span class="nf">eig</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the eigen decomposition of a batch of matrices.</span>
+
+<span class="sd">  The eigenvalues</span>
+<span class="sd">  and eigenvectors for a non-Hermitian matrix in general are complex. The</span>
+<span class="sd">  eigenvectors are not guaranteed to be linearly independent.</span>
+
+<span class="sd">  Computes the eigenvalues and right eigenvectors of the innermost</span>
+<span class="sd">  N-by-N matrices in `tensor` such that</span>
+<span class="sd">  `tensor[...,:,:] * v[..., :,i] = e[..., i] * v[...,:,i]`, for i=0...N-1.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of shape `[..., N, N]`. Only the lower triangular part of</span>
+<span class="sd">      each inner inner matrix is referenced.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    e: Eigenvalues. Shape is `[..., N]`. Sorted in non-decreasing order.</span>
+<span class="sd">    v: Eigenvectors. Shape is `[..., N, N]`. The columns of the inner most</span>
+<span class="sd">      matrices contain eigenvectors of the corresponding matrices in `tensor`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span> <span class="ow">or</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span>
+    <span class="n">out_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float64</span> <span class="ow">or</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span>
+    <span class="n">out_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span>
+  <span class="n">e</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">Tout</span><span class="o">=</span><span class="n">out_dtype</span><span class="p">,</span> <span class="n">compute_v</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">e</span><span class="p">,</span> <span class="n">v</span></div>
+
+
+<div class="viewcode-block" id="eigvals"><a class="viewcode-back" href="../../../../index.html#tensorflow.eigvals">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.eigvals&#39;</span><span class="p">,</span> <span class="s1">&#39;eigvals&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span> <span class="nf">eigvals</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the eigenvalues of one or more matrices.</span>
+
+<span class="sd">  Note: If your program backpropagates through this function, you should replace</span>
+<span class="sd">  it with a call to tf.linalg.eig (possibly ignoring the second output) to</span>
+<span class="sd">  avoid computing the eigen decomposition twice. This is because the</span>
+<span class="sd">  eigenvectors are used to compute the gradient w.r.t. the eigenvalues. See</span>
+<span class="sd">  _SelfAdjointEigV2Grad in linalg_grad.py.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of shape `[..., N, N]`.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    e: Eigenvalues. Shape is `[..., N]`. The vector `e[..., :]` contains the `N`</span>
+<span class="sd">      eigenvalues of `tensor[..., :, :]`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span> <span class="ow">or</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span>
+    <span class="n">out_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float64</span> <span class="ow">or</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span>
+    <span class="n">out_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span>
+  <span class="n">e</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">Tout</span><span class="o">=</span><span class="n">out_dtype</span><span class="p">,</span> <span class="n">compute_v</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">e</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.eigh&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.eigh&#39;</span><span class="p">,</span> <span class="s1">&#39;self_adjoint_eig&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;self_adjoint_eig&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">self_adjoint_eig</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the eigen decomposition of a batch of self-adjoint matrices.</span>
+
+<span class="sd">  Computes the eigenvalues and eigenvectors of the innermost N-by-N matrices</span>
+<span class="sd">  in `tensor` such that</span>
+<span class="sd">  `tensor[...,:,:] * v[..., :,i] = e[..., i] * v[...,:,i]`, for i=0...N-1.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of shape `[..., N, N]`. Only the lower triangular part of</span>
+<span class="sd">      each inner inner matrix is referenced.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    e: Eigenvalues. Shape is `[..., N]`. Sorted in non-decreasing order.</span>
+<span class="sd">    v: Eigenvectors. Shape is `[..., N, N]`. The columns of the inner most</span>
+<span class="sd">      matrices contain eigenvectors of the corresponding matrices in `tensor`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">e</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">self_adjoint_eig_v2</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">compute_v</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">e</span><span class="p">,</span> <span class="n">v</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.eigvalsh&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.eigvalsh&#39;</span><span class="p">,</span> <span class="s1">&#39;self_adjoint_eigvals&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;self_adjoint_eigvals&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">self_adjoint_eigvals</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the eigenvalues of one or more self-adjoint matrices.</span>
+
+<span class="sd">  Note: If your program backpropagates through this function, you should replace</span>
+<span class="sd">  it with a call to tf.linalg.eigh (possibly ignoring the second output) to</span>
+<span class="sd">  avoid computing the eigen decomposition twice. This is because the</span>
+<span class="sd">  eigenvectors are used to compute the gradient w.r.t. the eigenvalues. See</span>
+<span class="sd">  _SelfAdjointEigV2Grad in linalg_grad.py.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of shape `[..., N, N]`.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    e: Eigenvalues. Shape is `[..., N]`. The vector `e[..., :]` contains the `N`</span>
+<span class="sd">      eigenvalues of `tensor[..., :, :]`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">e</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">self_adjoint_eig_v2</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">compute_v</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">e</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;linalg.svd&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;linalg.svd&#39;</span><span class="p">,</span> <span class="s1">&#39;svd&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;svd&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">svd</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">compute_uv</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the singular value decompositions of one or more matrices.</span>
+
+<span class="sd">  Computes the SVD of each inner matrix in `tensor` such that</span>
+<span class="sd">  `tensor[..., :, :] = u[..., :, :] * diag(s[..., :, :]) *</span>
+<span class="sd">   transpose(conj(v[..., :, :]))`</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # a is a tensor.</span>
+<span class="sd">  # s is a tensor of singular values.</span>
+<span class="sd">  # u is a tensor of left singular vectors.</span>
+<span class="sd">  # v is a tensor of right singular vectors.</span>
+<span class="sd">  s, u, v = svd(a)</span>
+<span class="sd">  s = svd(a, compute_uv=False)</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of shape `[..., M, N]`. Let `P` be the minimum of `M` and</span>
+<span class="sd">      `N`.</span>
+<span class="sd">    full_matrices: If true, compute full-sized `u` and `v`. If false</span>
+<span class="sd">      (the default), compute only the leading `P` singular vectors.</span>
+<span class="sd">      Ignored if `compute_uv` is `False`.</span>
+<span class="sd">    compute_uv: If `True` then left and right singular vectors will be</span>
+<span class="sd">      computed and returned in `u` and `v`, respectively. Otherwise, only the</span>
+<span class="sd">      singular values will be computed, which can be significantly faster.</span>
+<span class="sd">    name: string, optional name of the operation.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    s: Singular values. Shape is `[..., P]`. The values are sorted in reverse</span>
+<span class="sd">      order of magnitude, so s[..., 0] is the largest value, s[..., 1] is the</span>
+<span class="sd">      second largest, etc.</span>
+<span class="sd">    u: Left singular vectors. If `full_matrices` is `False` (default) then</span>
+<span class="sd">      shape is `[..., M, P]`; if `full_matrices` is `True` then shape is</span>
+<span class="sd">      `[..., M, M]`. Not returned if `compute_uv` is `False`.</span>
+<span class="sd">    v: Right singular vectors. If `full_matrices` is `False` (default) then</span>
+<span class="sd">      shape is `[..., N, P]`. If `full_matrices` is `True` then shape is</span>
+<span class="sd">      `[..., N, N]`. Not returned if `compute_uv` is `False`.</span>
+
+<span class="sd">  @compatibility(numpy)</span>
+<span class="sd">  Mostly equivalent to numpy.linalg.svd, except that</span>
+<span class="sd">    * The order of output  arguments here is `s`, `u`, `v` when `compute_uv` is</span>
+<span class="sd">      `True`, as opposed to `u`, `s`, `v` for numpy.linalg.svd.</span>
+<span class="sd">    * full_matrices is `False` by default as opposed to `True` for</span>
+<span class="sd">       numpy.linalg.svd.</span>
+<span class="sd">    * tf.linalg.svd uses the standard definition of the SVD</span>
+<span class="sd">      \\(A = U \Sigma V^H\\), such that the left singular vectors of `a` are</span>
+<span class="sd">      the columns of `u`, while the right singular vectors of `a` are the</span>
+<span class="sd">      columns of `v`. On the other hand, numpy.linalg.svd returns the adjoint</span>
+<span class="sd">      \\(V^H\\) as the third output argument.</span>
+<span class="sd">  ```python</span>
+<span class="sd">  import tensorflow as tf</span>
+<span class="sd">  import numpy as np</span>
+<span class="sd">  s, u, v = tf.linalg.svd(a)</span>
+<span class="sd">  tf_a_approx = tf.matmul(u, tf.matmul(tf.linalg.diag(s), v, adjoint_b=True))</span>
+<span class="sd">  u, s, v_adj = np.linalg.svd(a, full_matrices=False)</span>
+<span class="sd">  np_a_approx = np.dot(u, np.dot(np.diag(s), v_adj))</span>
+<span class="sd">  # tf_a_approx and np_a_approx should be numerically close.</span>
+<span class="sd">  ```</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">s</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span>
+      <span class="n">tensor</span><span class="p">,</span> <span class="n">compute_uv</span><span class="o">=</span><span class="n">compute_uv</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="n">full_matrices</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">compute_uv</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="c1"># pylint: disable=redefined-builtin</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="s1">&#39;linalg.norm&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span> <span class="nf">norm_v2</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span>
+            <span class="nb">ord</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>
+            <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">keepdims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the norm of vectors, matrices, and tensors.</span>
+
+<span class="sd">  This function can compute several different vector norms (the 1-norm, the</span>
+<span class="sd">  Euclidean or 2-norm, the inf-norm, and in general the p-norm for p &gt; 0) and</span>
+<span class="sd">  matrix norms (Frobenius, 1-norm, 2-norm and inf-norm).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of types `float32`, `float64`, `complex64`, `complex128`</span>
+<span class="sd">    ord: Order of the norm. Supported values are `&#39;fro&#39;`, `&#39;euclidean&#39;`,</span>
+<span class="sd">      `1`, `2`, `np.inf` and any positive real number yielding the corresponding</span>
+<span class="sd">      p-norm. Default is `&#39;euclidean&#39;` which is equivalent to Frobenius norm if</span>
+<span class="sd">      `tensor` is a matrix and equivalent to 2-norm for vectors.</span>
+<span class="sd">      Some restrictions apply:</span>
+<span class="sd">        a) The Frobenius norm `&#39;fro&#39;` is not defined for vectors,</span>
+<span class="sd">        b) If axis is a 2-tuple (matrix norm), only `&#39;euclidean&#39;`, &#39;`fro&#39;`, `1`,</span>
+<span class="sd">           `2`, `np.inf` are supported.</span>
+<span class="sd">      See the description of `axis` on how to compute norms for a batch of</span>
+<span class="sd">      vectors or matrices stored in a tensor.</span>
+<span class="sd">    axis: If `axis` is `None` (the default), the input is considered a vector</span>
+<span class="sd">      and a single vector norm is computed over the entire set of values in the</span>
+<span class="sd">      tensor, i.e. `norm(tensor, ord=ord)` is equivalent to</span>
+<span class="sd">      `norm(reshape(tensor, [-1]), ord=ord)`.</span>
+<span class="sd">      If `axis` is a Python integer, the input is considered a batch of vectors,</span>
+<span class="sd">      and `axis` determines the axis in `tensor` over which to compute vector</span>
+<span class="sd">      norms.</span>
+<span class="sd">      If `axis` is a 2-tuple of Python integers it is considered a batch of</span>
+<span class="sd">      matrices and `axis` determines the axes in `tensor` over which to compute</span>
+<span class="sd">      a matrix norm.</span>
+<span class="sd">      Negative indices are supported. Example: If you are passing a tensor that</span>
+<span class="sd">      can be either a matrix or a batch of matrices at runtime, pass</span>
+<span class="sd">      `axis=[-2,-1]` instead of `axis=None` to make sure that matrix norms are</span>
+<span class="sd">      computed.</span>
+<span class="sd">    keepdims: If True, the axis indicated in `axis` are kept with size 1.</span>
+<span class="sd">      Otherwise, the dimensions in `axis` are removed from the output shape.</span>
+<span class="sd">    name: The name of the op.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    output: A `Tensor` of the same type as tensor, containing the vector or</span>
+<span class="sd">      matrix norms. If `keepdims` is True then the rank of output is equal to</span>
+<span class="sd">      the rank of `tensor`. Otherwise, if `axis` is none the output is a scalar,</span>
+<span class="sd">      if `axis` is an integer, the rank of `output` is one less than the rank</span>
+<span class="sd">      of `tensor`, if `axis` is a 2-tuple the rank of `output` is two less</span>
+<span class="sd">      than the rank of `tensor`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If `ord` or `axis` is invalid.</span>
+
+<span class="sd">  @compatibility(numpy)</span>
+<span class="sd">  Mostly equivalent to numpy.linalg.norm.</span>
+<span class="sd">  Not supported: ord &lt;= 0, 2-norm for matrices, nuclear norm.</span>
+<span class="sd">  Other differences:</span>
+<span class="sd">    a) If axis is `None`, treats the flattened `tensor` as a vector</span>
+<span class="sd">     regardless of rank.</span>
+<span class="sd">    b) Explicitly supports &#39;euclidean&#39; norm as the default, including for</span>
+<span class="sd">     higher order tensors.</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">norm</span><span class="p">(</span><span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span>
+              <span class="nb">ord</span><span class="o">=</span><span class="nb">ord</span><span class="p">,</span>
+              <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span>
+              <span class="n">keepdims</span><span class="o">=</span><span class="n">keepdims</span><span class="p">,</span>
+              <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="c1"># pylint: disable=redefined-builtin</span>
+<div class="viewcode-block" id="norm"><a class="viewcode-back" href="../../../../index.html#tensorflow.norm">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="s1">&#39;linalg.norm&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_args</span><span class="p">(</span>
+    <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;keep_dims is deprecated, use keepdims instead&#39;</span><span class="p">,</span> <span class="s1">&#39;keep_dims&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span>
+         <span class="nb">ord</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span>
+         <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">keepdims</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">keep_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the norm of vectors, matrices, and tensors.</span>
+
+<span class="sd">  This function can compute several different vector norms (the 1-norm, the</span>
+<span class="sd">  Euclidean or 2-norm, the inf-norm, and in general the p-norm for p &gt; 0) and</span>
+<span class="sd">  matrix norms (Frobenius, 1-norm, 2-norm and inf-norm).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: `Tensor` of types `float32`, `float64`, `complex64`, `complex128`</span>
+<span class="sd">    ord: Order of the norm. Supported values are &#39;fro&#39;, &#39;euclidean&#39;,</span>
+<span class="sd">      `1`, `2`, `np.inf` and any positive real number yielding the corresponding</span>
+<span class="sd">      p-norm. Default is &#39;euclidean&#39; which is equivalent to Frobenius norm if</span>
+<span class="sd">      `tensor` is a matrix and equivalent to 2-norm for vectors.</span>
+<span class="sd">      Some restrictions apply:</span>
+<span class="sd">        a) The Frobenius norm `fro` is not defined for vectors,</span>
+<span class="sd">        b) If axis is a 2-tuple (matrix norm), only &#39;euclidean&#39;, &#39;fro&#39;, `1`,</span>
+<span class="sd">           `2`, `np.inf` are supported.</span>
+<span class="sd">      See the description of `axis` on how to compute norms for a batch of</span>
+<span class="sd">      vectors or matrices stored in a tensor.</span>
+<span class="sd">    axis: If `axis` is `None` (the default), the input is considered a vector</span>
+<span class="sd">      and a single vector norm is computed over the entire set of values in the</span>
+<span class="sd">      tensor, i.e. `norm(tensor, ord=ord)` is equivalent to</span>
+<span class="sd">      `norm(reshape(tensor, [-1]), ord=ord)`.</span>
+<span class="sd">      If `axis` is a Python integer, the input is considered a batch of vectors,</span>
+<span class="sd">      and `axis` determines the axis in `tensor` over which to compute vector</span>
+<span class="sd">      norms.</span>
+<span class="sd">      If `axis` is a 2-tuple of Python integers it is considered a batch of</span>
+<span class="sd">      matrices and `axis` determines the axes in `tensor` over which to compute</span>
+<span class="sd">      a matrix norm.</span>
+<span class="sd">      Negative indices are supported. Example: If you are passing a tensor that</span>
+<span class="sd">      can be either a matrix or a batch of matrices at runtime, pass</span>
+<span class="sd">      `axis=[-2,-1]` instead of `axis=None` to make sure that matrix norms are</span>
+<span class="sd">      computed.</span>
+<span class="sd">    keepdims: If True, the axis indicated in `axis` are kept with size 1.</span>
+<span class="sd">      Otherwise, the dimensions in `axis` are removed from the output shape.</span>
+<span class="sd">    name: The name of the op.</span>
+<span class="sd">    keep_dims: Deprecated alias for `keepdims`.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    output: A `Tensor` of the same type as tensor, containing the vector or</span>
+<span class="sd">      matrix norms. If `keepdims` is True then the rank of output is equal to</span>
+<span class="sd">      the rank of `tensor`. Otherwise, if `axis` is none the output is a scalar,</span>
+<span class="sd">      if `axis` is an integer, the rank of `output` is one less than the rank</span>
+<span class="sd">      of `tensor`, if `axis` is a 2-tuple the rank of `output` is two less</span>
+<span class="sd">      than the rank of `tensor`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If `ord` or `axis` is invalid.</span>
+
+<span class="sd">  @compatibility(numpy)</span>
+<span class="sd">  Mostly equivalent to numpy.linalg.norm.</span>
+<span class="sd">  Not supported: ord &lt;= 0, 2-norm for matrices, nuclear norm.</span>
+<span class="sd">  Other differences:</span>
+<span class="sd">    a) If axis is `None`, treats the flattened `tensor` as a vector</span>
+<span class="sd">     regardless of rank.</span>
+<span class="sd">    b) Explicitly supports &#39;euclidean&#39; norm as the default, including for</span>
+<span class="sd">     higher order tensors.</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">keepdims</span> <span class="o">=</span> <span class="n">deprecation</span><span class="o">.</span><span class="n">deprecated_argument_lookup</span><span class="p">(</span><span class="s1">&#39;keepdims&#39;</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span>
+                                                    <span class="s1">&#39;keep_dims&#39;</span><span class="p">,</span> <span class="n">keep_dims</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">keepdims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">keepdims</span> <span class="o">=</span> <span class="kc">False</span>
+
+  <span class="n">is_matrix_norm</span> <span class="o">=</span> <span class="p">((</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="nb">list</span><span class="p">))</span> <span class="ow">and</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">is_matrix_norm</span><span class="p">:</span>
+    <span class="n">axis</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span>
+        <span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;&#39;axis&#39; must be None, an integer, or a tuple of 2 unique integers&quot;</span><span class="p">)</span>
+    <span class="n">supported_matrix_norms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="s1">&#39;fro&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">ord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_matrix_norms</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;ord&#39; must be a supported matrix norm in </span><span class="si">%s</span><span class="s2">, got </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                       <span class="p">(</span><span class="n">supported_matrix_norms</span><span class="p">,</span> <span class="nb">ord</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">axis</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;&#39;axis&#39; must be None, an integer, or a tuple of 2 unique integers&quot;</span><span class="p">)</span>
+
+    <span class="n">supported_vector_norms</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
+    <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isreal</span><span class="p">(</span><span class="nb">ord</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">ord</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">ord</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">supported_vector_norms</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&#39;ord&#39; must be a supported vector norm, got </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">ord</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="n">axis</span><span class="p">,)</span>
+
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">tensor</span><span class="p">]):</span>
+    <span class="n">tensor</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">ord</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;fro&#39;</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]:</span>
+      <span class="k">if</span> <span class="n">is_matrix_norm</span> <span class="ow">and</span> <span class="nb">ord</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]:</span>
+        <span class="n">rank</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+        <span class="n">positive_axis</span> <span class="o">=</span> <span class="n">map_fn</span><span class="o">.</span><span class="n">map_fn</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">cond</span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">i</span> <span class="o">+</span> <span class="n">rank</span><span class="p">),</span>
+            <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">axis</span><span class="p">))</span>
+        <span class="n">axes</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">rank</span><span class="p">)</span>
+        <span class="n">perm_before</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">array_ops</span><span class="o">.</span><span class="n">setdiff1d</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">positive_axis</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">positive_axis</span><span class="p">],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">perm_after</span> <span class="o">=</span> <span class="n">map_fn</span><span class="o">.</span><span class="n">map_fn</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span>
+                <span class="n">array_ops</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span>
+                    <span class="n">array_ops</span><span class="o">.</span><span class="n">where_v2</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">perm_before</span><span class="p">,</span> <span class="n">i</span><span class="p">))),</span>
+                <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="n">axes</span><span class="p">)</span>
+        <span class="n">permed</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="n">perm_before</span><span class="p">)</span>
+        <span class="n">matrix_2_norm</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span>
+            <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span>
+                <span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">svd</span><span class="p">(</span><span class="n">permed</span><span class="p">,</span> <span class="n">compute_uv</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]),</span>
+                <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">matrix_2_norm</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="n">perm_after</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+            <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span>
+                <span class="n">tensor</span> <span class="o">*</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">tensor</span><span class="p">),</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="c1"># TODO(rmlarsen): Replace with the following, once gradients are defined</span>
+        <span class="c1"># result = math_ops.reduce_euclidean_norm(tensor, axis, keepdims=True)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">ord</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">sum_axis</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">sum_axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">is_matrix_norm</span><span class="p">:</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="k">elif</span> <span class="nb">ord</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_matrix_norm</span><span class="p">:</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">max_axis</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">axis</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">axis</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_max</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">max_axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># General p-norms (positive p only)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span>
+            <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">ord</span><span class="p">),</span> <span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+            <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">ord</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">keepdims</span><span class="p">:</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<span class="c1"># pylint: enable=invalid-name,redefined-builtin</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

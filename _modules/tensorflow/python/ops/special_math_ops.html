@@ -1,0 +1,1309 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.special_math_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.special_math_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.special_math_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2016 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Arithmetic Operations that don&#39;t fit into math_ops due to dependencies.</span>
+
+<span class="sd">To avoid circular dependencies, some math_ops should go here.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">opt_einsum</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">six.moves</span> <span class="k">import</span> <span class="n">xrange</span>  <span class="c1"># pylint: disable=redefined-builtin</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.compiler.tf2xla.ops</span> <span class="k">import</span> <span class="n">gen_xla_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_linalg_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_special_math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="k">import</span> <span class="n">tf_logging</span> <span class="k">as</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">deprecation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="c1"># TODO(b/27419586) Change docstring for required dtype of x once int allowed</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.lbeta&#39;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;math.lbeta&#39;</span><span class="p">,</span> <span class="s1">&#39;lbeta&#39;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s1">&#39;lbeta&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">lbeta</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes \\(ln(|Beta(x)|)\\), reducing along the last dimension.</span>
+
+<span class="sd">  Given one-dimensional $z = [z_1,...,z_K]$, we define</span>
+
+<span class="sd">  $$Beta(z) = \frac{\prod_j \Gamma(z_j)}{\Gamma(\sum_j z_j)},$$</span>
+
+<span class="sd">  where $\Gamma$ is the gamma function.</span>
+
+<span class="sd">  And for $n + 1$ dimensional $x$ with shape $[N_1, ..., N_n, K]$, we define</span>
+
+<span class="sd">  $$lbeta(x)[i_1, ..., i_n] = \log{|Beta(x[i_1, ..., i_n, :])|}.$$</span>
+
+<span class="sd">  In other words, the last dimension is treated as the $z$ vector.</span>
+
+<span class="sd">  Note that if $z = [u, v]$, then</span>
+
+<span class="sd">  $$Beta(z) = \frac{\Gamma(u)\Gamma(v)}{\Gamma(u + v)}</span>
+<span class="sd">    = \int_0^1 t^{u-1} (1 - t)^{v-1} \mathrm{d}t,$$</span>
+
+<span class="sd">  which defines the traditional bivariate beta function.</span>
+
+<span class="sd">  If the last dimension is empty, we follow the convention that the sum over</span>
+<span class="sd">  the empty set is zero, and the product is one.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A rank `n + 1` `Tensor`, `n &gt;= 0` with type `float`, or `double`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The logarithm of \\(|Beta(x)|\\) reducing along the last dimension.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># In the event that the last dimension has zero entries, we return -inf.</span>
+  <span class="c1"># This is consistent with a convention that the sum over the empty set 0, and</span>
+  <span class="c1"># the product is 1.</span>
+  <span class="c1"># This is standard.  See https://en.wikipedia.org/wiki/Empty_set.</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;lbeta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Note reduce_sum([]) = 0.</span>
+    <span class="n">log_prod_gamma_x</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">lgamma</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># Note lgamma(0) = infinity, so if x = []</span>
+    <span class="c1"># log_gamma_sum_x = lgamma(0) = infinity, and</span>
+    <span class="c1"># log_prod_gamma_x = lgamma(1) = 0,</span>
+    <span class="c1"># so result = -infinity</span>
+    <span class="n">sum_x</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">log_gamma_sum_x</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">lgamma</span><span class="p">(</span><span class="n">sum_x</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">log_prod_gamma_x</span> <span class="o">-</span> <span class="n">log_gamma_sum_x</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.special.dawsn&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dawsn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes Dawson&#39;s integral of `x` element-wise.</span>
+
+<span class="sd">  Dawson&#39;s integral is defined as `exp(-x**2)` times the integral of</span>
+<span class="sd">  `exp(t**2)` from `0` to `x`, with the domain of definition all real numbers.</span>
+
+<span class="sd">  Dawson&#39;s function is odd.</span>
+<span class="sd">  &gt;&gt;&gt; tf.math.special.dawsn([-1., -0.5, 0.5, 1.]).numpy()</span>
+<span class="sd">  array([-0.5380795, -0.4244364, 0.4244364,  0.5380795], dtype=float32)</span>
+
+<span class="sd">  This implementation is based off of the Cephes math library.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types:</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.dawsn</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;dawsn&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_special_math_ops</span><span class="o">.</span><span class="n">dawsn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.special.expint&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">expint</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the Exponential integral of `x` element-wise.</span>
+
+<span class="sd">  The Exponential integral is defined as the integral of `exp(t) / t` from</span>
+<span class="sd">  `-inf` to `x`, with the domain of definition all positive real numbers.</span>
+
+<span class="sd">  &gt;&gt;&gt; tf.math.special.expint([1., 1.1, 2.1, 4.1]).numpy()</span>
+<span class="sd">  array([ 1.8951179,  2.1673784,  5.3332353, 21.048464], dtype=float32)</span>
+
+<span class="sd">  This implementation is based off of the Cephes math library.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types:</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.expi</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;expint&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_special_math_ops</span><span class="o">.</span><span class="n">expint</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.special.fresnel_cos&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fresnel_cos</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes Fresnel&#39;s cosine integral of `x` element-wise.</span>
+
+<span class="sd">  The Fresnel cosine integral is defined as the integral of `cos(t^2)` from</span>
+<span class="sd">  `0` to `x`, with the domain of definition all real numbers.</span>
+
+<span class="sd">  The Fresnel cosine integral is odd.</span>
+<span class="sd">  &gt;&gt;&gt; tf.math.special.fresnel_cos([-1., -0.1, 0.1, 1.]).numpy()</span>
+<span class="sd">  array([-0.7798934 , -0.09999753,  0.09999753,  0.7798934 ], dtype=float32)</span>
+
+<span class="sd">  This implementation is based off of the Cephes math library.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types:</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.fresnel second output.</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;fresnel_cos&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_special_math_ops</span><span class="o">.</span><span class="n">fresnel_cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.special.fresnel_sin&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">fresnel_sin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes Fresnel&#39;s sine integral of `x` element-wise.</span>
+
+<span class="sd">  The Fresnel sine integral is defined as the integral of `sin(t^2)` from</span>
+<span class="sd">  `0` to `x`, with the domain of definition all real numbers.</span>
+
+<span class="sd">  &gt;&gt;&gt; tf.math.special.fresnel_sin([-1., -0.1, 0.1, 1.]).numpy()</span>
+<span class="sd">  array([-0.43825912, -0.00052359,  0.00052359,  0.43825912], dtype=float32)</span>
+
+<span class="sd">  This implementation is based off of the Cephes math library.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types:</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.fresnel first output.</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;fresnel_sin&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_special_math_ops</span><span class="o">.</span><span class="n">fresnel_sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.special.spence&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">spence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes Spence&#39;s integral of `x` element-wise.</span>
+
+<span class="sd">  Spence&#39;s integral is defined as the integral of `log(t) / (1 - t)` from</span>
+<span class="sd">  `1` to `x`, with the domain of definition all non-negative real numbers.</span>
+
+<span class="sd">  &gt;&gt;&gt; tf.math.special.spence([0.5, 1., 2., 3.]).numpy()</span>
+<span class="sd">  array([ 0.58224034,  0.        , -0.82246685, -1.4367464], dtype=float32)</span>
+
+<span class="sd">  This implementation is based off of the Cephes math library.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types:</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.spence</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;spence&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">gen_special_math_ops</span><span class="o">.</span><span class="n">spence</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.bessel_i0&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bessel_i0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the Bessel i0 function of `x` element-wise.</span>
+
+<span class="sd">  Modified Bessel function of order 0.</span>
+
+<span class="sd">  It is preferable to use the numerically stabler function `i0e(x)` instead.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types: `half`,</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.i0</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;bessel_i0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">bessel_i0e</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;math.bessel_i1&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bessel_i1</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the Bessel i1 function of `x` element-wise.</span>
+
+<span class="sd">  Modified Bessel function of order 1.</span>
+
+<span class="sd">  It is preferable to use the numerically stabler function `i1e(x)` instead.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    x: A `Tensor` or `SparseTensor`. Must be one of the following types: `half`,</span>
+<span class="sd">      `float32`, `float64`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` or `SparseTensor`, respectively. Has the same type as `x`.</span>
+
+<span class="sd">  @compatibility(scipy)</span>
+<span class="sd">  Equivalent to scipy.special.i1</span>
+<span class="sd">  @end_compatibility</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;bessel_i1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]):</span>
+    <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">bessel_i1e</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="nd">@ops</span><span class="o">.</span><span class="n">RegisterGradient</span><span class="p">(</span><span class="s1">&#39;XlaEinsum&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_einsum_grad</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">grad</span><span class="p">):</span>
+  <span class="n">equation</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s1">&#39;equation&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="n">equation</span> <span class="o">=</span> <span class="n">equation</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+  <span class="n">inputs</span><span class="p">,</span> <span class="n">output</span> <span class="o">=</span> <span class="n">equation</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&gt;&#39;</span><span class="p">)</span>
+  <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">[</span>
+      <span class="n">gen_xla_ops</span><span class="o">.</span><span class="n">xla_einsum</span><span class="p">(</span>
+          <span class="n">grad</span><span class="p">,</span>
+          <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+          <span class="n">equation</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">,</span><span class="si">{}</span><span class="s1">-&gt;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left</span><span class="p">),</span>
+          <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">),</span>
+      <span class="n">gen_xla_ops</span><span class="o">.</span><span class="n">xla_einsum</span><span class="p">(</span>
+          <span class="n">grad</span><span class="p">,</span>
+          <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+          <span class="n">equation</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">,</span><span class="si">{}</span><span class="s1">-&gt;</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">),</span>
+          <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+  <span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_enclosing_tpu_context</span><span class="p">():</span>
+  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="n">context</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">_get_control_flow_context</span><span class="p">()</span>
+  <span class="c1"># pylint: enable=protected-access</span>
+  <span class="k">while</span> <span class="n">context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+      <span class="n">context</span><span class="p">,</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">XLAControlFlowContext</span><span class="p">):</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">outer_context</span>
+  <span class="k">return</span> <span class="n">context</span>
+
+
+<div class="viewcode-block" id="einsum"><a class="viewcode-back" href="../../../../index.html#tensorflow.einsum">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;einsum&#39;</span><span class="p">,</span> <span class="s1">&#39;linalg.einsum&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">einsum</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Tensor contraction over specified indices and outer product.</span>
+
+<span class="sd">  Einsum allows defining Tensors by defining their element-wise computation.</span>
+<span class="sd">  This computation is defined by `equation`, a shorthand form based on Einstein</span>
+<span class="sd">  summation. As an example, consider multiplying two matrices A and B to form a</span>
+<span class="sd">  matrix C.  The elements of C are given by:</span>
+
+<span class="sd">  ```</span>
+<span class="sd">    C[i,k] = sum_j A[i,j] * B[j,k]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  The corresponding `equation` is:</span>
+
+<span class="sd">  ```</span>
+<span class="sd">    ij,jk-&gt;ik</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  In general, to convert the element-wise equation into the `equation` string,</span>
+<span class="sd">  use the following procedure (intermediate strings for matrix multiplication</span>
+<span class="sd">  example provided in parentheses):</span>
+
+<span class="sd">  1. remove variable names, brackets, and commas, (`ik = sum_j ij * jk`)</span>
+<span class="sd">  2. replace &quot;*&quot; with &quot;,&quot;, (`ik = sum_j ij , jk`)</span>
+<span class="sd">  3. drop summation signs, and (`ik = ij, jk`)</span>
+<span class="sd">  4. move the output to the right, while replacing &quot;=&quot; with &quot;-&gt;&quot;. (`ij,jk-&gt;ik`)</span>
+
+<span class="sd">  Many common operations can be expressed in this way.  For example:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # Matrix multiplication</span>
+<span class="sd">  einsum(&#39;ij,jk-&gt;ik&#39;, m0, m1)  # output[i,k] = sum_j m0[i,j] * m1[j, k]</span>
+
+<span class="sd">  # Dot product</span>
+<span class="sd">  einsum(&#39;i,i-&gt;&#39;, u, v)  # output = sum_i u[i]*v[i]</span>
+
+<span class="sd">  # Outer product</span>
+<span class="sd">  einsum(&#39;i,j-&gt;ij&#39;, u, v)  # output[i,j] = u[i]*v[j]</span>
+
+<span class="sd">  # Transpose</span>
+<span class="sd">  einsum(&#39;ij-&gt;ji&#39;, m)  # output[j,i] = m[i,j]</span>
+
+<span class="sd">  # Trace</span>
+<span class="sd">  einsum(&#39;ii&#39;, m)  # output[j,i] = trace(m) = sum_i m[i, i]</span>
+
+<span class="sd">  # Batch matrix multiplication</span>
+<span class="sd">  einsum(&#39;aij,ajk-&gt;aik&#39;, s, t)  # out[a,i,k] = sum_j s[a,i,j] * t[a, j, k]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  To enable and control broadcasting, use an ellipsis.  For example, to perform</span>
+<span class="sd">  batch matrix multiplication with NumPy-style broadcasting across the batch</span>
+<span class="sd">  dimensions, use:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  einsum(&#39;...ij,...jk-&gt;...ik&#39;, u, v)</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    equation: a `str` describing the contraction, in the same format as</span>
+<span class="sd">      `numpy.einsum`.</span>
+<span class="sd">    *inputs: the inputs to contract (each one a `Tensor`), whose shapes should</span>
+<span class="sd">      be consistent with `equation`.</span>
+<span class="sd">    **kwargs:</span>
+<span class="sd">      - optimize: Optimization strategy to use to find contraction path using</span>
+<span class="sd">        opt_einsum. Must be &#39;greedy&#39;, &#39;optimal&#39;, &#39;branch-2&#39;, &#39;branch-all&#39; or</span>
+<span class="sd">          &#39;auto&#39;. (optional, default: &#39;greedy&#39;).</span>
+<span class="sd">      - name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The contracted `Tensor`, with shape determined by `equation`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If</span>
+<span class="sd">      - the format of `equation` is incorrect,</span>
+<span class="sd">      - number of inputs or their shapes are inconsistent with `equation`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_einsum_v2</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_einsum_v1</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Legacy implementation of einsum without using EinsumOp.&quot;&quot;&quot;</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;invalid keyword arguments for this function: &#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">[</span><span class="nb">format</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">keys</span><span class="p">()))]))</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;einsum&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">equation</span><span class="p">,</span> <span class="n">inputs</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">input_shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+    <span class="n">input_axis_labels</span><span class="p">,</span> <span class="n">output_axis_labels</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">_einsum_v1_parse_and_resolve_equation</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">))</span>
+
+    <span class="n">axis_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">)</span> <span class="o">+</span> <span class="n">output_axis_labels</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axis_labels</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">input_labels</span> <span class="ow">in</span> <span class="n">input_axis_labels</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">input_labels</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span>
+            <span class="n">input_labels</span> <span class="o">==</span> <span class="n">input_labels</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">equation</span><span class="p">):</span>
+          <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">input_labels</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+              <span class="s1">&#39;Subscript not supported: an axis appears more than once: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
+              <span class="n">input_labels</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axis_labels</span><span class="p">:</span>
+      <span class="n">input_count</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">input_axis_labels</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">s</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">input_count</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">output_axis_labels</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s1">&#39;Falling back to exponential-space implementation of einsum()&#39;</span>
+            <span class="s1">&#39; because index &quot;</span><span class="si">%s</span><span class="s1">&quot; is summed over more than two inputs.&#39;</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_exponential_space_einsum_v1</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># Use xla_einsum if executing on TPU and if the operation is a 2 input</span>
+    <span class="c1"># einsum supported by XlaEinsumOp.</span>
+    <span class="k">if</span> <span class="n">_enclosing_tpu_context</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">gen_xla_ops</span><span class="o">.</span><span class="n">xla_einsum</span><span class="p">(</span>
+          <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">input_axis_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;,&#39;</span> <span class="o">+</span>
+          <span class="n">input_axis_labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="o">+</span> <span class="n">output_axis_labels</span><span class="p">)</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">temp_axis_labels</span> <span class="o">=</span> <span class="n">input_axis_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+      <span class="n">axes_to_sum</span> <span class="o">=</span> <span class="p">(</span>
+          <span class="nb">set</span><span class="p">(</span><span class="n">temp_axis_labels</span><span class="p">)</span> <span class="o">&amp;</span>
+          <span class="nb">set</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">output_axis_labels</span><span class="p">))</span>
+      <span class="n">temp</span><span class="p">,</span> <span class="n">temp_axis_labels</span> <span class="o">=</span> <span class="n">_einsum_v1_reduction</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">temp_axis_labels</span><span class="p">,</span>
+                                                    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                                                    <span class="n">input_axis_labels</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+                                                    <span class="n">axes_to_sum</span><span class="p">)</span>
+
+    <span class="n">missing_indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">temp_axis_labels</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">output_axis_labels</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">missing_indices</span><span class="p">:</span>
+      <span class="n">axis</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">temp_axis_labels</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">output_axis_labels</span>
+      <span class="p">]</span>
+      <span class="n">temp</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+      <span class="n">temp_axis_labels</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+          <span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">temp_axis_labels</span> <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">output_axis_labels</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">temp_axis_labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">output_axis_labels</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid equation: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">equation</span><span class="p">)</span>
+
+    <span class="n">perm</span> <span class="o">=</span> <span class="p">[</span><span class="n">temp_axis_labels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">output_axis_labels</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_transpose_if_necessary</span><span class="p">(</span><span class="n">temp</span><span class="p">,</span> <span class="n">perm</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_einsum_v1_parse_and_resolve_equation</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper for einsum() that splits/resolves inputs &amp; outputs.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    equation: Equation string given as argument to einsum().</span>
+<span class="sd">    input_shapes: List of the shapes of all inputs given to einsum()</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    input_axis_labels, output_axis_labels where:</span>
+<span class="sd">      input_axis_labels: List of length len(input_shapes) of strings</span>
+<span class="sd">      representing the character label for each dimension of each given input,</span>
+<span class="sd">      resolving any broadcast (...) axes,</span>
+<span class="sd">    output_axis_labels: A string of character labels for each axes of output</span>
+<span class="sd">      tensor, filling in missing output subscripts and broadcast axes.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If equation is in the uncorrect format, incorrect number of</span>
+<span class="sd">      inputs given or broadcast axes &quot;...&quot; or output axes could not be resolved.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">equation</span> <span class="o">=</span> <span class="n">equation</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^([a-zA-Z,.]+)(-&gt;[a-zA-Z.]*)?$&#39;</span><span class="p">,</span> <span class="n">equation</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Indices have incorrect format: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">equation</span><span class="p">)</span>
+
+  <span class="n">input_axis_labels</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+  <span class="n">output_axis_labels</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Got </span><span class="si">%d</span><span class="s1"> arguments for equation &quot;</span><span class="si">%s</span><span class="s1">&quot;, expecting </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span>
+                     <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">),</span> <span class="n">equation</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">)))</span>
+
+  <span class="c1"># Resolve Ellipsis</span>
+  <span class="c1"># Assign axes labels for unspecified dimensions in inputs. Labels taken</span>
+  <span class="c1"># from unused labels. Follow numpy einsum broadcasting conventions for</span>
+  <span class="c1"># tensors of different length and unlabeled output.</span>
+  <span class="n">ellipsis_axes</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+  <span class="k">if</span> <span class="s1">&#39;...&#39;</span> <span class="ow">in</span> <span class="n">equation</span><span class="p">:</span>
+    <span class="n">unused</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="k">if</span> <span class="n">c</span> <span class="ow">not</span> <span class="ow">in</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">):</span>
+      <span class="k">if</span> <span class="s1">&#39;...&#39;</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unable to resolve ellipsis. Excess number found.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">input_shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ndims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unable to statically infer ellipsis axes.&#39;</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">input_shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">ndims</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Ellipses lengths do not match.&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unused</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+              <span class="s1">&#39;Unable to resolve ellipsis, too many distinct labels.&#39;</span><span class="p">)</span>
+        <span class="n">replace_axes</span> <span class="o">=</span> <span class="n">unused</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">:]</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+        <span class="n">input_axis_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">input_axis_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">,</span>
+                                                            <span class="n">replace_axes</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">replace_axes</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ellipsis_axes</span><span class="p">):</span>
+          <span class="n">ellipsis_axes</span> <span class="o">=</span> <span class="n">replace_axes</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">ax</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">input_axis_labels</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;period &quot;.&quot; found outside of ellipsis&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">output_axis_labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">output_axis_labels</span> <span class="o">=</span> <span class="n">output_axis_labels</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="n">ellipsis_axes</span><span class="p">)</span>
+      <span class="k">if</span> <span class="s1">&#39;.&#39;</span> <span class="ow">in</span> <span class="n">output_axis_labels</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;period &quot;.&quot; found outside of ellipsis&#39;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">output_axis_labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># infer the output subscripts if not given, assume alphabetical order,</span>
+    <span class="c1"># but always place ellipsis axes before given.</span>
+    <span class="n">axis_labels</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">input_axis_labels</span><span class="p">))</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">ellipsis_axes</span><span class="p">)</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">))</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{</span><span class="n">ax</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">axes_</span> <span class="ow">in</span> <span class="n">input_axis_labels</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes_</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ax</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ellipsis_axes</span><span class="p">:</span>
+          <span class="n">counts</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">output_axis_labels</span> <span class="o">=</span> <span class="n">ellipsis_axes</span> <span class="o">+</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="nb">sorted</span><span class="p">(</span><span class="n">ax</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axis_labels</span> <span class="k">if</span> <span class="n">counts</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span>
+
+  <span class="k">return</span> <span class="n">input_axis_labels</span><span class="p">,</span> <span class="n">output_axis_labels</span>
+
+
+<span class="k">def</span> <span class="nf">_einsum_v1_reduction</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t0_axis_labels</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1_axis_labels</span><span class="p">,</span> <span class="n">axes_to_sum</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper for einsum() that computes the result of a two-argument einsum().</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t0: a `Tensor`</span>
+<span class="sd">    t0_axis_labels: a string of axis labels.  This string&#39;s length must equal</span>
+<span class="sd">      the rank of t0.</span>
+<span class="sd">    t1: a `Tensor`</span>
+<span class="sd">    t1_axis_labels: a string to axis labels.  This string&#39;s length must equal</span>
+<span class="sd">      the rank of t1.</span>
+<span class="sd">    axes_to_sum: set of labels of axes to be summed over</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` whose elements are obtained by summing, over all axes in</span>
+<span class="sd">    `axes_to_sum`, the corresponding elements of `t0` and `t1`.</span>
+
+<span class="sd">    For example, if t0_axis_labels == &#39;abijk&#39;, t1_axis_labels == &#39;acjkl&#39;, and</span>
+<span class="sd">    axes_to_sum == {j,k}, this will return a tensor x where</span>
+
+<span class="sd">      out[a,b,c,i,l] = sum_j sum_k t0[a,b,i,j,k] * t1[a,c,j,k,l]</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: if the rank of `t0` does not match the length of</span>
+<span class="sd">      `t0_axis_labels`, or that of `t1` does not match the length of</span>
+<span class="sd">      `t1_axis_labels`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t0_axis_labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t0</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Tensor t0 of rank </span><span class="si">%d</span><span class="s1"> does not match einsum reduction of length </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span>
+        <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t0</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">t0_axis_labels</span><span class="p">)))</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t1_axis_labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Tensor t1 of rank </span><span class="si">%d</span><span class="s1"> does not match einsum reduction of length </span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span>
+        <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t1</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">t1_axis_labels</span><span class="p">)))</span>
+
+  <span class="c1"># This function computes the result of a two-argument einsum() using batch</span>
+  <span class="c1"># matrix multiplication.  This involves</span>
+  <span class="c1"># 1. transposing t0 and t1 so that axes are in the correct order for</span>
+  <span class="c1">#    batch matrix multiplication, and</span>
+  <span class="c1"># 2. reshaping t0 and t1 so that they are both of rank 3.</span>
+
+  <span class="c1"># First, we divide axes into three groups:</span>
+  <span class="c1">#  * &quot;preserved&quot; axes are present in both inputs and the output</span>
+  <span class="c1">#  * &quot;summed&quot; axes are present in both inputs but not the output</span>
+  <span class="c1">#  * &quot;broadcast&quot; axes are present in exactly one input and the output</span>
+  <span class="c1">#</span>
+  <span class="c1"># As an example, if the einsum is abijk,acjkl-&gt;abcil, then &quot;a&quot; is a</span>
+  <span class="c1"># preserved axis, &quot;b&quot; and &quot;c&quot; are broadcast axes, and &quot;j&quot; and &quot;k&quot; are</span>
+  <span class="c1"># summed axes.</span>
+  <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">a</span> <span class="ow">in</span> <span class="n">t0_axis_labels</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">t1_axis_labels</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axes_to_sum</span><span class="p">)</span>
+  <span class="n">preserved_axes</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">t0_axis_labels</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">t1_axis_labels</span><span class="p">))</span> <span class="o">-</span> <span class="n">axes_to_sum</span>
+  <span class="n">broadcast_axes</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sym_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">t0_axis_labels</span><span class="p">,</span> <span class="n">t1_axis_labels</span><span class="p">]):</span>
+    <span class="n">broadcast_axes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">sym_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">preserved_axes</span> <span class="o">-</span> <span class="n">axes_to_sum</span>
+
+  <span class="c1"># Reorder the axes so that:</span>
+  <span class="c1"># 1. preserved axes come first in both inputs</span>
+  <span class="c1"># 2. in input 0, broadcast axes come next, followed by summed axes</span>
+  <span class="c1"># 3. in input 1, summed axes come next, followed by broadcast axes</span>
+  <span class="k">def</span> <span class="nf">sort_key</span><span class="p">(</span><span class="n">input_index</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">preserved_axes</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="p">((</span><span class="n">input_index</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span>
+          <span class="p">(</span><span class="n">input_index</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">axes_to_sum</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+
+  <span class="n">axis_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">t0_axis_labels</span><span class="p">,</span> <span class="n">t1_axis_labels</span><span class="p">]</span>
+  <span class="n">sorted_axes</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="nb">sorted</span><span class="p">(</span><span class="n">sym_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">a</span><span class="p">:</span> <span class="n">sort_key</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">))</span>
+      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sym_list</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">)</span>
+  <span class="p">]</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">axes_str</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">axis_labels</span><span class="p">):</span>
+    <span class="n">perm</span> <span class="o">=</span> <span class="p">[</span><span class="n">axes_str</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">sorted_axes</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">_transpose_if_necessary</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">perm</span><span class="p">)</span>
+  <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">inputs</span>
+
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">axes_to_sum</span><span class="p">:</span>
+    <span class="c1"># In the special case where there are no axes to sum over, reduce to mul()</span>
+    <span class="c1"># rather than to batch matrix multiplication.</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+      <span class="n">t0</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+      <span class="n">t1</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">))</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+    <span class="n">product_axes</span> <span class="o">=</span> <span class="n">sorted_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">sorted_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">):]</span>
+    <span class="k">return</span> <span class="n">product</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">product_axes</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Reduce to matmul().</span>
+
+    <span class="c1"># Reshape both inputs so as to combine multiple broadcast axes</span>
+    <span class="c1"># into a single axis, and combine multiple summed axes into a</span>
+    <span class="c1"># single axis.</span>
+
+    <span class="n">t0_shape</span> <span class="o">=</span> <span class="n">_get_shape</span><span class="p">(</span><span class="n">t0</span><span class="p">)</span>
+    <span class="n">num_broadcast_elements_t0</span> <span class="o">=</span> <span class="n">_total_size</span><span class="p">(</span>
+        <span class="n">t0_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">):</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">axes_to_sum</span><span class="p">)])</span>
+    <span class="n">num_summed_elements</span> <span class="o">=</span> <span class="n">_total_size</span><span class="p">(</span><span class="n">t0_shape</span><span class="p">[</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">axes_to_sum</span><span class="p">):])</span>
+    <span class="n">new_shape</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">t0_shape</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">)]</span> <span class="o">+</span>
+        <span class="p">[</span><span class="n">num_broadcast_elements_t0</span><span class="p">,</span> <span class="n">num_summed_elements</span><span class="p">])</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">_reshape_if_necessary</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">)</span>
+
+    <span class="n">t1_shape</span> <span class="o">=</span> <span class="n">_get_shape</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
+    <span class="n">num_broadcast_elements_t1</span> <span class="o">=</span> <span class="n">_total_size</span><span class="p">(</span>
+        <span class="n">t1_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_to_sum</span><span class="p">):])</span>
+    <span class="n">new_shape</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">t1_shape</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">)]</span> <span class="o">+</span>
+        <span class="p">[</span><span class="n">num_summed_elements</span><span class="p">,</span> <span class="n">num_broadcast_elements_t1</span><span class="p">])</span>
+    <span class="n">t1</span> <span class="o">=</span> <span class="n">_reshape_if_necessary</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">)</span>
+
+    <span class="n">product</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+
+    <span class="c1"># Undo compaction of broadcast axes</span>
+    <span class="n">uncompacted_shape</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">t0_shape</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">+</span>
+        <span class="n">t1_shape</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">t1_shape</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]):])</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="n">_reshape_if_necessary</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">uncompacted_shape</span><span class="p">)</span>
+
+    <span class="n">product_axes</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">sorted_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="nb">len</span><span class="p">(</span><span class="n">preserved_axes</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">+</span>
+        <span class="n">sorted_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">broadcast_axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]):])</span>
+
+    <span class="k">return</span> <span class="n">product</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">product_axes</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_transpose_if_necessary</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">perm</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Like transpose(), but avoids creating a new tensor if possible.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">perm</span> <span class="o">!=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">perm</span><span class="p">))):</span>
+    <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="n">perm</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">tensor</span>
+
+
+<span class="k">def</span> <span class="nf">_reshape_if_necessary</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Like reshape(), but avoids creating a new tensor if possible.&quot;&quot;&quot;</span>
+  <span class="c1"># Accept None as an alias for -1 in new_shape.</span>
+  <span class="n">new_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">new_shape</span><span class="p">)</span>
+  <span class="n">cur_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">new_shape</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">cur_shape</span><span class="p">)</span> <span class="ow">and</span>
+      <span class="nb">all</span><span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">d0</span> <span class="o">==</span> <span class="n">d1</span> <span class="ow">or</span> <span class="n">d1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+          <span class="k">for</span> <span class="n">d0</span><span class="p">,</span> <span class="n">d1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cur_shape</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">))):</span>
+    <span class="k">return</span> <span class="n">tensor</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">new_shape</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_shape</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Like get_shape().as_list(), but explicitly queries the shape of a tensor</span>
+<span class="sd">  if necessary to ensure that the returned value contains no unknown value.&quot;&quot;&quot;</span>
+
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">()</span>
+  <span class="n">none_indices</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">none_indices</span><span class="p">:</span>
+    <span class="c1"># Query the shape if shape contains None values</span>
+    <span class="n">shape_tensor</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">none_indices</span><span class="p">:</span>
+      <span class="n">shape</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">shape_tensor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">shape</span>
+
+
+<span class="k">def</span> <span class="nf">_total_size</span><span class="p">(</span><span class="n">shape_values</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given list of tensor shape values, returns total size.</span>
+<span class="sd">  If shape_values contains tensor values (which are results of</span>
+<span class="sd">  array_ops.shape), then it returns a scalar tensor.</span>
+<span class="sd">  If not, it returns an integer.&quot;&quot;&quot;</span>
+
+  <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">shape_values</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">*=</span> <span class="n">val</span>
+  <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">_exponential_space_einsum_v1</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Fallback implementation that supports summing an index over &gt; 2 inputs.&quot;&quot;&quot;</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">input_shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+  <span class="n">idx_in</span><span class="p">,</span> <span class="n">idx_out</span> <span class="o">=</span> <span class="n">_einsum_v1_parse_and_resolve_equation</span><span class="p">(</span>
+      <span class="n">equation</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">)</span>
+
+  <span class="n">idx_all</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">idx_in</span><span class="p">)</span> <span class="o">+</span> <span class="n">idx_out</span><span class="p">)</span>
+  <span class="n">indices</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">idx_all</span><span class="p">))</span>
+
+  <span class="n">missing_idx</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">idx_out</span><span class="p">)</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">idx_all</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">missing_idx</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Unknown output axes: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">missing_idx</span><span class="p">)</span>
+
+  <span class="n">axis_order</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">idx_out</span><span class="p">:</span>
+      <span class="n">axis_order</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axis_order</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">idx_out</span><span class="p">:</span>
+    <span class="n">axis_order</span><span class="p">[</span><span class="n">ax</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axis_order</span><span class="p">)</span>
+
+  <span class="c1"># transpose inputs so axes are in order</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">axes_</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">idx_in</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">ndims</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;Input </span><span class="si">%d</span><span class="s1"> with axes </span><span class="si">%s</span><span class="s1"> has incorrect&#39;</span> \
+          <span class="s1">&#39; number of dimensions (expected </span><span class="si">%d</span><span class="s1">, got </span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span>
+              <span class="n">i</span><span class="p">,</span> <span class="n">axes_</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_</span><span class="p">),</span> <span class="n">input_</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">ndims</span>
+          <span class="p">)</span>
+      <span class="p">)</span>
+
+    <span class="n">sorted_idx</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">axes_</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">axis_order</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">axes_</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">axes_</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;Subscript not supported: an axis appears more than once: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">axes_</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">list</span><span class="p">(</span><span class="n">axes_</span><span class="p">)</span> <span class="o">!=</span> <span class="n">sorted_idx</span><span class="p">:</span>
+      <span class="n">permuted</span> <span class="o">=</span> <span class="p">[</span><span class="n">axes_</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">sorted_idx</span><span class="p">]</span>
+      <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">permuted</span><span class="p">)</span>
+      <span class="n">idx_in</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sorted_idx</span>
+
+  <span class="n">reduction_idx</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">shapes</span> <span class="o">=</span> <span class="p">[[</span><span class="n">dim</span> <span class="k">if</span> <span class="n">dim</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+             <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">()]</span>
+            <span class="k">for</span> <span class="n">tensor</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+
+  <span class="c1"># validate shapes for broadcasting</span>
+  <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">idx_all</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">axis_order</span><span class="o">.</span><span class="n">get</span><span class="p">)):</span>
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">idx_in</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">ax</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">idx</span><span class="p">:</span>
+        <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">dim</span> <span class="o">=</span> <span class="n">shapes</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">dims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">dims</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Dimension mismatch on axis: </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">ax</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">idx_out</span><span class="p">:</span>
+      <span class="n">reduction_idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+
+  <span class="c1"># reshape, multiply</span>
+  <span class="n">expanded_inputs</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">input_</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">shapes</span><span class="p">)</span>
+  <span class="p">]</span>
+  <span class="n">expanded_output</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">expanded_inputs</span><span class="p">:</span>
+    <span class="n">expanded_output</span> <span class="o">*=</span> <span class="n">input_</span>
+
+  <span class="c1"># contract</span>
+  <span class="k">return</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">expanded_output</span><span class="p">,</span> <span class="n">reduction_idx</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_einsum_v2</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Implementation of einsum utilizing opt_einsum and EinsumOp.&quot;&quot;&quot;</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+  <span class="n">optimize</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;optimize&#39;</span><span class="p">,</span> <span class="s1">&#39;greedy&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;Invalid keyword arguments for einsum: </span><span class="si">{}</span><span class="s1">&#39;</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)))</span>
+
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;einsum&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">equation</span><span class="p">,</span> <span class="n">inputs</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="n">input_shapes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">operand</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">operand</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">):</span>
+        <span class="n">input_shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">operand</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">()</span> <span class="k">if</span> <span class="n">operand</span><span class="o">.</span><span class="n">shape</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">input_shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">operand</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="c1"># Validate and sanitize the equation and resolve static input shapes, as</span>
+    <span class="c1"># opt_einsum requires that all shapes be a tuple of positive integers.</span>
+    <span class="c1"># Also remove ellipsis from the equation as opt_einsum will replace them</span>
+    <span class="c1"># with named labels. Then broadcasting between different shapes or ranks</span>
+    <span class="c1"># wouldn&#39;t work. (E.g. [1, 1, 2] wouldn&#39;t broadcast with [3, 1]).</span>
+    <span class="n">resolved_equation</span><span class="p">,</span> <span class="n">resolved_input_shapes</span><span class="p">,</span> <span class="n">ellipsis_label</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">_einsum_v2_parse_and_resolve_equation</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># No need to call opt_einsum.</span>
+      <span class="c1"># Replace back ellipses that were removed for opt_einsum.</span>
+      <span class="k">if</span> <span class="n">ellipsis_label</span><span class="p">:</span>
+        <span class="n">resolved_equation</span> <span class="o">=</span> <span class="n">resolved_equation</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">ellipsis_label</span><span class="p">,</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">resolved_equation</span><span class="p">)</span>
+
+    <span class="c1"># Send fully specified shapes to opt_einsum, since it cannot handle unknown</span>
+    <span class="c1"># dimensions. For unknown dimensions, we guess that the dimension equals 1.</span>
+    <span class="c1"># Instead of creating Tensors or NumPy arrays with the specified shape,</span>
+    <span class="c1"># create a dummy `shaped` object with a `shape` property.</span>
+    <span class="n">shaped</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;shaped&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;shape&#39;</span><span class="p">])</span>
+    <span class="n">shaped_inputs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">shaped</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span> <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">resolved_input_shapes</span><span class="p">])</span>
+    <span class="c1"># opt_einsum breaks down an n-ary einsum operation into n-1 binary einsums.</span>
+    <span class="c1"># Obtain the sequence of equations and the indices of operands involved in</span>
+    <span class="c1"># each einsum operation.</span>
+    <span class="n">indices_and_equations</span> <span class="o">=</span> <span class="n">_get_opt_einsum_contract_path</span><span class="p">(</span>
+        <span class="n">resolved_equation</span><span class="p">,</span> <span class="n">shaped_inputs</span><span class="p">,</span> <span class="n">optimize</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">operand_indices</span><span class="p">,</span> <span class="n">binary_equation</span> <span class="ow">in</span> <span class="n">indices_and_equations</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">ellipsis_label</span><span class="p">:</span>
+        <span class="c1"># Replace back ellipses that were removed for opt_einsum.</span>
+        <span class="n">binary_equation</span> <span class="o">=</span> <span class="n">binary_equation</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">ellipsis_label</span><span class="p">,</span> <span class="s1">&#39;...&#39;</span><span class="p">)</span>
+      <span class="n">operands</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">pop</span><span class="p">,</span> <span class="n">operand_indices</span><span class="p">))</span>
+      <span class="n">inputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="n">operands</span><span class="p">,</span> <span class="n">binary_equation</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_get_opt_einsum_contract_path</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="n">shaped_inputs_tuple</span><span class="p">,</span> <span class="n">optimize</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the (memoized) result of opt_einsum.contract_path.&quot;&quot;&quot;</span>
+  <span class="c1"># Note: We use einsum_call=True, which is an internal api for opt_einsum,</span>
+  <span class="c1"># to get the contraction path without having opt_einsum perform the actual</span>
+  <span class="c1"># contractions.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">contractions</span> <span class="o">=</span> <span class="n">opt_einsum</span><span class="o">.</span><span class="n">contract_path</span><span class="p">(</span>
+      <span class="n">equation</span><span class="p">,</span>
+      <span class="o">*</span><span class="n">shaped_inputs_tuple</span><span class="p">,</span>
+      <span class="n">optimize</span><span class="o">=</span><span class="n">optimize</span><span class="p">,</span>
+      <span class="n">einsum_call</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+      <span class="n">use_blas</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="c1"># Return a tuple so that the cached value is not mutable.</span>
+  <span class="n">indices_and_equations</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([(</span><span class="n">expr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">expr</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="k">for</span> <span class="n">expr</span> <span class="ow">in</span> <span class="n">contractions</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">indices_and_equations</span>
+
+
+<span class="c1"># Cache the possibly expensive opt_einsum.contract_path call using lru_cache</span>
+<span class="c1"># from the Python3+ standard library.</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">six</span><span class="o">.</span><span class="n">PY2</span><span class="p">:</span>
+  <span class="n">_get_opt_einsum_contract_path</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="mi">128</span><span class="p">)(</span>
+      <span class="n">_get_opt_einsum_contract_path</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_einsum_v2_parse_and_resolve_equation</span><span class="p">(</span><span class="n">equation</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper which validates einsum equation and resolves input shapes.&quot;&quot;&quot;</span>
+  <span class="n">resolved_equation</span> <span class="o">=</span> <span class="n">equation</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+  <span class="n">ellipsis_label</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="s1">&#39;...&#39;</span> <span class="ow">in</span> <span class="n">equation</span><span class="p">:</span>
+    <span class="c1"># Replace ellipsis (&#39;...&#39;) with &#39;0&#39; for (a) ease of parsing and (b) to</span>
+    <span class="c1"># prevent opt_einsum from resolving them into named labels; as it doesn&#39;t</span>
+    <span class="c1"># support broadcasting.</span>
+    <span class="n">ellipsis_label</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+    <span class="k">if</span> <span class="n">ellipsis_label</span> <span class="ow">in</span> <span class="n">resolved_equation</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Invalid character &quot;0&quot; in equation: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">equation</span><span class="p">))</span>
+    <span class="n">resolved_equation</span> <span class="o">=</span> <span class="n">resolved_equation</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="n">ellipsis_label</span><span class="p">)</span>
+
+  <span class="c1"># Ensure there are no non-alphanumeric characters in the equation, including</span>
+  <span class="c1"># periods (`.`) outside of ellipses, in the equation. This is not a hard</span>
+  <span class="c1"># requirement; except we use a special character &#39;0&#39; for ellipsis.</span>
+  <span class="n">allowed_labels</span> <span class="o">=</span> <span class="s1">&#39;a-zA-Z&#39;</span>
+  <span class="k">if</span> <span class="n">ellipsis_label</span><span class="p">:</span>
+    <span class="n">allowed_labels</span> <span class="o">+=</span> <span class="n">ellipsis_label</span>
+  <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;^([</span><span class="si">{0}</span><span class="s1">,]*)(-&gt;[</span><span class="si">{0}</span><span class="s1">]*)?$&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">allowed_labels</span><span class="p">),</span>
+                   <span class="n">resolved_equation</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Subscripts have incorrect format: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">resolved_equation</span><span class="p">))</span>
+  <span class="n">input_labels</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+  <span class="n">output_labels</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span> <span class="k">if</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_labels</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Got </span><span class="si">{}</span><span class="s1"> inputs for equation &quot;</span><span class="si">{}</span><span class="s1">&quot;, expecting </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">),</span> <span class="n">equation</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_labels</span><span class="p">)))</span>
+
+  <span class="c1"># Special case: if there are no &#39;-&gt;&#39;, then we create output subscripts from</span>
+  <span class="c1"># labels appearing only once.</span>
+  <span class="k">if</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">resolved_equation</span><span class="p">:</span>
+    <span class="n">label_counts</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">output_labels</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span>
+        <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">label_counts</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="s1">&#39;,&#39;</span> <span class="ow">and</span> <span class="n">label_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="p">])</span>
+    <span class="n">resolved_equation</span> <span class="o">+=</span> <span class="s1">&#39;-&gt;&#39;</span> <span class="o">+</span> <span class="n">output_labels</span>
+  <span class="c1"># Validate output_labels.</span>
+  <span class="k">if</span> <span class="n">output_labels</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">output_labels</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">output_labels</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Output subscripts contain a label appearing more than once: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">equation</span><span class="p">))</span>
+  <span class="n">input_label_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+  <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">output_labels</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">label</span> <span class="o">!=</span> <span class="n">ellipsis_label</span> <span class="ow">and</span> <span class="n">label</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">input_label_set</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Output subscripts contain the label </span><span class="si">{}</span><span class="s1"> not present &#39;</span>
+                       <span class="s1">&#39;in the input subscripts.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">ellipsis_label</span> <span class="ow">and</span> <span class="n">output_labels</span><span class="p">:</span>
+    <span class="n">num_output_ellipses</span> <span class="o">=</span> <span class="n">output_labels</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">ellipsis_label</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_output_ellipses</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;Output subscripts contain multiple ellipsis: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">equation</span><span class="p">))</span>
+
+  <span class="c1"># Early return if &lt;= 2 inputs. Resolved shapes are not needed.</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_shapes</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">resolved_equation</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ellipsis_label</span>
+
+  <span class="c1"># Create a map from axis labels to known dimensions. This is used to infer</span>
+  <span class="c1"># unknown dimensions if a known dimension also has the same label.</span>
+  <span class="n">label_to_dim</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">input_labels</span><span class="p">,</span> <span class="n">input_shapes</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">continue</span>
+    <span class="n">ellipsis_start</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">ellipsis_label</span><span class="p">)</span> <span class="k">if</span> <span class="n">ellipsis_label</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">ellipsis_start</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>  <span class="c1"># This input contains an ellipsis.</span>
+      <span class="k">if</span> <span class="n">ellipsis_start</span> <span class="o">!=</span> <span class="n">labels</span><span class="o">.</span><span class="n">rfind</span><span class="p">(</span><span class="n">ellipsis_label</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Too many ellipsis&#39;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Too many named labels in </span><span class="si">{}</span><span class="s1">th subscript string of&#39;</span>
+                         <span class="s1">&#39; equation </span><span class="si">{}</span><span class="s1"> for input shape </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                             <span class="n">i</span><span class="p">,</span> <span class="n">equation</span><span class="p">,</span> <span class="n">shape</span><span class="p">))</span>
+      <span class="n">ellipsis_end</span> <span class="o">=</span> <span class="n">ellipsis_start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
+      <span class="n">shape</span><span class="p">[</span><span class="n">ellipsis_start</span><span class="p">:</span><span class="n">ellipsis_end</span><span class="p">]</span> <span class="o">=</span> <span class="p">([</span>
+          <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span>
+              <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="n">ellipsis_start</span><span class="p">:</span><span class="n">ellipsis_end</span><span class="p">])),</span>
+              <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+      <span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="c1"># This input does not contain an ellipsis.</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s1">&#39;Number of named labels in input #</span><span class="si">{}</span><span class="s1"> of equation </span><span class="si">{}</span><span class="s1"> &#39;</span>
+            <span class="s1">&#39;must be equal to the number of dimensions in shape </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">i</span><span class="p">,</span> <span class="n">equation</span><span class="p">,</span> <span class="n">shape</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">dim</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">label_to_dim</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">label_to_dim</span><span class="p">[</span><span class="n">label</span><span class="p">],</span> <span class="n">dim</span><span class="p">)</span>
+
+  <span class="n">resolved_shapes</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">input_labels</span><span class="p">:</span>
+    <span class="n">resolved_shapes</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">label_to_dim</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="k">for</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">resolved_equation</span><span class="p">,</span> <span class="n">resolved_shapes</span><span class="p">,</span> <span class="n">ellipsis_label</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

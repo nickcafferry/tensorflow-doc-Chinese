@@ -1,0 +1,953 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>创建一个矩阵 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="div() 函数及其相关的函数" href="../05_Declaring_Operations/index.html" />
+    <link rel="prev" title="创建变量和占位符" href="../03_Using_Variables_and_Placeholders/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#id3">矩阵</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">创建一个矩阵</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">对角矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">随机矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">常数矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">随机矩阵</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#convert-to-tensor"><code class="code docutils literal notranslate"><span class="pre">convert_to_tensor</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">非传统意义上的矩阵</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">矩阵加减法</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">加法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">减法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">乘法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">矩阵的转置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse">矩阵的逆(inverse)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">矩阵的本征值与向量</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pythoncolab">Python和Colab的初级知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">本章学习模块</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">TensorFlow如何工作</a> &raquo;</li>
+        
+      <li>创建一个矩阵</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/01_Introduction/04_Working_with_Matrices/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>理解TensorFlow如何处理矩阵对于理解计算图中的数据流动是很重要的。</p>
+<p>很多算法都依赖与矩阵运算。TensorFlow可以给我们一个简单操作来完成矩阵运算。对于下面所有的例子，我们通过运行下面的命令都先建立一个 <code class="code docutils literal notranslate"><span class="pre">graph</span> <span class="pre">session</span></code> :</p>
+</div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="kn">import</span> <span class="n">ops</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ops</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">disable_eager_execution</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="id1">
+<h1>创建一个矩阵<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>我们可以通过 <code class="code docutils literal notranslate"><span class="pre">numpy</span></code> 数组或者嵌套列表来创建一个二维矩阵，就像我们在张量那一节所描述的那样 ( <code class="code docutils literal notranslate"><span class="pre">convert_to_tensor</span></code> )。我们也可以使用张量创建函数并为这些函数( <code class="code docutils literal notranslate"><span class="pre">zeros()ones()truncated_normal()</span></code> 等等)设定一个二维的形状(因为矩阵就是二维张量)。 TensorFlow也允许我们用 <code class="code docutils literal notranslate"><span class="pre">diag()</span></code> 从一维数组或者列表中创建一个对角矩阵。例如：</p>
+<div class="section" id="id2">
+<h2>对角矩阵<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">identiy_matrix</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">diag</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">identiy_matrix</span><span class="p">))</span>
+<span class="go">[[1. 0. 0.]</span>
+<span class="go"> [0. 1. 0.]</span>
+<span class="go"> [0. 0. 1.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>随机矩阵<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>也就是创建一个二维随机张量</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="go">[[ 0.19759183 -1.436814   -1.107715  ]</span>
+<span class="go"> [-0.6905967  -0.19711868  0.6596967 ]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>常数矩阵<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>创建一个二维常数填充张量，也就是常数矩阵</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">fill</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">B</span><span class="p">))</span>
+<span class="go">[[5. 5. 5.]</span>
+<span class="go"> [5. 5. 5.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>随机矩阵<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>创建一个二维随机张量，也就是随机矩阵</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+<span class="go">[[0.3477279  0.39023817]</span>
+<span class="go"> [0.38307    0.8967395 ]</span>
+<span class="go"> [0.8217212  0.32184577]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="convert-to-tensor">
+<h2><code class="code docutils literal notranslate"><span class="pre">convert_to_tensor</span></code><a class="headerlink" href="#convert-to-tensor" title="Permalink to this headline">¶</a></h2>
+<p>使用内置函数convert_to_tensor将数组转化成张量</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mf">3.</span><span class="p">],[</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span><span class="o">-</span><span class="mf">7.</span><span class="p">,</span><span class="o">-</span><span class="mf">1.</span><span class="p">],[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">5.</span><span class="p">,</span><span class="o">-</span><span class="mf">2.</span><span class="p">]]))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="go">[[ 1.  2.  3.]</span>
+<span class="go"> [-3. -7. -1.]</span>
+<span class="go"> [ 0.  5. -2.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>非传统意义上的矩阵<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">E</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">E</span><span class="p">))</span>
+<span class="go">[[[0. 0. 0.]</span>
+<span class="go">  [0. 0. 0.]</span>
+<span class="go">  [0. 0. 0.]]</span>
+
+<span class="go"> [[0. 0. 0.]</span>
+<span class="go">  [0. 0. 0.]</span>
+<span class="go">  [0. 0. 0.]]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>矩阵加减法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id8">
+<h2>加法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="p">))</span>
+<span class="go">[[4.2034802 5.6497774 6.104109 ]</span>
+<span class="go"> [3.8710573 5.6505775 4.063135 ]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>减法<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">B</span><span class="o">-</span><span class="n">B</span><span class="p">))</span>
+<span class="go">[[0. 0. 0.]</span>
+<span class="go"> [0. 0. 0.]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>乘法<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">identiy_matrix</span><span class="p">)))</span>
+<span class="go">[[5. 5. 5.]</span>
+<span class="go"> [5. 5. 5.]]</span>
+
+<span class="go"># 矩阵运算需要注意两个的维度，否则容易出错</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)))</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">ValueError</span>: <span class="n">Dimensions must be equal</span>
+
+<span class="go"># 如果对某个模块不明白，可以调用help函数</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">)</span>
+<span class="go">Help on function matmul in module tensorflow.python.ops.math_ops:</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>矩阵的转置<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">C</span><span class="p">)))</span>
+<span class="go">[[0.11786842 0.32758367 0.54398596]</span>
+<span class="go"> [0.35542393 0.546188   0.6743456 ]]</span>
+
+<span class="go"># 对于行列式，可以用</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">matrix_determinant</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="go">-37.99999999999999</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inverse">
+<h2>矩阵的逆(inverse)<a class="headerlink" href="#inverse" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 注意，如果矩阵是对称正定矩阵，则矩阵的逆是基于Cholesky分解，否则基于LU分解。</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">matrix_inverse</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="p">[[</span><span class="o">-</span><span class="mf">0.5</span>        <span class="o">-</span><span class="mf">0.5</span>        <span class="o">-</span><span class="mf">0.5</span>       <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.15789474</span>  <span class="mf">0.05263158</span>  <span class="mf">0.21052632</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.39473684</span>  <span class="mf">0.13157895</span>  <span class="mf">0.02631579</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">cholesky</span><span class="p">(</span><span class="n">identiy_matrix</span><span class="p">)))</span>
+<span class="p">[[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">1.</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>矩阵的本征值与向量<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 对于矩阵的本征值和本征向量，用下面的代码</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">self_adjoint_eigvals</span><span class="p">(</span><span class="n">D</span><span class="p">)))</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">10.65907521</span>  <span class="o">-</span><span class="mf">0.22750691</span>   <span class="mf">2.88658212</span><span class="p">]</span>
+<span class="c1"># self_adjoint_eig()输出一个数组是本征值，输出第二数组为本征向量, 这在数学上叫本征分解</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">self_adjoint_eig</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="p">[</span><span class="o">-</span><span class="mf">10.65907521</span>  <span class="o">-</span><span class="mf">0.22750691</span>   <span class="mf">2.88658212</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">self_adjoint_eig</span><span class="p">(</span><span class="n">D</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="p">[[</span> <span class="mf">0.21749542</span>  <span class="mf">0.63250104</span> <span class="o">-</span><span class="mf">0.74339638</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.84526515</span>  <span class="mf">0.2587998</span>   <span class="mf">0.46749277</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.4880805</span>   <span class="mf">0.73004459</span>  <span class="mf">0.47834331</span><span class="p">]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">self_adjoint_eig</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">eigenvalues</span>
+<span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">10.65907521</span><span class="p">,</span>  <span class="o">-</span><span class="mf">0.22750691</span><span class="p">,</span>   <span class="mf">2.88658212</span><span class="p">])</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">eigenvectors</span>
+<span class="n">array</span><span class="p">([[</span> <span class="mf">0.21749542</span><span class="p">,</span>  <span class="mf">0.63250104</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.74339638</span><span class="p">],</span>
+       <span class="p">[</span> <span class="mf">0.84526515</span><span class="p">,</span>  <span class="mf">0.2587998</span> <span class="p">,</span>  <span class="mf">0.46749277</span><span class="p">],</span>
+       <span class="p">[</span><span class="o">-</span><span class="mf">0.4880805</span> <span class="p">,</span>  <span class="mf">0.73004459</span><span class="p">,</span>  <span class="mf">0.47834331</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pythoncolab">
+<h1>Python和Colab的初级知识<a class="headerlink" href="#pythoncolab" title="Permalink to this headline">¶</a></h1>
+<p>要访问 Colab Notebook，请登录 Google 帐户并点击以下链接：</p>
+<video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <source src="../../_static/videos/Intro2ML/TFIntro5.mp4" type="video/mp4">
+</video></div>
+<div class="section" id="id13">
+<h1>本章学习模块<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.diag模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.diag"></span><p>Returns a diagonal tensor with a given diagonal values.</p>
+<p>Given a <cite>diagonal</cite>, this operation returns a tensor with the <cite>diagonal</cite> and
+everything else padded with zeros. The diagonal is computed as follows:</p>
+<p>Assume <cite>diagonal</cite> has dimensions [D1,..., Dk], then the output is a tensor of
+rank 2k with dimensions [D1,..., Dk, D1,..., Dk] where:</p>
+<p><cite>output[i1,..., ik, i1,..., ik] = diagonal[i1, ..., ik]</cite> and 0 everywhere else.</p>
+<p>For example:</p>
+<p><a href="#id14"><span class="problematic" id="id15">``</span></a>`
+# 'diagonal' is [1, 2, 3, 4]
+tf.diag(diagonal) ==&gt; [[1, 0, 0, 0]</p>
+<blockquote>
+<div><p>[0, 2, 0, 0]
+[0, 0, 3, 0]
+[0, 0, 0, 4]]</p>
+</div></blockquote>
+<p><a href="#id16"><span class="problematic" id="id17">``</span></a><a href="#id18"><span class="problematic" id="id19">`</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">param diagonal</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>bfloat16</cite>, <cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>int32</cite>, <cite>int64</cite>, <cite>complex64</cite>, <cite>complex128</cite>.
+Rank k tensor where k is at most 1.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Has the same type as <cite>diagonal</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.convert_to_tensor模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.convert_to_tensor"></span><p>Converts the given <cite>value</cite> to a <cite>Tensor</cite>.</p>
+<p>This function converts Python objects of various types to <cite>Tensor</cite>
+objects. It accepts <cite>Tensor</cite> objects, numpy arrays, Python lists,
+and Python scalars. For example:</p>
+<p><a href="#id20"><span class="problematic" id="id21">``</span></a><a href="#id22"><span class="problematic" id="id23">`</span></a>python
+import numpy as np</p>
+<dl class="simple">
+<dt>def my_func(arg):</dt><dd><p>arg = tf.convert_to_tensor(arg, dtype=tf.float32)
+return tf.matmul(arg, arg) + arg</p>
+</dd>
+</dl>
+<p># The following calls are equivalent.
+value_1 = my_func(tf.constant([[1.0, 2.0], [3.0, 4.0]]))
+value_2 = my_func([[1.0, 2.0], [3.0, 4.0]])
+value_3 = my_func(np.array([[1.0, 2.0], [3.0, 4.0]], dtype=np.float32))
+<a href="#id24"><span class="problematic" id="id25">``</span></a><a href="#id26"><span class="problematic" id="id27">`</span></a></p>
+<p>This function can be useful when composing a new operation in Python
+(such as <cite>my_func</cite> in the example above). All standard Python op
+constructors apply this function to each of their Tensor-valued
+inputs, which allows those ops to accept numpy arrays, Python lists,
+and scalars in addition to <cite>Tensor</cite> objects.</p>
+<dl class="simple">
+<dt>Note: This function diverges from default Numpy behavior for <cite>float</cite> and</dt><dd><p><cite>string</cite> types when <cite>None</cite> is present in a Python list or scalar. Rather
+than silently converting <cite>None</cite> values, an error will be thrown.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>An object whose type has a registered <cite>Tensor</cite> conversion function.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>Optional element type for the returned tensor. If missing, the type
+is inferred from the type of <cite>value</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>Optional name to use if a new <cite>Tensor</cite> is created.</p>
+</dd>
+<dt class="field-even">param preferred_dtype</dt>
+<dd class="field-even"><p>Optional element type for the returned tensor, used when
+dtype is None. In some cases, a caller may not have a dtype in mind when
+converting to a tensor, so preferred_dtype can be used as a soft
+preference.  If the conversion to <cite>preferred_dtype</cite> is not possible, this
+argument has no effect.</p>
+</dd>
+<dt class="field-odd">param dtype_hint</dt>
+<dd class="field-odd"><p>same meaning as preferred_dtype, and overrides it.</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite> based on <cite>value</cite>.</p>
+</dd>
+<dt class="field-odd">raises TypeError</dt>
+<dd class="field-odd"><p>If no conversion function is registered for <cite>value</cite> to <cite>dtype</cite>.</p>
+</dd>
+<dt class="field-even">raises RuntimeError</dt>
+<dd class="field-even"><p>If a registered conversion function returns an invalid value.</p>
+</dd>
+<dt class="field-odd">raises ValueError</dt>
+<dd class="field-odd"><p>If the <cite>value</cite> is a tensor not of given <cite>dtype</cite> in graph mode.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.matmul模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.matmul"></span><p>Multiplies matrix <cite>a</cite> by matrix <cite>b</cite>, producing <cite>a</cite> * <cite>b</cite>.</p>
+<p>The inputs must, following any transpositions, be tensors of rank &gt;= 2
+where the inner 2 dimensions specify valid matrix multiplication dimensions,
+and any further outer dimensions specify matching batch size.</p>
+<p>Both matrices must be of the same type. The supported types are:
+<cite>float16</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>int32</cite>, <cite>complex64</cite>, <cite>complex128</cite>.</p>
+<p>Either matrix can be transposed or adjointed (conjugated and transposed) on
+the fly by setting one of the corresponding flag to <cite>True</cite>. These are <cite>False</cite>
+by default.</p>
+<p>If one or both of the matrices contain a lot of zeros, a more efficient
+multiplication algorithm can be used by setting the corresponding
+<cite>a_is_sparse</cite> or <cite>b_is_sparse</cite> flag to <cite>True</cite>. These are <cite>False</cite> by default.
+This optimization is only available for plain matrices (rank-2 tensors) with
+datatypes <cite>bfloat16</cite> or <cite>float32</cite>.</p>
+<p>A simple 2-D tensor matrix multiplication:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>  <span class="c1"># 2-D tensor</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">array([[1, 2, 3],</span>
+<span class="go">       [4, 5, 6]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>  <span class="c1"># 2-D tensor</span>
+<span class="go">&lt;tf.Tensor: shape=(3, 2), dtype=int32, numpy=</span>
+<span class="go">array([[ 7,  8],</span>
+<span class="go">       [ 9, 10],</span>
+<span class="go">       [11, 12]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>  <span class="c1"># `a` * `b`</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 2), dtype=int32, numpy=</span>
+<span class="go">array([[ 58,  64],</span>
+<span class="go">       [139, 154]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p>A batch matrix multiplication with batch shape [2]:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>  <span class="c1"># 3-D tensor</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 2, 3), dtype=int32, numpy=</span>
+<span class="go">array([[[ 1,  2,  3],</span>
+<span class="go">        [ 4,  5,  6]],</span>
+<span class="go">       [[ 7,  8,  9],</span>
+<span class="go">        [10, 11, 12]]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>  <span class="c1"># 3-D tensor</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3, 2), dtype=int32, numpy=</span>
+<span class="go">array([[[13, 14],</span>
+<span class="go">        [15, 16],</span>
+<span class="go">        [17, 18]],</span>
+<span class="go">       [[19, 20],</span>
+<span class="go">        [21, 22],</span>
+<span class="go">        [23, 24]]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>  <span class="c1"># `a` * `b`</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 2, 2), dtype=int32, numpy=</span>
+<span class="go">array([[[ 94, 100],</span>
+<span class="go">        [229, 244]],</span>
+<span class="go">       [[508, 532],</span>
+<span class="go">        [697, 730]]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p>Since python &gt;= 3.5 the &#64; operator is supported
+(see [PEP 465](<a class="reference external" href="https://www.python.org/dev/peps/pep-0465/">https://www.python.org/dev/peps/pep-0465/</a>)). In TensorFlow,
+it simply calls the <cite>tf.matmul()</cite> function, so the following lines are
+equivalent:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">@</span> <span class="n">b</span> <span class="o">@</span> <span class="p">[[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="p">[[</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">]])</span>
+</pre></div>
+</div>
+<dl class="field-list">
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p><cite>tf.Tensor</cite> of type <cite>float16</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>int32</cite>,
+<cite>complex64</cite>, <cite>complex128</cite> and rank &gt; 1.</p>
+</dd>
+<dt class="field-even">param b</dt>
+<dd class="field-even"><p><cite>tf.Tensor</cite> with same type and rank as <cite>a</cite>.</p>
+</dd>
+<dt class="field-odd">param transpose_a</dt>
+<dd class="field-odd"><p>If <cite>True</cite>, <cite>a</cite> is transposed before multiplication.</p>
+</dd>
+<dt class="field-even">param transpose_b</dt>
+<dd class="field-even"><p>If <cite>True</cite>, <cite>b</cite> is transposed before multiplication.</p>
+</dd>
+<dt class="field-odd">param adjoint_a</dt>
+<dd class="field-odd"><p>If <cite>True</cite>, <cite>a</cite> is conjugated and transposed before
+multiplication.</p>
+</dd>
+<dt class="field-even">param adjoint_b</dt>
+<dd class="field-even"><p>If <cite>True</cite>, <cite>b</cite> is conjugated and transposed before
+multiplication.</p>
+</dd>
+<dt class="field-odd">param a_is_sparse</dt>
+<dd class="field-odd"><p>If <cite>True</cite>, <cite>a</cite> is treated as a sparse matrix. Notice, this
+<strong>does not support `tf.sparse.SparseTensor`</strong>, it just makes optimizations
+that assume most values in <cite>a</cite> are zero.
+See <cite>tf.sparse.sparse_dense_matmul</cite>
+for some support for <cite>tf.SparseTensor</cite> multiplication.</p>
+</dd>
+<dt class="field-even">param b_is_sparse</dt>
+<dd class="field-even"><p>If <cite>True</cite>, <cite>b</cite> is treated as a sparse matrix. Notice, this
+<strong>does not support `tf.sparse.SparseTensor`</strong>, it just makes optimizations
+that assume most values in <cite>a</cite> are zero.
+See <cite>tf.sparse.sparse_dense_matmul</cite>
+for some support for <cite>tf.SparseTensor</cite> multiplication.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>Name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>tf.Tensor</cite> of the same type as <cite>a</cite> and <cite>b</cite> where each inner-most matrix
+is the product of the corresponding matrices in <cite>a</cite> and <cite>b</cite>, e.g. if all
+transpose or adjoint attributes are <cite>False</cite>:</p>
+<p><cite>output[..., i, j] = sum_k (a[..., i, k] * b[..., k, j])</cite>,
+for all indices <cite>i</cite>, <cite>j</cite>.</p>
+<p>Note: This is matrix product, not element-wise product.</p>
+</dd>
+<dt class="field-odd">raises ValueError</dt>
+<dd class="field-odd"><p>If <cite>transpose_a</cite> and <cite>adjoint_a</cite>, or <cite>transpose_b</cite> and
+    <cite>adjoint_b</cite> are both set to <cite>True</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.transpose模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.transpose"></span><p>Transposes <cite>a</cite>, where <cite>a</cite> is a Tensor.</p>
+<p>Permutes the dimensions according to the value of <cite>perm</cite>.</p>
+<p>The returned tensor's dimension <cite>i</cite> will correspond to the input dimension
+<cite>perm[i]</cite>. If <cite>perm</cite> is not given, it is set to (n-1...0), where n is the rank
+of the input tensor. Hence by default, this operation performs a regular
+matrix transpose on 2-D input Tensors.</p>
+<p>If conjugate is <cite>True</cite> and <cite>a.dtype</cite> is either <cite>complex64</cite> or <cite>complex128</cite>
+then the values of <cite>a</cite> are conjugated and transposed.</p>
+<p>&#64;compatibility(numpy)
+In <cite>numpy</cite> transposes are memory-efficient constant time operations as they
+simply return a new view of the same data with adjusted <cite>strides</cite>.</p>
+<p>TensorFlow does not support strides, so <cite>transpose</cite> returns a new tensor with
+the items permuted.
+&#64;end_compatibility</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(3, 2), dtype=int32, numpy=</span>
+<span class="go">array([[1, 4],</span>
+<span class="go">       [2, 5],</span>
+<span class="go">       [3, 6]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p>Equivalently, you could call <cite>tf.transpose(x, perm=[1, 0])</cite>.</p>
+<p>If <cite>x</cite> is complex, setting conjugate=True gives the conjugate transpose:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="n">j</span><span class="p">,</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="n">j</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="p">[</span><span class="mi">4</span> <span class="o">+</span> <span class="mi">4</span><span class="n">j</span><span class="p">,</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">5</span><span class="n">j</span><span class="p">,</span> <span class="mi">6</span> <span class="o">+</span> <span class="mi">6</span><span class="n">j</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">conjugate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(3, 2), dtype=complex128, numpy=</span>
+<span class="go">array([[1.-1.j, 4.-4.j],</span>
+<span class="go">       [2.-2.j, 5.-5.j],</span>
+<span class="go">       [3.-3.j, 6.-6.j]])&gt;</span>
+</pre></div>
+</div>
+<p>'perm' is more useful for n-dimensional tensors where n &gt; 2:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[[</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">2</span><span class="p">,</span>  <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="p">[</span> <span class="mi">4</span><span class="p">,</span>  <span class="mi">5</span><span class="p">,</span>  <span class="mi">6</span><span class="p">]],</span>
+<span class="gp">... </span>                 <span class="p">[[</span> <span class="mi">7</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span>  <span class="mi">9</span><span class="p">],</span>
+<span class="gp">... </span>                  <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">]]])</span>
+</pre></div>
+</div>
+<p>As above, simply calling <cite>tf.transpose</cite> will default to <cite>perm=[2,1,0]</cite>.</p>
+<p>To take the transpose of the matrices in dimension-0 (such as when you are
+transposing matrices where 0 is the batch dimesnion), you would set
+<cite>perm=[0,2,1]</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3, 2), dtype=int32, numpy=</span>
+<span class="go">array([[[ 1,  4],</span>
+<span class="go">        [ 2,  5],</span>
+<span class="go">        [ 3,  6]],</span>
+<span class="go">        [[ 7, 10],</span>
+<span class="go">        [ 8, 11],</span>
+<span class="go">        [ 9, 12]]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p>Note: This has a shorthand <cite>linalg.matrix_transpose</cite>):</p>
+<dl class="field-list simple">
+<dt class="field-odd">param a</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>.</p>
+</dd>
+<dt class="field-even">param perm</dt>
+<dd class="field-even"><p>A permutation of the dimensions of <cite>a</cite>.  This should be a vector.</p>
+</dd>
+<dt class="field-odd">param conjugate</dt>
+<dd class="field-odd"><p>Optional bool. Setting it to <cite>True</cite> is mathematically equivalent
+to tf.math.conj(tf.transpose(input)).</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A transposed <cite>Tensor</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.matrix_determinant模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.matrix_determinant"></span><p>Computes the determinant of one or more square matrices.</p>
+<p>The input is a tensor of shape <cite>[..., M, M]</cite> whose inner-most 2 dimensions
+form square matrices. The output is a tensor containing the determinants
+for all input submatrices <cite>[..., :, :]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>complex64</cite>, <cite>complex128</cite>.
+Shape is <cite>[..., M, M]</cite>.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Has the same type as <cite>input</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.matrix_inverse模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.matrix_inverse"></span><p>Computes the inverse of one or more square invertible matrices or their</p>
+<p>adjoints (conjugate transposes).</p>
+<p>The input is a tensor of shape <cite>[..., M, M]</cite> whose inner-most 2 dimensions
+form square matrices. The output is a tensor of the same shape as the input
+containing the inverse for all input submatrices <cite>[..., :, :]</cite>.</p>
+<p>The op uses LU decomposition with partial pivoting to compute the inverses.</p>
+<p>If a matrix is not invertible there is no guarantee what the op does. It
+may detect the condition and raise an exception or it may simply return a
+garbage result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>float64</cite>, <cite>float32</cite>, <cite>half</cite>, <cite>complex64</cite>, <cite>complex128</cite>.
+Shape is <cite>[..., M, M]</cite>.</p>
+</dd>
+<dt class="field-even">param adjoint</dt>
+<dd class="field-even"><p>An optional <cite>bool</cite>. Defaults to <cite>False</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite>. Has the same type as <cite>input</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.cholesky模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.cholesky"></span><p>Computes the Cholesky decomposition of one or more square matrices.</p>
+<p>The input is a tensor of shape <cite>[..., M, M]</cite> whose inner-most 2 dimensions
+form square matrices.</p>
+<p>The input has to be symmetric and positive definite. Only the lower-triangular
+part of the input will be used for this operation. The upper-triangular part
+will not be read.</p>
+<p>The output is a tensor of the same shape as the input
+containing the Cholesky decompositions for all input submatrices <cite>[..., :, :]</cite>.</p>
+<p><strong>Note</strong>: The gradient computation on GPU is faster for large matrices but
+not for large batch dimensions when the submatrices are small. In this
+case it might be faster to use the CPU.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>float64</cite>, <cite>float32</cite>, <cite>half</cite>, <cite>complex64</cite>, <cite>complex128</cite>.
+Shape is <cite>[..., M, M]</cite>.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Has the same type as <cite>input</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tf.compat.v1.self_adjoint_eigvals模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.self_adjoint_eig"></span><p>Computes the eigen decomposition of a batch of self-adjoint matrices.</p>
+<p>Computes the eigenvalues and eigenvectors of the innermost N-by-N matrices
+in <cite>tensor</cite> such that
+<cite>tensor[...,:,:] * v[..., :,i] = e[..., i] * v[...,:,i]</cite>, for i=0...N-1.</p>
+<dl class="field-list">
+<dt class="field-odd">param tensor</dt>
+<dd class="field-odd"><p><cite>Tensor</cite> of shape <cite>[..., N, N]</cite>. Only the lower triangular part of
+each inner inner matrix is referenced.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>string, optional name of the operation.</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>Eigenvalues. Shape is <cite>[..., N]</cite>. Sorted in non-decreasing order.
+v: Eigenvectors. Shape is <cite>[..., N, N]</cite>. The columns of the inner most</p>
+<blockquote>
+<div><p>matrices contain eigenvectors of the corresponding matrices in <cite>tensor</cite></p>
+</div></blockquote>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>e</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../05_Declaring_Operations/index.html" class="btn btn-neutral float-right" title="div() 函数及其相关的函数" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../03_Using_Variables_and_Placeholders/index.html" class="btn btn-neutral float-left" title="创建变量和占位符" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,757 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.critical_section_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.critical_section_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.critical_section_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2017 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Critical Section object and execution logic.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+<span class="kn">import</span> <span class="nn">contextlib</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_resource_variable_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">tensor_array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">object_identity</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;CriticalSection&quot;</span><span class="p">]</span>
+
+
+<span class="c1"># Graph Keys</span>
+<span class="n">CRITICAL_SECTIONS</span> <span class="o">=</span> <span class="s2">&quot;critical_sections&quot;</span>
+<span class="n">CRITICAL_SECTION_EXECUTIONS</span> <span class="o">=</span> <span class="s2">&quot;critical_section_executions&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">_ExecutionSignature</span><span class="p">(</span>
+    <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s2">&quot;_ExecutionSignature&quot;</span><span class="p">,</span>
+                           <span class="p">(</span><span class="s2">&quot;op&quot;</span><span class="p">,</span> <span class="s2">&quot;handle&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="s2">&quot;exclusive_resource_access&quot;</span><span class="p">))):</span>
+  <span class="sd">&quot;&quot;&quot;A class storing an `ExecuteInCriticalResource` op and associated attrs.&quot;&quot;&quot;</span>
+  <span class="k">pass</span>
+
+
+<span class="k">def</span> <span class="nf">_identity</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Identity op that recognizes `TensorArray`, `Operation`, and `Tensor`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tensor_array_ops</span><span class="o">.</span><span class="n">TensorArray</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">identity</span><span class="p">()</span>
+  <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Operation</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span> <span class="ow">and</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_device_or_colocation</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">device</span> <span class="ow">or</span> <span class="n">_get_colocation</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_colocation</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Get colocation symbol from op, if any.&quot;&quot;&quot;</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;_class&quot;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="n">_CRITICAL_SECTION_STACK</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">local</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_get_critical_section_stack</span><span class="p">():</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_CRITICAL_SECTION_STACK</span><span class="o">.</span><span class="n">value</span>
+  <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+    <span class="n">_CRITICAL_SECTION_STACK</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">return</span> <span class="n">_CRITICAL_SECTION_STACK</span><span class="o">.</span><span class="n">value</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">_push_critical_section_stack</span><span class="p">(</span><span class="n">signature</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Push a CriticalSection._signature to the thread-local stack.</span>
+
+<span class="sd">  If the signature is already on the stack, raise an error because it means</span>
+<span class="sd">  we&#39;re trying to execute inside the same locked CriticalSection, which</span>
+<span class="sd">  will create a deadlock.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    signature: Tuple of the type `CriticalSection._signature`.  Uniquely</span>
+<span class="sd">      identifies a CriticalSection by its `shared_name`, `container`,</span>
+<span class="sd">      and device.</span>
+
+<span class="sd">  Yields:</span>
+<span class="sd">    An empty value.  The context is guaranteed to run without deadlock.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If the signature is already on the stack.</span>
+<span class="sd">    RuntimeError: If another thread or function modifies the current stack</span>
+<span class="sd">      entry during the yield.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">stack</span> <span class="o">=</span> <span class="n">_get_critical_section_stack</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">signature</span> <span class="ow">in</span> <span class="n">stack</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;Attempting to lock a CriticalSection in which we are &quot;</span>
+        <span class="s2">&quot;already running.  This is illegal and may cause deadlocks.&quot;</span><span class="p">)</span>
+  <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">yield</span>
+  <span class="k">finally</span><span class="p">:</span>
+    <span class="n">received_signature</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">received_signature</span> <span class="o">!=</span> <span class="n">signature</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+          <span class="s2">&quot;CriticalSection stack inconsistency: expected signature &quot;</span>
+          <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> but saw </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="n">received_signature</span><span class="p">))</span>
+
+
+<div class="viewcode-block" id="CriticalSection"><a class="viewcode-back" href="../../../../index.html#tensorflow.CriticalSection">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;CriticalSection&quot;</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CriticalSection</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Critical section.</span>
+
+<span class="sd">  A `CriticalSection` object is a resource in the graph which executes subgraphs</span>
+<span class="sd">  in **serial** order.  A common example of a subgraph one may wish to run</span>
+<span class="sd">  exclusively is the one given by the following function:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  v = resource_variable_ops.ResourceVariable(0.0, name=&quot;v&quot;)</span>
+
+<span class="sd">  def count():</span>
+<span class="sd">    value = v.read_value()</span>
+<span class="sd">    with tf.control_dependencies([value]):</span>
+<span class="sd">      with tf.control_dependencies([v.assign_add(1)]):</span>
+<span class="sd">        return tf.identity(value)</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Here, a snapshot of `v` is captured in `value`; and then `v` is updated.</span>
+<span class="sd">  The snapshot value is returned.</span>
+
+<span class="sd">  If multiple workers or threads all execute `count` in parallel, there is no</span>
+<span class="sd">  guarantee that access to the variable `v` is atomic at any point within</span>
+<span class="sd">  any thread&#39;s calculation of `count`.  In fact, even implementing an atomic</span>
+<span class="sd">  counter that guarantees that the user will see each value `0, 1, ...,` is</span>
+<span class="sd">  currently impossible.</span>
+
+<span class="sd">  The solution is to ensure any access to the underlying resource `v` is</span>
+<span class="sd">  only processed through a critical section:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  cs = CriticalSection()</span>
+<span class="sd">  f1 = cs.execute(count)</span>
+<span class="sd">  f2 = cs.execute(count)</span>
+<span class="sd">  output = f1 + f2</span>
+<span class="sd">  session.run(output)</span>
+<span class="sd">  ```</span>
+<span class="sd">  The functions `f1` and `f2` will be executed serially, and updates to `v`</span>
+<span class="sd">  will be atomic.</span>
+
+<span class="sd">  **NOTES**</span>
+
+<span class="sd">  All resource objects, including the critical section and any captured</span>
+<span class="sd">  variables of functions executed on that critical section, will be</span>
+<span class="sd">  colocated to the same device (host and cpu/gpu).</span>
+
+<span class="sd">  When using multiple critical sections on the same resources, there is no</span>
+<span class="sd">  guarantee of exclusive access to those resources.  This behavior is disallowed</span>
+<span class="sd">  by default (but see the kwarg `exclusive_resource_access`).</span>
+
+<span class="sd">  For example, running the same function in two separate critical sections</span>
+<span class="sd">  will not ensure serial execution:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  v = tf.compat.v1.get_variable(&quot;v&quot;, initializer=0.0, use_resource=True)</span>
+<span class="sd">  def accumulate(up):</span>
+<span class="sd">    x = v.read_value()</span>
+<span class="sd">    with tf.control_dependencies([x]):</span>
+<span class="sd">      with tf.control_dependencies([v.assign_add(up)]):</span>
+<span class="sd">        return tf.identity(x)</span>
+<span class="sd">  ex1 = CriticalSection().execute(</span>
+<span class="sd">    accumulate, 1.0, exclusive_resource_access=False)</span>
+<span class="sd">  ex2 = CriticalSection().execute(</span>
+<span class="sd">    accumulate, 1.0, exclusive_resource_access=False)</span>
+<span class="sd">  bad_sum = ex1 + ex2</span>
+<span class="sd">  sess.run(v.initializer)</span>
+<span class="sd">  sess.run(bad_sum)  # May return 0.0</span>
+<span class="sd">  ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shared_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+               <span class="n">critical_section_def</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">import_scope</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Creates a critical section.&quot;&quot;&quot;</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">critical_section_def</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;critical_section_def and shared_name are &quot;</span>
+                       <span class="s2">&quot;mutually exclusive.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">critical_section_def</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;critical_section_def is not supported.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_init_from_args</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">shared_name</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_init_from_args</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">shared_name</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="sd">&quot;&quot;&quot;Initialize the CriticalSection from constructor arguments.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;CriticalSection&quot;</span><span class="p">,</span> <span class="p">[])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+      <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">init_scope</span><span class="p">():</span>
+        <span class="c1"># pylint: disable=protected-access</span>
+        <span class="n">container</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">_container</span>
+        <span class="c1"># pylint: enable=protected-access</span>
+        <span class="k">if</span> <span class="n">shared_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">shared_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="k">if</span> <span class="n">container</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">container</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span> <span class="o">=</span> <span class="n">gen_resource_variable_ops</span><span class="o">.</span><span class="n">mutex_v2</span><span class="p">(</span>
+            <span class="n">shared_name</span><span class="o">=</span><span class="n">shared_name</span><span class="p">,</span> <span class="n">container</span><span class="o">=</span><span class="n">container</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="c1"># Get a uniquely identifying signature for the handle.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_signature</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">container</span><span class="p">,</span>
+            <span class="c1"># If shared_name is empty, a unique CriticalSection is created.</span>
+            <span class="n">shared_name</span> <span class="ow">or</span> <span class="nb">id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">),</span>
+            <span class="n">_get_device_or_colocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+      <span class="n">ops</span><span class="o">.</span><span class="n">add_to_collections</span><span class="p">(</span><span class="n">CRITICAL_SECTIONS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">name</span>
+
+<div class="viewcode-block" id="CriticalSection.execute"><a class="viewcode-back" href="../../../../index.html#tensorflow.CriticalSection.execute">[docs]</a>  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">exclusive_resource_access</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Execute function `fn()` inside the critical section.</span>
+
+<span class="sd">    `fn` should not accept any arguments.  To add extra arguments to when</span>
+<span class="sd">    calling `fn` in the critical section, create a lambda:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    critical_section.execute(lambda: fn(*my_args, **my_kwargs))</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      fn: The function to execute.  Must return at least one tensor.</span>
+<span class="sd">      exclusive_resource_access: Whether the resources required by</span>
+<span class="sd">        `fn` should be exclusive to this `CriticalSection`.  Default: `True`.</span>
+<span class="sd">        You may want to set this to `False` if you will be accessing a</span>
+<span class="sd">        resource in read-only mode in two different CriticalSections.</span>
+<span class="sd">      name: The name to use when creating the execute operation.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      The tensors returned from `fn()`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `fn` attempts to lock this `CriticalSection` in any nested</span>
+<span class="sd">        or lazy way that may cause a deadlock.</span>
+<span class="sd">      ValueError: If `exclusive_resource_access == True` and</span>
+<span class="sd">        another `CriticalSection` has an execution requesting the same</span>
+<span class="sd">        resources as `fn``.  Note, even if `exclusive_resource_access` is</span>
+<span class="sd">        `True`, if another execution in another `CriticalSection` was created</span>
+<span class="sd">        without `exclusive_resource_access=True`, a `ValueError` will be raised.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;critical_section_execute&quot;</span><span class="p">,</span> <span class="p">[]):</span>
+      <span class="c1"># Ensure that mutex locking only happens *after* all args and</span>
+      <span class="c1"># kwargs have been executed.  This avoids certain types of deadlocks.</span>
+      <span class="k">with</span> <span class="n">_push_critical_section_stack</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_signature</span><span class="p">):</span>
+        <span class="n">lock</span> <span class="o">=</span> <span class="n">gen_resource_variable_ops</span><span class="o">.</span><span class="n">mutex_lock</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+          <span class="c1"># NOTE(ebrevdo): This is to ensure we don&#39;t pick up spurious</span>
+          <span class="c1"># Operations created by other threads.</span>
+          <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>  <span class="c1"># pylint: disable=protected-access</span>
+            <span class="n">existing_ops</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">get_operations</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">([</span><span class="n">lock</span><span class="p">]):</span>
+              <span class="n">r</span> <span class="o">=</span> <span class="n">fn</span><span class="p">()</span>
+            <span class="c1"># TODO(ebrevdo): If creating critical sections in a python loop,</span>
+            <span class="c1"># this makes graph creation time quadratic.  Revisit if this</span>
+            <span class="c1"># becomes a problem.</span>
+            <span class="n">created_ops</span> <span class="o">=</span> <span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">get_operations</span><span class="p">())</span>
+                           <span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">existing_ops</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">([</span><span class="n">lock</span><span class="p">]):</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">fn</span><span class="p">()</span>
+
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_add_control_dependencies_to_lock</span><span class="p">(</span><span class="n">created_ops</span><span class="p">,</span> <span class="n">lock</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+
+        <span class="c1"># captured_resources is a list of resources that are directly</span>
+        <span class="c1"># accessed only by ops created during fn(), not by any</span>
+        <span class="c1"># ancestors of those ops in the graph.</span>
+        <span class="n">captured_resources</span> <span class="o">=</span> <span class="n">object_identity</span><span class="o">.</span><span class="n">ObjectIdentitySet</span><span class="p">([</span>
+            <span class="n">input_</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">created_ops</span>
+            <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span>
+            <span class="k">if</span> <span class="n">input_</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span>
+        <span class="p">])</span>
+
+        <span class="c1"># NOTE(ebrevdo): The only time self._is_self_handle() is True</span>
+        <span class="c1"># in this call is if one of the recently created ops, within</span>
+        <span class="c1"># the execute(), themselves attempt to access the</span>
+        <span class="c1"># CriticalSection.  This will cause a deadlock.</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_self_handle</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">captured_resources</span><span class="p">):</span>
+          <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+              <span class="s2">&quot;Attempting to lock a CriticalSection in which we are &quot;</span>
+              <span class="s2">&quot;already running.  This is illegal and may cause deadlocks.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_multiple_access_to_resources</span><span class="p">(</span>
+            <span class="n">captured_resources</span><span class="p">,</span> <span class="n">exclusive_resource_access</span><span class="p">)</span>
+
+      <span class="n">r_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">_identity</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">r</span><span class="p">)]</span>
+
+      <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">(</span><span class="n">r_flat</span><span class="p">):</span>
+        <span class="c1"># The identity must run on the same machine as self._handle</span>
+        <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">colocate_with</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">):</span>
+          <span class="c1"># Do not use array_ops.identity as there are special</span>
+          <span class="c1"># optimizations within TensorFlow which seem to elide it</span>
+          <span class="c1"># even when optimizations are disabled(!).</span>
+          <span class="n">ensure_lock_exists</span> <span class="o">=</span> <span class="n">gen_resource_variable_ops</span><span class="o">.</span><span class="n">consume_mutex_lock</span><span class="p">(</span>
+              <span class="n">lock</span><span class="p">)</span>
+
+        <span class="c1"># Make sure that if any element of r is accessed, all of</span>
+        <span class="c1"># them are executed together.</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">tuple</span><span class="p">(</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">r</span><span class="p">)))</span>
+
+      <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">([</span><span class="n">ensure_lock_exists</span><span class="p">]):</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="n">_identity</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+        <span class="n">signature</span> <span class="o">=</span> <span class="n">_ExecutionSignature</span><span class="p">(</span>
+            <span class="n">op</span><span class="o">=</span><span class="n">lock</span><span class="o">.</span><span class="n">op</span><span class="p">,</span>
+            <span class="n">handle</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span>
+            <span class="n">resources</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">captured_resources</span><span class="p">),</span>
+            <span class="n">exclusive_resource_access</span><span class="o">=</span><span class="n">exclusive_resource_access</span><span class="p">)</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">add_to_collections</span><span class="p">(</span>
+            <span class="n">CRITICAL_SECTION_EXECUTIONS</span><span class="p">,</span> <span class="n">signature</span><span class="p">)</span>
+
+      <span class="k">return</span> <span class="n">outputs</span></div>
+
+  <span class="k">def</span> <span class="nf">_add_control_dependencies_to_lock</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">created_ops</span><span class="p">,</span> <span class="n">lock_op</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;To avoid deadlocks, all args must be executed before lock_op.&quot;&quot;&quot;</span>
+    <span class="c1"># Get all arguments (explicit and captured) of all ops created by fn().</span>
+    <span class="n">all_args</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">input_</span><span class="o">.</span><span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">created_ops</span> <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">])</span>
+    <span class="n">all_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+        <span class="n">input_op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">created_ops</span> <span class="k">for</span> <span class="n">input_op</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">control_inputs</span><span class="p">)</span>
+    <span class="c1"># Unfortunately, we can&#39;t use sets throughout because TF seems to</span>
+    <span class="c1"># create new Operation objects for the same op sometimes; and we</span>
+    <span class="c1"># can&#39;t rely on id(op).</span>
+
+    <span class="c1"># pylint: disable=protected-access</span>
+    <span class="n">all_args_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">op</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">op</span><span class="p">)</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">all_args</span><span class="p">)</span>
+
+    <span class="c1"># Remove ops created within fn, or that lock_op already has a</span>
+    <span class="c1"># control dependency on.  Also remove a possible self-loop.</span>
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">created_ops</span><span class="p">:</span>
+      <span class="n">all_args_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">lock_op</span><span class="o">.</span><span class="n">control_inputs</span><span class="p">:</span>
+      <span class="n">all_args_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">lock_op</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+      <span class="n">all_args_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">input_</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">all_args_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">lock_op</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="n">all_args</span> <span class="o">=</span> <span class="n">all_args_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">all_args</span><span class="p">:</span>
+      <span class="c1"># No control dependencies to add; return early.</span>
+      <span class="k">return</span>
+
+    <span class="c1"># This group is important: it ensures that any ops in all_args</span>
+    <span class="c1"># outside the control context of the lock_op (and this fn, which</span>
+    <span class="c1"># runs in the same context) are added to this context before</span>
+    <span class="c1"># being added to the control dependencies of lock_op.</span>
+    <span class="n">all_args</span> <span class="o">=</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="o">*</span><span class="n">all_args</span><span class="p">)</span>
+
+    <span class="n">lock_op</span><span class="o">.</span><span class="n">_add_control_input</span><span class="p">(</span><span class="n">all_args</span><span class="p">)</span>
+    <span class="c1"># pylint: enable=protected-access</span>
+
+  <span class="k">def</span> <span class="nf">_is_self_handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Check if the tensor `x` is the same Mutex as `self._handle`.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">x</span> <span class="ow">is</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;MutexV2&quot;</span>
+            <span class="c1"># blank shared_name means the op will create a unique one.</span>
+            <span class="ow">and</span> <span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;shared_name&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;shared_name&quot;</span><span class="p">)</span> <span class="o">==</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;shared_name&quot;</span><span class="p">))</span>
+            <span class="ow">and</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">device</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">device</span>
+                 <span class="ow">or</span> <span class="n">_get_colocation</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">op</span><span class="p">)</span> <span class="o">==</span> <span class="n">_get_colocation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="o">.</span><span class="n">op</span><span class="p">)))</span>
+
+  <span class="k">def</span> <span class="nf">_check_multiple_access_to_resources</span><span class="p">(</span>
+      <span class="bp">self</span><span class="p">,</span> <span class="n">captured_resources</span><span class="p">,</span> <span class="n">exclusive_resource_access</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Raise if captured_resources are accessed by another CriticalSection.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      captured_resources: Set of tensors of type resource.</span>
+<span class="sd">      exclusive_resource_access: Whether this execution requires exclusive</span>
+<span class="sd">        resource access.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If any tensors in `captured_resources` are also accessed</span>
+<span class="sd">        by another `CriticalSection`, and at least one of them requires</span>
+<span class="sd">        exclusive resource access.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Collections and op introspection does not work in eager</span>
+    <span class="c1"># mode.  This is generally ok; since eager mode (as of</span>
+    <span class="c1"># writing) executes sequentially anyway.</span>
+    <span class="k">for</span> <span class="n">sg</span> <span class="ow">in</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">CRITICAL_SECTION_EXECUTIONS</span><span class="p">):</span>
+      <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_self_handle</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">handle</span><span class="p">):</span>
+        <span class="c1"># Other executions in the same critical section are allowed.</span>
+        <span class="k">continue</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">exclusive_resource_access</span> <span class="ow">or</span> <span class="n">sg</span><span class="o">.</span><span class="n">exclusive_resource_access</span><span class="p">):</span>
+        <span class="c1"># Neither execution requested exclusive access.</span>
+        <span class="k">continue</span>
+      <span class="n">resource_intersection</span> <span class="o">=</span> <span class="n">captured_resources</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">sg</span><span class="o">.</span><span class="n">resources</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">resource_intersection</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;This execution would access resources: </span><span class="si">%s</span><span class="s2">.  Either this &quot;</span>
+            <span class="s2">&quot;lock (CriticalSection: </span><span class="si">%s</span><span class="s2">) or lock &#39;</span><span class="si">%s</span><span class="s2">&#39; &quot;</span>
+            <span class="s2">&quot;(CriticalSection: </span><span class="si">%s</span><span class="s2">) requested exclusive resource access &quot;</span>
+            <span class="s2">&quot;of this resource.  Did you mean to call execute with keyword &quot;</span>
+            <span class="s2">&quot;argument exclusive_resource_access=False?&quot;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">resource_intersection</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle</span><span class="p">,</span> <span class="n">sg</span><span class="p">,</span> <span class="n">sg</span><span class="o">.</span><span class="n">handle</span><span class="p">))</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

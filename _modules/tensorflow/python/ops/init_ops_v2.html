@@ -1,0 +1,1427 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.init_ops_v2 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.init_ops_v2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.init_ops_v2</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Operations often used for initializing tensors.</span>
+
+<span class="sd">All variable initializers returned by functions in this file should have the</span>
+<span class="sd">following signature:</span>
+
+<span class="sd">def _initializer(shape, dtype=dtypes.float32):</span>
+<span class="sd">  Args:</span>
+<span class="sd">    shape: List of `int` representing the shape of the output `Tensor`. Some</span>
+<span class="sd">      initializers may also be able to accept a `Tensor`.</span>
+<span class="sd">    dtype: (Optional) Type of the output `Tensor`.</span>
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `dtype` and `shape`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">constant_op</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_linalg_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">linalg_ops_impl</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">random_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">stateless_random_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">class</span> <span class="nc">Initializer</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer base class: all initializers inherit from this class.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. If not provided will return tensor</span>
+<span class="sd">       of `tf.float32`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the configuration of the initializer as a JSON-serializable dict.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A JSON-serializable Python dict.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{}</span>
+
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">from_config</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Instantiates an initializer from a configuration dictionary.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    initializer = RandomUniform(-1, 1)</span>
+<span class="sd">    config = initializer.get_config()</span>
+<span class="sd">    initializer = RandomUniform.from_config(config)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      config: A Python dictionary.</span>
+<span class="sd">        It will typically be the output of `get_config`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      An Initializer instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;zeros_initializer&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">class</span> <span class="nc">Zeros</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates tensors initialized to 0.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.zeros_initializer())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([0., 0., 0.], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  array([[0., 0., 0.],</span>
+<span class="sd">         [0., 0., 0.],</span>
+<span class="sd">         [0., 0., 0.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only numeric or boolean dtypes are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValuesError: If the dtype is not numeric or boolean.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;ones_initializer&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">class</span> <span class="nc">Ones</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates tensors initialized to 1.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.ones_initializer())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([1., 1., 1.], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  array([[1., 1., 1.],</span>
+<span class="sd">         [1., 1., 1.],</span>
+<span class="sd">         [1., 1., 1.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only numeric or boolean dtypes are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValuesError: If the dtype is not numeric or boolean.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_numpy_compatible</span> <span class="ow">or</span> <span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected numeric or boolean dtype, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;constant_initializer&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">class</span> <span class="nc">Constant</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates tensors with constant values.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  `tf.constant_initializer` returns an object which when called returns a tensor</span>
+<span class="sd">  populated with the `value` specified in the constructor. This `value` must be</span>
+<span class="sd">  convertible to the requested `dtype`.</span>
+
+<span class="sd">  The argument `value` can be a scalar constant value, or a list of</span>
+<span class="sd">  values. Scalars broadcast to whichever shape is requested from the</span>
+<span class="sd">  initializer.</span>
+
+<span class="sd">  If `value` is a list, then the length of the list must be equal to the number</span>
+<span class="sd">  of elements implied by the desired shape of the tensor. If the total number of</span>
+<span class="sd">  elements in `value` is not equal to the number of elements required by the</span>
+<span class="sd">  tensor shape, the initializer will raise a `TypeError`.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.constant_initializer(2.))</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([2., 2., 2.], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  array([[2., 2., 2.],</span>
+<span class="sd">         [2., 2., 2.],</span>
+<span class="sd">         [2., 2., 2.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+
+<span class="sd">  &gt;&gt;&gt; value = [0, 1, 2, 3, 4, 5, 6, 7]</span>
+<span class="sd">  &gt;&gt;&gt; init = tf.constant_initializer(value)</span>
+<span class="sd">  &gt;&gt;&gt; # Fitting shape</span>
+<span class="sd">  &gt;&gt;&gt; tf.Variable(init(shape=[2, 4], dtype=tf.float32))</span>
+<span class="sd">  &lt;tf.Variable ...</span>
+<span class="sd">  array([[0., 1., 2., 3.],</span>
+<span class="sd">         [4., 5., 6., 7.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; # Larger shape</span>
+<span class="sd">  &gt;&gt;&gt; tf.Variable(init(shape=[3, 4], dtype=tf.float32))</span>
+<span class="sd">  Traceback (most recent call last):</span>
+<span class="sd">  ...</span>
+<span class="sd">  TypeError: ...value has 8 elements, shape is (3, 4) with 12 elements...</span>
+<span class="sd">  &gt;&gt;&gt; # Smaller shape</span>
+<span class="sd">  &gt;&gt;&gt; tf.Variable(init(shape=[2, 3], dtype=tf.float32))</span>
+<span class="sd">  Traceback (most recent call last):</span>
+<span class="sd">  ...</span>
+<span class="sd">  TypeError: ...value has 8 elements, shape is (2, 3) with 6 elements...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: A Python scalar, list or tuple of values, or a N-dimensional numpy</span>
+<span class="sd">      array. All elements of the initialized variable will be set to the</span>
+<span class="sd">      corresponding value in the `value` argument.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If the input `value` is not one of the expected types.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isscalar</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">))):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+          <span class="s2">&quot;Invalid type for initial value: </span><span class="si">%s</span><span class="s2"> (expected Python scalar, list or &quot;</span>
+          <span class="s2">&quot;tuple of values, or numpy.ndarray).&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. If not provided the dtype of the</span>
+<span class="sd">       tensor created will be the type of the inital value.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      TypeError: If the initializer cannot create a tensor of the requested</span>
+<span class="sd">       dtype.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">}</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;random_uniform_initializer&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">class</span> <span class="nc">RandomUniform</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates tensors with a uniform distribution.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.ones_initializer())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([1., 1., 1.], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  array([[1., 1., 1.],</span>
+<span class="sd">         [1., 1., 1.],</span>
+<span class="sd">         [1., 1., 1.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    minval: A python scalar or a scalar tensor. Lower bound of the range of</span>
+<span class="sd">      random values to generate (inclusive).</span>
+<span class="sd">    maxval: A python scalar or a scalar tensor. Upper bound of the range of</span>
+<span class="sd">      random values to generate (exclusive).</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">minval</span><span class="o">=-</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">minval</span> <span class="o">=</span> <span class="n">minval</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">maxval</span> <span class="o">=</span> <span class="n">maxval</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span> <span class="o">=</span> <span class="n">_RandomGenerator</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point and integer</span>
+<span class="sd">      types are supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not numeric.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_floating</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected float or integer dtype, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">minval</span><span class="p">,</span>
+                                                 <span class="bp">self</span><span class="o">.</span><span class="n">maxval</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;minval&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">minval</span><span class="p">,</span>
+        <span class="s2">&quot;maxval&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxval</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span>
+    <span class="p">}</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;random_normal_initializer&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">class</span> <span class="nc">RandomNormal</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates tensors with a normal distribution.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3,</span>
+<span class="sd">  ...                         tf.random_normal_initializer(mean=1., stddev=2.))</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([...], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.random_uniform_initializer(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    mean: a python scalar or a scalar tensor. Mean of the random values to</span>
+<span class="sd">      generate.</span>
+<span class="sd">    stddev: a python scalar or a scalar tensor. Standard deviation of the random</span>
+<span class="sd">      values to generate.</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span> <span class="o">=</span> <span class="n">stddev</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span> <span class="o">=</span> <span class="n">_RandomGenerator</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point types are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not floating point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span><span class="p">,</span>
+                                                <span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+        <span class="s2">&quot;stddev&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span>
+    <span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">TruncatedNormal</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates a truncated normal distribution.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  These values are similar to values from a `tf.initializers.RandomNormal`</span>
+<span class="sd">  except that values more than two standard deviations from the mean are</span>
+<span class="sd">  discarded and re-drawn. This is the recommended initializer for neural network</span>
+<span class="sd">  weights and filters.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(</span>
+<span class="sd">  ...     3, tf.initializers.TruncatedNormal(mean=1., stddev=2.))</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([...], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomUniform(minval=-1., maxval=1.))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    mean: a python scalar or a scalar tensor. Mean of the random values</span>
+<span class="sd">      to generate.</span>
+<span class="sd">    stddev: a python scalar or a scalar tensor. Standard deviation of the</span>
+<span class="sd">      random values to generate.</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span> <span class="o">=</span> <span class="n">stddev</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span> <span class="o">=</span> <span class="n">_RandomGenerator</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point types are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not floating point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                   <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+        <span class="s2">&quot;stddev&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">stddev</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span>
+    <span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">VarianceScaling</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer capable of adapting its scale to the shape of weights tensors.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  With `distribution=&quot;truncated_normal&quot; or &quot;untruncated_normal&quot;`, samples are</span>
+<span class="sd">  drawn from a truncated/untruncated normal distribution with a mean of zero and</span>
+<span class="sd">  a standard deviation (after truncation, if used) `stddev = sqrt(scale / n)`</span>
+<span class="sd">  where n is:</span>
+
+<span class="sd">    - number of input units in the weight tensor, if mode = &quot;fan_in&quot;</span>
+<span class="sd">    - number of output units, if mode = &quot;fan_out&quot;</span>
+<span class="sd">    - average of the numbers of input and output units, if mode = &quot;fan_avg&quot;</span>
+
+<span class="sd">  With `distribution=&quot;uniform&quot;`, samples are drawn from a uniform distribution</span>
+<span class="sd">  within [-limit, limit], with `limit = sqrt(3 * scale / n)`.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.VarianceScaling(scale=1.))</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3,) ... numpy=array([...], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ... numpy=</span>
+<span class="sd">  ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.VarianceScaling(distribution=&#39;uniform&#39;))</span>
+<span class="sd">  (&lt;tf.Variable...shape=(4,) dtype=float32...&gt;, &lt;tf.Variable...shape=(4, 4) ...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    scale: Scaling factor (positive float).</span>
+<span class="sd">    mode: One of &quot;fan_in&quot;, &quot;fan_out&quot;, &quot;fan_avg&quot;.</span>
+<span class="sd">    distribution: Random distribution to use. One of &quot;truncated_normal&quot;,</span>
+<span class="sd">      &quot;untruncated_normal&quot; and  &quot;uniform&quot;.</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: In case of an invalid value for the &quot;scale&quot;, mode&quot; or</span>
+<span class="sd">      &quot;distribution&quot; arguments.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+               <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+               <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span>
+               <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;truncated_normal&quot;</span><span class="p">,</span>
+               <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">scale</span> <span class="o">&lt;=</span> <span class="mf">0.</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`scale` must be positive float.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span> <span class="s2">&quot;fan_out&quot;</span><span class="p">,</span> <span class="s2">&quot;fan_avg&quot;</span><span class="p">}:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid `mode` argument:&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="c1"># Compatibility with keras-team/keras.</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;normal&quot;</span><span class="p">:</span>
+      <span class="n">distribution</span> <span class="o">=</span> <span class="s2">&quot;truncated_normal&quot;</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="s2">&quot;truncated_normal&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;untruncated_normal&quot;</span><span class="p">}:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid `distribution` argument:&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="n">scale</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">distribution</span> <span class="o">=</span> <span class="n">distribution</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span> <span class="o">=</span> <span class="n">_RandomGenerator</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point types are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not floating point</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">partition_info</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Keeps logic so can be readded later if necessary</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span>
+    <span class="n">scale_shape</span> <span class="o">=</span> <span class="n">shape</span>
+    <span class="k">if</span> <span class="n">partition_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">scale_shape</span> <span class="o">=</span> <span class="n">partition_info</span><span class="o">.</span><span class="n">full_shape</span>
+    <span class="n">fan_in</span><span class="p">,</span> <span class="n">fan_out</span> <span class="o">=</span> <span class="n">_compute_fans</span><span class="p">(</span><span class="n">scale_shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;fan_in&quot;</span><span class="p">:</span>
+      <span class="n">scale</span> <span class="o">/=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">fan_in</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;fan_out&quot;</span><span class="p">:</span>
+      <span class="n">scale</span> <span class="o">/=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="n">fan_out</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">scale</span> <span class="o">/=</span> <span class="nb">max</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="p">(</span><span class="n">fan_in</span> <span class="o">+</span> <span class="n">fan_out</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;truncated_normal&quot;</span><span class="p">:</span>
+      <span class="c1"># constant from scipy.stats.truncnorm.std(a=-2, b=2, loc=0., scale=1.)</span>
+      <span class="n">stddev</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span> <span class="o">/</span> <span class="o">.</span><span class="mi">87962566103423978</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;untruncated_normal&quot;</span><span class="p">:</span>
+      <span class="n">stddev</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">limit</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.0</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="o">-</span><span class="n">limit</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;scale&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+        <span class="s2">&quot;distribution&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">distribution</span><span class="p">,</span>
+        <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span>
+    <span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">Orthogonal</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates an orthogonal matrix.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  If the shape of the tensor to initialize is two-dimensional, it is initialized</span>
+<span class="sd">  with an orthogonal matrix obtained from the QR decomposition of a matrix of</span>
+<span class="sd">  random numbers drawn from a normal distribution.</span>
+<span class="sd">  If the matrix has fewer rows than columns then the output will have orthogonal</span>
+<span class="sd">  rows. Otherwise, the output will have orthogonal columns.</span>
+
+<span class="sd">  If the shape of the tensor to initialize is more than two-dimensional,</span>
+<span class="sd">  a matrix of shape `(shape[0] * ... * shape[n - 2], shape[n - 1])`</span>
+<span class="sd">  is initialized, where `n` is the length of the shape vector.</span>
+<span class="sd">  The matrix is subsequently reshaped to give a tensor of the desired shape.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.Orthogonal())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.Orthogonal(gain=0.5))</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    gain: multiplicative factor to apply to the orthogonal matrix</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      [Saxe et al., 2014](https://openreview.net/forum?id=_wzZwKpTDF_9C)</span>
+<span class="sd">      ([pdf](https://arxiv.org/pdf/1312.6120.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gain</span> <span class="o">=</span> <span class="n">gain</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span> <span class="o">=</span> <span class="n">_RandomGenerator</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point types are</span>
+<span class="sd">        supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not floating point or the input shape is not</span>
+<span class="sd">       valid.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="c1"># Check the shape</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The tensor to initialize must be &quot;</span>
+                       <span class="s2">&quot;at least two-dimensional&quot;</span><span class="p">)</span>
+    <span class="c1"># Flatten the input shape with the last dimension remaining</span>
+    <span class="c1"># its original shape so it works for conv2d</span>
+    <span class="n">num_rows</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+      <span class="n">num_rows</span> <span class="o">*=</span> <span class="n">dim</span>
+    <span class="n">num_cols</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">flat_shape</span> <span class="o">=</span> <span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">num_cols</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">num_cols</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">))</span>
+
+    <span class="c1"># Generate a random matrix</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_random_generator</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">flat_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="c1"># Compute the qr factorization</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">gen_linalg_ops</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">full_matrices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># Make Q uniform</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">diag_part</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">*=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_rows</span> <span class="o">&lt;</span> <span class="n">num_cols</span><span class="p">:</span>
+      <span class="n">q</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">matrix_transpose</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gain</span> <span class="o">*</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;gain&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gain</span><span class="p">,</span> <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">Identity</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Initializer that generates the identity matrix.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Only usable for generating 2D matrices.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variable(k, initializer):</span>
+<span class="sd">  ...   return tf.Variable(initializer(shape=[k, k], dtype=tf.float32))</span>
+<span class="sd">  &gt;&gt;&gt; make_variable(2, tf.initializers.Identity())</span>
+<span class="sd">  &lt;tf.Variable ... shape=(2, 2) dtype=float32, numpy=</span>
+<span class="sd">  array([[1., 0.],</span>
+<span class="sd">         [0., 1.]], dtype=float32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; make_variable(3, tf.initializers.Identity(gain=0.5))</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) dtype=float32, numpy=</span>
+<span class="sd">  array([[0.5, 0. , 0. ],</span>
+<span class="sd">         [0. , 0.5, 0. ],</span>
+<span class="sd">         [0. , 0. , 0.5]], dtype=float32)&gt;</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    gain: Multiplicative factor to apply to the identity matrix.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gain</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gain</span> <span class="o">=</span> <span class="n">gain</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor object initialized as specified by the initializer.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      shape: Shape of the tensor.</span>
+<span class="sd">      dtype: Optional dtype of the tensor. Only floating point types are</span>
+<span class="sd">       supported.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If the dtype is not floating point</span>
+<span class="sd">      ValueError: If the requested shape does not have exactly two axes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">partition_info</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Keeps logic so can be readded later if necessary</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="n">full_shape</span> <span class="o">=</span> <span class="n">shape</span> <span class="k">if</span> <span class="n">partition_info</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">partition_info</span><span class="o">.</span><span class="n">full_shape</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Identity matrix initializer can only be used for 2D matrices.&quot;</span><span class="p">)</span>
+    <span class="n">initializer</span> <span class="o">=</span> <span class="n">linalg_ops_impl</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="o">*</span><span class="n">full_shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">partition_info</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">initializer</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="n">initializer</span><span class="p">,</span> <span class="n">partition_info</span><span class="o">.</span><span class="n">var_offset</span><span class="p">,</span>
+                                    <span class="n">shape</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gain</span> <span class="o">*</span> <span class="n">initializer</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;gain&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gain</span><span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">GlorotUniform</span><span class="p">(</span><span class="n">VarianceScaling</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;The Glorot uniform initializer, also called Xavier uniform initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Draws samples from a uniform distribution within [-limit, limit] where `limit`</span>
+<span class="sd">  is `sqrt(6 / (fan_in + fan_out))` where `fan_in` is the number of input units</span>
+<span class="sd">  in the weight tensor and `fan_out` is the number of output units in the weight</span>
+<span class="sd">  tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.GlorotUniform())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      [Glorot et al., 2010](http://proceedings.mlr.press/v9/glorot10a.html)</span>
+<span class="sd">      ([pdf](http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">GlorotUniform</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_avg&quot;</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">GlorotNormal</span><span class="p">(</span><span class="n">VarianceScaling</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;The Glorot normal initializer, also called Xavier normal initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Draws samples from a truncated normal distribution centered on 0 with `stddev</span>
+<span class="sd">  = sqrt(2 / (fan_in + fan_out))` where `fan_in` is the number of input units in</span>
+<span class="sd">  the weight tensor and `fan_out` is the number of output units in the weight</span>
+<span class="sd">  tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.GlorotNormal())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    seed: A Python integer. Used to create random seeds. See</span>
+<span class="sd">      `tf.random.set_seed` for behavior.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      [Glorot et al., 2010](http://proceedings.mlr.press/v9/glorot10a.html)</span>
+<span class="sd">      ([pdf](http://jmlr.org/proceedings/papers/v9/glorot10a/glorot10a.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">GlorotNormal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_avg&quot;</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;truncated_normal&quot;</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">}</span>
+
+
+<span class="c1"># Aliases.</span>
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="n">zeros_initializer</span> <span class="o">=</span> <span class="n">Zeros</span>
+<span class="n">ones_initializer</span> <span class="o">=</span> <span class="n">Ones</span>
+<span class="n">constant_initializer</span> <span class="o">=</span> <span class="n">Constant</span>
+<span class="n">random_uniform_initializer</span> <span class="o">=</span> <span class="n">RandomUniform</span>
+<span class="n">random_normal_initializer</span> <span class="o">=</span> <span class="n">RandomNormal</span>
+<span class="n">truncated_normal_initializer</span> <span class="o">=</span> <span class="n">TruncatedNormal</span>
+<span class="n">variance_scaling_initializer</span> <span class="o">=</span> <span class="n">VarianceScaling</span>
+<span class="n">glorot_uniform_initializer</span> <span class="o">=</span> <span class="n">GlorotUniform</span>
+<span class="n">glorot_normal_initializer</span> <span class="o">=</span> <span class="n">GlorotNormal</span>
+<span class="n">orthogonal_initializer</span> <span class="o">=</span> <span class="n">Orthogonal</span>
+<span class="n">identity_initializer</span> <span class="o">=</span> <span class="n">Identity</span>
+<span class="c1"># pylint: enable=invalid-name</span>
+
+
+<span class="k">def</span> <span class="nf">lecun_normal</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;LeCun normal initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Draws samples from a truncated normal distribution centered on 0 with `stddev</span>
+<span class="sd">  = sqrt(1 / fan_in)` where `fan_in` is the number of input units in the weight</span>
+<span class="sd">  tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.lecun_normal())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    seed: A Python integer. Used to seed the random generator.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A callable Initializer with `shape` and `dtype` arguments which generates a</span>
+<span class="sd">    tensor.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      - Self-Normalizing Neural Networks,</span>
+<span class="sd">      [Klambauer et al., 2017]</span>
+<span class="sd">      (https://papers.nips.cc/paper/6698-self-normalizing-neural-networks)</span>
+<span class="sd">      ([pdf]</span>
+<span class="sd">      (https://papers.nips.cc/paper/6698-self-normalizing-neural-networks.pdf))</span>
+<span class="sd">      - Efficient Backprop,</span>
+<span class="sd">      [Lecun et al., 1998](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">VarianceScaling</span><span class="p">(</span>
+      <span class="n">scale</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;truncated_normal&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">lecun_uniform</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;LeCun uniform initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Draws samples from a uniform distribution within [-limit, limit] where `limit`</span>
+<span class="sd">  is `sqrt(3 / fan_in)` where `fan_in` is the number of input units in the</span>
+<span class="sd">  weight tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.lecun_uniform())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    seed: A Python integer. Used to seed the random generator.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A callable Initializer with `shape` and `dtype` arguments which generates a</span>
+<span class="sd">    tensor.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      - Self-Normalizing Neural Networks,</span>
+<span class="sd">      [Klambauer et al., 2017](https://papers.nips.cc/paper/6698-self-normalizing-neural-networks) # pylint: disable=line-too-long</span>
+<span class="sd">      ([pdf](https://papers.nips.cc/paper/6698-self-normalizing-neural-networks.pdf))</span>
+<span class="sd">      - Efficient Backprop,</span>
+<span class="sd">      [Lecun et al., 1998](http://yann.lecun.com/exdb/publis/pdf/lecun-98b.pdf)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">VarianceScaling</span><span class="p">(</span>
+      <span class="n">scale</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">he_normal</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;He normal initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  It draws samples from a truncated normal distribution centered on 0 with</span>
+<span class="sd">  `stddev = sqrt(2 / fan_in)` where `fan_in` is the number of input units in the</span>
+<span class="sd">  weight tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.he_normal())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    seed: A Python integer. Used to seed the random generator.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A callable Initializer with `shape` and `dtype` arguments which generates a</span>
+<span class="sd">    tensor.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      [He et al., 2015](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html) # pylint: disable=line-too-long</span>
+<span class="sd">      ([pdf](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">VarianceScaling</span><span class="p">(</span>
+      <span class="n">scale</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;truncated_normal&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">he_uniform</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;He uniform variance scaling initializer.</span>
+
+<span class="sd">  Initializers allow you to pre-specify an initialization strategy, encoded in</span>
+<span class="sd">  the Initializer object, without knowing the shape and dtype of the variable</span>
+<span class="sd">  being initialized.</span>
+
+<span class="sd">  Draws samples from a uniform distribution within [-limit, limit] where `limit`</span>
+<span class="sd">  is `sqrt(6 / fan_in)` where `fan_in` is the number of input units in the</span>
+<span class="sd">  weight tensor.</span>
+
+<span class="sd">  Examples:</span>
+
+<span class="sd">  &gt;&gt;&gt; def make_variables(k, initializer):</span>
+<span class="sd">  ...   return (tf.Variable(initializer(shape=[k, k], dtype=tf.float32)),</span>
+<span class="sd">  ...           tf.Variable(initializer(shape=[k, k, k], dtype=tf.float32)))</span>
+<span class="sd">  &gt;&gt;&gt; v1, v2 = make_variables(3, tf.initializers.he_uniform())</span>
+<span class="sd">  &gt;&gt;&gt; v1</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; v2</span>
+<span class="sd">  &lt;tf.Variable ... shape=(3, 3, 3) ...</span>
+<span class="sd">  &gt;&gt;&gt; make_variables(4, tf.initializers.RandomNormal())</span>
+<span class="sd">  (&lt;tf.Variable ... shape=(4, 4) dtype=float32...</span>
+<span class="sd">   &lt;tf.Variable ... shape=(4, 4, 4) dtype=float32...</span>
+
+<span class="sd">  Arguments:</span>
+<span class="sd">    seed: A Python integer. Used to seed the random generator.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A callable Initializer with `shape` and `dtype` arguments which generates a</span>
+<span class="sd">    tensor.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">      [He et al., 2015](https://www.cv-foundation.org/openaccess/content_iccv_2015/html/He_Delving_Deep_into_ICCV_2015_paper.html) # pylint: disable=line-too-long</span>
+<span class="sd">      ([pdf](https://www.cv-foundation.org/openaccess/content_iccv_2015/papers/He_Delving_Deep_into_ICCV_2015_paper.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">VarianceScaling</span><span class="p">(</span>
+      <span class="n">scale</span><span class="o">=</span><span class="mf">2.</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;fan_in&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;uniform&quot;</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="c1"># Utility functions.</span>
+
+
+<span class="k">def</span> <span class="nf">_compute_fans</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the number of input and output units for a weight shape.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    shape: Integer shape tuple or TF tensor shape.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple of scalars (fan_in, fan_out).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Just to avoid errors for constants.</span>
+    <span class="n">fan_in</span> <span class="o">=</span> <span class="n">fan_out</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">fan_in</span> <span class="o">=</span> <span class="n">fan_out</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">fan_in</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fan_out</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Assuming convolution kernels (2D, 3D, or more).</span>
+    <span class="c1"># kernel shape: (..., input_depth, depth)</span>
+    <span class="n">receptive_field_size</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+      <span class="n">receptive_field_size</span> <span class="o">*=</span> <span class="n">dim</span>
+    <span class="n">fan_in</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">receptive_field_size</span>
+    <span class="n">fan_out</span> <span class="o">=</span> <span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">receptive_field_size</span>
+  <span class="k">return</span> <span class="n">fan_in</span><span class="p">,</span> <span class="n">fan_out</span>
+
+
+<span class="k">def</span> <span class="nf">_assert_float_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Validate and return floating point type based on `dtype`.</span>
+
+<span class="sd">  `dtype` must be a floating point type.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    dtype: The data type to validate.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    Validated type.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: if `dtype` is not a floating point type.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_floating</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Expected floating point type, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">dtype</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">dtype</span>
+
+
+<span class="k">class</span> <span class="nc">_RandomGenerator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Random generator that selects appropriate random ops.&quot;&quot;&quot;</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">_RandomGenerator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="c1"># Stateless random ops requires 2-int seed.</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="p">[</span><span class="n">seed</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="kc">None</span>
+
+  <span class="k">def</span> <span class="nf">random_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A deterministic random normal if seed is passed.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">stateless_random_ops</span><span class="o">.</span><span class="n">stateless_random_normal</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">random_ops</span><span class="o">.</span><span class="n">random_normal</span>
+    <span class="k">return</span> <span class="n">op</span><span class="p">(</span>
+        <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">random_uniform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">minval</span><span class="p">,</span> <span class="n">maxval</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A deterministic random uniform if seed is passed.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">stateless_random_ops</span><span class="o">.</span><span class="n">stateless_random_uniform</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">random_ops</span><span class="o">.</span><span class="n">random_uniform</span>
+    <span class="k">return</span> <span class="n">op</span><span class="p">(</span>
+        <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">minval</span><span class="o">=</span><span class="n">minval</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="n">maxval</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">truncated_normal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A deterministic truncated normal if seed is passed.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">stateless_random_ops</span><span class="o">.</span><span class="n">stateless_truncated_normal</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">op</span> <span class="o">=</span> <span class="n">random_ops</span><span class="o">.</span><span class="n">truncated_normal</span>
+    <span class="k">return</span> <span class="n">op</span><span class="p">(</span>
+        <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="n">stddev</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="c1"># Compatibility aliases</span>
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="n">zero</span> <span class="o">=</span> <span class="n">zeros</span> <span class="o">=</span> <span class="n">Zeros</span>
+<span class="n">one</span> <span class="o">=</span> <span class="n">ones</span> <span class="o">=</span> <span class="n">Ones</span>
+<span class="n">constant</span> <span class="o">=</span> <span class="n">Constant</span>
+<span class="n">uniform</span> <span class="o">=</span> <span class="n">random_uniform</span> <span class="o">=</span> <span class="n">RandomUniform</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="n">random_normal</span> <span class="o">=</span> <span class="n">RandomNormal</span>
+<span class="n">truncated_normal</span> <span class="o">=</span> <span class="n">TruncatedNormal</span>
+<span class="n">identity</span> <span class="o">=</span> <span class="n">Identity</span>
+<span class="n">orthogonal</span> <span class="o">=</span> <span class="n">Orthogonal</span>
+<span class="n">glorot_normal</span> <span class="o">=</span> <span class="n">GlorotNormal</span>
+<span class="n">glorot_uniform</span> <span class="o">=</span> <span class="n">GlorotUniform</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

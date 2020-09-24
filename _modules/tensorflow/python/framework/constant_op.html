@@ -1,0 +1,718 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.constant_op &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.constant_op</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.constant_op</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Operations that generate constants.</span>
+
+<span class="sd">See the [constants guide](https://tensorflow.org/api_guides/python/constant_op).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Must be separate from array_ops to avoid a cyclic dependency.</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">attr_value_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">types_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">execute</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">def</span> <span class="nf">_eager_reshape</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Eager-only version of Reshape op; requires tensor is an eager Tensor.&quot;&quot;&quot;</span>
+  <span class="n">attr_t</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">_datatype_enum</span><span class="p">()</span>  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="n">attr_tshape</span><span class="p">,</span> <span class="p">(</span><span class="n">shape</span><span class="p">,)</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">shape</span><span class="p">],</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="n">inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shape</span><span class="p">]</span>
+  <span class="n">attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">attr_t</span><span class="p">,</span> <span class="s2">&quot;Tshape&quot;</span><span class="p">,</span> <span class="n">attr_tshape</span><span class="p">)</span>
+  <span class="n">result</span><span class="p">,</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+      <span class="sa">b</span><span class="s2">&quot;Reshape&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">_eager_fill</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Eager-only version of Fill op; requires value is an eager Tensor.&quot;&quot;&quot;</span>
+  <span class="n">attr_t</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_datatype_enum</span>
+  <span class="n">dims</span> <span class="o">=</span> <span class="n">convert_to_eager_tensor</span><span class="p">(</span><span class="n">dims</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="n">inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">dims</span><span class="p">,</span> <span class="n">value</span><span class="p">]</span>
+  <span class="n">attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">attr_t</span><span class="p">,</span> <span class="s2">&quot;index_type&quot;</span><span class="p">,</span> <span class="n">types_pb2</span><span class="o">.</span><span class="n">DT_INT32</span><span class="p">)</span>
+  <span class="n">result</span><span class="p">,</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+      <span class="sa">b</span><span class="s2">&quot;Fill&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">_eager_identity</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Eager-only version of Identity op; requires tensor is an eager Tensor.&quot;&quot;&quot;</span>
+  <span class="n">attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_datatype_enum</span><span class="p">)</span>
+  <span class="n">result</span><span class="p">,</span> <span class="o">=</span> <span class="n">execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+      <span class="sa">b</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="n">tensor</span><span class="p">],</span> <span class="n">attrs</span><span class="o">=</span><span class="n">attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">convert_to_eager_tensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Converts the given `value` to an `EagerTensor`.</span>
+
+<span class="sd">  Note that this function could return cached copies of created constants for</span>
+<span class="sd">  performance reasons.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: value to convert to EagerTensor.</span>
+<span class="sd">    ctx: value of context.context().</span>
+<span class="sd">    dtype: optional desired dtype of the converted EagerTensor.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    EagerTensor created from value.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `dtype` is not compatible with the type of t.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">dtype</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected tensor with type </span><span class="si">%r</span><span class="s2"> not </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span>
+          <span class="n">dtype</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">value</span>
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">as_datatype_enum</span>
+    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">as_datatype_enum</span>
+  <span class="n">ctx</span><span class="o">.</span><span class="n">ensure_initialized</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;constant&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">constant_v1</span><span class="p">(</span>
+    <span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Const&quot;</span><span class="p">,</span> <span class="n">verify_shape</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Creates a constant tensor.</span>
+
+<span class="sd">  The resulting tensor is populated with values of type `dtype`, as</span>
+<span class="sd">  specified by arguments `value` and (optionally) `shape` (see examples</span>
+<span class="sd">  below).</span>
+
+<span class="sd">  The argument `value` can be a constant value, or a list of values of type</span>
+<span class="sd">  `dtype`. If `value` is a list, then the length of the list must be less</span>
+<span class="sd">  than or equal to the number of elements implied by the `shape` argument (if</span>
+<span class="sd">  specified). In the case where the list length is less than the number of</span>
+<span class="sd">  elements specified by `shape`, the last element in the list will be used</span>
+<span class="sd">  to fill the remaining entries.</span>
+
+<span class="sd">  The argument `shape` is optional. If present, it specifies the dimensions of</span>
+<span class="sd">  the resulting tensor. If not present, the shape of `value` is used.</span>
+
+<span class="sd">  If the argument `dtype` is not specified, then the type is inferred from</span>
+<span class="sd">  the type of `value`.</span>
+
+<span class="sd">  For example:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # Constant 1-D Tensor populated with value list.</span>
+<span class="sd">  tensor = tf.constant([1, 2, 3, 4, 5, 6, 7]) =&gt; [1 2 3 4 5 6 7]</span>
+
+<span class="sd">  # Constant 2-D tensor populated with scalar value -1.</span>
+<span class="sd">  tensor = tf.constant(-1.0, shape=[2, 3]) =&gt; [[-1. -1. -1.]</span>
+<span class="sd">                                               [-1. -1. -1.]]</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  `tf.constant` differs from `tf.fill` in a few ways:</span>
+
+<span class="sd">  *   `tf.constant` supports arbitrary constants, not just uniform scalar</span>
+<span class="sd">      Tensors like `tf.fill`.</span>
+<span class="sd">  *   `tf.constant` creates a `Const` node in the computation graph with the</span>
+<span class="sd">      exact value at graph construction time. On the other hand, `tf.fill`</span>
+<span class="sd">      creates an Op in the graph that is expanded at runtime.</span>
+<span class="sd">  *   Because `tf.constant` only embeds constant values in the graph, it does</span>
+<span class="sd">      not support dynamic shapes based on other runtime Tensors, whereas</span>
+<span class="sd">      `tf.fill` does.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value:          A constant value (or list) of output type `dtype`.</span>
+
+<span class="sd">    dtype:          The type of the elements of the resulting tensor.</span>
+
+<span class="sd">    shape:          Optional dimensions of resulting tensor.</span>
+
+<span class="sd">    name:           Optional name for the tensor.</span>
+
+<span class="sd">    verify_shape:   Boolean that enables verification of a shape of values.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A Constant Tensor.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if shape is incorrectly specified or unsupported.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_constant_impl</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">verify_shape</span><span class="o">=</span><span class="n">verify_shape</span><span class="p">,</span>
+                        <span class="n">allow_broadcast</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="constant"><a class="viewcode-back" href="../../../../index.html#tensorflow.constant">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="k">def</span> <span class="nf">constant</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Const&quot;</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Creates a constant tensor from a tensor-like object.</span>
+
+<span class="sd">  Note: All eager `tf.Tensor` values are immutable (in contrast to</span>
+<span class="sd">  `tf.Variable`). There is nothing especially _constant_ about the value</span>
+<span class="sd">  returned from `tf.constant`. This function it is not fundamentally different</span>
+<span class="sd">  from `tf.convert_to_tensor`. The name `tf.constant` comes from the symbolic</span>
+<span class="sd">  APIs (like `tf.data` or keras functional models) where the `value` is embeded</span>
+<span class="sd">  in a `Const` node in the `tf.Graph`. `tf.constant` is useful for asserting</span>
+<span class="sd">  that the value can be embedded that way.</span>
+
+<span class="sd">  If the argument `dtype` is not specified, then the type is inferred from</span>
+<span class="sd">  the type of `value`.</span>
+
+<span class="sd">  &gt;&gt;&gt; # Constant 1-D Tensor from a python list.</span>
+<span class="sd">  &gt;&gt;&gt; tf.constant([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">  &lt;tf.Tensor: shape=(6,), dtype=int32,</span>
+<span class="sd">      numpy=array([1, 2, 3, 4, 5, 6], dtype=int32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; # Or a numpy array</span>
+<span class="sd">  &gt;&gt;&gt; a = np.array([[1, 2, 3], [4, 5, 6]])</span>
+<span class="sd">  &gt;&gt;&gt; tf.constant(a)</span>
+<span class="sd">  &lt;tf.Tensor: shape=(2, 3), dtype=int64, numpy=</span>
+<span class="sd">    array([[1, 2, 3],</span>
+<span class="sd">           [4, 5, 6]])&gt;</span>
+
+<span class="sd">  If `dtype` is specified the resulting tensor values are cast to the requested</span>
+<span class="sd">  `dtype`.</span>
+
+<span class="sd">  &gt;&gt;&gt; tf.constant([1, 2, 3, 4, 5, 6], dtype=tf.float64)</span>
+<span class="sd">  &lt;tf.Tensor: shape=(6,), dtype=float64,</span>
+<span class="sd">      numpy=array([1., 2., 3., 4., 5., 6.])&gt;</span>
+
+<span class="sd">  If `shape` is set, the `value` is reshaped to match. Scalars are expanded to</span>
+<span class="sd">  fill the `shape`:</span>
+
+<span class="sd">  &gt;&gt;&gt; tf.constant(0, shape=(2, 3))</span>
+<span class="sd">    &lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="sd">    array([[0, 0, 0],</span>
+<span class="sd">           [0, 0, 0]], dtype=int32)&gt;</span>
+<span class="sd">  &gt;&gt;&gt; tf.constant([1, 2, 3, 4, 5, 6], shape=[2, 3])</span>
+<span class="sd">  &lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="sd">    array([[1, 2, 3],</span>
+<span class="sd">           [4, 5, 6]], dtype=int32)&gt;</span>
+
+<span class="sd">  `tf.constant` has no effect if an eager Tensor is passed as the `value`, it</span>
+<span class="sd">  even transmits gradients:</span>
+
+<span class="sd">  &gt;&gt;&gt; v = tf.Variable([0.0])</span>
+<span class="sd">  &gt;&gt;&gt; with tf.GradientTape() as g:</span>
+<span class="sd">  ...     loss = tf.constant(v + v)</span>
+<span class="sd">  &gt;&gt;&gt; g.gradient(loss, v).numpy()</span>
+<span class="sd">  array([2.], dtype=float32)</span>
+
+<span class="sd">  But, since `tf.constant` embeds the value in the `tf.Graph` this fails for</span>
+<span class="sd">  symbolic tensors:</span>
+
+<span class="sd">  &gt;&gt;&gt; i = tf.keras.layers.Input(shape=[None, None])</span>
+<span class="sd">  &gt;&gt;&gt; t = tf.constant(i)</span>
+<span class="sd">  Traceback (most recent call last):</span>
+<span class="sd">  ...</span>
+<span class="sd">  NotImplementedError: ...</span>
+
+<span class="sd">  `tf.constant` will _always_ create CPU (host) tensors. In order to create</span>
+<span class="sd">  tensors on other devices, use `tf.identity`. (If the `value` is an eager</span>
+<span class="sd">  Tensor, however, the tensor will be returned unmodified as mentioned above.)</span>
+
+<span class="sd">  Related Ops:</span>
+
+<span class="sd">  * `tf.convert_to_tensor` is similar but:</span>
+<span class="sd">    * It has no `shape` argument.</span>
+<span class="sd">    * Symbolic tensors are allowed to pass through.</span>
+
+<span class="sd">      &gt;&gt;&gt; i = tf.keras.layers.Input(shape=[None, None])</span>
+<span class="sd">      &gt;&gt;&gt; t = tf.convert_to_tensor(i)</span>
+
+<span class="sd">  * `tf.fill`: differs in a few ways:</span>
+<span class="sd">    *   `tf.constant` supports arbitrary constants, not just uniform scalar</span>
+<span class="sd">        Tensors like `tf.fill`.</span>
+<span class="sd">    *   `tf.fill` creates an Op in the graph that is expanded at runtime, so it</span>
+<span class="sd">        can efficiently represent large tensors.</span>
+<span class="sd">    *   Since `tf.fill` does not embed the value, it can produce dynamically</span>
+<span class="sd">        sized outputs.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: A constant value (or list) of output type `dtype`.</span>
+<span class="sd">    dtype: The type of the elements of the resulting tensor.</span>
+<span class="sd">    shape: Optional dimensions of resulting tensor.</span>
+<span class="sd">    name: Optional name for the tensor.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A Constant Tensor.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if shape is incorrectly specified or unsupported.</span>
+<span class="sd">    ValueError: if called on a symbolic tensor.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_constant_impl</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">verify_shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">allow_broadcast</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_constant_impl</span><span class="p">(</span>
+    <span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">verify_shape</span><span class="p">,</span> <span class="n">allow_broadcast</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Implementation of constant.&quot;&quot;&quot;</span>
+  <span class="n">ctx</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">ctx</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">convert_to_eager_tensor</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">t</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">as_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">t</span>
+    <span class="k">if</span> <span class="n">verify_shape</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected Tensor&#39;s shape: </span><span class="si">%s</span><span class="s2">, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span>
+                                                                <span class="nb">tuple</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="p">)))</span>
+    <span class="n">num_t</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">num_elements</span><span class="p">()</span>
+    <span class="c1"># TODO(josh11b): Implement shape -&gt; eager tensor conversion.</span>
+    <span class="k">if</span> <span class="n">num_t</span> <span class="o">==</span> <span class="n">shape</span><span class="o">.</span><span class="n">num_elements</span><span class="p">():</span>
+      <span class="k">return</span> <span class="n">_eager_reshape</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">(),</span> <span class="n">ctx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_t</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span>
+        <span class="c1"># We don&#39;t have a Fill kernel for bool dtype on GPU. So we first run</span>
+        <span class="c1"># Fill on CPU and then copy to GPU if needed.</span>
+        <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;/device:CPU:0&quot;</span><span class="p">):</span>
+          <span class="n">x</span> <span class="o">=</span> <span class="n">_eager_fill</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">(),</span> <span class="n">_eager_identity</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ctx</span><span class="p">),</span> <span class="n">ctx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_eager_identity</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_eager_fill</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">(),</span> <span class="n">t</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Eager execution of tf.constant with unsupported shape &quot;</span>
+                    <span class="s2">&quot;(value has </span><span class="si">%d</span><span class="s2"> elements, shape is </span><span class="si">%s</span><span class="s2"> with </span><span class="si">%d</span><span class="s2"> elements).&quot;</span> <span class="o">%</span>
+                    <span class="p">(</span><span class="n">num_t</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">shape</span><span class="o">.</span><span class="n">num_elements</span><span class="p">()))</span>
+  <span class="n">g</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+  <span class="n">tensor_value</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">()</span>
+  <span class="n">tensor_value</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span>
+      <span class="n">tensor_util</span><span class="o">.</span><span class="n">make_tensor_proto</span><span class="p">(</span>
+          <span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">verify_shape</span><span class="o">=</span><span class="n">verify_shape</span><span class="p">,</span>
+          <span class="n">allow_broadcast</span><span class="o">=</span><span class="n">allow_broadcast</span><span class="p">))</span>
+  <span class="n">dtype_value</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">tensor_value</span><span class="o">.</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="n">const_tensor</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">_create_op_internal</span><span class="p">(</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="s2">&quot;Const&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[</span><span class="n">dtype_value</span><span class="o">.</span><span class="n">type</span><span class="p">],</span>
+      <span class="n">attrs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">tensor_value</span><span class="p">,</span>
+             <span class="s2">&quot;dtype&quot;</span><span class="p">:</span> <span class="n">dtype_value</span><span class="p">},</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">const_tensor</span>
+
+
+<span class="k">def</span> <span class="nf">is_constant</span><span class="p">(</span><span class="n">tensor_or_op</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor_or_op</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">tensor_or_op</span><span class="o">.</span><span class="n">op</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">op</span> <span class="o">=</span> <span class="n">tensor_or_op</span>
+  <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Const&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">_constant_tensor_conversion_function</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                         <span class="n">as_ref</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="n">as_ref</span>
+  <span class="k">return</span> <span class="n">constant</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">ops</span><span class="o">.</span><span class="n">register_tensor_conversion_function</span><span class="p">(</span>
+    <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">),</span> <span class="n">_constant_tensor_conversion_function</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">register_tensor_conversion_function</span><span class="p">(</span>
+    <span class="nb">object</span><span class="p">,</span> <span class="n">_constant_tensor_conversion_function</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_tensor_shape_tensor_conversion_function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>
+                                             <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                             <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                             <span class="n">as_ref</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Function to convert TensorShape to Tensor.&quot;&quot;&quot;</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="n">as_ref</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;Cannot convert a partially known TensorShape to a Tensor: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">s</span><span class="p">)</span>
+  <span class="n">s_list</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">as_list</span><span class="p">()</span>
+  <span class="n">int64_value</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">s_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span><span class="p">:</span>
+      <span class="n">int64_value</span> <span class="o">=</span> <span class="n">dim</span>
+      <span class="k">break</span>
+
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert a TensorShape to dtype: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dtype</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span> <span class="ow">and</span> <span class="n">int64_value</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot convert a TensorShape to dtype int32; &quot;</span>
+                       <span class="s2">&quot;a dimension is too large (</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="n">int64_value</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span> <span class="k">if</span> <span class="n">int64_value</span> <span class="k">else</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span>
+  <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;shape_as_tensor&quot;</span>
+  <span class="k">return</span> <span class="n">constant</span><span class="p">(</span><span class="n">s_list</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">ops</span><span class="o">.</span><span class="n">register_tensor_conversion_function</span><span class="p">(</span>
+    <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">,</span> <span class="n">_tensor_shape_tensor_conversion_function</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_dimension_tensor_conversion_function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span>
+                                          <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                                          <span class="n">as_ref</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Function to convert Dimension to Tensor.&quot;&quot;&quot;</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="n">as_ref</span>
+  <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot convert an unknown Dimension to a Tensor: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">d</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot convert a TensorShape to dtype: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">dtype</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span>
+  <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;shape_as_tensor&quot;</span>
+  <span class="k">return</span> <span class="n">constant</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">ops</span><span class="o">.</span><span class="n">register_tensor_conversion_function</span><span class="p">(</span>
+    <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">,</span> <span class="n">_dimension_tensor_conversion_function</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1534 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.functional_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.functional_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.functional_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2018 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># =============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Functional operations.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">attr_value_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">auto_control_deps_utils</span> <span class="k">as</span> <span class="n">acd</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">constant_op</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">function</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_functional_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">tensor_array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">variable_scope</span> <span class="k">as</span> <span class="n">vs</span>
+<span class="c1"># pylint: disable=unused-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops.gen_functional_ops</span> <span class="k">import</span> <span class="n">remote_call</span>
+<span class="c1"># pylint: enable=unused-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops.gen_functional_ops</span> <span class="k">import</span> <span class="n">symbolic_gradient</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">compat</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">deprecation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">function_utils</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="c1"># TODO(yuanbyu, mrry): Handle stride to support sliding windows.</span>
+<div class="viewcode-block" id="foldl"><a class="viewcode-back" href="../../../../index.html#tensorflow.foldl">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;foldl&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">foldl</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+          <span class="n">elems</span><span class="p">,</span>
+          <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;foldl on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  This foldl operator repeatedly applies the callable `fn` to a sequence</span>
+<span class="sd">  of elements from first to last. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems` on dimension 0. The callable fn takes two tensors as</span>
+<span class="sd">  arguments. The first argument is the accumulated value computed from the</span>
+<span class="sd">  preceding invocation of fn, and the second is the value at the current</span>
+<span class="sd">  position of `elems`. If `initializer` is None, `elems` must contain at least</span>
+<span class="sd">  one element, and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is fn(initializer, values[0]).shape`.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and output of `fn`.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The signature of `fn` may</span>
+<span class="sd">  match the structure of `elems`.  That is, if `elems` is</span>
+<span class="sd">  `(t1, [t2, t3, [t4, t5]])`, then an appropriate signature for `fn` is:</span>
+<span class="sd">  `fn = lambda (t1, [t2, t3, [t4, t5]]):`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      as the initial value for the accumulator.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) True enables support for back propagation.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors, resulting from applying</span>
+<span class="sd">    `fn` consecutively to the list of tensors unpacked from `elems`, from first</span>
+<span class="sd">    to last.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable.</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = tf.constant([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    sum = foldl(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == 21</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;fn must be callable.&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">create_ta</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tensor_array_ops</span><span class="o">.</span><span class="n">TensorArray</span><span class="p">(</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">elem</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">dynamic_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">infer_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+
+  <span class="n">in_graph_mode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;foldl&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">elems</span><span class="p">]):</span>
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span><span class="p">:</span>
+      <span class="c1"># Any get_variable calls in fn will cache the first call locally</span>
+      <span class="c1"># and not issue repeated network I/O requests for each iteration.</span>
+      <span class="n">varscope</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span>
+      <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="k">if</span> <span class="n">varscope</span><span class="o">.</span><span class="n">caching_device</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># TODO(ebrevdo): Change to using colocate_with here and in other</span>
+        <span class="c1"># methods.</span>
+        <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="k">lambda</span> <span class="n">op</span><span class="p">:</span> <span class="n">op</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Convert elems to tensor array. n may be known statically.</span>
+    <span class="n">elems_flat</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;elem&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span>
+        <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">elems_ta</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="n">create_ta</span><span class="p">,</span> <span class="n">elems</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">elem</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">elems_ta</span><span class="p">)</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="n">initializer</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+      <span class="n">elem_i</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">elem</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">elems_ta</span><span class="p">)</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">elem_i</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">r_a</span> <span class="o">=</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">while_loop</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">,</span>
+        <span class="n">compute</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span>
+        <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+        <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+        <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span> <span class="ow">and</span> <span class="n">varscope_caching_device_was_none</span><span class="p">:</span>
+      <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r_a</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;foldl&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_arg_values</span><span class="p">(</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;back_prop=False is deprecated. Consider using tf.stop_gradient instead.</span>
+<span class="sd">Instead of:</span>
+<span class="sd">results = tf.foldl(fn, elems, back_prop=False)</span>
+<span class="sd">Use:</span>
+<span class="sd">results = tf.nest.map_structure(tf.stop_gradient, tf.foldl(fn, elems))&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">warn_once</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">back_prop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foldl_v2</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+             <span class="n">elems</span><span class="p">,</span>
+             <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+             <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+             <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;foldl on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  This foldl operator repeatedly applies the callable `fn` to a sequence</span>
+<span class="sd">  of elements from first to last. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems` on dimension 0. The callable fn takes two tensors as</span>
+<span class="sd">  arguments. The first argument is the accumulated value computed from the</span>
+<span class="sd">  preceding invocation of fn, and the second is the value at the current</span>
+<span class="sd">  position of `elems`. If `initializer` is None, `elems` must contain at least</span>
+<span class="sd">  one element, and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is fn(initializer, values[0]).shape`.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and output of `fn`.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The signature of `fn` may</span>
+<span class="sd">  match the structure of `elems`.  That is, if `elems` is</span>
+<span class="sd">  `(t1, [t2, t3, [t4, t5]])`, then an appropriate signature for `fn` is:</span>
+<span class="sd">  `fn = lambda (t1, [t2, t3, [t4, t5]]):`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      as the initial value for the accumulator.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) Deprecated. False disables support for back</span>
+<span class="sd">      propagation. Prefer using `tf.stop_gradient` instead.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors, resulting from applying</span>
+<span class="sd">    `fn` consecutively to the list of tensors unpacked from `elems`, from first</span>
+<span class="sd">    to last.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable.</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = tf.constant([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    sum = foldl(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == 21</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">foldl</span><span class="p">(</span>
+      <span class="n">fn</span><span class="o">=</span><span class="n">fn</span><span class="p">,</span>
+      <span class="n">elems</span><span class="o">=</span><span class="n">elems</span><span class="p">,</span>
+      <span class="n">initializer</span><span class="o">=</span><span class="n">initializer</span><span class="p">,</span>
+      <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+      <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+      <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="foldr"><a class="viewcode-back" href="../../../../index.html#tensorflow.foldr">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;foldr&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">foldr</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+          <span class="n">elems</span><span class="p">,</span>
+          <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+          <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+          <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+          <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;foldr on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  This foldr operator repeatedly applies the callable `fn` to a sequence</span>
+<span class="sd">  of elements from last to first. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems`. The callable fn takes two tensors as arguments.</span>
+<span class="sd">  The first argument is the accumulated value computed from the preceding</span>
+<span class="sd">  invocation of fn, and the second is the value at the current position of</span>
+<span class="sd">  `elems`. If `initializer` is None, `elems` must contain at least one element,</span>
+<span class="sd">  and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is `fn(initializer, values[0]).shape`.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and output of `fn`.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The signature of `fn` may</span>
+<span class="sd">  match the structure of `elems`.  That is, if `elems` is</span>
+<span class="sd">  `(t1, [t2, t3, [t4, t5]])`, then an appropriate signature for `fn` is:</span>
+<span class="sd">  `fn = lambda (t1, [t2, t3, [t4, t5]]):`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      as the initial value for the accumulator.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) True enables support for back propagation.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors, resulting from applying</span>
+<span class="sd">    `fn` consecutively to the list of tensors unpacked from `elems`, from last</span>
+<span class="sd">    to first.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable.</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = [1, 2, 3, 4, 5, 6]</span>
+<span class="sd">    sum = foldr(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == 21</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;fn must be callable.&quot;</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">create_ta</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tensor_array_ops</span><span class="o">.</span><span class="n">TensorArray</span><span class="p">(</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">elem</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">dynamic_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">infer_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span>
+
+  <span class="n">in_graph_mode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;foldr&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">elems</span><span class="p">]):</span>
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span><span class="p">:</span>
+      <span class="c1"># Any get_variable calls in fn will cache the first call locally and not</span>
+      <span class="c1"># issue repeated network I/O requests for each iteration.</span>
+      <span class="n">varscope</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span>
+      <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="k">if</span> <span class="n">varscope</span><span class="o">.</span><span class="n">caching_device</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># TODO(ebrevdo): Change to using colocate_with here and in other</span>
+        <span class="c1"># methods.</span>
+        <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="k">lambda</span> <span class="n">op</span><span class="p">:</span> <span class="n">op</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Convert elems to tensor array. n may be known statically.</span>
+    <span class="n">elems_flat</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;elem&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">or</span>
+        <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">elems_ta</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="n">create_ta</span><span class="p">,</span> <span class="n">elems</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">elem</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">elems_ta</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="n">n</span>
+      <span class="n">a</span> <span class="o">=</span> <span class="n">initializer</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+      <span class="n">i</span> <span class="o">-=</span> <span class="mi">1</span>
+      <span class="n">elem</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elem</span><span class="p">:</span> <span class="n">elem</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">elems_ta</span><span class="p">)</span>
+      <span class="n">a_out</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">a_out</span><span class="p">]</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">r_a</span> <span class="o">=</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">while_loop</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">compute</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span>
+        <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+        <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+        <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span> <span class="ow">and</span> <span class="n">varscope_caching_device_was_none</span><span class="p">:</span>
+      <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r_a</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;foldr&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_arg_values</span><span class="p">(</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;back_prop=False is deprecated. Consider using tf.stop_gradient instead.</span>
+<span class="sd">Instead of:</span>
+<span class="sd">results = tf.foldr(fn, elems, back_prop=False)</span>
+<span class="sd">Use:</span>
+<span class="sd">results = tf.nest.map_structure(tf.stop_gradient, tf.foldr(fn, elems))&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">warn_once</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">back_prop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">foldr_v2</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+             <span class="n">elems</span><span class="p">,</span>
+             <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+             <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+             <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+             <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+             <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;foldr on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  This foldr operator repeatedly applies the callable `fn` to a sequence</span>
+<span class="sd">  of elements from last to first. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems`. The callable fn takes two tensors as arguments.</span>
+<span class="sd">  The first argument is the accumulated value computed from the preceding</span>
+<span class="sd">  invocation of fn, and the second is the value at the current position of</span>
+<span class="sd">  `elems`. If `initializer` is None, `elems` must contain at least one element,</span>
+<span class="sd">  and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is `fn(initializer, values[0]).shape`.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and output of `fn`.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The signature of `fn` may</span>
+<span class="sd">  match the structure of `elems`.  That is, if `elems` is</span>
+<span class="sd">  `(t1, [t2, t3, [t4, t5]])`, then an appropriate signature for `fn` is:</span>
+<span class="sd">  `fn = lambda (t1, [t2, t3, [t4, t5]]):`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      as the initial value for the accumulator.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) Deprecated. False disables support for back</span>
+<span class="sd">      propagation. Prefer using `tf.stop_gradient` instead.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors, resulting from applying</span>
+<span class="sd">    `fn` consecutively to the list of tensors unpacked from `elems`, from last</span>
+<span class="sd">    to first.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable.</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = [1, 2, 3, 4, 5, 6]</span>
+<span class="sd">    sum = foldr(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == 21</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">foldr</span><span class="p">(</span>
+      <span class="n">fn</span><span class="o">=</span><span class="n">fn</span><span class="p">,</span>
+      <span class="n">elems</span><span class="o">=</span><span class="n">elems</span><span class="p">,</span>
+      <span class="n">initializer</span><span class="o">=</span><span class="n">initializer</span><span class="p">,</span>
+      <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+      <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+      <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="scan"><a class="viewcode-back" href="../../../../index.html#tensorflow.scan">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;scan&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">scan</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+         <span class="n">elems</span><span class="p">,</span>
+         <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+         <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+         <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">infer_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;scan on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  The simplest version of `scan` repeatedly applies the callable `fn` to a</span>
+<span class="sd">  sequence of elements from first to last. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems` on dimension 0. The callable fn takes two tensors as</span>
+<span class="sd">  arguments. The first argument is the accumulated value computed from the</span>
+<span class="sd">  preceding invocation of fn, and the second is the value at the current</span>
+<span class="sd">  position of `elems`. If `initializer` is None, `elems` must contain at least</span>
+<span class="sd">  one element, and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is `[len(values)] + fn(initializer, values[0]).shape`.</span>
+<span class="sd">  If reverse=True, it&#39;s fn(initializer, values[-1]).shape.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and accumulator.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The second argument of</span>
+<span class="sd">  `fn` must match the structure of `elems`.</span>
+
+<span class="sd">  If no `initializer` is provided, the output structure and dtypes of `fn`</span>
+<span class="sd">  are assumed to be the same as its input; and in this case, the first</span>
+<span class="sd">  argument of `fn` must match the structure of `elems`.</span>
+
+<span class="sd">  If an `initializer` is provided, then the output of `fn` must have the same</span>
+<span class="sd">  structure as `initializer`; and the first argument of `fn` must match</span>
+<span class="sd">  this structure.</span>
+
+<span class="sd">  For example, if `elems` is `(t1, [t2, t3])` and `initializer` is</span>
+<span class="sd">  `[i1, i2]` then an appropriate signature for `fn` in `python2` is:</span>
+<span class="sd">  `fn = lambda (acc_p1, acc_p2), (t1, [t2, t3]):` and `fn` must return a list,</span>
+<span class="sd">  `[acc_n1, acc_n2]`.  An alternative correct signature for `fn`, and the</span>
+<span class="sd">   one that works in `python3`, is:</span>
+<span class="sd">  `fn = lambda a, t:`, where `a` and `t` correspond to the input tuples.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.  It accepts two arguments.  The first will</span>
+<span class="sd">      have the same structure as `initializer` if one is provided, otherwise it</span>
+<span class="sd">      will have the same structure as `elems`.  The second will have the same</span>
+<span class="sd">      (possibly nested) structure as `elems`.  Its output must have the same</span>
+<span class="sd">      structure as `initializer` if one is provided, otherwise it must have the</span>
+<span class="sd">      same structure as `elems`.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      initial value for the accumulator, and the expected output type of `fn`.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) True enables support for back propagation.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    infer_shape: (optional) False disables tests for consistent output shapes.</span>
+<span class="sd">    reverse: (optional) True scans the tensor last to first (instead of first to</span>
+<span class="sd">      last).</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors.  Each tensor packs the</span>
+<span class="sd">    results of applying `fn` to tensors unpacked from `elems` along the first</span>
+<span class="sd">    dimension, and the previous accumulator value(s), from first to last (or</span>
+<span class="sd">    last to first, if `reverse=True`).</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable or the structure of the output of</span>
+<span class="sd">      `fn` and `initializer` do not match.</span>
+<span class="sd">    ValueError: if the lengths of the output of `fn` and `initializer`</span>
+<span class="sd">      do not match.</span>
+
+<span class="sd">  Examples:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    sum = scan(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == [1, 3, 6, 10, 15, 21]</span>
+<span class="sd">    sum = scan(lambda a, x: a + x, elems, reverse=True)</span>
+<span class="sd">    # sum == [21, 20, 18, 15, 11, 6]</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    initializer = np.array(0)</span>
+<span class="sd">    sum_one = scan(</span>
+<span class="sd">        lambda a, x: x[0] - x[1] + a, (elems + 1, elems), initializer)</span>
+<span class="sd">    # sum_one == [1, 2, 3, 4, 5, 6]</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 0, 0, 0, 0, 0])</span>
+<span class="sd">    initializer = (np.array(0), np.array(1))</span>
+<span class="sd">    fibonaccis = scan(lambda a, _: (a[1], a[0] + a[1]), elems, initializer)</span>
+<span class="sd">    # fibonaccis == ([1, 1, 2, 3, 5, 8], [1, 2, 3, 5, 8, 13])</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;fn must be callable.&quot;</span><span class="p">)</span>
+
+  <span class="n">input_is_sequence</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">is_sequence</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+  <span class="n">input_flatten</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">input_is_sequence</span> <span class="k">else</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+  <span class="k">def</span> <span class="nf">input_pack</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span><span class="n">elems</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">input_is_sequence</span> <span class="k">else</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">output_is_sequence</span> <span class="o">=</span> <span class="n">input_is_sequence</span>
+    <span class="n">output_flatten</span> <span class="o">=</span> <span class="n">input_flatten</span>
+    <span class="n">output_pack</span> <span class="o">=</span> <span class="n">input_pack</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">output_is_sequence</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">is_sequence</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+    <span class="n">output_flatten</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">if</span> <span class="n">output_is_sequence</span> <span class="k">else</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">output_pack</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span><span class="n">initializer</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+              <span class="k">if</span> <span class="n">output_is_sequence</span> <span class="k">else</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+  <span class="n">elems_flat</span> <span class="o">=</span> <span class="n">input_flatten</span><span class="p">(</span><span class="n">elems</span><span class="p">)</span>
+
+  <span class="n">in_graph_mode</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;scan&quot;</span><span class="p">,</span> <span class="n">elems_flat</span><span class="p">):</span>
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span><span class="p">:</span>
+      <span class="c1"># Any get_variable calls in fn will cache the first call locally</span>
+      <span class="c1"># and not issue repeated network I/O requests for each iteration.</span>
+      <span class="n">varscope</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span>
+      <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="k">if</span> <span class="n">varscope</span><span class="o">.</span><span class="n">caching_device</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># TODO(ebrevdo): Change to using colocate_with here and in other</span>
+        <span class="c1"># methods.</span>
+        <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="k">lambda</span> <span class="n">op</span><span class="p">:</span> <span class="n">op</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">varscope_caching_device_was_none</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># Convert elems to tensor array.</span>
+    <span class="n">elems_flat</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">elem</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;elem&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems_flat</span>
+    <span class="p">]</span>
+
+    <span class="c1"># Convert elems to tensor array. n may be known statically.</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">n</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># TensorArrays are always flat</span>
+    <span class="n">elems_ta</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">tensor_array_ops</span><span class="o">.</span><span class="n">TensorArray</span><span class="p">(</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">elem</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+            <span class="n">dynamic_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">element_shape</span><span class="o">=</span><span class="n">elem</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+            <span class="n">infer_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems_flat</span>
+    <span class="p">]</span>
+    <span class="c1"># Unpack elements</span>
+    <span class="n">elems_ta</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">elem_ta</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">elem</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem_ta</span><span class="p">,</span> <span class="n">elem</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">elems_ta</span><span class="p">,</span> <span class="n">elems_flat</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">a_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">elem</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">reverse</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems_ta</span><span class="p">]</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">initializer_flat</span> <span class="o">=</span> <span class="n">output_flatten</span><span class="p">(</span><span class="n">initializer</span><span class="p">)</span>
+      <span class="n">a_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">init</span><span class="p">)</span> <span class="k">for</span> <span class="n">init</span> <span class="ow">in</span> <span class="n">initializer_flat</span><span class="p">]</span>
+      <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># Create a tensor array to store the intermediate values.</span>
+    <span class="n">accs_ta</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">tensor_array_ops</span><span class="o">.</span><span class="n">TensorArray</span><span class="p">(</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span>
+            <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+            <span class="n">element_shape</span><span class="o">=</span><span class="n">init</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="n">infer_shape</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">dynamic_size</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">infer_shape</span><span class="o">=</span><span class="n">infer_shape</span><span class="p">)</span> <span class="k">for</span> <span class="n">init</span> <span class="ow">in</span> <span class="n">a_flat</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">accs_ta</span> <span class="o">=</span> <span class="p">[</span>
+          <span class="n">acc_ta</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">reverse</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+          <span class="k">for</span> <span class="p">(</span><span class="n">acc_ta</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">accs_ta</span><span class="p">,</span> <span class="n">a_flat</span><span class="p">)</span>
+      <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">compute</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a_flat</span><span class="p">,</span> <span class="n">tas</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;The loop body of scan.</span>
+
+<span class="sd">      Args:</span>
+<span class="sd">        i: the loop counter.</span>
+<span class="sd">        a_flat: the accumulator value(s), flattened.</span>
+<span class="sd">        tas: the output accumulator TensorArray(s), flattened.</span>
+
+<span class="sd">      Returns:</span>
+<span class="sd">        [i + 1, a_flat, tas]: the updated counter + new accumulator values +</span>
+<span class="sd">          updated TensorArrays</span>
+
+<span class="sd">      Raises:</span>
+<span class="sd">        TypeError: if initializer and fn() output structure do not match</span>
+<span class="sd">        ValueType: if initializer and fn() output lengths do not match</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+      <span class="n">packed_elems</span> <span class="o">=</span> <span class="n">input_pack</span><span class="p">([</span><span class="n">elem_ta</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">elem_ta</span> <span class="ow">in</span> <span class="n">elems_ta</span><span class="p">])</span>
+      <span class="n">packed_a</span> <span class="o">=</span> <span class="n">output_pack</span><span class="p">(</span><span class="n">a_flat</span><span class="p">)</span>
+      <span class="n">a_out</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">packed_a</span><span class="p">,</span> <span class="n">packed_elems</span><span class="p">)</span>
+      <span class="n">nest</span><span class="o">.</span><span class="n">assert_same_structure</span><span class="p">(</span><span class="n">elems</span> <span class="k">if</span> <span class="n">initializer</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">initializer</span><span class="p">,</span>
+                                 <span class="n">a_out</span><span class="p">)</span>
+      <span class="n">flat_a_out</span> <span class="o">=</span> <span class="n">output_flatten</span><span class="p">(</span><span class="n">a_out</span><span class="p">)</span>
+      <span class="n">tas</span> <span class="o">=</span> <span class="p">[</span><span class="n">ta</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">ta</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tas</span><span class="p">,</span> <span class="n">flat_a_out</span><span class="p">)]</span>
+      <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+        <span class="n">next_i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">next_i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">next_i</span><span class="p">,</span> <span class="n">flat_a_out</span><span class="p">,</span> <span class="n">tas</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
+      <span class="n">initial_i</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span>
+      <span class="n">condition</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">_1</span><span class="p">,</span> <span class="n">_2</span><span class="p">:</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">initial_i</span> <span class="o">=</span> <span class="n">i</span>
+      <span class="n">condition</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">_1</span><span class="p">,</span> <span class="n">_2</span><span class="p">:</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">r_a</span> <span class="o">=</span> <span class="n">control_flow_ops</span><span class="o">.</span><span class="n">while_loop</span><span class="p">(</span>
+        <span class="n">condition</span><span class="p">,</span>
+        <span class="n">compute</span><span class="p">,</span> <span class="p">(</span><span class="n">initial_i</span><span class="p">,</span> <span class="n">a_flat</span><span class="p">,</span> <span class="n">accs_ta</span><span class="p">),</span>
+        <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+        <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+        <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+        <span class="n">maximum_iterations</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">results_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">r_a</span><span class="p">]</span>
+
+    <span class="n">n_static</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">(</span>
+        <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span>
+            <span class="n">elems_flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span><span class="o">.</span><span class="n">with_rank_at_least</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">elems_flat</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+      <span class="n">n_static</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span>
+          <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">(</span>
+              <span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">(</span>
+                  <span class="n">elem</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span><span class="o">.</span><span class="n">with_rank_at_least</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])))</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">results_flat</span><span class="p">:</span>
+      <span class="n">r</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span>
+          <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">(</span><span class="n">n_static</span><span class="p">)</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]))</span>
+
+    <span class="c1"># TODO(akshayka): Remove the in_graph_mode check once caching devices are</span>
+    <span class="c1"># supported in Eager</span>
+    <span class="k">if</span> <span class="n">in_graph_mode</span> <span class="ow">and</span> <span class="n">varscope_caching_device_was_none</span><span class="p">:</span>
+      <span class="n">varscope</span><span class="o">.</span><span class="n">set_caching_device</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">output_pack</span><span class="p">(</span><span class="n">results_flat</span><span class="p">)</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;scan&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_arg_values</span><span class="p">(</span>
+    <span class="kc">None</span><span class="p">,</span>
+    <span class="sd">&quot;&quot;&quot;back_prop=False is deprecated. Consider using tf.stop_gradient instead.</span>
+<span class="sd">Instead of:</span>
+<span class="sd">results = tf.scan(fn, elems, back_prop=False)</span>
+<span class="sd">Use:</span>
+<span class="sd">results = tf.nest.map_structure(tf.stop_gradient, tf.scan(fn, elems))&quot;&quot;&quot;</span><span class="p">,</span>
+    <span class="n">warn_once</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">back_prop</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">scan_v2</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span>
+            <span class="n">elems</span><span class="p">,</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">parallel_iterations</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+            <span class="n">back_prop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">swap_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">infer_shape</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;scan on the list of tensors unpacked from `elems` on dimension 0.</span>
+
+<span class="sd">  The simplest version of `scan` repeatedly applies the callable `fn` to a</span>
+<span class="sd">  sequence of elements from first to last. The elements are made of the tensors</span>
+<span class="sd">  unpacked from `elems` on dimension 0. The callable fn takes two tensors as</span>
+<span class="sd">  arguments. The first argument is the accumulated value computed from the</span>
+<span class="sd">  preceding invocation of fn, and the second is the value at the current</span>
+<span class="sd">  position of `elems`. If `initializer` is None, `elems` must contain at least</span>
+<span class="sd">  one element, and its first element is used as the initializer.</span>
+
+<span class="sd">  Suppose that `elems` is unpacked into `values`, a list of tensors. The shape</span>
+<span class="sd">  of the result tensor is `[len(values)] + fn(initializer, values[0]).shape`.</span>
+<span class="sd">  If reverse=True, it&#39;s fn(initializer, values[-1]).shape.</span>
+
+<span class="sd">  This method also allows multi-arity `elems` and accumulator.  If `elems`</span>
+<span class="sd">  is a (possibly nested) list or tuple of tensors, then each of these tensors</span>
+<span class="sd">  must have a matching first (unpack) dimension.  The second argument of</span>
+<span class="sd">  `fn` must match the structure of `elems`.</span>
+
+<span class="sd">  If no `initializer` is provided, the output structure and dtypes of `fn`</span>
+<span class="sd">  are assumed to be the same as its input; and in this case, the first</span>
+<span class="sd">  argument of `fn` must match the structure of `elems`.</span>
+
+<span class="sd">  If an `initializer` is provided, then the output of `fn` must have the same</span>
+<span class="sd">  structure as `initializer`; and the first argument of `fn` must match</span>
+<span class="sd">  this structure.</span>
+
+<span class="sd">  For example, if `elems` is `(t1, [t2, t3])` and `initializer` is</span>
+<span class="sd">  `[i1, i2]` then an appropriate signature for `fn` in `python2` is:</span>
+<span class="sd">  `fn = lambda (acc_p1, acc_p2), (t1, [t2, t3]):` and `fn` must return a list,</span>
+<span class="sd">  `[acc_n1, acc_n2]`.  An alternative correct signature for `fn`, and the</span>
+<span class="sd">   one that works in `python3`, is:</span>
+<span class="sd">  `fn = lambda a, t:`, where `a` and `t` correspond to the input tuples.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    fn: The callable to be performed.  It accepts two arguments.  The first will</span>
+<span class="sd">      have the same structure as `initializer` if one is provided, otherwise it</span>
+<span class="sd">      will have the same structure as `elems`.  The second will have the same</span>
+<span class="sd">      (possibly nested) structure as `elems`.  Its output must have the same</span>
+<span class="sd">      structure as `initializer` if one is provided, otherwise it must have the</span>
+<span class="sd">      same structure as `elems`.</span>
+<span class="sd">    elems: A tensor or (possibly nested) sequence of tensors, each of which will</span>
+<span class="sd">      be unpacked along their first dimension.  The nested sequence of the</span>
+<span class="sd">      resulting slices will be the first argument to `fn`.</span>
+<span class="sd">    initializer: (optional) A tensor or (possibly nested) sequence of tensors,</span>
+<span class="sd">      initial value for the accumulator, and the expected output type of `fn`.</span>
+<span class="sd">    parallel_iterations: (optional) The number of iterations allowed to run in</span>
+<span class="sd">      parallel.</span>
+<span class="sd">    back_prop: (optional) Deprecated. False disables support for back</span>
+<span class="sd">      propagation. Prefer using `tf.stop_gradient` instead.</span>
+<span class="sd">    swap_memory: (optional) True enables GPU-CPU memory swapping.</span>
+<span class="sd">    infer_shape: (optional) False disables tests for consistent output shapes.</span>
+<span class="sd">    reverse: (optional) True scans the tensor last to first (instead of first to</span>
+<span class="sd">      last).</span>
+<span class="sd">    name: (optional) Name prefix for the returned tensors.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tensor or (possibly nested) sequence of tensors.  Each tensor packs the</span>
+<span class="sd">    results of applying `fn` to tensors unpacked from `elems` along the first</span>
+<span class="sd">    dimension, and the previous accumulator value(s), from first to last (or</span>
+<span class="sd">    last to first, if `reverse=True`).</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if `fn` is not callable or the structure of the output of</span>
+<span class="sd">      `fn` and `initializer` do not match.</span>
+<span class="sd">    ValueError: if the lengths of the output of `fn` and `initializer`</span>
+<span class="sd">      do not match.</span>
+
+<span class="sd">  Examples:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    sum = scan(lambda a, x: a + x, elems)</span>
+<span class="sd">    # sum == [1, 3, 6, 10, 15, 21]</span>
+<span class="sd">    sum = scan(lambda a, x: a + x, elems, reverse=True)</span>
+<span class="sd">    # sum == [21, 20, 18, 15, 11, 6]</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 2, 3, 4, 5, 6])</span>
+<span class="sd">    initializer = np.array(0)</span>
+<span class="sd">    sum_one = scan(</span>
+<span class="sd">        lambda a, x: x[0] - x[1] + a, (elems + 1, elems), initializer)</span>
+<span class="sd">    # sum_one == [1, 2, 3, 4, 5, 6]</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    elems = np.array([1, 0, 0, 0, 0, 0])</span>
+<span class="sd">    initializer = (np.array(0), np.array(1))</span>
+<span class="sd">    fibonaccis = scan(lambda a, _: (a[1], a[0] + a[1]), elems, initializer)</span>
+<span class="sd">    # fibonaccis == ([1, 1, 2, 3, 5, 8], [1, 2, 3, 5, 8, 13])</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">scan</span><span class="p">(</span>
+      <span class="n">fn</span><span class="o">=</span><span class="n">fn</span><span class="p">,</span>
+      <span class="n">elems</span><span class="o">=</span><span class="n">elems</span><span class="p">,</span>
+      <span class="n">initializer</span><span class="o">=</span><span class="n">initializer</span><span class="p">,</span>
+      <span class="n">parallel_iterations</span><span class="o">=</span><span class="n">parallel_iterations</span><span class="p">,</span>
+      <span class="n">back_prop</span><span class="o">=</span><span class="n">back_prop</span><span class="p">,</span>
+      <span class="n">swap_memory</span><span class="o">=</span><span class="n">swap_memory</span><span class="p">,</span>
+      <span class="n">infer_shape</span><span class="o">=</span><span class="n">infer_shape</span><span class="p">,</span>
+      <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="k">def</span> <span class="nf">If</span><span class="p">(</span><span class="n">cond</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">then_branch</span><span class="p">,</span> <span class="n">else_branch</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;output = Cond(inputs) ?</span>
+
+<span class="sd">  then_branch(inputs) : else_branch(inputs).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    cond: A `Tensor`. A scalar. If the scalar is not a boolean, the scalar is</span>
+<span class="sd">      converted to a boolean according to the following rule: if the scalar is a</span>
+<span class="sd">        numerical value, non-zero means True and zero means False; if the scalar</span>
+<span class="sd">        is a string, non-empty means True and empty means False.</span>
+<span class="sd">    inputs: A list of input tensors.</span>
+<span class="sd">    then_branch: A function takes &#39;inputs&#39; and returns a list of tensors, whose</span>
+<span class="sd">      types are the same as what else_branch returns.</span>
+<span class="sd">    else_branch: A function takes &#39;inputs&#39; and returns a list of tensors. whose</span>
+<span class="sd">      types are the same as what then_branch returns.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of tensors returned by either then_branch(inputs)</span>
+<span class="sd">    or else_branch(inputs).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="k">return</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">_if</span><span class="p">(</span>
+      <span class="n">cond</span><span class="p">,</span>
+      <span class="n">inputs</span><span class="p">,</span> <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">then_branch</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">output_arg</span><span class="p">],</span>
+      <span class="n">then_branch</span><span class="p">,</span>
+      <span class="n">else_branch</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">Gradient</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Computes the gradient function for function f via backpropagation.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    inputs: A list of tensors of size N + M.</span>
+<span class="sd">    f: The function we want to compute the gradient for.  The function &#39;f&#39; must</span>
+<span class="sd">      be a numerical function which takes N inputs and produces M outputs. Its</span>
+<span class="sd">      gradient function &#39;g&#39;, which is  a function taking N + M inputs and</span>
+<span class="sd">      produces N outputs.  I.e. if we have (y1, y2, ..., yM) = f(x1, x2, ...,</span>
+<span class="sd">      xN), then, g is (dL/dx1, dL/dx2, ..., dL/dxN) = g(x1, x2, ..., xN, dL/dy1,</span>
+<span class="sd">      dL/dy2, ..., dL/dyM),  where L is a scalar-value function of (x1, x2, ...,</span>
+<span class="sd">      xN) (e.g., the loss function). dL/dxi is the partial derivative of L with</span>
+<span class="sd">      respect to xi.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of tensors of size N.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># TODO(zhifengc): Pretty-print the above spec in latex.</span>
+  <span class="c1"># TODO(zhfiengc): Needs some math expert to say the comment above better.</span>
+  <span class="n">tlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">_</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">input_arg</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">symbolic_gradient</span><span class="p">(</span><span class="nb">input</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">Tout</span><span class="o">=</span><span class="n">tlist</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_LoopBodyCaptureWrapper</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a wrapper for `func` that handles loop-carried captured inputs.&quot;&quot;&quot;</span>
+
+  <span class="nd">@function</span><span class="o">.</span><span class="n">Defun</span><span class="p">(</span>
+      <span class="o">*</span><span class="n">func</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">,</span> <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_Wrapper&quot;</span> <span class="o">%</span> <span class="n">func</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">Wrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A wrapper that handles loop-carried captured inputs.&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">extra_args</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">function</span><span class="o">.</span><span class="n">get_extra_args</span><span class="p">())</span>
+    <span class="c1"># Nullary functions return an Operation. Normal functions can&#39;t do this</span>
+    <span class="c1"># because their return values are converted to Tensors.</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Operation</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">extra_args</span>
+    <span class="c1"># Unary functions return a single Tensor value.</span>
+    <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">result</span><span class="p">,)</span> <span class="o">+</span> <span class="n">extra_args</span>
+    <span class="c1"># N-ary functions return a tuple of Tensors.</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">result</span> <span class="o">+</span> <span class="n">extra_args</span>
+
+  <span class="k">return</span> <span class="n">Wrapper</span>
+
+
+<span class="c1"># pylint: disable=invalid-name,protected-access</span>
+<span class="k">def</span> <span class="nf">While</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">hostmem</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;output = input; While (Cond(output)) { output = Body(output) }.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    input_: A list of `Tensor` objects. A list of input tensors whose types are</span>
+<span class="sd">      T.</span>
+<span class="sd">    cond: . A function takes &#39;input&#39; and returns a tensor.  If the tensor is a</span>
+<span class="sd">      scalar of non-boolean, the scalar is converted to a boolean</span>
+<span class="sd">      according to the following rule: if the scalar is a numerical value,</span>
+<span class="sd">        non-zero means True and zero means False; if the scalar is a string,</span>
+<span class="sd">        non-empty means True and empty means False. If the tensor is not a</span>
+<span class="sd">        scalar, non-emptiness means True and False otherwise.</span>
+<span class="sd">    body: . A function takes a list of tensors and returns another list tensors.</span>
+<span class="sd">      Both lists have the same types as specified by T.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+<span class="sd">    hostmem: A list of integer. If i is in the list, input[i] is a host memory</span>
+<span class="sd">      tensor.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: if `cond` has implicitly captured inputs or if `cond` and `body`</span>
+<span class="sd">      have different signatures.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of `Tensor` objects. Has the same type as `input`.</span>
+<span class="sd">    A list of output tensors whose types are T.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">cond</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;While op &#39;cond&#39; argument must be a function &quot;</span>
+                     <span class="s2">&quot;without implicitly captured inputs.&quot;</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">cond</span><span class="o">.</span><span class="n">declared_input_types</span> <span class="o">!=</span> <span class="n">body</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;While op &#39;cond&#39; and &#39;body&#39; signatures do not match. </span><span class="si">%r</span><span class="s2"> vs </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span>
+        <span class="p">(</span><span class="n">cond</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">,</span> <span class="n">body</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">:</span>
+    <span class="n">cond_dtypes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">dtype</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">]</span>
+
+    <span class="nd">@function</span><span class="o">.</span><span class="n">Defun</span><span class="p">(</span><span class="o">*</span><span class="n">cond_dtypes</span><span class="p">,</span> <span class="n">func_name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_Wrapper&quot;</span> <span class="o">%</span> <span class="n">cond</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">CondWrapper</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;A wrapper that handles loop-carried captured inputs.&quot;&quot;&quot;</span>
+      <span class="k">return</span> <span class="n">cond</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">)])</span>
+
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">_while</span><span class="p">(</span>
+        <span class="n">input_</span> <span class="o">+</span> <span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">,</span>
+        <span class="n">CondWrapper</span><span class="p">,</span>
+        <span class="n">_LoopBodyCaptureWrapper</span><span class="p">(</span><span class="n">body</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="c1"># Slice off the loop-carried captured inputs.</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">)]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">_while</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">cond</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">hostmem</span><span class="p">:</span>
+    <span class="n">input_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">()</span>
+    <span class="n">input_attr</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">hostmem</span><span class="p">)</span>
+    <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">_set_attr</span><span class="p">(</span><span class="s2">&quot;_input_hostmem&quot;</span><span class="p">,</span> <span class="n">input_attr</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+    <span class="n">output_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">()</span>
+    <span class="n">output_attr</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">hostmem</span><span class="p">)</span>
+    <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">_set_attr</span><span class="p">(</span><span class="s2">&quot;_output_hostmem&quot;</span><span class="p">,</span> <span class="n">output_attr</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="k">return</span> <span class="n">ret</span>
+
+
+<span class="c1"># b/36459430</span>
+<span class="c1">#</span>
+<span class="c1"># Ideally, we do not need this rewrite For loop into a While loop.</span>
+<span class="c1"># However, today, if a While runs on GPU and the condition returns a</span>
+<span class="c1"># boolean, the While kernel crashes. Even if we fix the crash, the</span>
+<span class="c1"># bool needs to be copied between GPU and CPU. So, a for loop is much</span>
+<span class="c1"># preferred when running on GPU.</span>
+<span class="c1">#</span>
+<span class="c1"># On the other hand, For op has no directly XLA kernel. So, when we run</span>
+<span class="c1"># a for loop, we need to rewrite it using a While op.</span>
+<span class="c1">#</span>
+<span class="c1"># It should be possible and probably better to write a XLA C++ kernel</span>
+<span class="c1"># implementing the logic in _ForUsingWhile.</span>
+<span class="k">def</span> <span class="nf">_ForUsingWhile</span><span class="p">(</span><span class="n">start</span><span class="p">,</span>
+                   <span class="n">limit</span><span class="p">,</span>
+                   <span class="n">delta</span><span class="p">,</span>
+                   <span class="n">inputs</span><span class="p">,</span>
+                   <span class="n">forbody</span><span class="p">,</span>
+                   <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                   <span class="n">hostmem</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Helper to implement a For loop using a While.&quot;&quot;&quot;</span>
+  <span class="c1"># To support negative delta (e.g., range(100, 0, -3)), we iterate</span>
+  <span class="c1"># over the range(n) and use iter * delta + start as the real</span>
+  <span class="c1"># iteration index. (e.g., for i in range(34): iter = i * (-3) +</span>
+  <span class="c1"># 100).</span>
+  <span class="n">d</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+  <span class="c1"># XLA on TPUs doesn&#39;t support integer division</span>
+  <span class="n">n</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span>
+      <span class="n">math_ops</span><span class="o">.</span><span class="n">cast</span><span class="p">((</span><span class="n">math_ops</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">limit</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span>
+      <span class="n">math_ops</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+  <span class="c1"># Carried loop variables (&quot;extra_args&quot;) are implicitly added to the input list</span>
+  <span class="c1"># of the WhileBody function. WhileCond does not call forbody, and so does not</span>
+  <span class="c1"># depend on any of forbody&#39;s extra_args. Since WhileCond and WhileBody</span>
+  <span class="c1"># must have identical inputs, we have to augment the cond signature to take</span>
+  <span class="c1"># the same types as the carried loop variables.</span>
+  <span class="n">body_sig</span> <span class="o">=</span> <span class="p">[</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">forbody</span><span class="o">.</span><span class="n">declared_input_types</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
+  <span class="n">cond_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_Cond&quot;</span> <span class="o">%</span> <span class="n">forbody</span><span class="o">.</span><span class="n">name</span>
+
+  <span class="nd">@function</span><span class="o">.</span><span class="n">Defun</span><span class="p">(</span><span class="o">*</span><span class="n">body_sig</span><span class="p">,</span> <span class="n">func_name</span><span class="o">=</span><span class="n">cond_name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">WhileCond</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">del</span> <span class="n">args</span>
+    <span class="k">return</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span>
+
+  <span class="n">body_name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_Body&quot;</span> <span class="o">%</span> <span class="n">forbody</span><span class="o">.</span><span class="n">name</span>
+
+  <span class="nd">@function</span><span class="o">.</span><span class="n">Defun</span><span class="p">(</span><span class="o">*</span><span class="n">body_sig</span><span class="p">,</span> <span class="n">func_name</span><span class="o">=</span><span class="n">body_name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">WhileBody</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A While wrapper for forbody that handles loop-carried captured inputs.&quot;&quot;&quot;</span>
+    <span class="n">for_result</span> <span class="o">=</span> <span class="n">forbody</span><span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">delta</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="c1"># Nullary functions return an Operation. Normal functions can&#39;t do this</span>
+    <span class="c1"># because their return values are converted to Tensors.</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">for_result</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Operation</span><span class="p">):</span>
+      <span class="n">for_result</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="c1"># Unary functions return a single Tensor value.</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">for_result</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+      <span class="n">for_result</span> <span class="o">=</span> <span class="p">(</span><span class="n">for_result</span><span class="p">,)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span> <span class="o">+</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">for_result</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">hostmem</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">hostmem</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="p">[(</span><span class="mi">4</span> <span class="o">+</span> <span class="n">_</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">hostmem</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">hostmem</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+
+  <span class="n">results</span> <span class="o">=</span> <span class="n">While</span><span class="p">(</span>
+      <span class="n">input_</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">delta</span><span class="p">]</span> <span class="o">+</span> <span class="n">inputs</span><span class="p">,</span>
+      <span class="n">cond</span><span class="o">=</span><span class="n">WhileCond</span><span class="p">,</span>
+      <span class="n">body</span><span class="o">=</span><span class="n">WhileBody</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+      <span class="n">hostmem</span><span class="o">=</span><span class="n">hostmem</span><span class="p">)</span>
+  <span class="c1"># Slice off the loop-carried captured inputs.</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)])</span>
+
+
+<span class="k">def</span> <span class="nf">For</span><span class="p">(</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">,</span>
+        <span class="n">delta</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">,</span>
+        <span class="n">body</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">hostmem</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rewrite_with_while</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;out = input; for i in range(start, limit, delta) out = body(i, out).</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    start: A `Tensor` of type `int32`.</span>
+<span class="sd">    limit: A `Tensor` of type `int32`.</span>
+<span class="sd">    delta: A `Tensor` of type `int32`.</span>
+<span class="sd">    inputs: A list of `Tensor` objects. A list of input tensors whose types are</span>
+<span class="sd">      T.</span>
+<span class="sd">    body: A function takes a list of tensors and returns another list of</span>
+<span class="sd">      tensors. Both lists have the same types as (int32, T...).</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+<span class="sd">    hostmem: A list of integer. If i is in the list, inputs[i] is a host memory</span>
+<span class="sd">      tensor. In other words, (i+1)-th argument of the body function is</span>
+<span class="sd">      expecting a host memory.</span>
+<span class="sd">    rewrite_with_while: If True, using While op to implement the For.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of `Tensor` objects. Has the same type as `input`.</span>
+<span class="sd">    A list of output tensors whose types are T.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">rewrite_with_while</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_ForUsingWhile</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hostmem</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">_for</span><span class="p">(</span>
+        <span class="n">start</span><span class="p">,</span>
+        <span class="n">limit</span><span class="p">,</span>
+        <span class="n">delta</span><span class="p">,</span>
+        <span class="n">inputs</span> <span class="o">+</span> <span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">,</span>
+        <span class="n">_LoopBodyCaptureWrapper</span><span class="p">(</span><span class="n">body</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="c1"># Slice off the loop-carried captured inputs.</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">body</span><span class="o">.</span><span class="n">captured_inputs</span><span class="p">)]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">_for</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">hostmem</span><span class="p">:</span>
+    <span class="n">num_for_params</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># start/limit/delta</span>
+
+    <span class="n">input_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">()</span>
+    <span class="n">input_attr</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">num_for_params</span> <span class="o">+</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">hostmem</span><span class="p">])</span>
+    <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">_set_attr</span><span class="p">(</span><span class="s2">&quot;_input_hostmem&quot;</span><span class="p">,</span> <span class="n">input_attr</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+    <span class="n">output_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">()</span>
+    <span class="n">output_attr</span><span class="o">.</span><span class="n">list</span><span class="o">.</span><span class="n">i</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">hostmem</span><span class="p">)</span>
+    <span class="n">ret</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">_set_attr</span><span class="p">(</span><span class="s2">&quot;_output_hostmem&quot;</span><span class="p">,</span> <span class="n">output_attr</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="k">return</span> <span class="n">ret</span>
+
+
+<span class="c1"># pylint: enable=invalid-name,protected-access</span>
+
+
+<span class="k">def</span> <span class="nf">partitioned_call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span>
+                     <span class="n">f</span><span class="p">,</span>
+                     <span class="n">tout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">executing_eagerly</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">executor_type</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Executes a function while respecting device annotations.</span>
+
+<span class="sd">  Currently, only those functions that execute within the same address space</span>
+<span class="sd">  can be executed.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    args: The arguments of the function, including captured inputs.</span>
+<span class="sd">    f: The function to execute; an instance of `_DefinedFunction` or</span>
+<span class="sd">      `_EagerDefinedFunction`.</span>
+<span class="sd">    tout: a list containing the output dtypes enums; if `None`, inferred from</span>
+<span class="sd">      the signature of `f`.</span>
+<span class="sd">    executing_eagerly: (Optional) A boolean indicating whether the context is</span>
+<span class="sd">      executing eagerly. If `None`, fetched from the global context.</span>
+<span class="sd">    config: (Optional) A `tensorflow::ConfigProto` proto, serialized. If `None`,</span>
+<span class="sd">      all optimizations are disabled. Currently only handled for eager defined</span>
+<span class="sd">      functions.</span>
+<span class="sd">    executor_type: (Optional) A string for the name of the executor to be used</span>
+<span class="sd">      in the function call. If not set, or set to an empty string, the default</span>
+<span class="sd">      tensorflow executor will be used.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The list of `Tensor`s returned by invoking `f(args)`. If the function does</span>
+<span class="sd">    not return anything, then returns `None` if eager execution is enabled, or</span>
+<span class="sd">    the `Operation` if not.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">if</span> <span class="n">tout</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">tout</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">type</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">signature</span><span class="o">.</span><span class="n">output_arg</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">executing_eagerly</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">executing_eagerly</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">config</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">config</span> <span class="o">=</span> <span class="n">function_utils</span><span class="o">.</span><span class="n">get_disabled_rewriter_config</span><span class="p">()</span>
+
+  <span class="k">if</span> <span class="n">executor_type</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">executor_type</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+  <span class="k">if</span> <span class="n">executing_eagerly</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">stateful_ops</span><span class="p">:</span>
+      <span class="n">outputs</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">stateful_partitioned_call</span><span class="p">(</span>
+          <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+          <span class="n">Tout</span><span class="o">=</span><span class="n">tout</span><span class="p">,</span>
+          <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+          <span class="n">config_proto</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+          <span class="n">executor_type</span><span class="o">=</span><span class="n">executor_type</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">outputs</span> <span class="o">=</span> <span class="n">gen_functional_ops</span><span class="o">.</span><span class="n">partitioned_call</span><span class="p">(</span>
+          <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+          <span class="n">Tout</span><span class="o">=</span><span class="n">tout</span><span class="p">,</span>
+          <span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">,</span>
+          <span class="n">config_proto</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+          <span class="n">executor_type</span><span class="o">=</span><span class="n">executor_type</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">outputs</span> <span class="k">if</span> <span class="n">outputs</span> <span class="k">else</span> <span class="kc">None</span>
+
+  <span class="c1"># The generated binding returns an empty list for functions that don&#39;t</span>
+  <span class="c1"># return any Tensors, hence the need to use `create_op` directly.</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+  <span class="n">tin_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span>
+      <span class="nb">list</span><span class="o">=</span><span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="o">.</span><span class="n">ListValue</span><span class="p">(</span>
+          <span class="nb">type</span><span class="o">=</span><span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_datatype_enum</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]))</span>
+  <span class="n">tout_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span>
+      <span class="nb">list</span><span class="o">=</span><span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="o">.</span><span class="n">ListValue</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">tout</span><span class="p">))</span>
+  <span class="n">func_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span>
+      <span class="n">func</span><span class="o">=</span><span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">NameAttrList</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+  <span class="n">executor_type_attr</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span>
+      <span class="n">s</span><span class="o">=</span><span class="n">compat</span><span class="o">.</span><span class="n">as_bytes</span><span class="p">(</span><span class="n">executor_type</span><span class="p">))</span>
+
+  <span class="c1"># When running in graph mode, the graph and function graphs are optimized</span>
+  <span class="c1"># (i.e. run through grappler) per the session options, so we can disable any</span>
+  <span class="c1"># eager-specific rewriting.</span>
+  <span class="n">config_proto</span> <span class="o">=</span> <span class="n">attr_value_pb2</span><span class="o">.</span><span class="n">AttrValue</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">config</span><span class="p">)</span>
+
+  <span class="n">graph</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+  <span class="n">f</span><span class="o">.</span><span class="n">add_to_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+  <span class="n">op_name</span> <span class="o">=</span> <span class="s2">&quot;StatefulPartitionedCall&quot;</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">stateful_ops</span> <span class="k">else</span> <span class="s2">&quot;PartitionedCall&quot;</span>
+
+  <span class="c1"># Propagate the attribute indicating the need to compile from function to the</span>
+  <span class="c1"># call itself.</span>
+  <span class="n">xla_compile_attr</span> <span class="o">=</span> <span class="s2">&quot;_XlaMustCompile&quot;</span>
+  <span class="n">op_attrs</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s2">&quot;Tin&quot;</span><span class="p">:</span> <span class="n">tin_attr</span><span class="p">,</span>
+      <span class="s2">&quot;Tout&quot;</span><span class="p">:</span> <span class="n">tout_attr</span><span class="p">,</span>
+      <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="n">func_attr</span><span class="p">,</span>
+      <span class="s2">&quot;config_proto&quot;</span><span class="p">:</span> <span class="n">config_proto</span><span class="p">,</span>
+      <span class="s2">&quot;executor_type&quot;</span><span class="p">:</span> <span class="n">executor_type_attr</span><span class="p">,</span>
+  <span class="p">}</span>
+  <span class="k">if</span> <span class="n">xla_compile_attr</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">attr</span><span class="p">:</span>
+    <span class="n">op_attrs</span><span class="p">[</span><span class="n">xla_compile_attr</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">definition</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">xla_compile_attr</span><span class="p">]</span>
+  <span class="n">op</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">create_op</span><span class="p">(</span><span class="n">op_name</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">tout</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">op_name</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">op_attrs</span><span class="p">)</span>
+  <span class="n">outputs</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">outputs</span>
+  <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="s2">&quot;graph&quot;</span><span class="p">):</span>
+    <span class="n">_set_read_only_resource_inputs_attr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">graph</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">outputs</span> <span class="k">if</span> <span class="n">outputs</span> <span class="k">else</span> <span class="n">op</span>
+
+
+<span class="k">def</span> <span class="nf">_set_read_only_resource_inputs_attr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">func_graph</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets the list of resource inputs which are read-only.</span>
+
+<span class="sd">  This is used by AutomaticControlDependencies.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    op: PartitionedCall Operation.</span>
+<span class="sd">    func_graph: FuncGraph.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">read_only_indices</span> <span class="o">=</span> <span class="n">acd</span><span class="o">.</span><span class="n">get_read_only_resource_input_indices_graph</span><span class="p">(</span><span class="n">func_graph</span><span class="p">)</span>
+  <span class="n">ops</span><span class="o">.</span><span class="n">set_int_list_attr</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">acd</span><span class="o">.</span><span class="n">READ_ONLY_RESOURCE_INPUTS_ATTR</span><span class="p">,</span>
+                        <span class="n">read_only_indices</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

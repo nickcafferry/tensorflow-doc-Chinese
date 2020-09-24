@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.importer &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.importer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.importer</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;A utility function for importing TensorFlow graphs.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">contextlib</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">graph_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">tf2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="k">import</span> <span class="n">pywrap_tf_session</span> <span class="k">as</span> <span class="n">c_api</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">c_api_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">device</span> <span class="k">as</span> <span class="n">pydev</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">errors</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">function</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">op_def_registry</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">control_flow_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">compat</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.deprecation</span> <span class="k">import</span> <span class="n">deprecated_args</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">def</span> <span class="nf">_IsControlInput</span><span class="p">(</span><span class="n">input_name</span><span class="p">):</span>
+  <span class="c1"># Expected format: &#39;^operation_name&#39; (control input).</span>
+  <span class="k">return</span> <span class="n">input_name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_ParseTensorName</span><span class="p">(</span><span class="n">tensor_name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Parses a tensor name into an operation name and output index.</span>
+
+<span class="sd">  This function will canonicalize tensor names as follows:</span>
+
+<span class="sd">  * &quot;foo:0&quot;       -&gt; (&quot;foo&quot;, 0)</span>
+<span class="sd">  * &quot;foo:7&quot;       -&gt; (&quot;foo&quot;, 7)</span>
+<span class="sd">  * &quot;foo&quot;         -&gt; (&quot;foo&quot;, 0)</span>
+<span class="sd">  * &quot;foo:bar:baz&quot; -&gt; ValueError</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor_name: The name of a tensor.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A tuple containing the operation name, and the output index.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If `tensor_name&#39; cannot be interpreted as the name of a tensor.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">components</span> <span class="o">=</span> <span class="n">tensor_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="c1"># Expected format: &#39;operation_name:output_index&#39;.</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">output_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">components</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot convert </span><span class="si">%r</span><span class="s1"> to a tensor name.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tensor_name</span><span class="p">,))</span>
+    <span class="k">return</span> <span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">output_index</span>
+  <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">components</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Expected format: &#39;operation_name&#39; (implicit 0th output).</span>
+    <span class="k">return</span> <span class="n">components</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">0</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Cannot convert </span><span class="si">%r</span><span class="s1"> to a tensor name.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tensor_name</span><span class="p">,))</span>
+
+
+<span class="nd">@contextlib</span><span class="o">.</span><span class="n">contextmanager</span>
+<span class="k">def</span> <span class="nf">_MaybeDevice</span><span class="p">(</span><span class="n">device</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Applies the given device only if device is not None or empty.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">device</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">device</span><span class="p">):</span>
+      <span class="k">yield</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">yield</span>
+
+
+<span class="k">def</span> <span class="nf">_ProcessGraphDefParam</span><span class="p">(</span><span class="n">graph_def</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Type-checks and possibly canonicalizes `graph_def`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">graph_def</span><span class="p">,</span> <span class="n">graph_pb2</span><span class="o">.</span><span class="n">GraphDef</span><span class="p">):</span>
+    <span class="c1"># `graph_def` could be a dynamically-created message, so try a duck-typed</span>
+    <span class="c1"># approach</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">old_graph_def</span> <span class="o">=</span> <span class="n">graph_def</span>
+      <span class="n">graph_def</span> <span class="o">=</span> <span class="n">graph_pb2</span><span class="o">.</span><span class="n">GraphDef</span><span class="p">()</span>
+      <span class="n">graph_def</span><span class="o">.</span><span class="n">MergeFrom</span><span class="p">(</span><span class="n">old_graph_def</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;graph_def must be a GraphDef proto.&#39;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># If we&#39;re using the graph_def provided by the caller, modify graph_def</span>
+    <span class="c1"># in-place to add attr defaults to the NodeDefs (this is visible to the</span>
+    <span class="c1"># caller).</span>
+    <span class="c1"># NOTE(skyewm): this is undocumented behavior that at least meta_graph.py</span>
+    <span class="c1"># depends on. It might make sense to move this to meta_graph.py and have</span>
+    <span class="c1"># import_graph_def not modify the graph_def argument (we&#39;d have to make sure</span>
+    <span class="c1"># this doesn&#39;t break anything else.)</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph_def</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
+      <span class="n">op_def</span> <span class="o">=</span> <span class="n">op_def_registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">op_def</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Assume unrecognized ops are functions for now. TF_ImportGraphDef will</span>
+        <span class="c1"># report an error if the op is actually missing.</span>
+        <span class="k">continue</span>
+      <span class="n">_SetDefaultAttrValues</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">op_def</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">graph_def</span>
+
+
+<span class="k">def</span> <span class="nf">_ProcessInputMapParam</span><span class="p">(</span><span class="n">input_map</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Type-checks and possibly canonicalizes `input_map`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">input_map</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">input_map</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">input_map</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+        <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">compat</span><span class="o">.</span><span class="n">bytes_or_text_types</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">input_map</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;input_map must be a dictionary mapping strings to &#39;</span>
+                      <span class="s1">&#39;Tensor objects.&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">input_map</span>
+
+
+<span class="k">def</span> <span class="nf">_ProcessReturnElementsParam</span><span class="p">(</span><span class="n">return_elements</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Type-checks and possibly canonicalizes `return_elements`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">return_elements</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span>
+      <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">compat</span><span class="o">.</span><span class="n">bytes_or_text_types</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">return_elements</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;return_elements must be a list of strings.&#39;</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">return_elements</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_FindAttrInOpDef</span><span class="p">(</span><span class="n">attr_name</span><span class="p">,</span> <span class="n">op_def</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">attr_def</span> <span class="ow">in</span> <span class="n">op_def</span><span class="o">.</span><span class="n">attr</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">attr_name</span> <span class="o">==</span> <span class="n">attr_def</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">attr_def</span>
+  <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">_RemoveDefaultAttrs</span><span class="p">(</span><span class="n">producer_op_list</span><span class="p">,</span> <span class="n">graph_def</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Removes unknown default attrs according to `producer_op_list`.</span>
+
+<span class="sd">  Removes any unknown attrs in `graph_def` (i.e. attrs that do not appear in</span>
+<span class="sd">  registered OpDefs) that have a default value in `producer_op_list`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    producer_op_list: OpList proto.</span>
+<span class="sd">    graph_def: GraphDef proto</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">producer_op_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">producer_op_list</span><span class="o">.</span><span class="n">op</span><span class="p">}</span>
+  <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph_def</span><span class="o">.</span><span class="n">node</span><span class="p">:</span>
+    <span class="c1"># Remove any default attr values that aren&#39;t in op_def.</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">op</span> <span class="ow">in</span> <span class="n">producer_op_dict</span><span class="p">:</span>
+      <span class="n">op_def</span> <span class="o">=</span> <span class="n">op_def_registry</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">op</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">op_def</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Some custom op registrations won&#39;t show up here. That&#39;s OK, attribute</span>
+        <span class="c1"># stripping just won&#39;t be available.</span>
+        <span class="k">continue</span>
+      <span class="n">producer_op_def</span> <span class="o">=</span> <span class="n">producer_op_dict</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">op</span><span class="p">]</span>
+      <span class="c1"># We make a copy of node.attr to iterate through since we may modify</span>
+      <span class="c1"># node.attr inside the loop.</span>
+      <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">attr</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">_FindAttrInOpDef</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">op_def</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="c1"># No attr_def in consumer, look in producer.</span>
+          <span class="n">attr_def</span> <span class="o">=</span> <span class="n">_FindAttrInOpDef</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">producer_op_def</span><span class="p">)</span>
+          <span class="k">if</span> <span class="p">(</span><span class="n">attr_def</span> <span class="ow">and</span> <span class="n">attr_def</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s1">&#39;default_value&#39;</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="n">node</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="n">attr_def</span><span class="o">.</span><span class="n">default_value</span><span class="p">):</span>
+            <span class="c1"># Unknown attr had default value in producer, delete it so it can be</span>
+            <span class="c1"># understood by consumer.</span>
+            <span class="k">del</span> <span class="n">node</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_ConvertInputMapValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">input_map</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Ensures all input map values are tensors.</span>
+
+<span class="sd">  This should be called from inside the import name scope.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    name: the `name` argument passed to import_graph_def</span>
+<span class="sd">    input_map: the `input_map` argument passed to import_graph_def.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    An possibly-updated version of `input_map`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: if input map values cannot be converted due to empty name scope.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">input_map</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>  <span class="c1"># pylint: disable=g-explicit-bool-comparison</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s1">&#39;tf.import_graph_def() requires a non-empty `name` if `input_map` &#39;</span>
+          <span class="s1">&#39;contains non-Tensor values. Try calling tf.convert_to_tensor() on &#39;</span>
+          <span class="s1">&#39;`input_map` values before calling tf.import_graph_def().&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="s1">&#39;_inputs&#39;</span><span class="p">):</span>
+      <span class="n">input_map</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">input_map</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+  <span class="k">return</span> <span class="n">input_map</span>
+
+
+<span class="k">def</span> <span class="nf">_PopulateTFImportGraphDefOptions</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">input_map</span><span class="p">,</span>
+                                     <span class="n">return_elements</span><span class="p">,</span>
+                                     <span class="n">validate_colocation_constraints</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Populates the TF_ImportGraphDefOptions `options`.&quot;&quot;&quot;</span>
+  <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsSetPrefix</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">prefix</span><span class="p">)</span>
+  <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsSetUniquifyNames</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+  <span class="k">for</span> <span class="n">input_src</span><span class="p">,</span> <span class="n">input_dst</span> <span class="ow">in</span> <span class="n">input_map</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">input_src</span> <span class="o">=</span> <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">input_src</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">input_src</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;^&#39;</span><span class="p">):</span>
+      <span class="n">src_name</span> <span class="o">=</span> <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">input_src</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+      <span class="n">dst_op</span> <span class="o">=</span> <span class="n">input_dst</span><span class="o">.</span><span class="n">_as_tf_output</span><span class="p">()</span><span class="o">.</span><span class="n">oper</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsRemapControlDependency</span><span class="p">(</span>
+          <span class="n">options</span><span class="p">,</span> <span class="n">src_name</span><span class="p">,</span> <span class="n">dst_op</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">src_name</span><span class="p">,</span> <span class="n">src_idx</span> <span class="o">=</span> <span class="n">_ParseTensorName</span><span class="p">(</span><span class="n">input_src</span><span class="p">)</span>
+      <span class="n">src_name</span> <span class="o">=</span> <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">src_name</span><span class="p">)</span>
+      <span class="n">dst_output</span> <span class="o">=</span> <span class="n">input_dst</span><span class="o">.</span><span class="n">_as_tf_output</span><span class="p">()</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsAddInputMapping</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">src_name</span><span class="p">,</span> <span class="n">src_idx</span><span class="p">,</span>
+                                                    <span class="n">dst_output</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">return_elements</span> <span class="ow">or</span> <span class="p">[]:</span>
+    <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+      <span class="n">op_name</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">_ParseTensorName</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+      <span class="n">op_name</span> <span class="o">=</span> <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">op_name</span><span class="p">)</span>
+      <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsAddReturnOutput</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">op_name</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsAddReturnOperation</span><span class="p">(</span><span class="n">options</span><span class="p">,</span>
+                                                       <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+  <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefOptionsSetValidateColocationConstraints</span><span class="p">(</span>
+      <span class="n">options</span><span class="p">,</span> <span class="n">validate_colocation_constraints</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_ProcessNewOps</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Processes the newly-added TF_Operations in `graph`.&quot;&quot;&quot;</span>
+  <span class="c1"># Maps from a node to the names of the ops it&#39;s colocated with, if colocation</span>
+  <span class="c1"># is specified in the attributes.</span>
+  <span class="n">colocation_pairs</span> <span class="o">=</span> <span class="p">{}</span>
+
+  <span class="k">for</span> <span class="n">new_op</span> <span class="ow">in</span> <span class="n">graph</span><span class="o">.</span><span class="n">_add_new_tf_operations</span><span class="p">(</span><span class="n">compute_devices</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="n">original_device</span> <span class="o">=</span> <span class="n">new_op</span><span class="o">.</span><span class="n">device</span>
+    <span class="n">new_op</span><span class="o">.</span><span class="n">_set_device</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="n">colocation_names</span> <span class="o">=</span> <span class="n">_GetColocationNames</span><span class="p">(</span><span class="n">new_op</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">colocation_names</span><span class="p">:</span>
+      <span class="n">colocation_pairs</span><span class="p">[</span><span class="n">new_op</span><span class="p">]</span> <span class="o">=</span> <span class="n">colocation_names</span>
+      <span class="c1"># Don&#39;t set a device for this op, since colocation constraints override</span>
+      <span class="c1"># device functions and the original device. Note that this op&#39;s device may</span>
+      <span class="c1"># still be set by the loop below.</span>
+      <span class="c1"># TODO(skyewm): why does it override the original device?</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">with</span> <span class="n">_MaybeDevice</span><span class="p">(</span><span class="n">original_device</span><span class="p">):</span>
+        <span class="n">graph</span><span class="o">.</span><span class="n">_apply_device_functions</span><span class="p">(</span><span class="n">new_op</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+  <span class="c1"># The following loop populates the device field of ops that are colocated</span>
+  <span class="c1"># with another op.  This is implied by the colocation attribute, but we</span>
+  <span class="c1"># propagate the device field for completeness.</span>
+  <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">coloc_op_list</span> <span class="ow">in</span> <span class="n">colocation_pairs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">coloc_device</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># Find any device in the list of colocated ops that have a device, if it</span>
+    <span class="c1"># exists.  We assume that if multiple ops have devices, they refer to the</span>
+    <span class="c1"># same device.  Otherwise, a runtime error will occur since the colocation</span>
+    <span class="c1"># property cannot be guaranteed.  Note in TF2 colocations have been removed</span>
+    <span class="c1"># from the public API and will be considered a hint, so there is no runtime</span>
+    <span class="c1"># error.</span>
+    <span class="c1">#</span>
+    <span class="c1"># One possible improvement is to try to check for compatibility of all</span>
+    <span class="c1"># devices in this list at import time here, which would require</span>
+    <span class="c1"># implementing a compatibility function for device specs in python.</span>
+    <span class="k">for</span> <span class="n">coloc_op_name</span> <span class="ow">in</span> <span class="n">coloc_op_list</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">coloc_op</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">_get_operation_by_name_unsafe</span><span class="p">(</span><span class="n">coloc_op_name</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="c1"># Do not error in TF2 if the colocation cannot be guaranteed</span>
+        <span class="k">if</span> <span class="n">tf2</span><span class="o">.</span><span class="n">enabled</span><span class="p">()</span> <span class="ow">or</span> <span class="n">control_flow_util</span><span class="o">.</span><span class="n">EnableControlFlowV2</span><span class="p">(</span><span class="n">graph</span><span class="p">):</span>
+          <span class="k">continue</span>
+
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Specified colocation to an op that &#39;</span>
+                         <span class="s1">&#39;does not exist during import: </span><span class="si">%s</span><span class="s1"> in </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">coloc_op_name</span><span class="p">,</span> <span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+      <span class="k">if</span> <span class="n">coloc_op</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
+        <span class="n">coloc_device</span> <span class="o">=</span> <span class="n">pydev</span><span class="o">.</span><span class="n">DeviceSpec</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">coloc_op</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">if</span> <span class="n">coloc_device</span><span class="p">:</span>
+      <span class="n">op</span><span class="o">.</span><span class="n">_set_device</span><span class="p">(</span><span class="n">coloc_device</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+
+<span class="k">def</span> <span class="nf">_GetColocationNames</span><span class="p">(</span><span class="n">op</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns names of the ops that `op` should be colocated with.&quot;&quot;&quot;</span>
+  <span class="n">colocation_names</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">class_values</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s1">&#39;_class&#39;</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="c1"># No _class attr</span>
+    <span class="k">return</span>
+  <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">class_values</span><span class="p">:</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;loc:@&#39;</span><span class="p">):</span>
+      <span class="n">colocation_node_name</span> <span class="o">=</span> <span class="n">val</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s1">&#39;loc:@&#39;</span><span class="p">):]</span>
+      <span class="k">if</span> <span class="n">colocation_node_name</span> <span class="o">!=</span> <span class="n">op</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+        <span class="n">colocation_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">colocation_node_name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">colocation_names</span>
+
+
+<span class="k">def</span> <span class="nf">_GatherReturnElements</span><span class="p">(</span><span class="n">requested_return_elements</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the requested return elements from results.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    requested_return_elements: list of strings of operation and tensor names</span>
+<span class="sd">    graph: Graph</span>
+<span class="sd">    results: wrapped TF_ImportGraphDefResults</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    list of `Operation` and/or `Tensor` objects</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">return_outputs</span> <span class="o">=</span> <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefResultsReturnOutputs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+  <span class="n">return_opers</span> <span class="o">=</span> <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefResultsReturnOperations</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+  <span class="n">combined_return_elements</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">outputs_idx</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">opers_idx</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">requested_return_elements</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;:&#39;</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+      <span class="n">combined_return_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+          <span class="n">graph</span><span class="o">.</span><span class="n">_get_tensor_by_tf_output</span><span class="p">(</span><span class="n">return_outputs</span><span class="p">[</span><span class="n">outputs_idx</span><span class="p">]))</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">outputs_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">combined_return_elements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+          <span class="n">graph</span><span class="o">.</span><span class="n">_get_operation_by_tf_operation</span><span class="p">(</span><span class="n">return_opers</span><span class="p">[</span><span class="n">opers_idx</span><span class="p">]))</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">opers_idx</span> <span class="o">+=</span> <span class="mi">1</span>
+  <span class="k">return</span> <span class="n">combined_return_elements</span>
+
+
+<span class="k">def</span> <span class="nf">_SetDefaultAttrValues</span><span class="p">(</span><span class="n">node_def</span><span class="p">,</span> <span class="n">op_def</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Set any default attr values in `node_def` that aren&#39;t present.&quot;&quot;&quot;</span>
+  <span class="k">assert</span> <span class="n">node_def</span><span class="o">.</span><span class="n">op</span> <span class="o">==</span> <span class="n">op_def</span><span class="o">.</span><span class="n">name</span>
+  <span class="k">for</span> <span class="n">attr_def</span> <span class="ow">in</span> <span class="n">op_def</span><span class="o">.</span><span class="n">attr</span><span class="p">:</span>
+    <span class="n">key</span> <span class="o">=</span> <span class="n">attr_def</span><span class="o">.</span><span class="n">name</span>
+    <span class="k">if</span> <span class="n">attr_def</span><span class="o">.</span><span class="n">HasField</span><span class="p">(</span><span class="s1">&#39;default_value&#39;</span><span class="p">):</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">node_def</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+      <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">WhichOneof</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">node_def</span><span class="o">.</span><span class="n">attr</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">attr_def</span><span class="o">.</span><span class="n">default_value</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="import_graph_def"><a class="viewcode-back" href="../../../../index.html#tensorflow.import_graph_def">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;graph_util.import_graph_def&#39;</span><span class="p">,</span> <span class="s1">&#39;import_graph_def&#39;</span><span class="p">)</span>
+<span class="nd">@deprecated_args</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Please file an issue at &#39;</span>
+                 <span class="s1">&#39;https://github.com/tensorflow/tensorflow/issues if you depend&#39;</span>
+                 <span class="s1">&#39; on this feature.&#39;</span><span class="p">,</span> <span class="s1">&#39;op_dict&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">import_graph_def</span><span class="p">(</span><span class="n">graph_def</span><span class="p">,</span>
+                     <span class="n">input_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">return_elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">op_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                     <span class="n">producer_op_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Imports the graph from `graph_def` into the current default `Graph`.</span>
+
+<span class="sd">  This function provides a way to import a serialized TensorFlow</span>
+<span class="sd">  [`GraphDef`](https://www.tensorflow.org/code/tensorflow/core/framework/graph.proto)</span>
+<span class="sd">  protocol buffer, and extract individual objects in the `GraphDef` as</span>
+<span class="sd">  `tf.Tensor` and `tf.Operation` objects. Once extracted,</span>
+<span class="sd">  these objects are placed into the current default `Graph`. See</span>
+<span class="sd">  `tf.Graph.as_graph_def` for a way to create a `GraphDef`</span>
+<span class="sd">  proto.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    graph_def: A `GraphDef` proto containing operations to be imported into</span>
+<span class="sd">      the default graph.</span>
+<span class="sd">    input_map: A dictionary mapping input names (as strings) in `graph_def`</span>
+<span class="sd">      to `Tensor` objects. The values of the named input tensors in the</span>
+<span class="sd">      imported graph will be re-mapped to the respective `Tensor` values.</span>
+<span class="sd">    return_elements: A list of strings containing operation names in</span>
+<span class="sd">      `graph_def` that will be returned as `Operation` objects; and/or</span>
+<span class="sd">      tensor names in `graph_def` that will be returned as `Tensor` objects.</span>
+<span class="sd">    name: (Optional.) A prefix that will be prepended to the names in</span>
+<span class="sd">      `graph_def`. Note that this does not apply to imported function names.</span>
+<span class="sd">      Defaults to `&quot;import&quot;`.</span>
+<span class="sd">    op_dict: (Optional.) Deprecated, do not use.</span>
+<span class="sd">    producer_op_list: (Optional.) An `OpList` proto with the (possibly stripped)</span>
+<span class="sd">      list of `OpDef`s used by the producer of the graph. If provided,</span>
+<span class="sd">      unrecognized attrs for ops in `graph_def` that have their default value</span>
+<span class="sd">      according to `producer_op_list` will be removed. This will allow some more</span>
+<span class="sd">      `GraphDef`s produced by later binaries to be accepted by earlier binaries.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of `Operation` and/or `Tensor` objects from the imported graph,</span>
+<span class="sd">    corresponding to the names in `return_elements`,</span>
+<span class="sd">    and None if `returns_elements` is None.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If `graph_def` is not a `GraphDef` proto,</span>
+<span class="sd">      `input_map` is not a dictionary mapping strings to `Tensor` objects,</span>
+<span class="sd">      or `return_elements` is not a list of strings.</span>
+<span class="sd">    ValueError: If `input_map`, or `return_elements` contains names that</span>
+<span class="sd">      do not appear in `graph_def`, or `graph_def` is not well-formed (e.g.</span>
+<span class="sd">      it refers to an unknown tensor).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">del</span> <span class="n">op_dict</span>
+  <span class="k">return</span> <span class="n">_import_graph_def_internal</span><span class="p">(</span>
+      <span class="n">graph_def</span><span class="p">,</span>
+      <span class="n">input_map</span><span class="o">=</span><span class="n">input_map</span><span class="p">,</span>
+      <span class="n">return_elements</span><span class="o">=</span><span class="n">return_elements</span><span class="p">,</span>
+      <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+      <span class="n">producer_op_list</span><span class="o">=</span><span class="n">producer_op_list</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">import_graph_def_for_function</span><span class="p">(</span>  <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="n">graph_def</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Like import_graph_def but does not validate colocation constraints.&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">_import_graph_def_internal</span><span class="p">(</span>
+      <span class="n">graph_def</span><span class="p">,</span> <span class="n">validate_colocation_constraints</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_import_graph_def_internal</span><span class="p">(</span>  <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="n">graph_def</span><span class="p">,</span>
+    <span class="n">input_map</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">return_elements</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">validate_colocation_constraints</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">producer_op_list</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Imports the graph from `graph_def` into the current default `Graph`.</span>
+
+<span class="sd">  This function provides a way to import a serialized TensorFlow</span>
+<span class="sd">  [`GraphDef`](https://www.tensorflow.org/code/tensorflow/core/framework/graph.proto)</span>
+<span class="sd">  protocol buffer, and extract individual objects in the `GraphDef` as</span>
+<span class="sd">  `tf.Tensor` and `tf.Operation` objects. Once extracted,</span>
+<span class="sd">  these objects are placed into the current default `Graph`. See</span>
+<span class="sd">  `tf.Graph.as_graph_def` for a way to create a `GraphDef`</span>
+<span class="sd">  proto.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    graph_def: A `GraphDef` proto containing operations to be imported into the</span>
+<span class="sd">      default graph.</span>
+<span class="sd">    input_map: A dictionary mapping input names (as strings) in `graph_def` to</span>
+<span class="sd">      `Tensor` objects. The values of the named input tensors in the imported</span>
+<span class="sd">      graph will be re-mapped to the respective `Tensor` values.</span>
+<span class="sd">    return_elements: A list of strings containing operation names in `graph_def`</span>
+<span class="sd">      that will be returned as `Operation` objects; and/or tensor names in</span>
+<span class="sd">      `graph_def` that will be returned as `Tensor` objects.</span>
+<span class="sd">    validate_colocation_constraints: Whether to validate colocation constraints.</span>
+<span class="sd">    name: (Optional.) A prefix that will be prepended to the names in</span>
+<span class="sd">      `graph_def`. Note that this does not apply to imported function names.</span>
+<span class="sd">      Defaults to `&quot;import&quot;`.</span>
+<span class="sd">    producer_op_list: (Optional.) An `OpList` proto with the (possibly stripped)</span>
+<span class="sd">      list of `OpDef`s used by the producer of the graph. If provided,</span>
+<span class="sd">      unrecognized attrs for ops in `graph_def` that have their default value</span>
+<span class="sd">      according to `producer_op_list` will be removed. This will allow some more</span>
+<span class="sd">      `GraphDef`s produced by later binaries to be accepted by earlier binaries.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A list of `Operation` and/or `Tensor` objects from the imported graph,</span>
+<span class="sd">    corresponding to the names in `return_elements`,</span>
+<span class="sd">    and None if `returns_elements` is None.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If `graph_def` is not a `GraphDef` proto,</span>
+<span class="sd">      `input_map` is not a dictionary mapping strings to `Tensor` objects,</span>
+<span class="sd">      or `return_elements` is not a list of strings.</span>
+<span class="sd">    ValueError: If `input_map`, or `return_elements` contains names that</span>
+<span class="sd">      do not appear in `graph_def`, or `graph_def` is not well-formed (e.g.</span>
+<span class="sd">      it refers to an unknown tensor).</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">graph_def</span> <span class="o">=</span> <span class="n">_ProcessGraphDefParam</span><span class="p">(</span><span class="n">graph_def</span><span class="p">)</span>
+  <span class="n">input_map</span> <span class="o">=</span> <span class="n">_ProcessInputMapParam</span><span class="p">(</span><span class="n">input_map</span><span class="p">)</span>
+  <span class="n">return_elements</span> <span class="o">=</span> <span class="n">_ProcessReturnElementsParam</span><span class="p">(</span><span class="n">return_elements</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">producer_op_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># TODO(skyewm): make a copy of graph_def so we&#39;re not mutating the argument?</span>
+    <span class="n">_RemoveDefaultAttrs</span><span class="p">(</span><span class="n">producer_op_list</span><span class="p">,</span> <span class="n">graph_def</span><span class="p">)</span>
+
+  <span class="n">graph</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="n">input_map</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
+    <span class="c1"># Save unique prefix generated by name_scope</span>
+    <span class="k">if</span> <span class="n">scope</span><span class="p">:</span>
+      <span class="k">assert</span> <span class="n">scope</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+      <span class="n">prefix</span> <span class="o">=</span> <span class="n">scope</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="c1"># Generate any input map tensors inside name scope</span>
+    <span class="n">input_map</span> <span class="o">=</span> <span class="n">_ConvertInputMapValues</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">input_map</span><span class="p">)</span>
+
+  <span class="n">scoped_options</span> <span class="o">=</span> <span class="n">c_api_util</span><span class="o">.</span><span class="n">ScopedTFImportGraphDefOptions</span><span class="p">()</span>
+  <span class="n">options</span> <span class="o">=</span> <span class="n">scoped_options</span><span class="o">.</span><span class="n">options</span>
+  <span class="n">_PopulateTFImportGraphDefOptions</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">input_map</span><span class="p">,</span> <span class="n">return_elements</span><span class="p">,</span>
+                                   <span class="n">validate_colocation_constraints</span><span class="p">)</span>
+
+  <span class="c1"># _ProcessNewOps mutates the new operations. _mutation_lock ensures a</span>
+  <span class="c1"># Session.run call cannot occur between creating the TF_Operations in the</span>
+  <span class="c1"># TF_GraphImportGraphDefWithResults call and mutating the them in</span>
+  <span class="c1"># _ProcessNewOps.</span>
+  <span class="k">with</span> <span class="n">graph</span><span class="o">.</span><span class="n">_mutation_lock</span><span class="p">():</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">with</span> <span class="n">c_api_util</span><span class="o">.</span><span class="n">tf_buffer</span><span class="p">(</span><span class="n">graph_def</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span> <span class="k">as</span> <span class="n">serialized</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">c_api</span><span class="o">.</span><span class="n">TF_GraphImportGraphDefWithResults</span><span class="p">(</span>
+            <span class="n">graph</span><span class="o">.</span><span class="n">_c_graph</span><span class="p">,</span> <span class="n">serialized</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>  <span class="c1"># pylint: disable=protected-access</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">c_api_util</span><span class="o">.</span><span class="n">ScopedTFImportGraphDefResults</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">InvalidArgumentError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Convert to ValueError for backwards compatibility.</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+
+    <span class="c1"># Create _DefinedFunctions for any imported functions.</span>
+    <span class="c1">#</span>
+    <span class="c1"># We do this by creating _DefinedFunctions directly from `graph_def`, and</span>
+    <span class="c1"># adding them to `graph`. Adding an existing function to a TF_Graph is a</span>
+    <span class="c1"># no-op, so this only has the effect of updating the Python state (usually</span>
+    <span class="c1"># _DefinedFunction.add_to_graph also adds the function to the TF_Graph).</span>
+    <span class="c1">#</span>
+    <span class="c1"># TODO(skyewm): fetch the TF_Functions directly from the TF_Graph</span>
+    <span class="c1"># TODO(skyewm): avoid sending serialized FunctionDefs back to the TF_Graph</span>
+
+    <span class="n">_ProcessNewOps</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">graph_def</span><span class="o">.</span><span class="n">library</span> <span class="ow">and</span> <span class="n">graph_def</span><span class="o">.</span><span class="n">library</span><span class="o">.</span><span class="n">function</span><span class="p">:</span>
+    <span class="n">functions</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">from_library</span><span class="p">(</span><span class="n">graph_def</span><span class="o">.</span><span class="n">library</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">functions</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">add_to_graph</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+
+  <span class="c1"># Treat input mappings that don&#39;t appear in the graph as an error, because</span>
+  <span class="c1"># they are likely to be due to a typo.</span>
+  <span class="n">missing_unused_input_keys</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="n">c_api</span><span class="o">.</span><span class="n">TF_ImportGraphDefResultsMissingUnusedInputMappings_wrapper</span><span class="p">(</span>
+          <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">))</span>
+  <span class="k">if</span> <span class="n">missing_unused_input_keys</span><span class="p">:</span>
+    <span class="n">missing_unused_input_keys</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">compat</span><span class="o">.</span><span class="n">as_str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">missing_unused_input_keys</span>
+    <span class="p">]</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s1">&#39;Attempted to map inputs that were not found in graph_def: [</span><span class="si">%s</span><span class="s1">]&#39;</span> <span class="o">%</span>
+        <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">missing_unused_input_keys</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">return_elements</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_GatherReturnElements</span><span class="p">(</span><span class="n">return_elements</span><span class="p">,</span> <span class="n">graph</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

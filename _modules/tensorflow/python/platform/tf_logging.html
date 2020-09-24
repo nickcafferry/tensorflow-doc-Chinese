@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.platform.tf_logging &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.platform.tf_logging</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.platform.tf_logging</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;Logging utilities.&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=unused-import</span>
+<span class="c1"># pylint: disable=g-bad-import-order</span>
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">logging</span> <span class="k">as</span> <span class="nn">_logging</span>
+<span class="kn">import</span> <span class="nn">os</span> <span class="k">as</span> <span class="nn">_os</span>
+<span class="kn">import</span> <span class="nn">sys</span> <span class="k">as</span> <span class="nn">_sys</span>
+<span class="kn">import</span> <span class="nn">time</span> <span class="k">as</span> <span class="nn">_time</span>
+<span class="kn">import</span> <span class="nn">traceback</span> <span class="k">as</span> <span class="nn">_traceback</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">DEBUG</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">ERROR</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">FATAL</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">INFO</span>
+<span class="kn">from</span> <span class="nn">logging</span> <span class="k">import</span> <span class="n">WARN</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># Don&#39;t use this directly. Use get_logger() instead.</span>
+<span class="n">_logger</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">_logger_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">_get_caller</span><span class="p">(</span><span class="n">offset</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a code and frame object for the lowest non-logging stack frame.&quot;&quot;&quot;</span>
+  <span class="c1"># Use sys._getframe().  This avoids creating a traceback object.</span>
+  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="n">_sys</span><span class="o">.</span><span class="n">_getframe</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+  <span class="c1"># pylint: enable=protected-access</span>
+  <span class="n">our_file</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">f_code</span><span class="o">.</span><span class="n">co_filename</span>
+  <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">f_back</span>
+  <span class="k">while</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">code</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">f_code</span>
+    <span class="k">if</span> <span class="n">code</span><span class="o">.</span><span class="n">co_filename</span> <span class="o">!=</span> <span class="n">our_file</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">code</span><span class="p">,</span> <span class="n">f</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">f_back</span>
+  <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+<span class="c1"># The definition of `findCaller` changed in Python 3.2,</span>
+<span class="c1"># and further changed in Python 3.8</span>
+<span class="k">if</span> <span class="n">_sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">_sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">:</span>
+
+  <span class="k">def</span> <span class="nf">_logger_find_caller</span><span class="p">(</span><span class="n">stack_info</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># pylint: disable=g-wrong-blank-lines</span>
+    <span class="n">code</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">_get_caller</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sinfo</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">stack_info</span><span class="p">:</span>
+      <span class="n">sinfo</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_traceback</span><span class="o">.</span><span class="n">format_stack</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">code</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">co_filename</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_lineno</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">sinfo</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s1">&#39;(unknown file)&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;(unknown function)&#39;</span><span class="p">,</span> <span class="n">sinfo</span>
+<span class="k">elif</span> <span class="n">_sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">_sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">minor</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+
+  <span class="k">def</span> <span class="nf">_logger_find_caller</span><span class="p">(</span><span class="n">stack_info</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># pylint: disable=g-wrong-blank-lines</span>
+    <span class="n">code</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">_get_caller</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sinfo</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">stack_info</span><span class="p">:</span>
+      <span class="n">sinfo</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">_traceback</span><span class="o">.</span><span class="n">format_stack</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">code</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">co_filename</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_lineno</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_name</span><span class="p">,</span> <span class="n">sinfo</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s1">&#39;(unknown file)&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;(unknown function)&#39;</span><span class="p">,</span> <span class="n">sinfo</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="k">def</span> <span class="nf">_logger_find_caller</span><span class="p">():</span>  <span class="c1"># pylint: disable=g-wrong-blank-lines</span>
+    <span class="n">code</span><span class="p">,</span> <span class="n">frame</span> <span class="o">=</span> <span class="n">_get_caller</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">code</span><span class="p">:</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">co_filename</span><span class="p">,</span> <span class="n">frame</span><span class="o">.</span><span class="n">f_lineno</span><span class="p">,</span> <span class="n">code</span><span class="o">.</span><span class="n">co_name</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s1">&#39;(unknown file)&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;(unknown function)&#39;</span>
+
+
+<div class="viewcode-block" id="get_logger"><a class="viewcode-back" href="../../../../index.html#tensorflow.get_logger">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;get_logger&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_logger</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Return TF logger instance.&quot;&quot;&quot;</span>
+  <span class="k">global</span> <span class="n">_logger</span>
+
+  <span class="c1"># Use double-checked locking to avoid taking lock unnecessarily.</span>
+  <span class="k">if</span> <span class="n">_logger</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">_logger</span>
+
+  <span class="n">_logger_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+
+  <span class="k">try</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">_logger</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">_logger</span>
+
+    <span class="c1"># Scope the TensorFlow logger to not conflict with users&#39; loggers.</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">_logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;tensorflow&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Override findCaller on the logger to skip internal helper functions</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">findCaller</span> <span class="o">=</span> <span class="n">_logger_find_caller</span>
+
+    <span class="c1"># Don&#39;t further configure the TensorFlow logger if the root logger is</span>
+    <span class="c1"># already configured. This prevents double logging in those cases.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">_logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+      <span class="c1"># Determine whether we are in an interactive environment</span>
+      <span class="n">_interactive</span> <span class="o">=</span> <span class="kc">False</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># This is only defined in interactive shells.</span>
+        <span class="k">if</span> <span class="n">_sys</span><span class="o">.</span><span class="n">ps1</span><span class="p">:</span> <span class="n">_interactive</span> <span class="o">=</span> <span class="kc">True</span>
+      <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+        <span class="c1"># Even now, we may be in an interactive shell with `python -i`.</span>
+        <span class="n">_interactive</span> <span class="o">=</span> <span class="n">_sys</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">interactive</span>
+
+      <span class="c1"># If we are in an interactive environment (like Jupyter), set loglevel</span>
+      <span class="c1"># to INFO and pipe the output to stdout.</span>
+      <span class="k">if</span> <span class="n">_interactive</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">INFO</span><span class="p">)</span>
+        <span class="n">_logging_target</span> <span class="o">=</span> <span class="n">_sys</span><span class="o">.</span><span class="n">stdout</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">_logging_target</span> <span class="o">=</span> <span class="n">_sys</span><span class="o">.</span><span class="n">stderr</span>
+
+      <span class="c1"># Add the output handler.</span>
+      <span class="n">_handler</span> <span class="o">=</span> <span class="n">_logging</span><span class="o">.</span><span class="n">StreamHandler</span><span class="p">(</span><span class="n">_logging_target</span><span class="p">)</span>
+      <span class="n">_handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">_logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="n">_logging</span><span class="o">.</span><span class="n">BASIC_FORMAT</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">_handler</span><span class="p">)</span>
+
+    <span class="n">_logger</span> <span class="o">=</span> <span class="n">logger</span>
+    <span class="k">return</span> <span class="n">_logger</span>
+
+  <span class="k">finally</span><span class="p">:</span>
+    <span class="n">_logger_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.log&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.debug&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.error&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.fatal&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">fatal</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">fatal</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.info&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.warn&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.warning&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="n">_level_names</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">FATAL</span><span class="p">:</span> <span class="s1">&#39;FATAL&#39;</span><span class="p">,</span>
+    <span class="n">ERROR</span><span class="p">:</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">,</span>
+    <span class="n">WARN</span><span class="p">:</span> <span class="s1">&#39;WARN&#39;</span><span class="p">,</span>
+    <span class="n">INFO</span><span class="p">:</span> <span class="s1">&#39;INFO&#39;</span><span class="p">,</span>
+    <span class="n">DEBUG</span><span class="p">:</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Mask to convert integer thread ids to unsigned quantities for logging</span>
+<span class="c1"># purposes</span>
+<span class="n">_THREAD_ID_MASK</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">_sys</span><span class="o">.</span><span class="n">maxsize</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">_log_prefix</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># later set to google2_log_prefix</span>
+
+<span class="c1"># Counter to keep track of number of log entries per token.</span>
+<span class="n">_log_counter_per_token</span> <span class="o">=</span> <span class="p">{}</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.TaskLevelStatusMessage&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">TaskLevelStatusMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">):</span>
+  <span class="n">error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.flush&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">flush</span><span class="p">():</span>
+  <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="c1"># Code below is taken from pyglib/logging</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.vlog&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">vlog</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_GetNextLogCountPerToken</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Wrapper for _log_counter_per_token.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    token: The token for which to look up the count.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The number of times this function has been called with</span>
+<span class="sd">    *token* as an argument (starting at 0)</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">global</span> <span class="n">_log_counter_per_token</span>  <span class="c1"># pylint: disable=global-variable-not-assigned</span>
+  <span class="n">_log_counter_per_token</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">_log_counter_per_token</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_log_counter_per_token</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.log_every_n&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">log_every_n</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Log &#39;msg % args&#39; at level &#39;level&#39; once per &#39;n&#39; times.</span>
+
+<span class="sd">  Logs the 1st call, (N+1)st call, (2N+1)st call,  etc.</span>
+<span class="sd">  Not threadsafe.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    level: The level at which to log.</span>
+<span class="sd">    msg: The message to be logged.</span>
+<span class="sd">    n: The number of times this should be called before it is logged.</span>
+<span class="sd">    *args: The args to be substituted into the msg.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">_GetNextLogCountPerToken</span><span class="p">(</span><span class="n">_GetFileAndLine</span><span class="p">())</span>
+  <span class="n">log_if</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="ow">not</span> <span class="p">(</span><span class="n">count</span> <span class="o">%</span> <span class="n">n</span><span class="p">),</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.log_first_n&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">log_first_n</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>  <span class="c1"># pylint: disable=g-bad-name</span>
+  <span class="sd">&quot;&quot;&quot;Log &#39;msg % args&#39; at level &#39;level&#39; only first &#39;n&#39; times.</span>
+
+<span class="sd">  Not threadsafe.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    level: The level at which to log.</span>
+<span class="sd">    msg: The message to be logged.</span>
+<span class="sd">    n: The number of times this should be called before it is logged.</span>
+<span class="sd">    *args: The args to be substituted into the msg.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="n">_GetNextLogCountPerToken</span><span class="p">(</span><span class="n">_GetFileAndLine</span><span class="p">())</span>
+  <span class="n">log_if</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.log_if&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">log_if</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Log &#39;msg % args&#39; at level &#39;level&#39; only if condition is fulfilled.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">vlog</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_GetFileAndLine</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Returns (filename, linenumber) for the stack frame.&quot;&quot;&quot;</span>
+  <span class="n">code</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">_get_caller</span><span class="p">()</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">code</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;&lt;unknown&gt;&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">co_filename</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">f_lineno</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">google2_log_prefix</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">timestamp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_and_line</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Assemble a logline prefix using the google2 format.&quot;&quot;&quot;</span>
+  <span class="c1"># pylint: disable=global-variable-not-assigned</span>
+  <span class="k">global</span> <span class="n">_level_names</span>
+  <span class="c1"># pylint: enable=global-variable-not-assigned</span>
+
+  <span class="c1"># Record current time</span>
+  <span class="n">now</span> <span class="o">=</span> <span class="n">timestamp</span> <span class="ow">or</span> <span class="n">_time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+  <span class="n">now_tuple</span> <span class="o">=</span> <span class="n">_time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+  <span class="n">now_microsecond</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span> <span class="o">*</span> <span class="p">(</span><span class="n">now</span> <span class="o">%</span> <span class="mf">1.0</span><span class="p">))</span>
+
+  <span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span> <span class="o">=</span> <span class="n">file_and_line</span> <span class="ow">or</span> <span class="n">_GetFileAndLine</span><span class="p">()</span>
+  <span class="n">basename</span> <span class="o">=</span> <span class="n">_os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+
+  <span class="c1"># Severity string</span>
+  <span class="n">severity</span> <span class="o">=</span> <span class="s1">&#39;I&#39;</span>
+  <span class="k">if</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">_level_names</span><span class="p">:</span>
+    <span class="n">severity</span> <span class="o">=</span> <span class="n">_level_names</span><span class="p">[</span><span class="n">level</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+  <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%c%02d%02d</span><span class="s1"> </span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">:</span><span class="si">%02d</span><span class="s1">.</span><span class="si">%06d</span><span class="s1"> </span><span class="si">%5d</span><span class="s1"> </span><span class="si">%s</span><span class="s1">:</span><span class="si">%d</span><span class="s1">] &#39;</span> <span class="o">%</span> <span class="p">(</span>
+      <span class="n">severity</span><span class="p">,</span>
+      <span class="n">now_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>  <span class="c1"># month</span>
+      <span class="n">now_tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>  <span class="c1"># day</span>
+      <span class="n">now_tuple</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>  <span class="c1"># hour</span>
+      <span class="n">now_tuple</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>  <span class="c1"># min</span>
+      <span class="n">now_tuple</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>  <span class="c1"># sec</span>
+      <span class="n">now_microsecond</span><span class="p">,</span>
+      <span class="n">_get_thread_id</span><span class="p">(),</span>
+      <span class="n">basename</span><span class="p">,</span>
+      <span class="n">line</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">s</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.get_verbosity&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">get_verbosity</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Return how much logging output will be produced.&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">getEffectiveLevel</span><span class="p">()</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.set_verbosity&#39;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">set_verbosity</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Sets the threshold for what messages will be logged.&quot;&quot;&quot;</span>
+  <span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_get_thread_id</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Get id of current thread, suitable for logging as an unsigned quantity.&quot;&quot;&quot;</span>
+  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="n">thread_id</span> <span class="o">=</span> <span class="n">six</span><span class="o">.</span><span class="n">moves</span><span class="o">.</span><span class="n">_thread</span><span class="o">.</span><span class="n">get_ident</span><span class="p">()</span>
+  <span class="c1"># pylint:enable=protected-access</span>
+  <span class="k">return</span> <span class="n">thread_id</span> <span class="o">&amp;</span> <span class="n">_THREAD_ID_MASK</span>
+
+
+<span class="n">_log_prefix</span> <span class="o">=</span> <span class="n">google2_log_prefix</span>
+
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.DEBUG&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">export_constant</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">)</span>
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.ERROR&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">export_constant</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">)</span>
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.FATAL&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">export_constant</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;FATAL&#39;</span><span class="p">)</span>
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.INFO&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">export_constant</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;INFO&#39;</span><span class="p">)</span>
+<span class="n">tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;logging.WARN&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">export_constant</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="s1">&#39;WARN&#39;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

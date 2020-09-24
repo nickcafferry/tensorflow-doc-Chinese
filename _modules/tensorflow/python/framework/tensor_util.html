@@ -1,0 +1,1390 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.tensor_util &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.tensor_util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.tensor_util</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Utilities to create TensorProtos.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">tensor_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.core.framework</span> <span class="k">import</span> <span class="n">tensor_shape_pb2</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_like</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">compat</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># Fallback in case fast_tensor_util is not properly compiled.</span>
+<span class="c1"># pylint: disable=g-import-not-at-top</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">fast_tensor_util</span>
+  <span class="n">_FAST_TENSOR_UTIL_AVAILABLE</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+  <span class="n">_FAST_TENSOR_UTIL_AVAILABLE</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="c1"># pylint: enable=g-import-not-at-top</span>
+
+
+<span class="k">def</span> <span class="nf">ExtractBitsFromFloat16</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">SlowAppendFloat16ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+  <span class="n">tensor_proto</span><span class="o">.</span><span class="n">half_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">ExtractBitsFromFloat16</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_MediumAppendFloat16ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+  <span class="c1"># TODO: Remove the conversion if cython supports np.float16_t</span>
+  <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendFloat16ArrayToTensorProto</span><span class="p">(</span>
+      <span class="n">tensor_proto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">proto_values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">ExtractBitsFromBFloat16</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+      <span class="n">x</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">SlowAppendBFloat16ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+  <span class="n">tensor_proto</span><span class="o">.</span><span class="n">half_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">ExtractBitsFromBFloat16</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">FastAppendBFloat16ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+  <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendBFloat16ArrayToTensorProto</span><span class="p">(</span>
+      <span class="n">tensor_proto</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+          <span class="n">proto_values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="n">_FAST_TENSOR_UTIL_AVAILABLE</span><span class="p">:</span>
+  <span class="n">_NP_TO_APPEND_FN</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">FastAppendBFloat16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">:</span>
+          <span class="n">_MediumAppendFloat16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendFloat32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendFloat64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendComplex64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendComplex128ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendObjectArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendBoolArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendUInt8ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span>
+          <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendInt32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="c1"># NOTE(touts): Intentionally no way to feed a DT_BFLOAT16.</span>
+  <span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendFloat32ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">float_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendFloat64ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">double_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendIntArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">int_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendInt64ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">int64_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendQIntArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">int_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendUInt32ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">uint32_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendUInt64ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">uint64_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendComplex64ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">scomplex_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="p">]])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendComplex128ArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">dcomplex_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="p">]])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendObjectArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">string_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">compat</span><span class="o">.</span><span class="n">as_bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="k">def</span> <span class="nf">SlowAppendBoolArrayToTensorProto</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">):</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">bool_val</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">])</span>
+
+  <span class="n">_NP_TO_APPEND_FN</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendBFloat16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float16</span><span class="p">:</span> <span class="n">SlowAppendFloat16ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span> <span class="n">SlowAppendFloat32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span> <span class="n">SlowAppendFloat64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">:</span> <span class="n">SlowAppendIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span> <span class="n">SlowAppendInt64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">:</span> <span class="n">SlowAppendIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">:</span> <span class="n">SlowAppendIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint32</span><span class="p">:</span> <span class="n">SlowAppendUInt32ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">uint64</span><span class="p">:</span> <span class="n">SlowAppendUInt64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">:</span> <span class="n">SlowAppendIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">:</span> <span class="n">SlowAppendIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span> <span class="n">SlowAppendComplex64ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span> <span class="n">SlowAppendComplex128ArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">object</span><span class="p">:</span> <span class="n">SlowAppendObjectArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span> <span class="n">SlowAppendBoolArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendQIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendQIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendQIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendQIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">:</span> <span class="n">SlowAppendQIntArrayToTensorProto</span><span class="p">,</span>
+      <span class="c1"># NOTE(touts): Intentionally no way to feed a DT_BFLOAT16.</span>
+  <span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">GetFromNumpyDTypeDict</span><span class="p">(</span><span class="n">dtype_dict</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+  <span class="c1"># NOTE: dtype_dict.get(dtype) always returns None.</span>
+  <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">six</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(</span><span class="n">dtype_dict</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="n">dtype</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">val</span>
+  <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">GetNumpyAppendFn</span><span class="p">(</span><span class="n">dtype</span><span class="p">):</span>
+  <span class="c1"># numpy dtype for strings are variable length. We can not compare</span>
+  <span class="c1"># dtype with a single constant (np.string does not exist) to decide</span>
+  <span class="c1"># dtype is a &quot;string&quot; type. We need to compare the dtype.type to be</span>
+  <span class="c1"># sure it&#39;s a string type.</span>
+  <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">string_</span> <span class="ow">or</span> <span class="n">dtype</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">unicode_</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">_FAST_TENSOR_UTIL_AVAILABLE</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">fast_tensor_util</span><span class="o">.</span><span class="n">AppendObjectArrayToTensorProto</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">SlowAppendObjectArrayToTensorProto</span>
+  <span class="k">return</span> <span class="n">GetFromNumpyDTypeDict</span><span class="p">(</span><span class="n">_NP_TO_APPEND_FN</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">TensorShapeProtoToList</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Convert a TensorShape to a list.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    shape: A TensorShapeProto.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    List of integers representing the dimensions of the tensor.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">shape</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_GetDenseDimensions</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns the inferred dense dimensions of a list of lists.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="p">[]</span>
+  <span class="k">elif</span> <span class="ow">not</span> <span class="n">list_of_lists</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">)]</span> <span class="o">+</span> <span class="n">_GetDenseDimensions</span><span class="p">(</span><span class="n">list_of_lists</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_FlattenToStrings</span><span class="p">(</span><span class="n">nested_strings</span><span class="p">):</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nested_strings</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">inner</span> <span class="ow">in</span> <span class="n">nested_strings</span><span class="p">:</span>
+      <span class="k">for</span> <span class="n">flattened_string</span> <span class="ow">in</span> <span class="n">_FlattenToStrings</span><span class="p">(</span><span class="n">inner</span><span class="p">):</span>
+        <span class="k">yield</span> <span class="n">flattened_string</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">yield</span> <span class="n">nested_strings</span>
+
+
+<span class="n">_TENSOR_CONTENT_TYPES</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float64</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">uint32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">uint64</span>
+<span class="p">])</span>
+
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="k">def</span> <span class="nf">_check_failed</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+  <span class="c1"># NB. none of the _check_* functions could raise a ValueError, so</span>
+  <span class="c1"># it is safe to use here.</span>
+  <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_check_quantized</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+  <span class="c1"># Cannot rely on `nest` because the leaves are tuples.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="n">_check_failed</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">_check_int</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">_check_quantized</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_generate_isinstance_check</span><span class="p">(</span><span class="n">expected_types</span><span class="p">):</span>
+  <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">_check_failed</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">expected_types</span><span class="p">)]</span>
+  <span class="k">return</span> <span class="n">inner</span>
+
+<span class="n">_check_int</span> <span class="o">=</span> <span class="n">_generate_isinstance_check</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">compat</span><span class="o">.</span><span class="n">integral_types</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">))</span>
+<span class="n">_check_float</span> <span class="o">=</span> <span class="n">_generate_isinstance_check</span><span class="p">(</span><span class="n">compat</span><span class="o">.</span><span class="n">real_types</span><span class="p">)</span>
+<span class="n">_check_complex</span> <span class="o">=</span> <span class="n">_generate_isinstance_check</span><span class="p">(</span><span class="n">compat</span><span class="o">.</span><span class="n">complex_types</span><span class="p">)</span>
+<span class="n">_check_str</span> <span class="o">=</span> <span class="n">_generate_isinstance_check</span><span class="p">(</span><span class="n">compat</span><span class="o">.</span><span class="n">bytes_or_text_types</span><span class="p">)</span>
+<span class="n">_check_bool</span> <span class="o">=</span> <span class="n">_generate_isinstance_check</span><span class="p">(</span><span class="nb">bool</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_check_not_tensor</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+  <span class="n">_</span> <span class="o">=</span> <span class="p">[</span><span class="n">_check_failed</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+       <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)]</span>
+<span class="c1"># pylint: enable=invalid-name</span>
+
+<span class="n">_TF_TO_IS_OK</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span> <span class="n">_check_bool</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span> <span class="n">_check_complex</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span> <span class="n">_check_complex</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">float16</span><span class="p">:</span> <span class="n">_check_float</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span> <span class="n">_check_float</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span> <span class="n">_check_float</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">int16</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">int8</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="p">:</span> <span class="n">_check_quantized</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span><span class="p">:</span> <span class="n">_check_quantized</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="p">:</span> <span class="n">_check_quantized</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span><span class="p">:</span> <span class="n">_check_quantized</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="p">:</span> <span class="n">_check_quantized</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">:</span> <span class="n">_check_str</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">uint16</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">uint8</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">uint32</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+    <span class="n">dtypes</span><span class="o">.</span><span class="n">uint64</span><span class="p">:</span> <span class="n">_check_int</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">_AssertCompatible</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_not_tensor</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">fn</span> <span class="o">=</span> <span class="n">_TF_TO_IS_OK</span><span class="p">[</span><span class="n">dtype</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+      <span class="c1"># There isn&#39;t a specific fn, so we try to do the best possible.</span>
+      <span class="k">if</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_integer</span><span class="p">:</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_int</span>
+      <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_floating</span><span class="p">:</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_float</span>
+      <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_complex</span><span class="p">:</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_complex</span>
+      <span class="k">elif</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_quantized</span><span class="p">:</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_quantized</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">fn</span> <span class="o">=</span> <span class="n">_check_not_tensor</span>
+
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">fn</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="p">[</span><span class="n">mismatch</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="o">.</span><span class="n">args</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected any non-tensor type, got a tensor instead.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected </span><span class="si">%s</span><span class="s2">, got </span><span class="si">%s</span><span class="s2"> of type &#39;</span><span class="si">%s</span><span class="s2">&#39; instead.&quot;</span> <span class="o">%</span>
+                      <span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">repr</span><span class="p">(</span><span class="n">mismatch</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">mismatch</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_is_array_like</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Check if a given object is array-like.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">_EagerTensorBase</span><span class="p">):</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="c1"># Tensor implements __array__ only so it can inform the user that it is not</span>
+    <span class="c1"># a valid array.</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+  <span class="c1"># TODO(slebedev): an object could also implement C-level array interface.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">callable</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;__array__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span> <span class="ow">or</span>
+      <span class="nb">isinstance</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s2">&quot;__array_interface__&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="nb">dict</span><span class="p">)):</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="k">try</span><span class="p">:</span>
+    <span class="nb">memoryview</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+  <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">False</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">)</span>
+
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<div class="viewcode-block" id="make_tensor_proto"><a class="viewcode-back" href="../../../../index.html#tensorflow.make_tensor_proto">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;make_tensor_proto&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">make_tensor_proto</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verify_shape</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="n">allow_broadcast</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Create a TensorProto.</span>
+
+<span class="sd">  In TensorFlow 2.0, representing tensors as protos should no longer be a</span>
+<span class="sd">  common workflow. That said, this utility function is still useful for</span>
+<span class="sd">  generating TF Serving request protos:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">    request = tensorflow_serving.apis.predict_pb2.PredictRequest()</span>
+<span class="sd">    request.model_spec.name = &quot;my_model&quot;</span>
+<span class="sd">    request.model_spec.signature_name = &quot;serving_default&quot;</span>
+<span class="sd">    request.inputs[&quot;images&quot;].CopyFrom(tf.make_tensor_proto(X_new))</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  `make_tensor_proto` accepts &quot;values&quot; of a python scalar, a python list, a</span>
+<span class="sd">  numpy ndarray, or a numpy scalar.</span>
+
+<span class="sd">  If &quot;values&quot; is a python scalar or a python list, make_tensor_proto</span>
+<span class="sd">  first convert it to numpy ndarray. If dtype is None, the</span>
+<span class="sd">  conversion tries its best to infer the right numpy data</span>
+<span class="sd">  type. Otherwise, the resulting numpy array has a compatible data</span>
+<span class="sd">  type with the given dtype.</span>
+
+<span class="sd">  In either case above, the numpy ndarray (either the caller provided</span>
+<span class="sd">  or the auto-converted) must have the compatible type with dtype.</span>
+
+<span class="sd">  `make_tensor_proto` then converts the numpy array to a tensor proto.</span>
+
+<span class="sd">  If &quot;shape&quot; is None, the resulting tensor proto represents the numpy</span>
+<span class="sd">  array precisely.</span>
+
+<span class="sd">  Otherwise, &quot;shape&quot; specifies the tensor&#39;s shape and the numpy array</span>
+<span class="sd">  can not have more elements than what &quot;shape&quot; specifies.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    values:         Values to put in the TensorProto.</span>
+<span class="sd">    dtype:          Optional tensor_pb2 DataType value.</span>
+<span class="sd">    shape:          List of integers representing the dimensions of tensor.</span>
+<span class="sd">    verify_shape:   Boolean that enables verification of a shape of values.</span>
+<span class="sd">    allow_broadcast:  Boolean that enables allowing scalars and 1 length vector</span>
+<span class="sd">        broadcasting. Cannot be true when verify_shape is true.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `TensorProto`. Depending on the type, it may contain data in the</span>
+<span class="sd">    &quot;tensor_content&quot; attribute, which is not directly useful to Python programs.</span>
+<span class="sd">    To access the values you should convert the proto back to a numpy ndarray</span>
+<span class="sd">    with `tf.make_ndarray(proto)`.</span>
+
+<span class="sd">    If `values` is a `TensorProto`, it is immediately returned; `dtype` and</span>
+<span class="sd">    `shape` are ignored.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError:  if unsupported types are provided.</span>
+<span class="sd">    ValueError: if arguments have inappropriate values or if verify_shape is</span>
+<span class="sd">     True and shape of values is not equals to a shape from the argument.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="n">allow_broadcast</span> <span class="ow">and</span> <span class="n">verify_shape</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;allow_broadcast and verify_shape are not both allowed.&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">tensor_pb2</span><span class="o">.</span><span class="n">TensorProto</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">values</span>
+
+  <span class="k">if</span> <span class="n">dtype</span><span class="p">:</span>
+    <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="n">is_quantized</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="n">dtype</span> <span class="ow">in</span> <span class="p">[</span>
+          <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span><span class="p">,</span>
+          <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span>
+      <span class="p">])</span>
+
+  <span class="k">if</span> <span class="n">_is_array_like</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+  <span class="c1"># We first convert value to a numpy array or scalar.</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">generic</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">and</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_numpy_compatible</span><span class="p">:</span>
+      <span class="n">nparray</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">nparray</span> <span class="o">=</span> <span class="n">values</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;None values not supported.&quot;</span><span class="p">)</span>
+    <span class="c1"># if dtype is provided, forces numpy array to be the type</span>
+    <span class="c1"># provided if possible.</span>
+    <span class="k">if</span> <span class="n">dtype</span> <span class="ow">and</span> <span class="n">dtype</span><span class="o">.</span><span class="n">is_numpy_compatible</span><span class="p">:</span>
+      <span class="n">np_dt</span> <span class="o">=</span> <span class="n">dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">np_dt</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># If shape is None, numpy.prod returns None when dtype is not set, but</span>
+    <span class="c1"># raises exception when dtype is set to np.int64</span>
+    <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">nparray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np_dt</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">_AssertCompatible</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+      <span class="n">nparray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np_dt</span><span class="p">)</span>
+      <span class="c1"># check to them.</span>
+      <span class="c1"># We need to pass in quantized values as tuples, so don&#39;t apply the shape</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">nparray</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="n">_GetDenseDimensions</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="ow">and</span>
+          <span class="ow">not</span> <span class="n">is_quantized</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Argument must be a dense tensor: </span><span class="si">%s</span><span class="s2">&quot;&quot;&quot;</span>
+                         <span class="sd">&quot;&quot;&quot; - got shape %s, but wanted %s.&quot;&quot;&quot;</span> <span class="o">%</span>
+                         <span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">nparray</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span>
+                          <span class="n">_GetDenseDimensions</span><span class="p">(</span><span class="n">values</span><span class="p">)))</span>
+
+    <span class="c1"># python/numpy default float type is float64. We prefer float32 instead.</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">nparray</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">nparray</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="c1"># python/numpy default int type is int64. We prefer int32 instead.</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">nparray</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span> <span class="ow">and</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">downcasted_array</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+      <span class="c1"># Do not down cast if it leads to precision loss.</span>
+      <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">downcasted_array</span><span class="p">,</span> <span class="n">nparray</span><span class="p">):</span>
+        <span class="n">nparray</span> <span class="o">=</span> <span class="n">downcasted_array</span>
+
+  <span class="c1"># if dtype is provided, it must be compatible with what numpy</span>
+  <span class="c1"># conversion says.</span>
+  <span class="n">numpy_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">nparray</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">numpy_dtype</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unrecognized data type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">nparray</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="c1"># If dtype was specified and is a quantized type, we convert</span>
+  <span class="c1"># numpy_dtype back into the quantized version.</span>
+  <span class="k">if</span> <span class="n">is_quantized</span><span class="p">:</span>
+    <span class="n">numpy_dtype</span> <span class="o">=</span> <span class="n">dtype</span>
+
+  <span class="k">if</span> <span class="n">dtype</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;base_dtype&quot;</span><span class="p">)</span> <span class="ow">or</span>
+                            <span class="n">dtype</span><span class="o">.</span><span class="n">base_dtype</span> <span class="o">!=</span> <span class="n">numpy_dtype</span><span class="o">.</span><span class="n">base_dtype</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Incompatible types: </span><span class="si">%s</span><span class="s2"> vs. </span><span class="si">%s</span><span class="s2">. Value is </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                    <span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">nparray</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
+
+  <span class="c1"># If shape is not given, get the shape from the numpy array.</span>
+  <span class="k">if</span> <span class="n">shape</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">is_same_size</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">shape_size</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">shape</span><span class="p">]</span>
+    <span class="n">shape_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+    <span class="n">is_same_size</span> <span class="o">=</span> <span class="n">shape_size</span> <span class="o">==</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="k">if</span> <span class="n">allow_broadcast</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)</span> <span class="ow">or</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="nb">tuple</span><span class="p">():</span>
+        <span class="k">pass</span>
+      <span class="k">elif</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">shape_size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected Tensor&#39;s shape: </span><span class="si">%s</span><span class="s2">, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span>
+                        <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">verify_shape</span> <span class="ow">and</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span> <span class="o">!=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Expected Tensor&#39;s shape: </span><span class="si">%s</span><span class="s2">, got </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span>
+                        <span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">shape</span><span class="p">),</span> <span class="n">nparray</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+      <span class="k">if</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="n">shape_size</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Too many elements provided. Needed at most </span><span class="si">%d</span><span class="s2">, but received </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span>
+            <span class="p">(</span><span class="n">shape_size</span><span class="p">,</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+
+  <span class="n">tensor_proto</span> <span class="o">=</span> <span class="n">tensor_pb2</span><span class="o">.</span><span class="n">TensorProto</span><span class="p">(</span>
+      <span class="n">dtype</span><span class="o">=</span><span class="n">numpy_dtype</span><span class="o">.</span><span class="n">as_datatype_enum</span><span class="p">,</span>
+      <span class="n">tensor_shape</span><span class="o">=</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">as_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span><span class="o">.</span><span class="n">as_proto</span><span class="p">())</span>
+
+  <span class="k">if</span> <span class="n">is_same_size</span> <span class="ow">and</span> <span class="n">numpy_dtype</span> <span class="ow">in</span> <span class="n">_TENSOR_CONTENT_TYPES</span> <span class="ow">and</span> <span class="n">shape_size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">nparray</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">nparray</span><span class="o">.</span><span class="n">itemsize</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">31</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Cannot create a tensor proto whose content is larger than 2GB.&quot;</span><span class="p">)</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">tensor_content</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">tostring</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">tensor_proto</span>
+
+  <span class="c1"># If we were not given values as a numpy array, compute the proto_values</span>
+  <span class="c1"># from the given values directly, to avoid numpy trimming nulls from the</span>
+  <span class="c1"># strings. Since values could be a list of strings, or a multi-dimensional</span>
+  <span class="c1"># list of lists that might or might not correspond to the given shape,</span>
+  <span class="c1"># we flatten it conservatively.</span>
+  <span class="k">if</span> <span class="n">numpy_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">string</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+    <span class="n">proto_values</span> <span class="o">=</span> <span class="n">_FlattenToStrings</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+    <span class="c1"># At this point, values may be a list of objects that we could not</span>
+    <span class="c1"># identify a common type for (hence it was inferred as</span>
+    <span class="c1"># np.object/dtypes.string).  If we are unable to convert it to a</span>
+    <span class="c1"># string, we raise a more helpful error message.</span>
+    <span class="c1">#</span>
+    <span class="c1"># Ideally, we&#39;d be able to convert the elements of the list to a</span>
+    <span class="c1"># common type, but this type inference requires some thinking and</span>
+    <span class="c1"># so we defer it for now.</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">str_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">compat</span><span class="o">.</span><span class="n">as_bytes</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proto_values</span><span class="p">]</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Failed to convert object of type </span><span class="si">%s</span><span class="s2"> to Tensor. &quot;</span>
+                      <span class="s2">&quot;Contents: </span><span class="si">%s</span><span class="s2">. Consider casting elements to a &quot;</span>
+                      <span class="s2">&quot;supported type.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">),</span> <span class="n">values</span><span class="p">))</span>
+    <span class="n">tensor_proto</span><span class="o">.</span><span class="n">string_val</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">str_values</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_proto</span>
+
+  <span class="c1"># TensorFlow expects C order (a.k.a., eigen row major).</span>
+  <span class="n">proto_values</span> <span class="o">=</span> <span class="n">nparray</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+  <span class="n">append_fn</span> <span class="o">=</span> <span class="n">GetNumpyAppendFn</span><span class="p">(</span><span class="n">proto_values</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">append_fn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Element type not supported in TensorProto: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">numpy_dtype</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">append_fn</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">proto_values</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">tensor_proto</span></div>
+<span class="c1"># pylint: enable=invalid-name</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;make_ndarray&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">MakeNdarray</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Create a numpy ndarray from a tensor.</span>
+
+<span class="sd">  Create a numpy ndarray with the same shape and data as the tensor.</span>
+
+<span class="sd">  For example:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  # Tensor a has shape (2,3)</span>
+<span class="sd">  a = tf.constant([[1,2,3],[4,5,6]])</span>
+<span class="sd">  proto_tensor = tf.make_tensor_proto(a)  # convert `tensor a` to a proto tensor</span>
+<span class="sd">  tf.make_ndarray(proto_tensor) # output: array([[1, 2, 3],</span>
+<span class="sd">  #                                              [4, 5, 6]], dtype=int32)</span>
+<span class="sd">  # output has shape (2,3)</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: A TensorProto.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A numpy array with the tensor contents.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if tensor has unsupported type.</span>
+
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>
+  <span class="n">num_elements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+  <span class="n">tensor_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="n">tensor_dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span>
+
+  <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">tensor_content</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">frombuffer</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">tensor_content</span><span class="p">,</span>
+                          <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">:</span>
+    <span class="c1"># np.pad throws on these arrays of type np.object.</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">string_val</span><span class="p">)</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="n">num_elements</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">padding</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="n">last</span> <span class="o">=</span> <span class="n">values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">values</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+      <span class="n">values</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">last</span><span class="p">]</span> <span class="o">*</span> <span class="n">padding</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float16</span> <span class="ow">or</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">:</span>
+    <span class="c1"># the half_val field of the TensorProto stores the binary representation</span>
+    <span class="c1"># of the fp16: we need to reinterpret this as a proper float16</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">half_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint16</span><span class="p">)</span>
+    <span class="n">values</span><span class="o">.</span><span class="n">dtype</span> <span class="o">=</span> <span class="n">tensor_dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">float_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float64</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">double_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="ow">in</span> <span class="p">[</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">uint16</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int16</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int8</span><span class="p">,</span>
+      <span class="n">dtypes</span><span class="o">.</span><span class="n">qint32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">quint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint8</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">qint16</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">quint16</span>
+  <span class="p">]:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">int_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">int64_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex64</span><span class="p">:</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">scomplex_val</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">it</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">complex128</span><span class="p">:</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">dcomplex_val</span><span class="p">)</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">complex</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">it</span><span class="p">,</span> <span class="n">it</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor_dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fromiter</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">bool_val</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unsupported tensor type: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">values</span><span class="o">.</span><span class="n">size</span> <span class="o">!=</span> <span class="n">num_elements</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_elements</span> <span class="o">-</span> <span class="n">values</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="s2">&quot;edge&quot;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ShapeEquals</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns True if &quot;tensor_proto&quot; has the given &quot;shape&quot;.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor_proto: A TensorProto.</span>
+<span class="sd">    shape: A tensor shape, expressed as a TensorShape, list, or tuple.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    True if &quot;tensor_proto&quot; has the given &quot;shape&quot;, otherwise False.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If &quot;tensor_proto&quot; is not a TensorProto, or shape is not a</span>
+<span class="sd">      TensorShape, list, or tuple.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor_proto</span><span class="p">,</span> <span class="n">tensor_pb2</span><span class="o">.</span><span class="n">TensorProto</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;tensor_proto is not a tensor_pb2.TensorProto object&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">tensor_shape_pb2</span><span class="o">.</span><span class="n">TensorShapeProto</span><span class="p">):</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">shape</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>
+  <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;shape is not a list or tuple&quot;</span><span class="p">)</span>
+  <span class="n">tensor_shape_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tensor_proto</span><span class="o">.</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>
+  <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">tensor_shape_list</span><span class="p">,</span> <span class="n">shape</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_ConstantValue</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">partial</span><span class="p">):</span>
+  <span class="c1"># TODO(touts): Support Variables?</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> is not a Tensor, has type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">tensor</span><span class="p">)))</span>
+  <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Const&quot;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">MakeNdarray</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;value&quot;</span><span class="p">))</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Shape&quot;</span><span class="p">:</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">input_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+          <span class="p">[</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">],</span>
+          <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Size&quot;</span><span class="p">:</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">input_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">():</span>
+      <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">([</span><span class="n">dim</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">input_shape</span><span class="o">.</span><span class="n">dims</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Rank&quot;</span><span class="p">:</span>
+    <span class="n">input_shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">input_shape</span><span class="o">.</span><span class="n">ndims</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span>
+          <span class="n">shape</span><span class="o">=</span><span class="p">(),</span>
+          <span class="n">buffer</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">input_shape</span><span class="o">.</span><span class="n">ndims</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">),</span>
+          <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Range&quot;</span><span class="p">:</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">start</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">limit</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">delta</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tensor</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Cast&quot;</span><span class="p">:</span>
+    <span class="n">pre_cast</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">pre_cast</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">cast_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;DstT&quot;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">pre_cast</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">cast_dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Concat&quot;</span><span class="p">:</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+      <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;ConcatV2&quot;</span><span class="p">:</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+      <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Pack&quot;</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># Some imported GraphDefs have Pack ops with zero inputs. Those are invalid</span>
+    <span class="c1"># and shouldn&#39;t be produced, but to deal sensibly with them here we check</span>
+    <span class="c1"># and return None.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="c1"># We can&#39;t handle axis != 0 Packs at the moment.</span>
+    <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+      <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">partial</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">partial</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+      <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Unpack&quot;</span><span class="p">:</span>
+    <span class="c1"># We can&#39;t handle axis != 0 Unpacks at the moment.</span>
+    <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">partial</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">value</span><span class="p">[</span><span class="n">tensor</span><span class="o">.</span><span class="n">value_index</span><span class="p">]</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Split&quot;</span><span class="p">:</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">partial</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">dim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">split</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;num_split&quot;</span><span class="p">),</span> <span class="n">dim</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">split</span><span class="p">[</span><span class="n">tensor</span><span class="o">.</span><span class="n">value_index</span><span class="p">]</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Fill&quot;</span><span class="p">:</span>
+    <span class="n">fill_shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">fill_value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">fill_shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">()</span> <span class="ow">and</span> <span class="n">fill_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">fill_shape</span><span class="o">.</span><span class="n">as_list</span><span class="p">(),</span> <span class="n">fill_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">fill_value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Equal&quot;</span><span class="p">:</span>
+    <span class="n">value1</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">value1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">value2</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">value2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;NotEqual&quot;</span><span class="p">:</span>
+    <span class="n">value1</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">value1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">value2</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">value2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">not_equal</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">)</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;StopGradient&quot;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">partial</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;get_static_value&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">partial</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Returns the constant value of the given tensor, if efficiently calculable.</span>
+
+<span class="sd">  This function attempts to partially evaluate the given tensor, and</span>
+<span class="sd">  returns its value as a numpy ndarray if this succeeds.</span>
+
+<span class="sd">  Compatibility(V1): If `constant_value(tensor)` returns a non-`None` result, it</span>
+<span class="sd">  will no longer be possible to feed a different value for `tensor`. This allows</span>
+<span class="sd">  the result of this function to influence the graph that is constructed, and</span>
+<span class="sd">  permits static shape optimizations.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: The Tensor to be evaluated.</span>
+<span class="sd">    partial: If True, the returned numpy array is allowed to have partially</span>
+<span class="sd">      evaluated values. Values that can&#39;t be evaluated will be None.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A numpy ndarray containing the constant value of the given `tensor`,</span>
+<span class="sd">    or None if it cannot be calculated.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: if tensor is not an ops.Tensor.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">is_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tensor</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">_ConstantValue</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">partial</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">ret</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># The caller may now depend on the constant value of `tensor`, so we</span>
+    <span class="c1"># conservatively prevent it from being fed.</span>
+    <span class="n">tensor</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">prevent_feeding</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">ret</span>
+
+
+<span class="k">def</span> <span class="nf">constant_value_as_shape</span><span class="p">(</span><span class="n">tensor</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;A version of `constant_value()` that returns a `TensorShape`.</span>
+
+<span class="sd">  This version should be used when a constant tensor value is</span>
+<span class="sd">  interpreted as a (possibly partial) shape, e.g. in the shape</span>
+<span class="sd">  function for `tf.reshape()`. By explicitly requesting a</span>
+<span class="sd">  `TensorShape` as the return value, it is possible to represent</span>
+<span class="sd">  unknown dimensions; by contrast, `constant_value()` is</span>
+<span class="sd">  all-or-nothing.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: The rank-0 or rank-1 Tensor to be evaluated.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `TensorShape` based on the constant value of the given `tensor`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If the shape is rank-0 and is not statically known to be -1.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">as_shape</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">dim</span> <span class="k">if</span> <span class="n">dim</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">dim</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">numpy</span><span class="p">()])</span>
+
+  <span class="k">if</span> <span class="n">tensor</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span><span class="o">.</span><span class="n">ndims</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Received a scalar with unknown value as shape; require a statically &quot;</span>
+          <span class="s2">&quot;known scalar with value &#39;-1&#39; to describe an unknown shape.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;Received a scalar value &#39;</span><span class="si">%s</span><span class="s2">&#39; as shape; require a statically known &quot;</span>
+          <span class="s2">&quot;scalar with value &#39;-1&#39; to describe an unknown shape.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">unknown_shape</span><span class="p">()</span>
+
+  <span class="n">shape</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span><span class="o">.</span><span class="n">with_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">shape</span> <span class="o">==</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([])</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Cast&quot;</span><span class="p">:</span>
+    <span class="n">pre_cast</span> <span class="o">=</span> <span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">pre_cast</span><span class="o">.</span><span class="n">dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="c1"># the input to cast has a totally undefined shape; just return that.</span>
+      <span class="k">return</span> <span class="n">pre_cast</span>
+    <span class="n">cast_dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">as_dtype</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;DstT&quot;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">cast_dtype</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int64</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">unknown_shape</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">dest_dtype_shape_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">pre_cast</span><span class="o">.</span><span class="n">as_list</span><span class="p">()])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span>
+            <span class="n">cast_dtype</span><span class="o">.</span><span class="n">as_numpy_dtype</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([</span>
+        <span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">dest_dtype_shape_array</span><span class="p">])</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Shape&quot;</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_shape</span><span class="p">()</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Pack&quot;</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([])</span>  <span class="c1"># Empty list.</span>
+    <span class="c1"># Since we expect rank 1 inputs, Pack&#39;s axis must be zero, otherwise it</span>
+    <span class="c1"># would not be rank 1.</span>
+    <span class="k">assert</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;axis&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">pack_input</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">:</span>
+      <span class="c1"># `pack_input` must be a scalar. Attempt to evaluate it, and append it</span>
+      <span class="c1"># to `ret`.</span>
+      <span class="n">pack_input_val</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">pack_input</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">pack_input_val</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pack_input_val</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">new_dim</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="n">new_dim</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">Dimension</span><span class="p">(</span><span class="n">pack_input_val</span><span class="p">)</span>
+      <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">new_dim</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ret</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Concat&quot;</span><span class="p">:</span>
+    <span class="c1"># We assume that `tensor.op.inputs[0]` evaluates to 0, as this is</span>
+    <span class="c1"># the only legal value when concatenating vectors, and it will</span>
+    <span class="c1"># have been checked by a previous shape function.</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([])</span>  <span class="c1"># Empty list.</span>
+    <span class="k">for</span> <span class="n">concat_input</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+      <span class="c1"># `concat_input` must be a vector. Attempt to evaluate it as a shape,</span>
+      <span class="c1"># and concatenate it with `ret`.</span>
+      <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">concat_input</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ret</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;ConcatV2&quot;</span><span class="p">:</span>
+    <span class="c1"># We assume that `tensor.op.inputs[-1]` evaluates to 0, as this is</span>
+    <span class="c1"># the only legal value when concatenating vectors, and it will</span>
+    <span class="c1"># have been checked by a previous shape function.</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([])</span>  <span class="c1"># Empty list.</span>
+    <span class="k">for</span> <span class="n">concat_input</span> <span class="ow">in</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+      <span class="c1"># `concat_input` must be a vector. Attempt to evaluate it as a shape,</span>
+      <span class="c1"># and concatenate it with `ret`.</span>
+      <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">concat_input</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ret</span>
+  <span class="k">elif</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;StridedSlice&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">begin</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+      <span class="n">end</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+      <span class="n">strides</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+      <span class="k">if</span> <span class="n">begin</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">end</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">strides</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">begin</span> <span class="o">=</span> <span class="n">begin</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">end</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">strides</span> <span class="o">=</span> <span class="n">strides</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">begin_mask</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;begin_mask&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">begin_mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">begin</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">end_mask</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;end_mask&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">end_mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+          <span class="n">end</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">ellipsis_mask</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;ellipsis_mask&quot;</span><span class="p">)</span>
+        <span class="n">new_axis_mask</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;new_axis_mask&quot;</span><span class="p">)</span>
+        <span class="n">shrink_axis_mask</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;shrink_axis_mask&quot;</span><span class="p">)</span>
+        <span class="n">valid_attributes</span> <span class="o">=</span> <span class="p">(</span><span class="ow">not</span> <span class="n">ellipsis_mask</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">new_axis_mask</span> <span class="ow">and</span>
+                            <span class="ow">not</span> <span class="n">shrink_axis_mask</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">begin_mask</span> <span class="ow">or</span>
+                                                      <span class="p">(</span><span class="n">begin_mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">))</span> <span class="ow">and</span>
+                            <span class="p">(</span><span class="ow">not</span> <span class="n">end_mask</span> <span class="ow">or</span> <span class="p">(</span><span class="n">end_mask</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="n">valid_attributes</span><span class="p">:</span>  <span class="c1"># additional inputs not supported</span>
+          <span class="n">prev</span> <span class="o">=</span> <span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+          <span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="p">[</span><span class="n">begin</span><span class="p">:</span><span class="n">end</span><span class="p">:</span><span class="n">strides</span><span class="p">]</span>
+          <span class="n">ret</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">ret</span>
+
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>  <span class="c1"># Could come from get_attr or slicing prev.</span>
+      <span class="k">pass</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>  <span class="c1"># Could come from slicing prev.</span>
+      <span class="k">pass</span>
+  <span class="k">elif</span> <span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;Placeholder&quot;</span> <span class="ow">and</span>
+        <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">building_function</span> <span class="ow">and</span>
+        <span class="nb">hasattr</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="p">,</span> <span class="s2">&quot;internal_captures&quot;</span><span class="p">)):</span>
+    <span class="c1"># If we are inside a FuncGraph try to lookup the constant value of the</span>
+    <span class="c1"># corresponding external capture. Note that we only look at captures and</span>
+    <span class="c1"># not the fed inputs because those can be fed different values in different</span>
+    <span class="c1"># instantiations of the function call or different iterations of a</span>
+    <span class="c1"># tf.while_loop.</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">capture</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">internal_captures</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">capture</span> <span class="ow">is</span> <span class="n">tensor</span><span class="p">:</span>
+        <span class="n">external_capture</span> <span class="o">=</span> <span class="n">tensor</span><span class="o">.</span><span class="n">op</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">external_captures</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">external_capture</span><span class="p">)</span>
+
+  <span class="n">ret</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">unknown_shape</span><span class="p">(</span><span class="n">shape</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+  <span class="n">value</span> <span class="o">=</span> <span class="n">constant_value</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span>
+        <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">([</span><span class="n">d</span> <span class="k">if</span> <span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]))</span>
+  <span class="k">return</span> <span class="n">ret</span>
+
+
+<div class="viewcode-block" id="is_tensor"><a class="viewcode-back" href="../../../../index.html#tensorflow.is_tensor">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;is_tensor&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">is_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Checks whether `x` is a tensor or &quot;tensor-like&quot;.</span>
+
+<span class="sd">  If `is_tensor(x)` returns `True`, it is safe to assume that `x` is a tensor or</span>
+<span class="sd">  can be converted to a tensor using `ops.convert_to_tensor(x)`.</span>
+<span class="sd">  </span>
+<span class="sd">  Usage example:</span>
+<span class="sd">  </span>
+<span class="sd">  &gt;&gt;&gt; tf.is_tensor(tf.constant([[1,2,3],[4,5,6],[7,8,9]])) </span>
+<span class="sd">  True</span>
+<span class="sd">  &gt;&gt;&gt; tf.is_tensor(&quot;Hello World&quot;)</span>
+<span class="sd">  False</span>
+<span class="sd">    </span>
+<span class="sd">  Args:</span>
+<span class="sd">    x: A python object to check.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    `True` if `x` is a tensor or &quot;tensor-like&quot;, `False` if not.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tensor_like</span><span class="o">.</span><span class="n">_TensorLike</span><span class="p">)</span> <span class="ow">or</span>  <span class="c1"># pylint: disable=protected-access</span>
+          <span class="n">ops</span><span class="o">.</span><span class="n">is_dense_tensor_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">or</span>
+          <span class="nb">getattr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;is_tensor_like&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span></div>
+
+
+<span class="k">def</span> <span class="nf">shape_tensor</span><span class="p">(</span><span class="n">shape</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Convert to an int32 or int64 tensor, defaulting to int32 if empty.&quot;&quot;&quot;</span>
+  <span class="n">dtype</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="p">(</span><span class="nb">tuple</span><span class="p">,</span> <span class="nb">list</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">shape</span><span class="p">:</span>
+      <span class="n">dtype</span> <span class="o">=</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">int32</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="c1"># If there are Dimension objects in the shape, unwrap them. This can be a</span>
+      <span class="c1"># problem if v1 and v2 TensorShape objects get mixed up in partial</span>
+      <span class="c1"># conversions, leading to shapes such as (1, 2, Dimension(5)), which are</span>
+      <span class="c1"># not convertible to Tensors because of mixed content.</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">dimension_value</span><span class="p">,</span> <span class="n">shape</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;shape&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># DO NOT USE: For testing only.</span>
+<span class="n">_ENABLE_MAYBE_SET_STATIC_SHAPE</span> <span class="o">=</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">maybe_set_static_shape</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shape</span><span class="p">):</span>  <span class="c1"># pylint: disable=invalid-name</span>
+  <span class="sd">&quot;&quot;&quot;Sets the shape of `tensor` to the `shape`&#39;s constant value, if inferrable.</span>
+
+<span class="sd">  This is a temporary workaround to fix shape inference across functional op</span>
+<span class="sd">  boundaries. E.g.</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  shape = tf.constant([3])</span>
+<span class="sd">  @tf.function</span>
+<span class="sd">  def f():</span>
+<span class="sd">    u = tf.random_uniform(shape)</span>
+<span class="sd">    return u</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  If we were to rely solely on C++ shape inference, the shape of `u` inside</span>
+<span class="sd">  `f` would be unknown because C++ shape inference is not aware of the outer</span>
+<span class="sd">  graph and all it sees is a Placeholder node when backtracing the captured</span>
+<span class="sd">  tensor for `shape`. `maybe_set_static_shape` computes the static shape value</span>
+<span class="sd">  of `shape` by traversing the `FuncGraph` boundaries and sets the correct</span>
+<span class="sd">  shape.</span>
+
+<span class="sd">  A longer term solution would be to fix C++ shape inference.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: A tensor.</span>
+<span class="sd">    shape: A shape tensor.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">_ENABLE_MAYBE_SET_STATIC_SHAPE</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">()</span> <span class="ow">and</span>
+      <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">building_function</span> <span class="ow">and</span>
+      <span class="ow">not</span> <span class="n">tensor</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">is_fully_defined</span><span class="p">()</span> <span class="ow">and</span> <span class="n">is_tensor</span><span class="p">(</span><span class="n">shape</span><span class="p">)):</span>
+    <span class="n">shape</span> <span class="o">=</span> <span class="n">shape_tensor</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">const_shape</span> <span class="o">=</span> <span class="n">constant_value_as_shape</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">tensor</span><span class="o">.</span><span class="n">set_shape</span><span class="p">(</span><span class="n">const_shape</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

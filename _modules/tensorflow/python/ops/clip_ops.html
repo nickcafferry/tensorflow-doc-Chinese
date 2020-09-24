@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.clip_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.clip_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.clip_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+
+<span class="sd">&quot;&quot;&quot;Operations for clipping (gradient, weight) tensors to min/max values.&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">constant_op</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_nn_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">math_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">deprecation</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">dispatch</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.compat</span> <span class="k">import</span> <span class="n">collections_abc</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<div class="viewcode-block" id="clip_by_value"><a class="viewcode-back" href="../../../../index.html#tensorflow.clip_by_value">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;clip_by_value&quot;</span><span class="p">)</span>
+<span class="nd">@dispatch</span><span class="o">.</span><span class="n">add_dispatch_support</span>
+<span class="k">def</span> <span class="nf">clip_by_value</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_value_min</span><span class="p">,</span> <span class="n">clip_value_max</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Clips tensor values to a specified min and max.</span>
+
+<span class="sd">  Given a tensor `t`, this operation returns a tensor of the same type and</span>
+<span class="sd">  shape as `t` with its values clipped to `clip_value_min` and `clip_value_max`.</span>
+<span class="sd">  Any values less than `clip_value_min` are set to `clip_value_min`. Any values</span>
+<span class="sd">  greater than `clip_value_max` are set to `clip_value_max`.</span>
+
+<span class="sd">  Note: `clip_value_min` needs to be smaller or equal to `clip_value_max` for</span>
+<span class="sd">  correct results.</span>
+
+<span class="sd">  For example:</span>
+
+<span class="sd">  Basic usage passes a scalar as the min and max value.</span>
+
+<span class="sd">  &gt;&gt;&gt; t = tf.constant([[-10., -1., 0.], [0., 2., 10.]])</span>
+<span class="sd">  &gt;&gt;&gt; t2 = tf.clip_by_value(t, clip_value_min=-1, clip_value_max=1)</span>
+<span class="sd">  &gt;&gt;&gt; t2.numpy()</span>
+<span class="sd">  array([[-1., -1.,  0.],</span>
+<span class="sd">         [ 0.,  1.,  1.]], dtype=float32)</span>
+
+<span class="sd">  The min and max can be the same size as `t`, or broadcastable to that size.</span>
+
+<span class="sd">  &gt;&gt;&gt; t = tf.constant([[-1, 0., 10.], [-1, 0, 10]])</span>
+<span class="sd">  &gt;&gt;&gt; clip_min = [[2],[1]]</span>
+<span class="sd">  &gt;&gt;&gt; t3 = tf.clip_by_value(t, clip_value_min=clip_min, clip_value_max=100)</span>
+<span class="sd">  &gt;&gt;&gt; t3.numpy()</span>
+<span class="sd">  array([[ 2.,  2., 10.],</span>
+<span class="sd">         [ 1.,  1., 10.]], dtype=float32)</span>
+
+<span class="sd">  Broadcasting fails, intentionally, if you would expand the dimensions of `t`</span>
+
+<span class="sd">  &gt;&gt;&gt; t = tf.constant([[-1, 0., 10.], [-1, 0, 10]])</span>
+<span class="sd">  &gt;&gt;&gt; clip_min = [[[2, 1]]] # Has a third axis</span>
+<span class="sd">  &gt;&gt;&gt; t4 = tf.clip_by_value(t, clip_value_min=clip_min, clip_value_max=100)</span>
+<span class="sd">  Traceback (most recent call last):</span>
+<span class="sd">  ...</span>
+<span class="sd">  InvalidArgumentError: Incompatible shapes: [2,3] vs. [1,1,2]</span>
+
+<span class="sd">  It throws a `TypeError` if you try to clip an `int` to a `float` value</span>
+<span class="sd">  (`tf.cast` the input to `float` first).</span>
+
+<span class="sd">  &gt;&gt;&gt; t = tf.constant([[1, 2], [3, 4]], dtype=tf.int32)</span>
+<span class="sd">  &gt;&gt;&gt; t5 = tf.clip_by_value(t, clip_value_min=-3.1, clip_value_max=3.1)</span>
+<span class="sd">  Traceback (most recent call last):</span>
+<span class="sd">  ...</span>
+<span class="sd">  TypeError: Cannot convert ...</span>
+
+
+<span class="sd">  Args:</span>
+<span class="sd">    t: A `Tensor` or `IndexedSlices`.</span>
+<span class="sd">    clip_value_min: The minimum value to clip to. A scalar `Tensor` or one that</span>
+<span class="sd">      is broadcastable to the shape of `t`.</span>
+<span class="sd">    clip_value_max: The minimum value to clip to. A scalar `Tensor` or one that</span>
+<span class="sd">      is broadcastable to the shape of `t`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A clipped `Tensor` or `IndexedSlices`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    `tf.errors.InvalidArgumentError`: If the clip tensors would trigger array</span>
+<span class="sd">      broadcasting that would make the returned tensor larger than the input.</span>
+<span class="sd">    TypeError: If dtype of the input is `int32` and dtype of</span>
+<span class="sd">      the `clip_value_min` or `clip_value_max` is `float32`</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;clip_by_value&quot;</span><span class="p">,</span>
+                      <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_value_min</span><span class="p">,</span> <span class="n">clip_value_max</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Go through list of tensors, for each value in each tensor clip</span>
+    <span class="n">t_min</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">clip_value_max</span><span class="p">)</span>
+    <span class="c1"># Assert that the shape is compatible with the initial shape,</span>
+    <span class="c1"># to prevent unintentional broadcasting.</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">t_min</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="n">t_max</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">t_min</span><span class="p">,</span> <span class="n">clip_value_min</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">t_max</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">):</span>
+      <span class="n">t_max</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">(</span><span class="n">t_max</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">t_max</span></div>
+  <span class="c1"># TODO(scottzhu): switch to use new implementation in 2 weeks.</span>
+  <span class="c1"># return gen_math_ops.clip_by_value(</span>
+  <span class="c1">#     t, clip_value_min, clip_value_max, name=name)</span>
+
+
+<span class="c1"># TODO(scottzhu): switch to use new implementation in 2 weeks.</span>
+<span class="c1"># @ops.RegisterGradient(&quot;ClipByValue&quot;)</span>
+<span class="k">def</span> <span class="nf">_clip_by_value_grad</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="n">grad</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns grad of clip_by_value.&quot;&quot;&quot;</span>
+  <span class="n">x</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  <span class="n">z</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+  <span class="n">gdtype</span> <span class="o">=</span> <span class="n">grad</span><span class="o">.</span><span class="n">dtype</span>
+  <span class="n">sx</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+  <span class="n">sy</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+  <span class="n">sz</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+  <span class="n">gradshape</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+  <span class="n">zeros</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">gradshape</span><span class="p">,</span> <span class="n">gdtype</span><span class="p">)</span>
+  <span class="n">xymask</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">less</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="n">xzmask</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+  <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span> <span class="o">=</span> <span class="n">gen_array_ops</span><span class="o">.</span><span class="n">broadcast_gradient_args</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">sy</span><span class="p">)</span>
+  <span class="n">rx</span><span class="p">,</span> <span class="n">rz</span> <span class="o">=</span> <span class="n">gen_array_ops</span><span class="o">.</span><span class="n">broadcast_gradient_args</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">sz</span><span class="p">)</span>
+  <span class="n">xgrad</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">xymask</span><span class="p">,</span> <span class="n">xzmask</span><span class="p">),</span> <span class="n">zeros</span><span class="p">,</span> <span class="n">grad</span><span class="p">)</span>
+  <span class="n">ygrad</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">xymask</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="n">zeros</span><span class="p">)</span>
+  <span class="n">zgrad</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">xzmask</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="n">zeros</span><span class="p">)</span>
+  <span class="n">gx</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">xgrad</span><span class="p">,</span> <span class="n">rx</span><span class="p">),</span> <span class="n">sx</span><span class="p">)</span>
+  <span class="n">gy</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">ygrad</span><span class="p">,</span> <span class="n">ry</span><span class="p">),</span> <span class="n">sy</span><span class="p">)</span>
+  <span class="n">gz</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">zgrad</span><span class="p">,</span> <span class="n">rz</span><span class="p">),</span> <span class="n">sz</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">gx</span><span class="p">,</span> <span class="n">gy</span><span class="p">,</span> <span class="n">gz</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="clip_by_norm"><a class="viewcode-back" href="../../../../index.html#tensorflow.clip_by_norm">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;clip_by_norm&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">clip_by_norm</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Clips tensor values to a maximum L2-norm.</span>
+
+<span class="sd">  Given a tensor `t`, and a maximum clip value `clip_norm`, this operation</span>
+<span class="sd">  normalizes `t` so that its L2-norm is less than or equal to `clip_norm`,</span>
+<span class="sd">  along the dimensions given in `axes`. Specifically, in the default case</span>
+<span class="sd">  where all dimensions are used for calculation, if the L2-norm of `t` is</span>
+<span class="sd">  already less than or equal to `clip_norm`, then `t` is not modified. If</span>
+<span class="sd">  the L2-norm is greater than `clip_norm`, then this operation returns a</span>
+<span class="sd">  tensor of the same type and shape as `t` with its values set to:</span>
+
+<span class="sd">  `t * clip_norm / l2norm(t)`</span>
+
+<span class="sd">  In this case, the L2-norm of the output tensor is `clip_norm`.</span>
+
+<span class="sd">  As another example, if `t` is a matrix and `axes == [1]`, then each row</span>
+<span class="sd">  of the output will have L2-norm less than or equal to `clip_norm`. If</span>
+<span class="sd">  `axes == [0]` instead, each column of the output will be clipped.</span>
+
+<span class="sd">  This operation is typically used to clip gradients before applying them with</span>
+<span class="sd">  an optimizer.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t: A `Tensor` or `IndexedSlices`.</span>
+<span class="sd">    clip_norm: A 0-D (scalar) `Tensor` &gt; 0. A maximum clipping value.</span>
+<span class="sd">    axes: A 1-D (vector) `Tensor` of type int32 containing the dimensions</span>
+<span class="sd">      to use for computing the L2-norm. If `None` (the default), uses all</span>
+<span class="sd">      dimensions.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A clipped `Tensor` or `IndexedSlices`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If the clip_norm tensor is not a 0-D scalar tensor.</span>
+<span class="sd">    TypeError: If dtype of the input is not a floating point or</span>
+<span class="sd">      complex type.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;clip_by_norm&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate L2-norm, clip elements by ratio of clip_norm to L2-norm</span>
+    <span class="n">l2sum</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">values</span> <span class="o">*</span> <span class="n">values</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">l2sum</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="c1"># Two-tap tf.where trick to bypass NaN gradients</span>
+    <span class="n">l2sum_safe</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">l2sum</span><span class="p">,</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">l2sum</span><span class="p">))</span>
+    <span class="n">l2norm</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">l2sum_safe</span><span class="p">),</span> <span class="n">l2sum</span><span class="p">)</span>
+    <span class="n">intermediate</span> <span class="o">=</span> <span class="n">values</span> <span class="o">*</span> <span class="n">clip_norm</span>
+    <span class="c1"># Assert that the shape is compatible with the initial shape,</span>
+    <span class="c1"># to prevent unintentional broadcasting.</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">merge_with</span><span class="p">(</span><span class="n">intermediate</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="n">values_clip</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span>
+        <span class="n">intermediate</span> <span class="o">/</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">l2norm</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">(</span><span class="n">values_clip</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">values_clip</span></div>
+
+
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;linalg.global_norm&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;linalg.global_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;global_norm&quot;</span><span class="p">])</span>
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated_endpoints</span><span class="p">(</span><span class="s2">&quot;global_norm&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">global_norm</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Computes the global norm of multiple tensors.</span>
+
+<span class="sd">  Given a tuple or list of tensors `t_list`, this operation returns the</span>
+<span class="sd">  global norm of the elements in all tensors in `t_list`. The global norm is</span>
+<span class="sd">  computed as:</span>
+
+<span class="sd">  `global_norm = sqrt(sum([l2norm(t)**2 for t in t_list]))`</span>
+
+<span class="sd">  Any entries in `t_list` that are of type None are ignored.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t_list: A tuple or list of mixed `Tensors`, `IndexedSlices`, or None.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A 0-D (scalar) `Tensor` of type `float`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If `t_list` is not a sequence.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">collections_abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">)</span> <span class="ow">or</span>
+      <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;t_list should be a sequence&quot;</span><span class="p">)</span>
+  <span class="n">t_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">t_list</span><span class="p">)</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;global_norm&quot;</span><span class="p">,</span> <span class="n">t_list</span><span class="p">)</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">t</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_list</span><span class="p">)]</span>
+    <span class="n">half_squared_norms</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">colocate_with</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+          <span class="n">half_squared_norms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gen_nn_ops</span><span class="o">.</span><span class="n">l2_loss</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+    <span class="n">half_squared_norm</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">half_squared_norms</span><span class="p">))</span>
+
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span>
+        <span class="n">half_squared_norm</span> <span class="o">*</span>
+        <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">half_squared_norm</span><span class="o">.</span><span class="n">dtype</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;global_norm&quot;</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">norm</span>
+
+
+<div class="viewcode-block" id="clip_by_global_norm"><a class="viewcode-back" href="../../../../index.html#tensorflow.clip_by_global_norm">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;clip_by_global_norm&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">clip_by_global_norm</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">,</span> <span class="n">use_norm</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Clips values of multiple tensors by the ratio of the sum of their norms.</span>
+
+<span class="sd">  Given a tuple or list of tensors `t_list`, and a clipping ratio `clip_norm`,</span>
+<span class="sd">  this operation returns a list of clipped tensors `list_clipped`</span>
+<span class="sd">  and the global norm (`global_norm`) of all tensors in `t_list`. Optionally,</span>
+<span class="sd">  if you&#39;ve already computed the global norm for `t_list`, you can specify</span>
+<span class="sd">  the global norm with `use_norm`.</span>
+
+<span class="sd">  To perform the clipping, the values `t_list[i]` are set to:</span>
+
+<span class="sd">      t_list[i] * clip_norm / max(global_norm, clip_norm)</span>
+
+<span class="sd">  where:</span>
+
+<span class="sd">      global_norm = sqrt(sum([l2norm(t)**2 for t in t_list]))</span>
+
+<span class="sd">  If `clip_norm &gt; global_norm` then the entries in `t_list` remain as they are,</span>
+<span class="sd">  otherwise they&#39;re all shrunk by the global ratio.</span>
+
+<span class="sd">  If `global_norm == infinity` then the entries in `t_list` are all set to `NaN`</span>
+<span class="sd">  to signal that an error occurred.</span>
+
+<span class="sd">  Any of the entries of `t_list` that are of type `None` are ignored.</span>
+
+<span class="sd">  This is the correct way to perform gradient clipping (Pascanu et al., 2012).</span>
+
+<span class="sd">  However, it is slower than `clip_by_norm()` because all the parameters must be</span>
+<span class="sd">  ready before the clipping operation can be performed.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t_list: A tuple or list of mixed `Tensors`, `IndexedSlices`, or None.</span>
+<span class="sd">    clip_norm: A 0-D (scalar) `Tensor` &gt; 0. The clipping ratio.</span>
+<span class="sd">    use_norm: A 0-D (scalar) `Tensor` of type `float` (optional). The global</span>
+<span class="sd">      norm to use. If not provided, `global_norm()` is used to compute the norm.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    list_clipped: A list of `Tensors` of the same type as `list_t`.</span>
+<span class="sd">    global_norm: A 0-D (scalar) `Tensor` representing the global norm.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If `t_list` is not a sequence.</span>
+
+<span class="sd">  References:</span>
+<span class="sd">    On the difficulty of training Recurrent Neural Networks:</span>
+<span class="sd">      [Pascanu et al., 2012](http://proceedings.mlr.press/v28/pascanu13.html)</span>
+<span class="sd">      ([pdf](http://proceedings.mlr.press/v28/pascanu13.pdf))</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">collections_abc</span><span class="o">.</span><span class="n">Sequence</span><span class="p">)</span> <span class="ow">or</span>
+      <span class="nb">isinstance</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;t_list should be a sequence&quot;</span><span class="p">)</span>
+  <span class="n">t_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">t_list</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">use_norm</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">use_norm</span> <span class="o">=</span> <span class="n">global_norm</span><span class="p">(</span><span class="n">t_list</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;clip_by_global_norm&quot;</span><span class="p">,</span>
+                      <span class="n">t_list</span> <span class="o">+</span> <span class="p">[</span><span class="n">clip_norm</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="c1"># Calculate L2-norm, clip elements by ratio of clip_norm to L2-norm</span>
+    <span class="n">scale_for_finite</span> <span class="o">=</span> <span class="n">clip_norm</span> <span class="o">*</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span>
+        <span class="mf">1.0</span> <span class="o">/</span> <span class="n">use_norm</span><span class="p">,</span>
+        <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">use_norm</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span> <span class="o">/</span> <span class="n">clip_norm</span><span class="p">)</span>
+    <span class="n">scale</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">math_ops</span><span class="o">.</span><span class="n">is_finite</span><span class="p">(</span><span class="n">use_norm</span><span class="p">),</span>
+        <span class="n">scale_for_finite</span><span class="p">,</span>
+        <span class="c1"># Return NaN if use_norm is not finite.</span>
+        <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="s2">&quot;nan&quot;</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">use_norm</span><span class="o">.</span><span class="n">dtype</span><span class="p">))</span>
+
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">values</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)</span> <span class="k">else</span> <span class="n">t</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">t</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_list</span><span class="p">)]</span>
+
+    <span class="n">values_clipped</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">values_clipped</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">colocate_with</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+          <span class="n">values_clipped</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+              <span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">v</span> <span class="o">*</span> <span class="n">scale</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">_</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">i</span><span class="p">)))</span>
+
+    <span class="n">list_clipped</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">(</span><span class="n">c_v</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">IndexedSlices</span><span class="p">)</span>
+        <span class="k">else</span> <span class="n">c_v</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">c_v</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">values_clipped</span><span class="p">,</span> <span class="n">t_list</span><span class="p">)]</span>
+
+  <span class="k">return</span> <span class="n">list_clipped</span><span class="p">,</span> <span class="n">use_norm</span></div>
+
+
+<span class="nd">@deprecation</span><span class="o">.</span><span class="n">deprecated</span><span class="p">(</span>
+    <span class="n">date</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="s2">&quot;clip_by_average_norm is deprecated in TensorFlow 2.0. Please &quot;</span>
+    <span class="s2">&quot;use clip_by_norm(t, clip_norm * tf.cast(tf.size(t), tf.float32), name) &quot;</span>
+    <span class="s2">&quot;instead.&quot;</span><span class="p">)</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;clip_by_average_norm&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">clip_by_average_norm</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Clips tensor values to a maximum average L2-norm.</span>
+
+<span class="sd">  Given a tensor `t`, and a maximum clip value `clip_norm`, this operation</span>
+<span class="sd">  normalizes `t` so that its average L2-norm is less than or equal to</span>
+<span class="sd">  `clip_norm`. Specifically, if the average L2-norm is already less than or</span>
+<span class="sd">  equal to `clip_norm`, then `t` is not modified. If the average L2-norm is</span>
+<span class="sd">  greater than `clip_norm`, then this operation returns a tensor of the same</span>
+<span class="sd">  type and shape as `t` with its values set to:</span>
+
+<span class="sd">  `t * clip_norm / l2norm_avg(t)`</span>
+
+<span class="sd">  In this case, the average L2-norm of the output tensor is `clip_norm`.</span>
+
+<span class="sd">  This operation is typically used to clip gradients before applying them with</span>
+<span class="sd">  an optimizer.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    t: A `Tensor`.</span>
+<span class="sd">    clip_norm: A 0-D (scalar) `Tensor` &gt; 0. A maximum clipping value.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A clipped `Tensor`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;clip_by_average_norm&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">clip_norm</span><span class="p">])</span> <span class="k">as</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Calculate L2-norm per element, clip elements by ratio of clip_norm to</span>
+    <span class="c1"># L2-norm per element</span>
+    <span class="n">n_element</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">l2norm_inv</span> <span class="o">=</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">rsqrt</span><span class="p">(</span>
+        <span class="n">math_ops</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span> <span class="n">t</span><span class="p">,</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">array_ops</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">t</span><span class="p">))))</span>
+    <span class="n">tclip</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span>
+        <span class="n">t</span> <span class="o">*</span> <span class="n">clip_norm</span> <span class="o">*</span> <span class="n">math_ops</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span>
+            <span class="n">l2norm_inv</span> <span class="o">*</span> <span class="n">n_element</span><span class="p">,</span> <span class="n">constant_op</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">/</span> <span class="n">clip_norm</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">tclip</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

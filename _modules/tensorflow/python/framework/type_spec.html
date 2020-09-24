@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.framework.type_spec &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.framework.type_spec</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.framework.type_spec</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2019 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Type specifications for TensorFlow APIs.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">abc</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">_pywrap_utils</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">composite_tensor</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_shape</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="k">import</span> <span class="n">tf_logging</span> <span class="k">as</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">compat</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">tf_decorator</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.lazy_loader</span> <span class="k">import</span> <span class="n">LazyLoader</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># Use LazyLoader to avoid circular dependencies.</span>
+<span class="n">tensor_spec</span> <span class="o">=</span> <span class="n">LazyLoader</span><span class="p">(</span>
+    <span class="s2">&quot;tensor_spec&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span>
+    <span class="s2">&quot;tensorflow.python.framework.tensor_spec&quot;</span><span class="p">)</span>
+<span class="n">ops</span> <span class="o">=</span> <span class="n">LazyLoader</span><span class="p">(</span>
+    <span class="s2">&quot;ops&quot;</span><span class="p">,</span> <span class="nb">globals</span><span class="p">(),</span>
+    <span class="s2">&quot;tensorflow.python.framework.ops&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="TypeSpec"><a class="viewcode-back" href="../../../../index.html#tensorflow.TypeSpec">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;TypeSpec&quot;</span><span class="p">,</span> <span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;TypeSpec&quot;</span><span class="p">,</span> <span class="s2">&quot;data.experimental.Structure&quot;</span><span class="p">])</span>
+<span class="nd">@six</span><span class="o">.</span><span class="n">add_metaclass</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABCMeta</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">TypeSpec</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Specifies a TensorFlow value type.</span>
+
+<span class="sd">  A `tf.TypeSpec` provides metadata describing an object accepted or returned</span>
+<span class="sd">  by TensorFlow APIs.  Concrete subclasses, such as `tf.TensorSpec` and</span>
+<span class="sd">  `tf.RaggedTensorSpec`, are used to describe different value types.</span>
+
+<span class="sd">  For example, `tf.function`&#39;s `input_signature` argument accepts a list</span>
+<span class="sd">  (or nested structure) of `TypeSpec`s.</span>
+
+<span class="sd">  Creating new subclasses of TypeSpec (outside of TensorFlow core) is not</span>
+<span class="sd">  currently supported.  In particular, we may make breaking changes to the</span>
+<span class="sd">  private methods and properties defined by this base class.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># === Subclassing ===</span>
+  <span class="c1">#</span>
+  <span class="c1"># Each `TypeSpec` subclass must define:</span>
+  <span class="c1">#</span>
+  <span class="c1">#   * A &quot;component encoding&quot; for values.</span>
+  <span class="c1">#   * A &quot;serialization&quot; for types.</span>
+  <span class="c1">#</span>
+  <span class="c1"># The component encoding for a value is a nested structure of `tf.Tensor`</span>
+  <span class="c1"># or `CompositeTensor` that can be used by the `TypeSpec` to reconstruct</span>
+  <span class="c1"># the value.  Each individual `TypeSpec` must use the same nested structure</span>
+  <span class="c1"># for all values -- this structure is defined by the `component_specs`</span>
+  <span class="c1"># attribute.  Decomposing values into components, and reconstructing them</span>
+  <span class="c1"># from those components, should be inexpensive.  In particular, it should</span>
+  <span class="c1"># *not* require any TensorFlow ops.</span>
+  <span class="c1">#</span>
+  <span class="c1"># The serialization for a `TypeSpec` is a nested tuple of values that can</span>
+  <span class="c1"># be used to reconstruct the `TypeSpec`.  See the documentation for</span>
+  <span class="c1"># `_serialize()` for more information.</span>
+
+  <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractproperty</span>
+  <span class="k">def</span> <span class="nf">value_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The Python type for values that are compatible with this TypeSpec.&quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">.value_type&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<div class="viewcode-block" id="TypeSpec.is_compatible_with"><a class="viewcode-back" href="../../../../index.html#tensorflow.TypeSpec.is_compatible_with">[docs]</a>  <span class="k">def</span> <span class="nf">is_compatible_with</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spec_or_value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns true if `spec_or_value` is compatible with this TypeSpec.&quot;&quot;&quot;</span>
+    <span class="c1"># === Subclassing ===</span>
+    <span class="c1"># If not overridden by subclasses, the default behavior is to convert</span>
+    <span class="c1"># `spec_or_value` to a `TypeSpec` (if it isn&#39;t already); and then to</span>
+    <span class="c1"># consider two `TypeSpec`s compatible if they have the same type, and</span>
+    <span class="c1"># the values returned by `_serialize` are compatible (where</span>
+    <span class="c1"># `tf.TensorShape`, `tf.TensorSpec`, and `tf.DType` are checked for</span>
+    <span class="c1"># compatibility using their `is_compatible_with` method; and all other</span>
+    <span class="c1"># types are considered compatible if they are equal).</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">spec_or_value</span><span class="p">,</span> <span class="n">TypeSpec</span><span class="p">):</span>
+      <span class="n">spec_or_value</span> <span class="o">=</span> <span class="n">type_spec_from_value</span><span class="p">(</span><span class="n">spec_or_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">spec_or_value</span><span class="p">):</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__is_compatible</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_serialize</span><span class="p">(),</span>
+                                <span class="n">spec_or_value</span><span class="o">.</span><span class="n">_serialize</span><span class="p">())</span>  <span class="c1"># pylint: disable=protected-access</span></div>
+
+<div class="viewcode-block" id="TypeSpec.most_specific_compatible_type"><a class="viewcode-back" href="../../../../index.html#tensorflow.TypeSpec.most_specific_compatible_type">[docs]</a>  <span class="k">def</span> <span class="nf">most_specific_compatible_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns the most specific TypeSpec compatible with `self` and `other`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      other: A `TypeSpec`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If there is no TypeSpec that is compatible with both `self`</span>
+<span class="sd">        and `other`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># === Subclassing ===</span>
+    <span class="c1"># If not overridden by a subclass, the default behavior is to raise a</span>
+    <span class="c1"># `ValueError` if `self` and `other` have different types, or if their type</span>
+    <span class="c1"># serializations differ by anything other than `TensorShape`s.  Otherwise,</span>
+    <span class="c1"># the two type serializations are combined (using</span>
+    <span class="c1"># `most_specific_compatible_shape` to combine `TensorShape`s), and the</span>
+    <span class="c1"># result is used to construct and return a new `TypeSpec`.</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;No TypeSpec is compatible with both </span><span class="si">%s</span><span class="s2"> and </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                       <span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__most_specific_compatible_type_serialization</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_serialize</span><span class="p">(),</span> <span class="n">other</span><span class="o">.</span><span class="n">_serialize</span><span class="p">())</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_deserialize</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span></div>
+
+  <span class="c1"># === Component encoding for values ===</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_to_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Encodes `value` as a nested structure of `Tensor` or `CompositeTensor`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      value: A value compatible with this `TypeSpec`.  (Caller is responsible</span>
+<span class="sd">        for ensuring compatibility.)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A nested structure of `tf.Tensor` or `tf.CompositeTensor` compatible with</span>
+<span class="sd">      `self._component_specs`, which can be used to reconstruct `value`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># === Subclassing ===</span>
+    <span class="c1"># This method must be inexpensive (do not call TF ops).</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._to_components()&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_from_components</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">components</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reconstructs a value from a nested structure of Tensor/CompositeTensor.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      components: A nested structure of `tf.Tensor` or `tf.CompositeTensor`,</span>
+<span class="sd">        compatible with `self._component_specs`.  (Caller is responsible for</span>
+<span class="sd">        ensuring compatibility.)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A value that is compatible with this `TypeSpec`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># === Subclassing ===</span>
+    <span class="c1"># This method must be inexpensive (do not call TF ops).</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._from_components()&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractproperty</span>
+  <span class="k">def</span> <span class="nf">_component_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A nested structure of TypeSpecs for this type&#39;s components.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A nested structure describing the component encodings that are returned</span>
+<span class="sd">      by this TypeSpec&#39;s `_to_components` method.  In particular, for a</span>
+<span class="sd">      TypeSpec `spec` and a compatible value `value`:</span>
+
+<span class="sd">      ```</span>
+<span class="sd">      nest.map_structure(lambda t, c: assert t.is_compatible_with(c),</span>
+<span class="sd">                         spec._component_specs, spec._to_components(value))</span>
+<span class="sd">      ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._component_specs()&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="c1"># === Tensor list encoding for values ===</span>
+
+  <span class="k">def</span> <span class="nf">_to_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Encodes `value` as a flat list of `tf.Tensor`.</span>
+
+<span class="sd">    By default, this just flattens `self._to_components(value)` using</span>
+<span class="sd">    `nest.flatten`.  However, subclasses may override this to return a</span>
+<span class="sd">    different tensor encoding for values.  In particular, some subclasses</span>
+<span class="sd">    of `BatchableTypeSpec` override this method to return a &quot;boxed&quot; encoding</span>
+<span class="sd">    for values, which then can be batched or unbatched.  See</span>
+<span class="sd">    `BatchableTypeSpec` for more details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      value: A value with compatible this `TypeSpec`.  (Caller is responsible</span>
+<span class="sd">        for ensuring compatibility.)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A list of `tf.Tensor`, compatible with `self._flat_tensor_specs`, which</span>
+<span class="sd">      can be used to reconstruct `value`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_to_components</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">expand_composites</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_from_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reconstructs a value from a flat list of `tf.Tensor`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      tensor_list: A flat list of `tf.Tensor`, compatible with</span>
+<span class="sd">        `self._flat_tensor_specs`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A value that is compatible with this `TypeSpec`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `tensor_list` is not compatible with</span>
+<span class="sd">      `self._flat_tensor_specs`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">__check_tensor_list</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_from_compatible_tensor_list</span><span class="p">(</span><span class="n">tensor_list</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_from_compatible_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reconstructs a value from a compatible flat list of `tf.Tensor`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      tensor_list: A flat list of `tf.Tensor`, compatible with</span>
+<span class="sd">        `self._flat_tensor_specs`.  (Caller is responsible for ensuring</span>
+<span class="sd">        compatibility.)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A value that is compatible with this `TypeSpec`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_from_components</span><span class="p">(</span><span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_component_specs</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">,</span> <span class="n">expand_composites</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+  <span class="nd">@property</span>
+  <span class="k">def</span> <span class="nf">_flat_tensor_specs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A list of TensorSpecs compatible with self._to_tensor_list(v).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_component_specs</span><span class="p">,</span> <span class="n">expand_composites</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+  <span class="c1"># === Serialization for types ===</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_serialize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a nested tuple containing the state of this TypeSpec.</span>
+
+<span class="sd">    The serialization may contain the following value types: boolean,</span>
+<span class="sd">    integer, string, float, None, `TensorSpec`, `tf.TensorShape`, `tf.DType`,</span>
+<span class="sd">    `np.ndarray`, `TypeSpec`, and nested tuples, namedtuples, dicts, and</span>
+<span class="sd">    OrderedDicts of any of the above.</span>
+
+<span class="sd">    This method is used to provide default definitions for: equality</span>
+<span class="sd">    testing (__eq__, __ne__), hashing (__hash__), pickling (__reduce__),</span>
+<span class="sd">    string representation (__repr__), `self.is_compatible_with()`,</span>
+<span class="sd">    `self.most_specific_compatible_type()`, and protobuf serialization</span>
+<span class="sd">    (e.g. TensorInfo and StructuredValue).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._serialize()&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">_deserialize</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">serialization</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reconstructs a TypeSpec from a value returned by `serialize`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="o">*</span><span class="n">serialization</span><span class="p">)</span>
+
+  <span class="c1"># === Operators ===</span>
+
+  <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__get_cmp_key</span><span class="p">()</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">__get_cmp_key</span><span class="p">())</span>
+
+  <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span>
+
+  <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__get_cmp_key</span><span class="p">())</span>
+
+  <span class="k">def</span> <span class="nf">__reduce__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_serialize</span><span class="p">())</span>
+
+  <span class="c1"># === Legacy Output ===</span>
+  <span class="c1"># TODO(b/133606651) Document and/or deprecate the legacy_output methods.</span>
+  <span class="c1"># (These are used by tf.data.)</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._to_legacy_output_types()&quot;</span> <span class="o">%</span>
+                              <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_shapes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._to_legacy_output_shapes()&quot;</span> <span class="o">%</span>
+                              <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_to_legacy_output_classes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_type</span>
+
+  <span class="c1"># === Private Helper Methods ===</span>
+
+  <span class="k">def</span> <span class="nf">__check_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">):</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_flat_tensor_specs</span>
+    <span class="n">specs</span> <span class="o">=</span> <span class="p">[</span><span class="n">type_spec_from_value</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tensor_list</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">specs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">expected</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incompatible input: wrong number of tensors&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">specs</span><span class="p">,</span> <span class="n">expected</span><span class="p">)):</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">s1</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">s2</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Incompatible input: tensor </span><span class="si">%d</span><span class="s2"> (</span><span class="si">%s</span><span class="s2">) is incompatible &quot;</span>
+                         <span class="s2">&quot;with </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tensor_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s2</span><span class="p">))</span>
+
+  <span class="k">def</span> <span class="nf">__get_cmp_key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a hashable eq-comparable key for `self`.&quot;&quot;&quot;</span>
+    <span class="c1"># TODO(b/133606651): Decide whether to cache this value.</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">__make_cmp_key</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_serialize</span><span class="p">()))</span>
+
+  <span class="k">def</span> <span class="nf">__make_cmp_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts `value` to a hashable key.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">DType</span><span class="p">,</span> <span class="n">TypeSpec</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">compat</span><span class="o">.</span><span class="n">bytes_or_text_types</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">value</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span>
+          <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__make_cmp_key</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+                 <span class="bp">self</span><span class="o">.</span><span class="n">__make_cmp_key</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="n">key</span><span class="p">])])</span>
+          <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+      <span class="p">])</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__make_cmp_key</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">__make_cmp_key</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">):</span>
+      <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">ndims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Note: we include a type object in the tuple, to ensure we can&#39;t get</span>
+        <span class="c1"># false-positive matches (since users can&#39;t include type objects).</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">as_list</span><span class="p">()))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span>
+              <span class="n">TypeSpec</span><span class="o">.</span><span class="n">__nested_list_to_tuple</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">tolist</span><span class="p">()))</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported value type </span><span class="si">%s</span><span class="s2"> returned by &quot;</span>
+                     <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._serialize&quot;</span> <span class="o">%</span>
+                     <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+  <span class="nd">@staticmethod</span>
+  <span class="k">def</span> <span class="nf">__nested_list_to_tuple</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a nested list to a corresponding nested tuple.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">TypeSpec</span><span class="o">.</span><span class="n">__nested_list_to_tuple</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">value</span>
+
+  <span class="nd">@staticmethod</span>
+  <span class="k">def</span> <span class="nf">__is_compatible</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns true if the given type serializations compatible.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+      <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="ow">and</span>
+              <span class="nb">all</span><span class="p">(</span><span class="n">TypeSpec</span><span class="o">.</span><span class="n">__is_compatible</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+      <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+          <span class="n">TypeSpec</span><span class="o">.</span><span class="n">__is_compatible</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="n">TypeSpec</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">,</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">DType</span><span class="p">)):</span>
+      <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">is_compatible_with</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+
+  <span class="nd">@staticmethod</span>
+  <span class="k">def</span> <span class="nf">__most_specific_compatible_type_serialization</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Helper for most_specific_compatible_type.</span>
+
+<span class="sd">    Combines two type serializations as follows:</span>
+
+<span class="sd">    * If they are both tuples of the same length, then recursively combine</span>
+<span class="sd">      the respective tuple elements.</span>
+<span class="sd">    * If they are both dicts with the same keys, then recursively combine</span>
+<span class="sd">      the respective dict elements.</span>
+<span class="sd">    * If they are both TypeSpecs, then combine using</span>
+<span class="sd">      TypeSpec.most_specific_compatible_type.</span>
+<span class="sd">    * If they are both TensorShapes, then combine using</span>
+<span class="sd">      TensorShape.most_specific_compatible_shape.</span>
+<span class="sd">    * If they are both TensorSpecs with the same dtype, then combine using</span>
+<span class="sd">      TensorShape.most_specific_compatible_shape to combine shapes.</span>
+<span class="sd">    * If they are equal, then return a.</span>
+<span class="sd">    * If none of the above, then raise a ValueError.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      a: A serialized TypeSpec or nested component from a serialized TypeSpec.</span>
+<span class="sd">      b: A serialized TypeSpec or nested component from a serialized TypeSpec.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A value with the same type and structure as `a` and `b`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">      ValueError: If `a` and `b` are incompatible.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Types are not compatible: </span><span class="si">%r</span><span class="s2"> vs </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Types are not compatible: </span><span class="si">%r</span><span class="s2"> vs </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+      <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">TypeSpec</span><span class="o">.</span><span class="n">__most_specific_compatible_type_serialization</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+                   <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+      <span class="n">a_keys</span><span class="p">,</span> <span class="n">b_keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="ow">or</span> <span class="n">a_keys</span> <span class="o">!=</span> <span class="n">b_keys</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Types are not compatible: </span><span class="si">%r</span><span class="s2"> vs </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+      <span class="k">return</span> <span class="p">{</span>
+          <span class="n">k</span><span class="p">:</span> <span class="n">TypeSpec</span><span class="o">.</span><span class="n">__most_specific_compatible_type_serialization</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+          <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">a_keys</span>
+      <span class="p">}</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">TensorShape</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">most_specific_compatible_shape</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="s2">&quot;_serialize() should not return list values.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">TypeSpec</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">a</span><span class="o">.</span><span class="n">most_specific_compatible_type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Types are not compatible: </span><span class="si">%r</span><span class="s2"> vs </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">a</span></div>
+
+
+<span class="k">class</span> <span class="nc">BatchableTypeSpec</span><span class="p">(</span><span class="n">TypeSpec</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;TypeSpec with a batchable tensor encoding.</span>
+
+<span class="sd">  The batchable tensor encoding is a list of `tf.Tensor`s that supports</span>
+<span class="sd">  batching and unbatching.  In particular, stacking (or unstacking)</span>
+<span class="sd">  values with the same `TypeSpec` must be equivalent to stacking (or</span>
+<span class="sd">  unstacking) each of their tensor lists.  Unlike the component encoding</span>
+<span class="sd">  (returned by `self._to_components)`, the batchable tensor encoding</span>
+<span class="sd">  may require using encoding/decoding ops.</span>
+
+<span class="sd">  If a subclass&#39;s batchable tensor encoding is not simply a flattened version</span>
+<span class="sd">  of the component encoding, then the subclass must override `_to_tensor_list`,</span>
+<span class="sd">  `_from_tensor_list`, and _flat_tensor_specs`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_batch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a TypeSpec representing a batch of objects with this TypeSpec.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      batch_size: An `int` representing the number of elements in a batch,</span>
+<span class="sd">        or `None` if the batch size may vary.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TypeSpec` representing a batch of objects with this TypeSpec.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._batch&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+  <span class="k">def</span> <span class="nf">_unbatch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a TypeSpec representing a single element this TypeSpec.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      A `TypeSpec` representing a single element of objects with this TypeSpec.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">._unbatch&quot;</span> <span class="o">%</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">_to_batched_tensor_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns a tensor list encoding for value with rank&gt;0.&quot;&quot;&quot;</span>
+    <span class="n">tensor_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_tensor_list</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">t</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">ndims</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tensor_list</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Value </span><span class="si">%s</span><span class="s2"> has insufficient rank for batching.&quot;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_list</span>
+
+
+<span class="k">def</span> <span class="nf">type_spec_from_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a `TypeSpec` that represents the given `value`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    value: A value that can be accepted or returned by TensorFlow APIs.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `TypeSpec` that is compatible with `value`.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    TypeError: If a TypeSpec cannot be built for `value`, because its type</span>
+<span class="sd">      is not supported.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">spec</span> <span class="o">=</span> <span class="n">_type_spec_from_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">spec</span>
+
+  <span class="c1"># Fallback: try converting value to a tensor.</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">tensor</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="n">_type_spec_from_value</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">spec</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">spec</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">vlog</span><span class="p">(</span>
+        <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Failed to convert </span><span class="si">%r</span><span class="s2"> to tensor: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+
+  <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Could not build a TypeSpec for </span><span class="si">%r</span><span class="s2"> with type </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+                  <span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_type_spec_from_value</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns a `TypeSpec` that represents the given `value`.&quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">Tensor</span><span class="p">):</span>
+    <span class="c1"># Note: we do not include Tensor names when constructing TypeSpecs.</span>
+    <span class="k">return</span> <span class="n">tensor_spec</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">composite_tensor</span><span class="o">.</span><span class="n">CompositeTensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">value</span><span class="o">.</span><span class="n">_type_spec</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+  <span class="c1"># If `value` is a list and all of its elements can be represented by the same</span>
+  <span class="c1"># batchable type spec, then we can represent the entire list using a single</span>
+  <span class="c1"># type spec that captures the type accurately (unlike the `convert_to_tensor`</span>
+  <span class="c1"># fallback).</span>
+  <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="n">value</span><span class="p">:</span>
+    <span class="n">subspecs</span> <span class="o">=</span> <span class="p">[</span><span class="n">_type_spec_from_value</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">value</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">subspecs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">BatchableTypeSpec</span><span class="p">):</span>
+      <span class="n">merged_subspec</span> <span class="o">=</span> <span class="n">subspecs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">subspec</span> <span class="ow">in</span> <span class="n">subspecs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+          <span class="n">merged_subspec</span> <span class="o">=</span> <span class="n">merged_subspec</span><span class="o">.</span><span class="n">most_specific_compatible_type</span><span class="p">(</span><span class="n">subspec</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">merged_subspec</span><span class="o">.</span><span class="n">_batch</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">subspecs</span><span class="p">))</span>  <span class="c1"># pylint: disable=protected-access</span>
+      <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+        <span class="k">pass</span>  <span class="c1"># incompatible subspecs</span>
+
+  <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">_TYPE_CONVERSION_FUNCTION_REGISTRY</span><span class="p">):</span>
+    <span class="n">type_object</span><span class="p">,</span> <span class="n">converter_fn</span><span class="p">,</span> <span class="n">allow_subclass</span> <span class="o">=</span> <span class="n">entry</span>
+    <span class="k">if</span> <span class="p">((</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="ow">is</span> <span class="n">type_object</span><span class="p">)</span> <span class="ow">or</span>  <span class="c1"># pylint: disable=unidiomatic-typecheck</span>
+        <span class="p">(</span><span class="n">allow_subclass</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">type_object</span><span class="p">))):</span>
+      <span class="k">return</span> <span class="n">converter_fn</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="kc">None</span>
+
+<span class="n">_TYPE_CONVERSION_FUNCTION_REGISTRY</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="k">def</span> <span class="nf">register_type_spec_from_value_converter</span><span class="p">(</span><span class="n">type_object</span><span class="p">,</span> <span class="n">converter_fn</span><span class="p">,</span>
+                                            <span class="n">allow_subclass</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Registers a function for converting values with a given type to TypeSpecs.</span>
+
+<span class="sd">  If multiple registered `type_object`s match a value, then the most recent</span>
+<span class="sd">  registration takes precedence.  Custom converters should not be defined for</span>
+<span class="sd">  `CompositeTensor`s; use `CompositeTensor._type_spec` instead.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    type_object: A Python `type` object representing the type of values</span>
+<span class="sd">      accepted by `converter_fn`.</span>
+<span class="sd">    converter_fn: A function that takes one argument (an instance of the</span>
+<span class="sd">      type represented by `type_object`) and returns a `TypeSpec`.</span>
+<span class="sd">    allow_subclass: If true, then use `isinstance(value, type_object)` to</span>
+<span class="sd">      check for matches.  If false, then use `type(value) is type_object`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">type_object</span> <span class="o">=</span> <span class="n">tf_decorator</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">type_object</span><span class="p">)</span>
+  <span class="n">_TYPE_CONVERSION_FUNCTION_REGISTRY</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+      <span class="p">(</span><span class="n">type_object</span><span class="p">,</span> <span class="n">converter_fn</span><span class="p">,</span> <span class="n">allow_subclass</span><span class="p">))</span>
+
+
+<span class="n">_pywrap_utils</span><span class="o">.</span><span class="n">RegisterType</span><span class="p">(</span><span class="s2">&quot;TypeSpec&quot;</span><span class="p">,</span> <span class="n">TypeSpec</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

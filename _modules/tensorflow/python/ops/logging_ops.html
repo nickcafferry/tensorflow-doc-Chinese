@@ -1,0 +1,1017 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.logging_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.logging_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.logging_ops</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2015 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Logging and Summary Operations.&quot;&quot;&quot;</span>
+<span class="c1"># pylint: disable=protected-access</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="kn">from</span> <span class="nn">absl</span> <span class="k">import</span> <span class="n">logging</span>
+<span class="kn">import</span> <span class="nn">six</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">pywrap_tfe</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">sparse_tensor</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">tensor_util</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_logging_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">string_ops</span>
+<span class="c1"># go/tf-wildcard-import</span>
+<span class="c1"># pylint: disable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops.gen_logging_ops</span> <span class="k">import</span> <span class="o">*</span>
+<span class="c1"># pylint: enable=wildcard-import</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="k">import</span> <span class="n">tf_logging</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.deprecation</span> <span class="k">import</span> <span class="n">deprecated</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+<span class="c1"># Register printing to the cell output if we are in a Colab or Jupyter Notebook.</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">get_ipython</span><span class="p">()</span>  <span class="c1"># Exists in an ipython env like Jupyter or Colab</span>
+  <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_EnableInteractivePythonLogging</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+  <span class="k">pass</span>
+
+<span class="c1"># The python wrapper for Assert is in control_flow_ops, as the Assert</span>
+<span class="c1"># call relies on certain conditionals for its dependencies.  Use</span>
+<span class="c1"># control_flow_ops.Assert.</span>
+
+<span class="c1"># Assert and Print are special symbols in python, so we must</span>
+<span class="c1"># have an upper-case version of them.</span>
+<span class="c1">#</span>
+<span class="c1"># For users with Python 3 or Python 2.7</span>
+<span class="c1"># with `from __future__ import print_function`, we could also allow lowercase.</span>
+<span class="c1"># See https://github.com/tensorflow/tensorflow/issues/18053</span>
+
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;2018-08-20&quot;</span><span class="p">,</span> <span class="s2">&quot;Use tf.print instead of tf.Print. Note that &quot;</span>
+            <span class="s2">&quot;tf.print returns a no-output operator that directly &quot;</span>
+            <span class="s2">&quot;prints the output. Outside of defuns or eager mode, &quot;</span>
+            <span class="s2">&quot;this operator will not be executed unless it is &quot;</span>
+            <span class="s2">&quot;directly specified in session.run or used as a &quot;</span>
+            <span class="s2">&quot;control dependency for other operators. This is &quot;</span>
+            <span class="s2">&quot;only a concern in graph mode. Below is an example &quot;</span>
+            <span class="s2">&quot;of how to ensure tf.print executes in graph mode:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="n">v1</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Print&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">Print</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">first_n</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">summarize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Prints a list of tensors.</span>
+
+<span class="sd">  This is an identity op (behaves like `tf.identity`) with the side effect</span>
+<span class="sd">  of printing `data` when evaluating.</span>
+
+<span class="sd">  Note: This op prints to the standard error. It is not currently compatible</span>
+<span class="sd">    with jupyter notebook (printing to the notebook *server&#39;s* output, not into</span>
+<span class="sd">    the notebook).</span>
+
+<span class="sd">  Additionally, to use tf.print in python 2.7, users must make sure to import</span>
+<span class="sd">  the following:</span>
+
+<span class="sd">  `from __future__ import print_function`</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    input_: A tensor passed through this op.</span>
+<span class="sd">    data: A list of tensors to print out when op is evaluated.</span>
+<span class="sd">    message: A string, prefix of the error message.</span>
+<span class="sd">    first_n: Only log `first_n` number of times. Negative numbers log always;</span>
+<span class="sd">      this is the default.</span>
+<span class="sd">    summarize: Only print this many entries of each tensor. If None, then a</span>
+<span class="sd">      maximum of 3 elements are printed per input tensor.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type and contents as `input_`.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    sess = tf.compat.v1.Session()</span>
+<span class="sd">    with sess.as_default():</span>
+<span class="sd">        tensor = tf.range(10)</span>
+<span class="sd">        print_op = tf.print(tensor)</span>
+<span class="sd">        with tf.control_dependencies([print_op]):</span>
+<span class="sd">          out = tf.add(tensor, tensor)</span>
+<span class="sd">        sess.run(out)</span>
+<span class="sd">    ```</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">_print</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">first_n</span><span class="p">,</span> <span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+
+<span class="c1"># pylint: enable=invalid-name</span>
+
+
+<span class="k">def</span> <span class="nf">_generate_placeholder_string</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">default_placeholder</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Generate and return a string that does not appear in `x`.&quot;&quot;&quot;</span>
+  <span class="n">placeholder</span> <span class="o">=</span> <span class="n">default_placeholder</span>
+  <span class="n">rng</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+  <span class="k">while</span> <span class="n">placeholder</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+    <span class="n">placeholder</span> <span class="o">=</span> <span class="n">placeholder</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+  <span class="k">return</span> <span class="n">placeholder</span>
+
+
+<span class="k">def</span> <span class="nf">_is_filepath</span><span class="p">(</span><span class="n">output_stream</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Returns True if output_stream is a file path.&quot;&quot;&quot;</span>
+  <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">output_stream</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">output_stream</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;file://&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Temporarily disable pylint g-doc-args error to allow giving more context</span>
+<span class="c1"># about what the kwargs are.</span>
+<span class="c1"># Because we are using arbitrary-length positional arguments, python 2</span>
+<span class="c1"># does not support explicitly specifying the keyword arguments in the</span>
+<span class="c1"># function definition.</span>
+<span class="c1"># pylint: disable=g-doc-args</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;print&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">print_v2</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Print the specified inputs.</span>
+
+<span class="sd">  A TensorFlow operator that prints the specified inputs to a desired</span>
+<span class="sd">  output stream or logging level. The inputs may be dense or sparse Tensors,</span>
+<span class="sd">  primitive python objects, data structures that contain tensors, and printable</span>
+<span class="sd">  Python objects. Printed tensors will recursively show the first and last</span>
+<span class="sd">  elements of each dimension to summarize.</span>
+
+<span class="sd">  @compatibility(python2)</span>
+<span class="sd">  In python 2.7, make sure to import the following:</span>
+<span class="sd">  `from __future__ import print_function`</span>
+<span class="sd">  @end_compatibility</span>
+
+<span class="sd">  Example:</span>
+<span class="sd">    Single-input usage:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tensor = tf.range(10)</span>
+<span class="sd">    tf.print(tensor, output_stream=sys.stderr)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    (This prints &quot;[0 1 2 ... 7 8 9]&quot; to sys.stderr)</span>
+
+<span class="sd">    Multi-input usage:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    tensor = tf.range(10)</span>
+<span class="sd">    tf.print(&quot;tensors:&quot;, tensor, {2: tensor * 2}, output_stream=sys.stdout)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    (This prints &quot;tensors: [0 1 2 ... 7 8 9] {2: [0 2 4 ... 14 16 18]}&quot; to</span>
+<span class="sd">    sys.stdout)</span>
+
+<span class="sd">    Changing the input separator:</span>
+<span class="sd">    ```python</span>
+<span class="sd">    tensor_a = tf.range(2)</span>
+<span class="sd">    tensor_b = tensor_a * 2</span>
+<span class="sd">    tf.print(tensor_a, tensor_b, output_stream=sys.stderr, sep=&#39;,&#39;)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    (This prints &quot;[0 1],[0 2]&quot; to sys.stderr)</span>
+
+<span class="sd">    Usage in a `tf.function`:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    @tf.function</span>
+<span class="sd">    def f():</span>
+<span class="sd">        tensor = tf.range(10)</span>
+<span class="sd">        tf.print(tensor, output_stream=sys.stderr)</span>
+<span class="sd">        return tensor</span>
+
+<span class="sd">    range_tensor = f()</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    (This prints &quot;[0 1 2 ... 7 8 9]&quot; to sys.stderr)</span>
+
+<span class="sd">  @compatibility(TF 1.x Graphs and Sessions)</span>
+<span class="sd">  In graphs manually created outside of `tf.function`, this method returns</span>
+<span class="sd">  the created TF operator that prints the data. To make sure the</span>
+<span class="sd">  operator runs, users need to pass the produced op to</span>
+<span class="sd">  `tf.compat.v1.Session`&#39;s run method, or to use the op as a control</span>
+<span class="sd">  dependency for executed ops by specifying</span>
+<span class="sd">  `with tf.compat.v1.control_dependencies([print_op])`.</span>
+<span class="sd">  @end_compatibility</span>
+
+<span class="sd">    Compatibility usage in TF 1.x graphs:</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    sess = tf.compat.v1.Session()</span>
+<span class="sd">    with sess.as_default():</span>
+<span class="sd">        tensor = tf.range(10)</span>
+<span class="sd">        print_op = tf.print(&quot;tensors:&quot;, tensor, {2: tensor * 2},</span>
+<span class="sd">                            output_stream=sys.stdout)</span>
+<span class="sd">        with tf.control_dependencies([print_op]):</span>
+<span class="sd">          tripled_tensor = tensor * 3</span>
+<span class="sd">        sess.run(tripled_tensor)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    (This prints &quot;tensors: [0 1 2 ... 7 8 9] {2: [0 2 4 ... 14 16 18]}&quot; to</span>
+<span class="sd">    sys.stdout)</span>
+
+<span class="sd">  Note: In Jupyter notebooks and colabs, `tf.print` prints to the notebook</span>
+<span class="sd">    cell outputs. It will not write to the notebook kernel&#39;s console logs.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    *inputs: Positional arguments that are the inputs to print. Inputs in the</span>
+<span class="sd">      printed output will be separated by spaces. Inputs may be python</span>
+<span class="sd">      primitives, tensors, data structures such as dicts and lists that may</span>
+<span class="sd">      contain tensors (with the data structures possibly nested in arbitrary</span>
+<span class="sd">      ways), and printable python objects.</span>
+<span class="sd">    output_stream: The output stream, logging level, or file to print to.</span>
+<span class="sd">      Defaults to sys.stderr, but sys.stdout, tf.compat.v1.logging.info,</span>
+<span class="sd">      tf.compat.v1.logging.warning, tf.compat.v1.logging.error,</span>
+<span class="sd">      absl.logging.info, absl.logging.warning and absl.logging.error are also</span>
+<span class="sd">      supported. To print to a file, pass a string started with &quot;file://&quot;</span>
+<span class="sd">      followed by the file path, e.g., &quot;file:///tmp/foo.out&quot;.</span>
+<span class="sd">    summarize: The first and last `summarize` elements within each dimension are</span>
+<span class="sd">      recursively printed per Tensor. If None, then the first 3 and last 3</span>
+<span class="sd">      elements of each dimension are printed for each tensor. If set to -1, it</span>
+<span class="sd">      will print all elements of every tensor.</span>
+<span class="sd">    sep: The string to use to separate the inputs. Defaults to &quot; &quot;.</span>
+<span class="sd">    end: End character that is appended at the end the printed string.</span>
+<span class="sd">      Defaults to the newline character.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    None when executing eagerly. During graph tracing this returns</span>
+<span class="sd">    a TF operator that prints the specified inputs in the specified output</span>
+<span class="sd">    stream or logging level. This operator will be automatically executed</span>
+<span class="sd">    except inside of `tf.compat.v1` graphs and sessions.</span>
+
+<span class="sd">  Raises:</span>
+<span class="sd">    ValueError: If an unsupported output stream is specified.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># Because we are using arbitrary-length positional arguments, python 2</span>
+  <span class="c1"># does not support explicitly specifying the keyword arguments in the</span>
+  <span class="c1"># function definition. So, we manually get the keyword arguments w/ default</span>
+  <span class="c1"># values here.</span>
+  <span class="n">output_stream</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;output_stream&quot;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+  <span class="n">summarize</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;summarize&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="n">sep</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;sep&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+  <span class="n">end</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">linesep</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unrecognized keyword arguments for tf.print: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">format_name</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+    <span class="n">format_name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_format&quot;</span>
+
+  <span class="c1"># Match the C++ string constants representing the different output streams.</span>
+  <span class="c1"># Keep this updated!</span>
+  <span class="n">output_stream_to_constant</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">:</span> <span class="s2">&quot;stdout&quot;</span><span class="p">,</span>
+      <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="p">:</span> <span class="s2">&quot;stderr&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="s2">&quot;log(info)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">info</span><span class="p">:</span> <span class="s2">&quot;log(info)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">WARN</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">warning</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">warn</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="s2">&quot;log(error)&quot;</span><span class="p">,</span>
+      <span class="n">tf_logging</span><span class="o">.</span><span class="n">error</span><span class="p">:</span> <span class="s2">&quot;log(error)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="s2">&quot;log(info)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">:</span> <span class="s2">&quot;log(info)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="s2">&quot;log(info)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">WARN</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">:</span> <span class="s2">&quot;log(warning)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="s2">&quot;log(error)&quot;</span><span class="p">,</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">:</span> <span class="s2">&quot;log(error)&quot;</span><span class="p">,</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="n">_is_filepath</span><span class="p">(</span><span class="n">output_stream</span><span class="p">):</span>
+    <span class="n">output_stream_string</span> <span class="o">=</span> <span class="n">output_stream</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">output_stream_string</span> <span class="o">=</span> <span class="n">output_stream_to_constant</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">output_stream</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">output_stream_string</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsupported output stream, logging level, or file.&quot;</span> <span class="o">+</span>
+                       <span class="nb">str</span><span class="p">(</span><span class="n">output_stream</span><span class="p">)</span> <span class="o">+</span>
+                       <span class="s2">&quot;. Supported streams are sys.stdout, &quot;</span>
+                       <span class="s2">&quot;sys.stderr, tf.logging.info, &quot;</span>
+                       <span class="s2">&quot;tf.logging.warning, tf.logging.error. &quot;</span> <span class="o">+</span>
+                       <span class="s2">&quot;File needs to be in the form of &#39;file://&lt;filepath&gt;&#39;.&quot;</span><span class="p">)</span>
+
+  <span class="c1"># If we are only printing a single string scalar, there is no need to format</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="ow">and</span>
+      <span class="p">(</span><span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sparse_tensor</span><span class="o">.</span><span class="n">SparseTensor</span><span class="p">))</span> <span class="ow">and</span>
+      <span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="o">.</span><span class="n">ndims</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)):</span>
+    <span class="n">formatted_string</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="c1"># Otherwise, we construct an appropriate template for the tensors we are</span>
+  <span class="c1"># printing, and format the template using those tensors.</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># For each input to this print function, we extract any nested tensors,</span>
+    <span class="c1"># and construct an appropriate template to format representing the</span>
+    <span class="c1"># printed input.</span>
+    <span class="n">templates</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tensors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tensor_free_structure</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+    <span class="n">tensor_free_template</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">tensor_free_structure</span><span class="p">)</span>
+    <span class="n">placeholder</span> <span class="o">=</span> <span class="n">_generate_placeholder_string</span><span class="p">(</span><span class="n">tensor_free_template</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">input_</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+      <span class="n">placeholders</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="c1"># Use the nest utilities to flatten &amp; process any nested elements in this</span>
+      <span class="c1"># input. The placeholder for a tensor in the template should be the</span>
+      <span class="c1"># placeholder string, and the placeholder for a non-tensor can just be</span>
+      <span class="c1"># the printed value of the non-tensor itself.</span>
+      <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_</span><span class="p">):</span>
+        <span class="c1"># support sparse tensors</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sparse_tensor</span><span class="o">.</span><span class="n">SparseTensor</span><span class="p">):</span>
+          <span class="n">tensors</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">dense_shape</span><span class="p">])</span>
+          <span class="n">placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+              <span class="s2">&quot;SparseTensor(indices=</span><span class="si">{}</span><span class="s2">, values=</span><span class="si">{}</span><span class="s2">, shape=</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                  <span class="n">placeholder</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="n">tensor_util</span><span class="o">.</span><span class="n">is_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+          <span class="n">tensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+          <span class="n">placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">placeholder</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+          <span class="n">placeholders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+      <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">six</span><span class="o">.</span><span class="n">string_types</span><span class="p">):</span>
+        <span class="c1"># If the current input to format/print is a normal string, that string</span>
+        <span class="c1"># can act as the template.</span>
+        <span class="n">cur_template</span> <span class="o">=</span> <span class="n">input_</span>
+      <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># We pack the placeholders into a data structure that matches the</span>
+        <span class="c1"># input data structure format, then format that data structure</span>
+        <span class="c1"># into a string template.</span>
+        <span class="c1">#</span>
+        <span class="c1"># NOTE: We must use pprint.pformat here for building the template for</span>
+        <span class="c1"># unordered data structures such as `dict`, because `str` doesn&#39;t</span>
+        <span class="c1"># guarantee orderings, while pprint prints in sorted order. pprint</span>
+        <span class="c1"># will match the ordering of `nest.flatten`.</span>
+        <span class="c1"># This even works when nest.flatten reorders OrderedDicts, because</span>
+        <span class="c1"># pprint is printing *after* the OrderedDicts have been reordered.</span>
+        <span class="n">cur_template</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span>
+            <span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span><span class="n">input_</span><span class="p">,</span> <span class="n">placeholders</span><span class="p">))</span>
+      <span class="n">templates</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur_template</span><span class="p">)</span>
+
+    <span class="c1"># We join the templates for the various inputs into a single larger</span>
+    <span class="c1"># template. We also remove all quotes surrounding the placeholders, so that</span>
+    <span class="c1"># the formatted/printed output will not contain quotes around tensors.</span>
+    <span class="c1"># (example of where these quotes might appear: if we have added a</span>
+    <span class="c1"># placeholder string into a list, then pretty-formatted that list)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">sep</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">templates</span><span class="p">)</span>
+    <span class="n">template</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span> <span class="o">+</span> <span class="n">placeholder</span> <span class="o">+</span> <span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="n">placeholder</span><span class="p">)</span>
+    <span class="n">formatted_string</span> <span class="o">=</span> <span class="n">string_ops</span><span class="o">.</span><span class="n">string_format</span><span class="p">(</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="n">tensors</span><span class="p">,</span>
+        <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="n">placeholder</span><span class="p">,</span>
+        <span class="n">summarize</span><span class="o">=</span><span class="n">summarize</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">format_name</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">print_v2</span><span class="p">(</span>
+      <span class="n">formatted_string</span><span class="p">,</span> <span class="n">output_stream</span><span class="o">=</span><span class="n">output_stream_string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">)</span>
+
+<span class="c1"># pylint: enable=g-doc-args</span>
+
+
+<span class="nd">@ops</span><span class="o">.</span><span class="n">RegisterGradient</span><span class="p">(</span><span class="s2">&quot;Print&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">_PrintGrad</span><span class="p">(</span><span class="n">op</span><span class="p">,</span> <span class="o">*</span><span class="n">grad</span><span class="p">):</span>
+  <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="n">default_collections</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">collections</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">collections</span> <span class="o">=</span> <span class="n">default_collections</span>
+  <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">collections</span><span class="p">:</span>
+    <span class="n">ops</span><span class="o">.</span><span class="n">add_to_collection</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span>
+    <span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.histogram. Note that &quot;</span>
+    <span class="s2">&quot;tf.summary.histogram uses the node name instead of the tag. &quot;</span>
+    <span class="s2">&quot;This means that TensorFlow will automatically de-duplicate summary &quot;</span>
+    <span class="s2">&quot;names based on the scope they are created in.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">histogram_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># pylint: disable=line-too-long</span>
+  <span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with a histogram.</span>
+
+<span class="sd">  This ops is deprecated. Please switch to tf.summary.histogram.</span>
+
+<span class="sd">  For an explanation of why this op was deprecated, and information on how to</span>
+<span class="sd">  migrate, look</span>
+<span class="sd">  [&#39;here&#39;](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/deprecated/__init__.py)</span>
+
+<span class="sd">  The generated</span>
+<span class="sd">  [`Summary`](https://www.tensorflow.org/code/tensorflow/core/framework/summary.proto)</span>
+<span class="sd">  has one summary value containing a histogram for `values`.</span>
+
+<span class="sd">  This op reports an `InvalidArgument` error if any value is not finite.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `string` `Tensor`. 0-D.  Tag to use for the summary value.</span>
+<span class="sd">    values: A real numeric `Tensor`. Any shape. Values to use to build the</span>
+<span class="sd">      histogram.</span>
+<span class="sd">    collections: Optional list of graph collections keys. The new summary op is</span>
+<span class="sd">      added to these collections. Defaults to `[GraphKeys.SUMMARIES]`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A scalar `Tensor` of type `string`. The serialized `Summary` protocol</span>
+<span class="sd">    buffer.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">])</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">histogram_summary</span><span class="p">(</span><span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+    <span class="n">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARIES</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span>
+    <span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.image. Note that &quot;</span>
+    <span class="s2">&quot;tf.summary.image uses the node name instead of the tag. &quot;</span>
+    <span class="s2">&quot;This means that TensorFlow will automatically de-duplicate summary &quot;</span>
+    <span class="s2">&quot;names based on the scope they are created in. Also, the max_images &quot;</span>
+    <span class="s2">&quot;argument was renamed to max_outputs.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">image_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># pylint: disable=line-too-long</span>
+  <span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with images.</span>
+
+<span class="sd">  For an explanation of why this op was deprecated, and information on how to</span>
+<span class="sd">  migrate, look</span>
+<span class="sd">  [&#39;here&#39;](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/deprecated/__init__.py)</span>
+
+<span class="sd">  The summary has up to `max_images` summary values containing images. The</span>
+<span class="sd">  images are built from `tensor` which must be 4-D with shape `[batch_size,</span>
+<span class="sd">  height, width, channels]` and where `channels` can be:</span>
+
+<span class="sd">  *  1: `tensor` is interpreted as Grayscale.</span>
+<span class="sd">  *  3: `tensor` is interpreted as RGB.</span>
+<span class="sd">  *  4: `tensor` is interpreted as RGBA.</span>
+
+<span class="sd">  The images have the same number of channels as the input tensor. For float</span>
+<span class="sd">  input, the values are normalized one image at a time to fit in the range</span>
+<span class="sd">  `[0, 255]`.  `uint8` values are unchanged.  The op uses two different</span>
+<span class="sd">  normalization algorithms:</span>
+
+<span class="sd">  *  If the input values are all positive, they are rescaled so the largest one</span>
+<span class="sd">     is 255.</span>
+
+<span class="sd">  *  If any input value is negative, the values are shifted so input value 0.0</span>
+<span class="sd">     is at 127.  They are then rescaled so that either the smallest value is 0,</span>
+<span class="sd">     or the largest one is 255.</span>
+
+<span class="sd">  The `tag` argument is a scalar `Tensor` of type `string`.  It is used to</span>
+<span class="sd">  build the `tag` of the summary values:</span>
+
+<span class="sd">  *  If `max_images` is 1, the summary value tag is &#39;*tag*/image&#39;.</span>
+<span class="sd">  *  If `max_images` is greater than 1, the summary value tags are</span>
+<span class="sd">     generated sequentially as &#39;*tag*/image/0&#39;, &#39;*tag*/image/1&#39;, etc.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A scalar `Tensor` of type `string`. Used to build the `tag` of the</span>
+<span class="sd">      summary values.</span>
+<span class="sd">    tensor: A 4-D `uint8` or `float32` `Tensor` of shape `[batch_size, height,</span>
+<span class="sd">      width, channels]` where `channels` is 1, 3, or 4.</span>
+<span class="sd">    max_images: Max number of batch elements to generate images for.</span>
+<span class="sd">    collections: Optional list of ops.GraphKeys.  The collections to add the</span>
+<span class="sd">      summary to.  Defaults to [ops.GraphKeys.SUMMARIES]</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A scalar `Tensor` of type `string`. The serialized `Summary` protocol</span>
+<span class="sd">    buffer.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">])</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">image_summary</span><span class="p">(</span>
+        <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="o">=</span><span class="n">max_images</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+    <span class="n">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARIES</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span>
+    <span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.audio. Note that &quot;</span>
+    <span class="s2">&quot;tf.summary.audio uses the node name instead of the tag. &quot;</span>
+    <span class="s2">&quot;This means that TensorFlow will automatically de-duplicate summary &quot;</span>
+    <span class="s2">&quot;names based on the scope they are created in.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">audio_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span>
+                  <span class="n">tensor</span><span class="p">,</span>
+                  <span class="n">sample_rate</span><span class="p">,</span>
+                  <span class="n">max_outputs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+                  <span class="n">collections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># pylint: disable=line-too-long</span>
+  <span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with audio.</span>
+
+<span class="sd">  This op is deprecated. Please switch to tf.summary.audio.</span>
+<span class="sd">  For an explanation of why this op was deprecated, and information on how to</span>
+<span class="sd">  migrate, look</span>
+<span class="sd">  [&#39;here&#39;](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/deprecated/__init__.py)</span>
+
+<span class="sd">  The summary has up to `max_outputs` summary values containing audio. The</span>
+<span class="sd">  audio is built from `tensor` which must be 3-D with shape `[batch_size,</span>
+<span class="sd">  frames, channels]` or 2-D with shape `[batch_size, frames]`. The values are</span>
+<span class="sd">  assumed to be in the range of `[-1.0, 1.0]` with a sample rate of</span>
+<span class="sd">  `sample_rate`.</span>
+
+<span class="sd">  The `tag` argument is a scalar `Tensor` of type `string`.  It is used to</span>
+<span class="sd">  build the `tag` of the summary values:</span>
+
+<span class="sd">  *  If `max_outputs` is 1, the summary value tag is &#39;*tag*/audio&#39;.</span>
+<span class="sd">  *  If `max_outputs` is greater than 1, the summary value tags are</span>
+<span class="sd">     generated sequentially as &#39;*tag*/audio/0&#39;, &#39;*tag*/audio/1&#39;, etc.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A scalar `Tensor` of type `string`. Used to build the `tag` of the</span>
+<span class="sd">      summary values.</span>
+<span class="sd">    tensor: A 3-D `float32` `Tensor` of shape `[batch_size, frames, channels]`</span>
+<span class="sd">      or a 2-D `float32` `Tensor` of shape `[batch_size, frames]`.</span>
+<span class="sd">    sample_rate: A Scalar `float32` `Tensor` indicating the sample rate of the</span>
+<span class="sd">      signal in hertz.</span>
+<span class="sd">    max_outputs: Max number of batch elements to generate audio for.</span>
+<span class="sd">    collections: Optional list of ops.GraphKeys.  The collections to add the</span>
+<span class="sd">      summary to.  Defaults to [ops.GraphKeys.SUMMARIES]</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A scalar `Tensor` of type `string`. The serialized `Summary` protocol</span>
+<span class="sd">    buffer.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">])</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
+    <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span>
+        <span class="n">sample_rate</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;sample_rate&quot;</span><span class="p">)</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">audio_summary_v2</span><span class="p">(</span>
+        <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span>
+        <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span>
+        <span class="n">max_outputs</span><span class="o">=</span><span class="n">max_outputs</span><span class="p">,</span>
+        <span class="n">sample_rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">,</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+    <span class="n">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARIES</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.merge.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">merge_summary</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># pylint: disable=line-too-long</span>
+  <span class="sd">&quot;&quot;&quot;Merges summaries.</span>
+
+<span class="sd">  This op is deprecated. Please switch to tf.compat.v1.summary.merge, which has</span>
+<span class="sd">  identical</span>
+<span class="sd">  behavior.</span>
+
+<span class="sd">  This op creates a</span>
+<span class="sd">  [`Summary`](https://www.tensorflow.org/code/tensorflow/core/framework/summary.proto)</span>
+<span class="sd">  protocol buffer that contains the union of all the values in the input</span>
+<span class="sd">  summaries.</span>
+
+<span class="sd">  When the Op is run, it reports an `InvalidArgument` error if multiple values</span>
+<span class="sd">  in the summaries to merge use the same tag.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    inputs: A list of `string` `Tensor` objects containing serialized `Summary`</span>
+<span class="sd">      protocol buffers.</span>
+<span class="sd">    collections: Optional list of graph collections keys. The new summary op is</span>
+<span class="sd">      added to these collections. Defaults to `[GraphKeys.SUMMARIES]`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A scalar `Tensor` of type `string`. The serialized `Summary` protocol</span>
+<span class="sd">    buffer resulting from the merging.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">merge_summary</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="p">[])</span>
+  <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span><span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.merge_all.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">merge_all_summaries</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARIES</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Merges all summaries collected in the default graph.</span>
+
+<span class="sd">  This op is deprecated. Please switch to tf.compat.v1.summary.merge_all, which</span>
+<span class="sd">  has</span>
+<span class="sd">  identical behavior.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    key: `GraphKey` used to collect the summaries.  Defaults to</span>
+<span class="sd">      `GraphKeys.SUMMARIES`.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    If no summaries were collected, returns None.  Otherwise returns a scalar</span>
+<span class="sd">    `Tensor` of type `string` containing the serialized `Summary` protocol</span>
+<span class="sd">    buffer resulting from the merging.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">summary_ops</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">summary_ops</span><span class="p">:</span>
+    <span class="k">return</span> <span class="kc">None</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">merge_summary</span><span class="p">(</span><span class="n">summary_ops</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_summary_op</span><span class="p">():</span>
+  <span class="sd">&quot;&quot;&quot;Returns a single Summary op that would run all summaries.</span>
+
+<span class="sd">  Either existing one from `SUMMARY_OP` collection or merges all existing</span>
+<span class="sd">  summaries.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    If no summaries were collected, returns None. Otherwise returns a scalar</span>
+<span class="sd">    `Tensor` of type `string` containing the serialized `Summary` protocol</span>
+<span class="sd">    buffer resulting from the merging.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">summary_op</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARY_OP</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">summary_op</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">summary_op</span><span class="p">:</span>
+      <span class="n">summary_op</span> <span class="o">=</span> <span class="n">summary_op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">summary_op</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">if</span> <span class="n">summary_op</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">summary_op</span> <span class="o">=</span> <span class="n">merge_all_summaries</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">summary_op</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">ops</span><span class="o">.</span><span class="n">add_to_collection</span><span class="p">(</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARY_OP</span><span class="p">,</span> <span class="n">summary_op</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">summary_op</span>
+
+
+<span class="nd">@deprecated</span><span class="p">(</span>
+    <span class="s2">&quot;2016-11-30&quot;</span><span class="p">,</span> <span class="s2">&quot;Please switch to tf.summary.scalar. Note that &quot;</span>
+    <span class="s2">&quot;tf.summary.scalar uses the node name instead of the tag. &quot;</span>
+    <span class="s2">&quot;This means that TensorFlow will automatically de-duplicate summary &quot;</span>
+    <span class="s2">&quot;names based on the scope they are created in. Also, passing a &quot;</span>
+    <span class="s2">&quot;tensor or list of tags to a scalar summary op is no longer &quot;</span>
+    <span class="s2">&quot;supported.&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">scalar_summary</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">collections</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="c1"># pylint: disable=line-too-long</span>
+  <span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with scalar values.</span>
+
+<span class="sd">  This ops is deprecated. Please switch to tf.summary.scalar.</span>
+<span class="sd">  For an explanation of why this op was deprecated, and information on how to</span>
+<span class="sd">  migrate, look</span>
+<span class="sd">  [&#39;here&#39;](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/contrib/deprecated/__init__.py)</span>
+
+<span class="sd">  The input `tags` and `values` must have the same shape.  The generated</span>
+<span class="sd">  summary has a summary value for each tag-value pair in `tags` and `values`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tags: A `string` `Tensor`.  Tags for the summaries.</span>
+<span class="sd">    values: A real numeric Tensor.  Values for the summaries.</span>
+<span class="sd">    collections: Optional list of graph collections keys. The new summary op is</span>
+<span class="sd">      added to these collections. Defaults to `[GraphKeys.SUMMARIES]`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A scalar `Tensor` of type `string`. The serialized `Summary` protocol</span>
+<span class="sd">    buffer.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">name_scope</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">])</span> <span class="k">as</span> <span class="n">scope</span><span class="p">:</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">gen_logging_ops</span><span class="o">.</span><span class="n">scalar_summary</span><span class="p">(</span><span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">scope</span><span class="p">)</span>
+    <span class="n">_Collect</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">collections</span><span class="p">,</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">SUMMARIES</span><span class="p">])</span>
+  <span class="k">return</span> <span class="n">val</span>
+
+
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;HistogramSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;ImageSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;AudioSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;MergeSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;ScalarSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;TensorSummary&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">)</span>
+<span class="n">ops</span><span class="o">.</span><span class="n">NotDifferentiable</span><span class="p">(</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

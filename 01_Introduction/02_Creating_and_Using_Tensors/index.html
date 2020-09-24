@@ -1,0 +1,1317 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>计算图 &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="创建变量和占位符" href="../03_Using_Variables_and_Placeholders/index.html" />
+    <link rel="prev" title="引言" href="../01_How_TensorFlow_Works/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#id1">变量和张量的声明</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">计算图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">创建张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">创建0填充张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">创建1填充张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">创建常数填充张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">由给定的数创建一个张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">创建相似类型的张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">创建序列张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id9">创建随机张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">创建一个符合正态分布的张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">创建有界限的正态分布张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id12">张量乱序化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">张量裁剪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tensorflow">TensorFlow机器学习的应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id14">本节学习模块</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">TensorFlow如何工作</a> &raquo;</li>
+        
+      <li>计算图</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/01_Introduction/02_Creating_and_Using_Tensors/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>张量是TensorFlow在计算图上用于处理的主要数据源。我们可以把这些张量声明为变量，并将它们像占位符一样导入。首先，我们必须知道如何创建张量。</p>
+<p>但我们创建一个张量，然后声明它为变量之后，TensorFlow在计算图中创建出了多个图结构。值得注意的是通过创建张量，TensorFlow并没有在计算图增加任何东西。我们下一节会讲到这点。</p>
+</div>
+<p>这一节主要讲解在TensorFlow中创建张量的方法。首先，我们开始加载TensorFlow并开始重设计算图。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="kn">import</span> <span class="n">ops</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ops</span><span class="o">.</span><span class="n">reset_default_graph</span><span class="p">()</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.python.framework.ops.reset_default_graph模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.python.framework.ops.reset_default_graph"></span><p>Clears the default graph stack and resets the global default graph.</p>
+<p>NOTE: The default graph is a property of the current thread. This
+function applies only to the current thread.  Calling this function while
+a <cite>tf.compat.v1.Session</cite> or <cite>tf.compat.v1.InteractiveSession</cite> is active will
+result in undefined
+behavior. Using any previously created <cite>tf.Operation</cite> or <cite>tf.Tensor</cite> objects
+after calling this function will result in undefined behavior.
+:raises AssertionError: If this function is called within a nested graph.</p>
+<div class="section" id="id1">
+<h1>计算图<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>用 <code class="docutils literal notranslate"><span class="pre">tf.Session()</span></code> 开始吧！😀</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 适用于低版本Tensorflow运行</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="c1"># 适用于2.0版本TensorFlow运行, 由于版本不同，必须先运行下面的命令run才能工作</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">disable_eager_execution</span><span class="p">()</span>
+<span class="c1"># compat指的是兼容v1版本的Tensorflow</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h1>创建张量<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
+<p>TensorFlow有一些内置函数可以用创建变量张量。例如我们可以通过 <code class="docutils literal notranslate"><span class="pre">tf.zeros()</span></code> 来创建一个预设形状的零张量。比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">my_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>然后，我们可以通过 <code class="docutils literal notranslate"><span class="pre">run</span></code> 方法的调用来输出张量。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">my_tensor</span><span class="p">)</span>
+<span class="go">array([[ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
+<span class="go">0.,  0.,  0., 0.,  0.,  0.,  0.,  0.,  0.,  0.]], dtype=float32)</span>
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h1>创建0填充张量<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">zero_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zero_tsr</span><span class="p">)</span>
+<span class="go">array([[0., 0., 0., 0., 0.],</span>
+<span class="go"> [0., 0., 0., 0., 0.],</span>
+<span class="go"> [0., 0., 0., 0., 0.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[row_dim,</span> <span class="pre">col_dim]</span></code> row_dim是行维度，col_dim是列维度，需要代入具体数字才可以输出。</p>
+</div>
+<div class="section" id="id4">
+<h1>创建1填充张量<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ones_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_tsr</span><span class="p">)</span>
+<span class="go">array([[1., 1., 1., 1., 1., 1., 1.],</span>
+<span class="go"> [1., 1., 1., 1., 1., 1., 1.],</span>
+<span class="go"> [1., 1., 1., 1., 1., 1., 1.],</span>
+<span class="go"> [1., 1., 1., 1., 1., 1., 1.],</span>
+<span class="go"> [1., 1., 1., 1., 1., 1., 1.],</span>
+<span class="go"> [1., 1., 1., 1., 1., 1., 1.]], dtype=float32)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[row_dim,</span> <span class="pre">col_dim]</span></code> row_dim是行维度，col_dim是列维度，同样需要代入具体数字才可以输出。</p>
+</div>
+<div class="section" id="id5">
+<h1>创建常数填充张量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filled_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">fill</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">],</span><span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">filled_tsr</span><span class="p">)</span>
+<span class="go">array([[42, 42, 42, 42, 42, 42, 42],</span>
+<span class="go"> [42, 42, 42, 42, 42, 42, 42],</span>
+<span class="go"> [42, 42, 42, 42, 42, 42, 42],</span>
+<span class="go"> [42, 42, 42, 42, 42, 42, 42],</span>
+<span class="go"> [42, 42, 42, 42, 42, 42, 42],</span>
+<span class="go"> [42, 42, 42, 42, 42, 42, 42]], dtype=int32)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">[row_dim,</span> <span class="pre">col_dim]</span></code> row_dim是行维度，col_dim是列维度，同样需要代入具体数字才可以输出。</p>
+</div>
+<div class="section" id="id6">
+<h1>由给定的数创建一个张量<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constant1_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">constant1_tsr</span><span class="p">)</span>
+<span class="go">[1 2 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">constant2_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">constant2_tsr</span><span class="p">)</span>
+<span class="go">[[1 2 3]</span>
+<span class="go"> [4 5 6]</span>
+<span class="go"> [7 8 9]]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tf.constant([...])</span></code> 可以改变输入常数的维度来输出对应的维度的常数张量。</p>
+</div>
+<div class="section" id="id7">
+<h1>创建相似类型的张量<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">zeros_similar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">constant1_tsr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">zeros_similar</span><span class="p">)</span>
+<span class="go">array([0, 0, 0], dtype=int32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ones_similar</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">constant2_tsr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">ones_similar</span><span class="p">)</span>
+<span class="go">array([[1, 1, 1],</span>
+<span class="go"> [1, 1, 1],</span>
+<span class="go"> [1, 1, 1]], dtype=int32)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h1>创建序列张量<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># linspace必须规定start的数是bfloat16, float16, float32, float64当中的一种</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">linear_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">num</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="c1"># stop=100，最后一位数包括100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">linear_tsr</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span>  <span class="mf">0.</span><span class="p">,</span>  <span class="mf">10.</span><span class="p">,</span>  <span class="mf">20.</span><span class="p">,</span>  <span class="mf">30.</span><span class="p">,</span>  <span class="mf">40.</span><span class="p">,</span>  <span class="mf">50.</span><span class="p">,</span>  <span class="mf">60.</span><span class="p">,</span>  <span class="mf">70.</span><span class="p">,</span>  <span class="mf">80.</span><span class="p">,</span>  <span class="mf">90.</span><span class="p">,</span> <span class="mf">100.</span><span class="p">],</span>
+<span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="c1"># range的start比较宽松，可以是整数。</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">integer_seq_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">limit</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">delta</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1"># limit=15, 最后一位数不包括15</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">integer_seq_tsr</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([</span> <span class="mi">6</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">int32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h1>创建随机张量<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 下面创建一个符合均匀分布(uniform distribution)的随机数张量</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+<span class="c1"># 包含minval,不包含maxval</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">randuif_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span><span class="p">],</span> <span class="n">minval</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">randuif_tsr</span><span class="p">)</span>
+<span class="n">array</span><span class="p">([[</span><span class="mf">0.67701995</span><span class="p">,</span> <span class="mf">0.18257272</span><span class="p">,</span> <span class="mf">0.57032907</span><span class="p">,</span> <span class="mf">0.36612427</span><span class="p">,</span> <span class="mf">0.9630263</span> <span class="p">,</span>
+  <span class="mf">0.95663846</span><span class="p">,</span> <span class="mf">0.8787807</span> <span class="p">,</span> <span class="mf">0.17861104</span><span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.4416871</span> <span class="p">,</span> <span class="mf">0.9086859</span> <span class="p">,</span> <span class="mf">0.3647703</span> <span class="p">,</span> <span class="mf">0.21749687</span><span class="p">,</span> <span class="mf">0.45980632</span><span class="p">,</span>
+  <span class="mf">0.36322677</span><span class="p">,</span> <span class="mf">0.45077944</span><span class="p">,</span> <span class="mf">0.18235803</span><span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.23256958</span><span class="p">,</span> <span class="mf">0.7551502</span> <span class="p">,</span> <span class="mf">0.574257</span>  <span class="p">,</span> <span class="mf">0.31542778</span><span class="p">,</span> <span class="mf">0.47067642</span><span class="p">,</span>
+  <span class="mf">0.59856176</span><span class="p">,</span> <span class="mf">0.7479335</span> <span class="p">,</span> <span class="mf">0.9510181</span> <span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.7199836</span> <span class="p">,</span> <span class="mf">0.96217847</span><span class="p">,</span> <span class="mf">0.6937009</span> <span class="p">,</span> <span class="mf">0.7456448</span> <span class="p">,</span> <span class="mf">0.24289751</span><span class="p">,</span>
+  <span class="mf">0.85406077</span><span class="p">,</span> <span class="mf">0.6463398</span> <span class="p">,</span> <span class="mf">0.25423837</span><span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.95849264</span><span class="p">,</span> <span class="mf">0.6280341</span> <span class="p">,</span> <span class="mf">0.5537604</span> <span class="p">,</span> <span class="mf">0.49765468</span><span class="p">,</span> <span class="mf">0.07170725</span><span class="p">,</span>
+  <span class="mf">0.19740784</span><span class="p">,</span> <span class="mf">0.6923628</span> <span class="p">,</span> <span class="mf">0.6402495</span> <span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.93710315</span><span class="p">,</span> <span class="mf">0.7305033</span> <span class="p">,</span> <span class="mf">0.96696365</span><span class="p">,</span> <span class="mf">0.46475697</span><span class="p">,</span> <span class="mf">0.06905127</span><span class="p">,</span>
+  <span class="mf">0.7408395</span> <span class="p">,</span> <span class="mf">0.712886</span>  <span class="p">,</span> <span class="mf">0.00653875</span><span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.5427816</span> <span class="p">,</span> <span class="mf">0.22150195</span><span class="p">,</span> <span class="mf">0.460876</span>  <span class="p">,</span> <span class="mf">0.35927665</span><span class="p">,</span> <span class="mf">0.32854652</span><span class="p">,</span>
+  <span class="mf">0.13955867</span><span class="p">,</span> <span class="mf">0.56905234</span><span class="p">,</span> <span class="mf">0.97424316</span><span class="p">],</span>
+ <span class="p">[</span><span class="mf">0.05879259</span><span class="p">,</span> <span class="mf">0.3620267</span> <span class="p">,</span> <span class="mf">0.81892705</span><span class="p">,</span> <span class="mf">0.08734441</span><span class="p">,</span> <span class="mf">0.361081</span>  <span class="p">,</span>
+  <span class="mf">0.6088749</span> <span class="p">,</span> <span class="mf">0.3457687</span> <span class="p">,</span> <span class="mf">0.69742644</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h1>创建一个符合正态分布的张量<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
+<p>正态分布(normal distribution)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">randnorm_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_normal</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span><span class="n">col_dim</span><span class="p">],</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">randnorm_tsr</span><span class="p">)</span>
+<span class="go">array([[-1.3551812 ,  0.44311747, -0.07009585, -0.3532377 , -0.182757, 0.13516597,  0.4071887 ,  0.27975908],</span>
+<span class="go">       [ 0.42585635,  0.5364396 , -0.6653683 ,  0.35444063, -1.0977732 , -0.59936076, -0.36046746, -0.07343452],</span>
+<span class="go">       [-0.919484  ,  0.39717674,  0.7935889 , -0.9890499 , -1.133034  , 1.0666726 , -0.968096  ,  1.2872337 ],</span>
+<span class="go">       [-0.66985756, -1.1499914 ,  1.7560692 , -0.10894807,  1.1841142 , 0.22291774, -0.951817  , -0.44093087],</span>
+<span class="go">       [-1.0684127 , -1.0498457 ,  2.9362292 , -2.013448  ,  0.4025221 , -1.1769909 , -0.05197304, -1.4978093 ],</span>
+<span class="go">       [-0.38958997,  0.39442828,  0.97004807,  0.13250023, -1.2196823 , 0.70165646, -1.0563769 ,  0.10399553],</span>
+<span class="go">       [ 0.41292164, -0.03876609, -1.2176208 ,  0.8764762 , -0.31439155, 0.06191747, -0.87645555,  0.5363252 ],</span>
+<span class="go">       [-1.112473  ,  2.0940979 ,  1.3212632 , -0.14039427,  1.903088  , -1.0271009 ,  0.9657831 , -0.8105811 ]], dtype=float32)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h1>创建有界限的正态分布张量<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h1>
+<p>即截断的产生正态分布的随机数，即随机数与均值的差值若大于两倍的标准差，则重新生成。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">row_dim</span><span class="p">,</span> <span class="n">col_dim</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">runcnomr_tsr</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">truncated_normal</span><span class="p">([</span><span class="n">row_dim</span><span class="p">,</span><span class="n">col_dim</span><span class="p">],</span><span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stddev</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">runcnomr_tsr</span><span class="p">)</span>
+<span class="go">array([[ 0.57215023, -0.02053498,  0.06714377, -1.2676795 ,  0.33678156, 0.803336  , -0.10746168, -1.073573  ],</span>
+<span class="go">       [-1.6188551 ,  0.26903188, -0.94024265, -1.0895174 , -0.3667447 , -1.934491  ,  0.16837268,  0.14565438],</span>
+<span class="go">       [ 1.3880031 ,  0.25730732, -1.2500429 ,  1.2005805 , -0.6324095 , -0.5305861 , -0.86797935,  0.58874166],</span>
+<span class="go">       [-0.34581357, -0.69425064, -1.8915199 , -0.7588796 , -0.4680857 , -0.6425717 , -0.35572565,  0.33899295],</span>
+<span class="go">       [-0.50731635, -1.191694  ,  1.2362499 , -1.6300774 , -1.7100778 , -0.5509973 ,  1.7180538 , -0.05677445],</span>
+<span class="go">       [-0.6379802 ,  1.0952779 , -0.57122874,  0.35372928,  0.99445486, -0.37966916, -1.5172375 , -0.2665035 ],</span>
+<span class="go">       [ 1.631818  ,  0.79803437,  1.6253722 , -0.02572301, -0.1393287 , -1.8196368 ,  0.03887375,  0.5125945 ],</span>
+<span class="go">       [ 1.0057242 , -0.93407774, -0.06123861, -0.16788454,  0.62762713, 1.2990429 ,  0.5621885 ,  0.6616505 ]], dtype=float32)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h1>张量乱序化<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h1>
+<p><code class="code docutils literal notranslate"><span class="pre">runcnorm_tsr</span></code> 只是一个张量例子</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">shuffled_output</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_shuffle</span><span class="p">(</span><span class="n">runcnomr_tsr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">shuffled_output</span><span class="p">)</span>
+<span class="go">array([[-1.5790983 ,  1.390395  , -1.5734539 , -1.2803887 , -0.36437657, 0.30741617,  0.9532189 ,  0.43124342],</span>
+<span class="go">       [-0.21545868,  0.5560213 , -1.1023369 , -1.365619  , -1.1592077 , 1.516915  , -0.386228  ,  1.6577938 ],</span>
+<span class="go">       [-0.56759614, -1.7026372 , -0.39424533,  0.20800175, -0.49035162, -1.4874234 ,  0.5077964 , -0.97859126],</span>
+<span class="go">       [-1.657173  , -1.2724566 , -0.12424537, -0.09589671, -1.3740199 , -0.19883458, -0.24118501, -0.25363442],</span>
+<span class="go">       [ 1.1784359 ,  1.6380433 ,  0.22968899, -0.3419656 , -0.5073284 , -0.37669885, -0.00905402,  0.10761048],</span>
+<span class="go">       [ 0.94037515,  0.14280881,  0.44833976, -0.3870774 ,  0.5403837 , -0.96695757,  0.54265535, -0.56348246],</span>
+<span class="go">       [ 0.8507602 , -1.2580659 ,  1.1683265 ,  1.4664146 ,  0.59427595, -0.49156505, -1.1784973 ,  0.14118564],</span>
+<span class="go">       [ 0.2539443 , -1.3915894 , -0.6779825 , -0.66317   ,  0.01306346, 0.5949122 , -1.409377  , -0.38872847]], dtype=float32)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>张量裁剪<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h1>
+<p>第二个参数 <code class="code docutils literal notranslate"><span class="pre">cropped_size</span></code> 必须是 <code class="code docutils literal notranslate"><span class="pre">[n,m]</span></code> 格式.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cropped_output</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_crop</span><span class="p">(</span><span class="n">runcnomr_tsr</span><span class="p">,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cropped_output</span><span class="p">)</span>
+<span class="go">array([[-0.2630262 ,  1.2543985 ,  0.14447008, -0.00760976],</span>
+<span class="go">       [-1.2469869 , -0.3482599 ,  1.4325598 ,  0.03993478],</span>
+<span class="go">       [-1.7399155 ,  1.0116926 , -0.22996971,  1.4531476 ],</span>
+<span class="go">       [-0.01253414, -1.0832093 , -1.2577766 ,  1.4000101 ]],dtype=float32)</span>
+
+<span class="go"># 张量乱序化和裁剪操作都不是原处改变(in-place changes), 但是每次运行sess.run, 得到随机张量都会不一样, 必要的时候需要赋值语句</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">runcnomr_tsr</span><span class="p">)</span>
+<span class="go">array([[-0.01128286,  0.10473254,  0.7416311 ,  0.12495294, -0.621709  , 0.08294442, -0.3259678 ,  1.9100105 ],</span>
+<span class="go">       [-0.7485761 ,  1.871997  ,  0.3522917 , -0.27935842, -0.14542657, -0.06015118,  0.02190878, -0.07216269],</span>
+<span class="go">       [ 0.17552952,  0.395008  ,  0.06362368,  0.09165095,  0.41191736, 0.4416554 ,  0.5326085 ,  0.19600478],</span>
+<span class="go">       [ 1.1290088 ,  1.6767063 , -0.06439265,  0.68743473, -0.76912147, -0.74357826, -0.62004423, -1.5831621 ],</span>
+<span class="go">       [ 0.24502024, -0.04311023,  0.36677885, -0.7533206 , -0.83164   , 1.3448423 ,  0.8730749 , -0.13600092],</span>
+<span class="go">       [ 0.12533237,  0.49264213,  0.48348406, -0.03921305,  1.0805569 , 0.8118515 ,  0.6512441 , -0.11669531],</span>
+<span class="go">       [ 0.72900176,  1.8130132 ,  1.3789786 ,  0.519455  , -1.179993  , -1.0784473 ,  1.1946204 , -1.0734705 ],</span>
+<span class="go">       [ 0.68626446,  1.2634999 , -0.03061075, -1.3075253 , -0.4238513 , -1.4350135 ,  0.70656526,  1.2966055 ]], dtype=float32)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_tsr</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">runcnomr_tsr</span><span class="p">)</span>
+
+<span class="go"># 后面我们会谈到图像处理，可能会用到下面的代码</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_raw_data_jpg</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">gfile</span><span class="o">.</span><span class="n">GFile</span><span class="p">(</span><span class="s2">&quot;yourimage.jpg&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">sess</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="n">img_data</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">decode_jpeg</span><span class="p">(</span><span class="n">image_raw_data_jpg</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">img_data</span><span class="p">))</span>
+<span class="gp">... </span>   <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_data</span><span class="o">.</span><span class="n">eval</span><span class="p">())</span>
+<span class="go">[[[249 253 254]</span>
+<span class="go">  [249 253 254]</span>
+<span class="go">  [249 253 254]</span>
+<span class="go">  ...</span>
+<span class="go">  [255 255 255]</span>
+<span class="go">  [255 255 255]</span>
+<span class="go">  [255 255 255]]</span>
+
+<span class="go">[[249 253 254]</span>
+<span class="go"> [249 253 254]</span>
+<span class="go"> [249 253 254]</span>
+<span class="go"> ...</span>
+<span class="go"> ...</span>
+
+<span class="go"># 运行了with sess as session之后, session会关闭，此时需要重新打开</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cropped_image</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">random_crop</span><span class="p">(</span><span class="n">img_data</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">)</span>
+<span class="go">array([[[255, 255, 255]],</span>
+
+<span class="go">       [[255, 255, 255]],</span>
+
+<span class="go">       [[255, 255, 255]]], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>下载本节 <a class="reference download internal" download="" href="../../_downloads/2cb539644ae372a22af6d814716a60e0/tensorflow2.1tutorialch1sec2&amp;3.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Jupyter</span> <span class="pre">Notebook</span></code></a></p>
+</div>
+<div class="section" id="tensorflow">
+<h1>TensorFlow机器学习的应用<a class="headerlink" href="#tensorflow" title="Permalink to this headline">¶</a></h1>
+<video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
+    <source src="../../_static/videos/Intro2ML/TFIntro3.mp4" type="video/mp4">
+</video></div>
+<div class="section" id="id14">
+<h1>本节学习模块<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h1>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.zeros模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.zeros"></span><p>Creates a tensor with all elements set to zero.</p>
+<p>This operation returns a tensor of type <cite>dtype</cite> with shape <cite>shape</cite> and
+all elements set to zero.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(3, 4), dtype=int32, numpy=</span>
+<span class="go">array([[0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 0, 0]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>A <cite>list</cite> of integers, a <cite>tuple</cite> of integers, or
+a 1-D <cite>Tensor</cite> of type <cite>int32</cite>.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The DType of an element in the resulting <cite>Tensor</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>Optional string. A name for the operation.</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite> with all elements set to zero.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.fill模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.fill"></span><p>Creates a tensor filled with a scalar value.</p>
+<p>This operation creates a tensor of shape <cite>dims</cite> and fills it with <cite>value</cite>.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">fill</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">9</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">array([[9, 9, 9],</span>
+<span class="go">       [9, 9, 9]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p><cite>tf.fill</cite> evaluates at graph runtime and supports dynamic shapes based on
+other runtime <cite>tf.Tensors</cite>, unlike <cite>tf.constant(value, shape=dims)</cite>, which
+embeds the value as a <cite>Const</cite> node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param dims</dt>
+<dd class="field-odd"><p>A 1-D sequence of non-negative numbers. Represents the shape of the
+output <cite>tf.Tensor</cite>. Entries should be of type: <cite>int32</cite>, <cite>int64</cite>.</p>
+</dd>
+<dt class="field-even">param value</dt>
+<dd class="field-even"><p>A value to fill the returned <cite>tf.Tensor</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>Optional string. The name of the output <cite>tf.Tensor</cite>.</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>tf.Tensor</cite> with shape <cite>dims</cite> and the same dtype as <cite>value</cite>.</p>
+</dd>
+<dt class="field-odd">raises InvalidArgumentError</dt>
+<dd class="field-odd"><p><cite>dims</cite> contains negative entries.</p>
+</dd>
+<dt class="field-even">raises NotFoundError</dt>
+<dd class="field-even"><p><cite>dims</cite> contains non-integer entries.</p>
+</dd>
+</dl>
+<p>&#64;compatibility(numpy)
+Similar to <cite>np.full</cite>. In <cite>numpy</cite>, more parameters are supported. Passing a
+number argument as the shape (<cite>np.full(5, value)</cite>) is valid in <cite>numpy</cite> for
+specifying a 1-D shaped result, while TensorFlow does not support this syntax.
+&#64;end_compatibility</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.constant模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.constant"></span><p>Creates a constant tensor from a tensor-like object.</p>
+<p>Note: All eager <cite>tf.Tensor</cite> values are immutable (in contrast to
+<cite>tf.Variable</cite>). There is nothing especially _constant_ about the value
+returned from <cite>tf.constant</cite>. This function it is not fundamentally different
+from <cite>tf.convert_to_tensor</cite>. The name <cite>tf.constant</cite> comes from the symbolic
+APIs (like <cite>tf.data</cite> or keras functional models) where the <cite>value</cite> is embeded
+in a <cite>Const</cite> node in the <cite>tf.Graph</cite>. <cite>tf.constant</cite> is useful for asserting
+that the value can be embedded that way.</p>
+<p>If the argument <cite>dtype</cite> is not specified, then the type is inferred from
+the type of <cite>value</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Constant 1-D Tensor from a python list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(6,), dtype=int32,</span>
+<span class="go">    numpy=array([1, 2, 3, 4, 5, 6], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Or a numpy array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int64, numpy=</span>
+<span class="go">  array([[1, 2, 3],</span>
+<span class="go">         [4, 5, 6]])&gt;</span>
+</pre></div>
+</div>
+<p>If <cite>dtype</cite> is specified the resulting tensor values are cast to the requested
+<cite>dtype</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(6,), dtype=float64,</span>
+<span class="go">    numpy=array([1., 2., 3., 4., 5., 6.])&gt;</span>
+</pre></div>
+</div>
+<p>If <cite>shape</cite> is set, the <cite>value</cite> is reshaped to match. Scalars are expanded to
+fill the <cite>shape</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="go">  &lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">  array([[0, 0, 0],</span>
+<span class="go">         [0, 0, 0]], dtype=int32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">  array([[1, 2, 3],</span>
+<span class="go">         [4, 5, 6]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<p><cite>tf.constant</cite> has no effect if an eager Tensor is passed as the <cite>value</cite>, it
+even transmits gradients:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">([</span><span class="mf">0.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">g</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">v</span> <span class="o">+</span> <span class="n">v</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="go">array([2.], dtype=float32)</span>
+</pre></div>
+</div>
+<p>But, since <cite>tf.constant</cite> embeds the value in the <cite>tf.Graph</cite> this fails for
+symbolic tensors:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+<span class="c">...</span>
+<span class="gr">NotImplementedError</span>: <span class="n">...</span>
+</pre></div>
+</div>
+<p><cite>tf.constant</cite> will _always_ create CPU (host) tensors. In order to create
+tensors on other devices, use <cite>tf.identity</cite>. (If the <cite>value</cite> is an eager
+Tensor, however, the tensor will be returned unmodified as mentioned above.)</p>
+<p>Related Ops:</p>
+<ul>
+<li><p><cite>tf.convert_to_tensor</cite> is similar but:
+* It has no <cite>shape</cite> argument.
+* Symbolic tensors are allowed to pass through.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><cite>tf.fill</cite>: differs in a few ways:
+*   <cite>tf.constant</cite> supports arbitrary constants, not just uniform scalar</p>
+<blockquote>
+<div><p>Tensors like <cite>tf.fill</cite>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><cite>tf.fill</cite> creates an Op in the graph that is expanded at runtime, so it
+can efficiently represent large tensors.</p></li>
+<li><p>Since <cite>tf.fill</cite> does not embed the value, it can produce dynamically
+sized outputs.</p></li>
+</ul>
+</li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>A constant value (or list) of output type <cite>dtype</cite>.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the elements of the resulting tensor.</p>
+</dd>
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>Optional dimensions of resulting tensor.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>Optional name for the tensor.</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A Constant Tensor.</p>
+</dd>
+<dt class="field-even">raises TypeError</dt>
+<dd class="field-even"><p>if shape is incorrectly specified or unsupported.</p>
+</dd>
+<dt class="field-odd">raises ValueError</dt>
+<dd class="field-odd"><p>if called on a symbolic tensor.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.zeros_like模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.zeros_like"></span><p>Creates a tensor with all elements set to zero.</p>
+<p>See also <cite>tf.zeros</cite>.</p>
+<p>Given a single tensor or array-like object (<cite>input</cite>), this operation returns
+a tensor of the same type and shape as <cite>input</cite> with all elements set to zero.
+Optionally, you can use <cite>dtype</cite> to specify a new type for the returned tensor.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">array([[0, 0, 0],</span>
+<span class="go">       [0, 0, 0]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=float32, numpy=</span>
+<span class="go">array([[0., 0., 0.],</span>
+<span class="go">       [0., 0., 0.]], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">array([[0, 0, 0],</span>
+<span class="go">       [0, 0, 0]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite> or array-like object.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>A type for the returned <cite>Tensor</cite>. Must be <cite>float16</cite>, <cite>float32</cite>,
+<cite>float64</cite>, <cite>int8</cite>, <cite>uint8</cite>, <cite>int16</cite>, <cite>uint16</cite>, <cite>int32</cite>, <cite>int64</cite>,
+<cite>complex64</cite>, <cite>complex128</cite>, <cite>bool</cite> or <cite>string</cite> (optional).</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite> with all elements set to zero.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.ones_like模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.ones_like"></span><p>Creates a tensor of all ones that has the same shape as the input.</p>
+<p>See also <cite>tf.ones</cite>.</p>
+<p>Given a single tensor (<cite>tensor</cite>), this operation returns a tensor of the
+same type and shape as <cite>tensor</cite> with all elements set to 1. Optionally,
+you can use <cite>dtype</cite> to specify a new type for the returned tensor.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">tensor</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 3), dtype=int32, numpy=</span>
+<span class="go">  array([[1, 1, 1],</span>
+<span class="go">         [1, 1, 1]], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param input</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>A type for the returned <cite>Tensor</cite>. Must be <cite>float16</cite>, <cite>float32</cite>,
+<cite>float64</cite>, <cite>int8</cite>, <cite>uint8</cite>, <cite>int16</cite>, <cite>uint16</cite>, <cite>int32</cite>, <cite>int64</cite>,
+<cite>complex64</cite>, <cite>complex128</cite>, <cite>bool</cite> or <cite>string</cite>.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite> with all elements set to one.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.linspace模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.linspace"></span><p>Generates values in an interval.</p>
+<p>A sequence of <cite>num</cite> evenly-spaced values are generated beginning at <cite>start</cite>.
+If <cite>num &gt; 1</cite>, the values in the sequence increase by <cite>stop - start / num - 1</cite>,
+so that the last one is exactly <cite>stop</cite>.</p>
+<p>For example:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">tf.linspace(10.0,</span> <span class="pre">12.0,</span> <span class="pre">3,</span> <span class="pre">name=&quot;linspace&quot;)</span> <span class="pre">=&gt;</span> <span class="pre">[</span> <span class="pre">10.0</span>&#160; <span class="pre">11.0</span>&#160; <span class="pre">12.0]</span>
+<span class="pre">`</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">param start</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>bfloat16</cite>, <cite>half</cite>, <cite>float32</cite>, <cite>float64</cite>.
+0-D tensor. First entry in the range.</p>
+</dd>
+<dt class="field-even">param stop</dt>
+<dd class="field-even"><p>A <cite>Tensor</cite>. Must have the same type as <cite>start</cite>.
+0-D tensor. Last entry in the range.</p>
+</dd>
+<dt class="field-odd">param num</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Must be one of the following types: <cite>int32</cite>, <cite>int64</cite>.
+0-D tensor. Number of values to generate.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite>. Has the same type as <cite>start</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.range模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.range"></span><p>Creates a sequence of numbers.</p>
+<p>Creates a sequence of numbers that begins at <cite>start</cite> and extends by
+increments of <cite>delta</cite> up to but not including <cite>limit</cite>.</p>
+<p>The dtype of the resulting tensor is inferred from the inputs unless
+it is provided explicitly.</p>
+<p>Like the Python builtin <cite>range</cite>, <cite>start</cite> defaults to 0, so that
+<cite>range(n) = range(0, n)</cite>.</p>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limit</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delta</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(5,), dtype=int32,</span>
+<span class="go">numpy=array([ 3,  6,  9, 12, 15], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limit</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">delta</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(4,), dtype=float32,</span>
+<span class="go">numpy=array([3. , 2.5, 2. , 1.5], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">limit</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(5,), dtype=int32,</span>
+<span class="go">numpy=array([0, 1, 2, 3, 4], dtype=int32)&gt;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">param start</dt>
+<dd class="field-odd"><p>A 0-D <cite>Tensor</cite> (scalar). Acts as first entry in the range if <cite>limit</cite>
+is not None; otherwise, acts as range limit and first entry defaults to 0.</p>
+</dd>
+<dt class="field-even">param limit</dt>
+<dd class="field-even"><p>A 0-D <cite>Tensor</cite> (scalar). Upper limit of sequence, exclusive. If None,
+defaults to the value of <cite>start</cite> while the first entry of the range
+defaults to 0.</p>
+</dd>
+<dt class="field-odd">param delta</dt>
+<dd class="field-odd"><p>A 0-D <cite>Tensor</cite> (scalar). Number that increments <cite>start</cite>. Defaults to
+1.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the elements of the resulting tensor.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation. Defaults to &quot;range&quot;.</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>An 1-D <cite>Tensor</cite> of type <cite>dtype</cite>.</p>
+</dd>
+</dl>
+<p>&#64;compatibility(numpy)
+Equivalent to np.arange
+&#64;end_compatibility</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.random_uniform模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.random_uniform"></span><p>Outputs random values from a uniform distribution.</p>
+<p>The generated values follow a uniform distribution in the range
+<cite>[minval, maxval)</cite>. The lower bound <cite>minval</cite> is included in the range, while
+the upper bound <cite>maxval</cite> is excluded.</p>
+<p>For floats, the default range is <cite>[0, 1)</cite>.  For ints, at least <cite>maxval</cite> must
+be specified explicitly.</p>
+<p>In the integer case, the random integers are slightly biased unless
+<cite>maxval - minval</cite> is an exact power of two.  The bias is small for values of
+<cite>maxval - minval</cite> significantly smaller than the range of the output (either
+<cite>2**32</cite> or <cite>2**64</cite>).</p>
+<p>Examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="go">&lt;tf.Tensor: shape=(2,), dtype=float32, numpy=array([..., ...], dtype=float32)&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">minval</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=float32, numpy=-...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">minval</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int64, numpy=...&gt;</span>
+</pre></div>
+</div>
+<p>The <cite>seed</cite> argument produces a deterministic sequence of tensors across
+multiple calls. To repeat that sequence, use <cite>tf.random.set_seed</cite>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=2&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=2&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[],</span> <span class="n">maxval</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int32</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(), dtype=int32, numpy=0&gt;</span>
+</pre></div>
+</div>
+<p>Without <cite>tf.random.set_seed</cite> but with a <cite>seed</cite> argument is specified, small
+changes to function graphs or previously executed operations will change the
+returned value. See <cite>tf.random.set_seed</cite> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>A 1-D integer Tensor or Python array. The shape of the output tensor.</p>
+</dd>
+<dt class="field-even">param minval</dt>
+<dd class="field-even"><p>A Tensor or Python value of type <cite>dtype</cite>, broadcastable with
+<cite>maxval</cite>. The lower bound on the range of random values to generate
+(inclusive).  Defaults to 0.</p>
+</dd>
+<dt class="field-odd">param maxval</dt>
+<dd class="field-odd"><p>A Tensor or Python value of type <cite>dtype</cite>, broadcastable with
+<cite>minval</cite>. The upper bound on the range of random values to generate
+(exclusive). Defaults to 1 if <cite>dtype</cite> is floating point.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the output: <cite>float16</cite>, <cite>float32</cite>, <cite>float64</cite>, <cite>int32</cite>,
+or <cite>int64</cite>.</p>
+</dd>
+<dt class="field-odd">param seed</dt>
+<dd class="field-odd"><p>A Python integer. Used in combination with <cite>tf.random.set_seed</cite> to
+create a reproducible sequence of tensors across multiple calls.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A tensor of the specified shape filled with random uniform values.</p>
+</dd>
+<dt class="field-even">raises ValueError</dt>
+<dd class="field-even"><p>If <cite>dtype</cite> is integral and <cite>maxval</cite> is not specified.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.random_normal模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.random_normal"></span><p>Outputs random values from a normal distribution.</p>
+<p>Example that generates a new set of random values every time:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">4</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(4,), dtype=float32, numpy=..., dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<p>Example that outputs a reproducible result:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">set_seed</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">&lt;tf.Tensor: shape=(2, 2), dtype=float32, numpy=</span>
+<span class="go">array([[-1.3768897 , -0.01258316],</span>
+<span class="go">      [-0.169515   ,  1.0824056 ]], dtype=float32)&gt;</span>
+</pre></div>
+</div>
+<p>In this case, we are setting both the global and operation-level seed to
+ensure this result is reproducible.  See <cite>tf.random.set_seed</cite> for more
+information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>A 1-D integer Tensor or Python array. The shape of the output tensor.</p>
+</dd>
+<dt class="field-even">param mean</dt>
+<dd class="field-even"><p>A Tensor or Python value of type <cite>dtype</cite>, broadcastable with <cite>stddev</cite>.
+The mean of the normal distribution.</p>
+</dd>
+<dt class="field-odd">param stddev</dt>
+<dd class="field-odd"><p>A Tensor or Python value of type <cite>dtype</cite>, broadcastable with <cite>mean</cite>.
+The standard deviation of the normal distribution.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the output.</p>
+</dd>
+<dt class="field-odd">param seed</dt>
+<dd class="field-odd"><p>A Python integer. Used to create a random seed for the distribution.
+See
+<cite>tf.random.set_seed</cite>
+for behavior.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A tensor of the specified shape filled with random normal values.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.truncated_normal模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.truncated_normal"></span><p>Outputs random values from a truncated normal distribution.</p>
+<p>The generated values follow a normal distribution with specified mean and
+standard deviation, except that values whose magnitude is more than 2 standard
+deviations from the mean are dropped and re-picked.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param shape</dt>
+<dd class="field-odd"><p>A 1-D integer Tensor or Python array. The shape of the output tensor.</p>
+</dd>
+<dt class="field-even">param mean</dt>
+<dd class="field-even"><p>A 0-D Tensor or Python value of type <cite>dtype</cite>. The mean of the
+truncated normal distribution.</p>
+</dd>
+<dt class="field-odd">param stddev</dt>
+<dd class="field-odd"><p>A 0-D Tensor or Python value of type <cite>dtype</cite>. The standard deviation
+of the normal distribution, before truncation.</p>
+</dd>
+<dt class="field-even">param dtype</dt>
+<dd class="field-even"><p>The type of the output.</p>
+</dd>
+<dt class="field-odd">param seed</dt>
+<dd class="field-odd"><p>A Python integer. Used to create a random seed for the distribution.
+See
+<cite>tf.random.set_seed</cite>
+for behavior.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A tensor of the specified shape filled with random truncated normal values.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.random_shuffle模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.random_shuffle"></span><p>Randomly shuffles a tensor along its first dimension.</p>
+<p>The tensor is shuffled along dimension 0, such that each <cite>value[j]</cite> is mapped
+to one and only one <cite>output[i]</cite>. For example, a mapping that might occur for a
+3x2 tensor is:</p>
+<p><a href="#id15"><span class="problematic" id="id16">``</span></a><a href="#id17"><span class="problematic" id="id18">`</span></a>python
+[[1, 2],       [[5, 6],</p>
+<blockquote>
+<div><p>[3, 4],  ==&gt;   [1, 2],
+[5, 6]]        [3, 4]]</p>
+</div></blockquote>
+<p><a href="#id19"><span class="problematic" id="id20">``</span></a><a href="#id21"><span class="problematic" id="id22">`</span></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>A Tensor to be shuffled.</p>
+</dd>
+<dt class="field-even">param seed</dt>
+<dd class="field-even"><p>A Python integer. Used to create a random seed for the distribution.
+See
+<cite>tf.random.set_seed</cite>
+for behavior.</p>
+</dd>
+<dt class="field-odd">param name</dt>
+<dd class="field-odd"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-even">returns</dt>
+<dd class="field-even"><p>A tensor of same shape and type as <cite>value</cite>, shuffled along its first
+dimension.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.random_crop模块介绍</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.random_crop"></span><p>Randomly crops a tensor to a given size.</p>
+<p>Slices a shape <cite>size</cite> portion out of <cite>value</cite> at a uniformly chosen offset.
+Requires <cite>value.shape &gt;= size</cite>.</p>
+<p>If a dimension should not be cropped, pass the full size of that dimension.
+For example, RGB images can be cropped with
+<cite>size = [crop_height, crop_width, 3]</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param value</dt>
+<dd class="field-odd"><p>Input tensor to crop.</p>
+</dd>
+<dt class="field-even">param size</dt>
+<dd class="field-even"><p>1-D tensor with size the rank of <cite>value</cite>.</p>
+</dd>
+<dt class="field-odd">param seed</dt>
+<dd class="field-odd"><p>Python integer. Used to create a random seed. See
+<cite>tf.random.set_seed</cite>
+for behavior.</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for this operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A cropped tensor of the same rank as <cite>value</cite> and shape <cite>size</cite>.</p>
+</dd>
+</dl>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.compat.v1.gfile.GFile模块介绍(选修)</p>
+</div>
+<span class="target" id="module-tensorflow.compat.v1.gfile.GFile"></span><p>File I/O wrappers without thread locking.</p>
+<p>The main roles of the <cite>tf.io.gfile</cite> module are:</p>
+<ol class="arabic simple">
+<li><p>To provide an API that is close to Python's file I/O objects, and</p></li>
+<li><p>To provide an implementation based on TensorFlow's C++ FileSystem API.</p></li>
+</ol>
+<p>The C++ FileSystem API supports multiple file system implementations,
+including local files, Google Cloud Storage (using a <cite>gs://</cite> prefix, and
+HDFS (using an <cite>hdfs://</cite> prefix). TensorFlow exports these as <cite>tf.io.gfile</cite>,
+so that you can use these implementations for saving and loading checkpoints,
+writing to TensorBoard logs, and accessing training data (among other uses).
+However, if all your files are local, you can use the regular Python file
+API without any problem.</p>
+<p><em>Note</em>: though similar to Python's I/O implementation, there are semantic
+differences to make <cite>tf.io.gfile</cite> more efficient for backing filesystems. For
+example, a write mode file will not be opened until the first write call, to
+minimize RPC invocations in network filesystems.</p>
+<dl class="py attribute">
+<dt id="tensorflow.compat.v1.gfile.GFile.mode">
+<code class="sig-prename descclassname">tensorflow.compat.v1.gfile.GFile.</code><code class="sig-name descname">mode</code><a class="headerlink" href="#tensorflow.compat.v1.gfile.GFile.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the mode in which the file was opened.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="tensorflow.compat.v1.gfile.GFile.name">
+<code class="sig-prename descclassname">tensorflow.compat.v1.gfile.GFile.</code><code class="sig-name descname">name</code><a class="headerlink" href="#tensorflow.compat.v1.gfile.GFile.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the file name.</p>
+</dd></dl>
+
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>tensorflow.image.decode_jpeg模块介绍(选修)</p>
+</div>
+<span class="target" id="module-tensorflow.image.decode_jpeg"></span><p>Decode a JPEG-encoded image to a uint8 tensor.</p>
+<p>The attr <cite>channels</cite> indicates the desired number of color channels for the
+decoded image.</p>
+<p>Accepted values are:</p>
+<ul class="simple">
+<li><p>0: Use the number of channels in the JPEG-encoded image.</p></li>
+<li><p>1: output a grayscale image.</p></li>
+<li><p>3: output an RGB image.</p></li>
+</ul>
+<p>If needed, the JPEG-encoded image is transformed to match the requested number
+of color channels.</p>
+<p>The attr <cite>ratio</cite> allows downscaling the image by an integer factor during
+decoding.  Allowed values are: 1, 2, 4, and 8.  This is much faster than
+downscaling the image later.</p>
+<p>This op also supports decoding PNGs and non-animated GIFs since the interface is
+the same, though it is cleaner to use <cite>tf.image.decode_image</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param contents</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite> of type <cite>string</cite>. 0-D.  The JPEG-encoded image.</p>
+</dd>
+<dt class="field-even">param channels</dt>
+<dd class="field-even"><p>An optional <cite>int</cite>. Defaults to <cite>0</cite>.
+Number of color channels for the decoded image.</p>
+</dd>
+<dt class="field-odd">param ratio</dt>
+<dd class="field-odd"><p>An optional <cite>int</cite>. Defaults to <cite>1</cite>. Downscaling ratio.</p>
+</dd>
+<dt class="field-even">param fancy_upscaling</dt>
+<dd class="field-even"><p>An optional <cite>bool</cite>. Defaults to <cite>True</cite>.
+If true use a slower but nicer upscaling of the
+chroma planes (yuv420/422 only).</p>
+</dd>
+<dt class="field-odd">param try_recover_truncated</dt>
+<dd class="field-odd"><p>An optional <cite>bool</cite>. Defaults to <cite>False</cite>.
+If true try to recover an image from truncated input.</p>
+</dd>
+<dt class="field-even">param acceptable_fraction</dt>
+<dd class="field-even"><p>An optional <cite>float</cite>. Defaults to <cite>1</cite>.
+The minimum required fraction of lines before a truncated
+input is accepted.</p>
+</dd>
+<dt class="field-odd">param dct_method</dt>
+<dd class="field-odd"><p>An optional <cite>string</cite>. Defaults to <cite>&quot;&quot;</cite>.
+string specifying a hint about the algorithm used for
+decompression.  Defaults to &quot;&quot; which maps to a system-specific
+default.  Currently valid values are [&quot;INTEGER_FAST&quot;,
+&quot;INTEGER_ACCURATE&quot;].  The hint may be ignored (e.g., the internal
+jpeg library changes to a version that does not have that specific
+option.)</p>
+</dd>
+<dt class="field-even">param name</dt>
+<dd class="field-even"><p>A name for the operation (optional).</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A <cite>Tensor</cite> of type <cite>uint8</cite>.</p>
+</dd>
+</dl>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../03_Using_Variables_and_Placeholders/index.html" class="btn btn-neutral float-right" title="创建变量和占位符" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../01_How_TensorFlow_Works/index.html" class="btn btn-neutral float-left" title="引言" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

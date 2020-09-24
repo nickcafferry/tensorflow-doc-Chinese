@@ -1,0 +1,1274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.gen_logging_ops &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.gen_logging_ops</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.gen_logging_ops</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Python wrappers around TensorFlow ops.</span>
+
+<span class="sd">This file is MACHINE GENERATED! Do not edit.</span>
+<span class="sd">Original C++ source file: logging_ops.cc</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python</span> <span class="k">import</span> <span class="n">pywrap_tfe</span> <span class="k">as</span> <span class="n">pywrap_tfe</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span> <span class="k">as</span> <span class="n">_context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">core</span> <span class="k">as</span> <span class="n">_core</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">execute</span> <span class="k">as</span> <span class="n">_execute</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span> <span class="k">as</span> <span class="n">_dtypes</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">op_def_registry</span> <span class="k">as</span> <span class="n">_op_def_registry</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span> <span class="k">as</span> <span class="n">_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">op_def_library</span> <span class="k">as</span> <span class="n">_op_def_library</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.deprecation</span> <span class="k">import</span> <span class="n">deprecated_endpoints</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">dispatch</span> <span class="k">as</span> <span class="n">_dispatch</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="k">def</span> <span class="nf">_assert</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">summarize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Asserts that the given condition is true.</span>
+
+<span class="sd">  If `condition` evaluates to false, print the list of tensors in `data`.</span>
+<span class="sd">  `summarize` determines how many entries of the tensors to print.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    condition: A `Tensor` of type `bool`. The condition to evaluate.</span>
+<span class="sd">    data: A list of `Tensor` objects.</span>
+<span class="sd">      The tensors to print out when condition is false.</span>
+<span class="sd">    summarize: An optional `int`. Defaults to `3`.</span>
+<span class="sd">      Print this many entries of each tensor.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The created Operation.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Assert&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">,</span> <span class="n">summarize</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_assert_eager_fallback</span><span class="p">(</span>
+            <span class="n">condition</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">summarize</span><span class="o">=</span><span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">summarize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">summarize</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">summarize</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">summarize</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Assert&quot;</span><span class="p">,</span> <span class="n">condition</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">summarize</span><span class="o">=</span><span class="n">summarize</span><span class="p">,</span>
+                  <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_op</span>
+<span class="n">Assert</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Assert&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">_assert</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_assert_eager_fallback</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">summarize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">summarize</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">summarize</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">summarize</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">convert_to_mixed_eager_tensors</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">condition</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">condition</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">,</span> <span class="n">summarize</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Assert&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">audio_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with audio.</span>
+
+<span class="sd">  The summary has up to `max_outputs` summary values containing audio. The</span>
+<span class="sd">  audio is built from `tensor` which must be 3-D with shape `[batch_size,</span>
+<span class="sd">  frames, channels]` or 2-D with shape `[batch_size, frames]`. The values are</span>
+<span class="sd">  assumed to be in the range of `[-1.0, 1.0]` with a sample rate of `sample_rate`.</span>
+
+<span class="sd">  The `tag` argument is a scalar `Tensor` of type `string`.  It is used to</span>
+<span class="sd">  build the `tag` of the summary values:</span>
+
+<span class="sd">  *  If `max_outputs` is 1, the summary value tag is &#39;*tag*/audio&#39;.</span>
+<span class="sd">  *  If `max_outputs` is greater than 1, the summary value tags are</span>
+<span class="sd">     generated sequentially as &#39;*tag*/audio/0&#39;, &#39;*tag*/audio/1&#39;, etc.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `Tensor` of type `string`.</span>
+<span class="sd">      Scalar. Used to build the `tag` attribute of the summary values.</span>
+<span class="sd">    tensor: A `Tensor` of type `float32`. 2-D of shape `[batch_size, frames]`.</span>
+<span class="sd">    sample_rate: A `float`. The sample rate of the signal in hertz.</span>
+<span class="sd">    max_outputs: An optional `int` that is `&gt;= 1`. Defaults to `3`.</span>
+<span class="sd">      Max number of batch elements to generate audio for.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="s2">&quot;sample_rate&quot;</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span>
+        <span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span> <span class="n">max_outputs</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">audio_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="o">=</span><span class="n">max_outputs</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_float</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="s2">&quot;sample_rate&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">max_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_outputs</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_outputs</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_outputs</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">,</span>
+                        <span class="n">max_outputs</span><span class="o">=</span><span class="n">max_outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sample_rate&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;sample_rate&quot;</span><span class="p">),</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;max_outputs&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">AudioSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.AudioSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">audio_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">audio_summary_eager_fallback</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_float</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="s2">&quot;sample_rate&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">max_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_outputs</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_outputs</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_outputs</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">)</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">tensor</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;sample_rate&quot;</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span> <span class="n">max_outputs</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">audio_summary_v2</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with audio.</span>
+
+<span class="sd">  The summary has up to `max_outputs` summary values containing audio. The</span>
+<span class="sd">  audio is built from `tensor` which must be 3-D with shape `[batch_size,</span>
+<span class="sd">  frames, channels]` or 2-D with shape `[batch_size, frames]`. The values are</span>
+<span class="sd">  assumed to be in the range of `[-1.0, 1.0]` with a sample rate of `sample_rate`.</span>
+
+<span class="sd">  The `tag` argument is a scalar `Tensor` of type `string`.  It is used to</span>
+<span class="sd">  build the `tag` of the summary values:</span>
+
+<span class="sd">  *  If `max_outputs` is 1, the summary value tag is &#39;*tag*/audio&#39;.</span>
+<span class="sd">  *  If `max_outputs` is greater than 1, the summary value tags are</span>
+<span class="sd">     generated sequentially as &#39;*tag*/audio/0&#39;, &#39;*tag*/audio/1&#39;, etc.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `Tensor` of type `string`.</span>
+<span class="sd">      Scalar. Used to build the `tag` attribute of the summary values.</span>
+<span class="sd">    tensor: A `Tensor` of type `float32`. 2-D of shape `[batch_size, frames]`.</span>
+<span class="sd">    sample_rate: A `Tensor` of type `float32`.</span>
+<span class="sd">      The sample rate of the signal in hertz.</span>
+<span class="sd">    max_outputs: An optional `int` that is `&gt;= 1`. Defaults to `3`.</span>
+<span class="sd">      Max number of batch elements to generate audio for.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span>
+        <span class="n">max_outputs</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">audio_summary_v2_eager_fallback</span><span class="p">(</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="o">=</span><span class="n">max_outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">max_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_outputs</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_outputs</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_outputs</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="n">sample_rate</span><span class="p">,</span>
+                          <span class="n">max_outputs</span><span class="o">=</span><span class="n">max_outputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;max_outputs&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">AudioSummaryV2</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.AudioSummaryV2&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">audio_summary_v2</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">audio_summary_v2_eager_fallback</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">,</span> <span class="n">max_outputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">max_outputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_outputs</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_outputs</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_outputs</span><span class="p">,</span> <span class="s2">&quot;max_outputs&quot;</span><span class="p">)</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">tensor</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">sample_rate</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;max_outputs&quot;</span><span class="p">,</span> <span class="n">max_outputs</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;AudioSummaryV2&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">histogram_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with a histogram.</span>
+
+<span class="sd">  The generated</span>
+<span class="sd">  [`Summary`](https://www.tensorflow.org/code/tensorflow/core/framework/summary.proto)</span>
+<span class="sd">  has one summary value containing a histogram for `values`.</span>
+
+<span class="sd">  This op reports an `InvalidArgument` error if any value is not finite.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `Tensor` of type `string`.</span>
+<span class="sd">      Scalar.  Tag to use for the `Summary.Value`.</span>
+<span class="sd">    values: A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`.</span>
+<span class="sd">      Any shape. Values to use to build the histogram.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">histogram_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">HistogramSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.HistogramSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">histogram_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">histogram_summary_eager_fallback</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">values</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">values</span><span class="p">],</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">values</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;HistogramSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">image_summary</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">bad_color</span><span class="o">=</span><span class="n">_execute</span><span class="o">.</span><span class="n">make_tensor</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;dtype: DT_UINT8 tensor_shape { dim { size: 4 } } int_val: 255 int_val: 0 int_val: 0 int_val: 255&quot;&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with images.</span>
+
+<span class="sd">  The summary has up to `max_images` summary values containing images. The</span>
+<span class="sd">  images are built from `tensor` which must be 4-D with shape `[batch_size,</span>
+<span class="sd">  height, width, channels]` and where `channels` can be:</span>
+
+<span class="sd">  *  1: `tensor` is interpreted as Grayscale.</span>
+<span class="sd">  *  3: `tensor` is interpreted as RGB.</span>
+<span class="sd">  *  4: `tensor` is interpreted as RGBA.</span>
+
+<span class="sd">  The images have the same number of channels as the input tensor. For float</span>
+<span class="sd">  input, the values are normalized one image at a time to fit in the range</span>
+<span class="sd">  `[0, 255]`.  `uint8` values are unchanged.  The op uses two different</span>
+<span class="sd">  normalization algorithms:</span>
+
+<span class="sd">  *  If the input values are all positive, they are rescaled so the largest one</span>
+<span class="sd">     is 255.</span>
+
+<span class="sd">  *  If any input value is negative, the values are shifted so input value 0.0</span>
+<span class="sd">     is at 127.  They are then rescaled so that either the smallest value is 0,</span>
+<span class="sd">     or the largest one is 255.</span>
+
+<span class="sd">  The `tag` argument is a scalar `Tensor` of type `string`.  It is used to</span>
+<span class="sd">  build the `tag` of the summary values:</span>
+
+<span class="sd">  *  If `max_images` is 1, the summary value tag is &#39;*tag*/image&#39;.</span>
+<span class="sd">  *  If `max_images` is greater than 1, the summary value tags are</span>
+<span class="sd">     generated sequentially as &#39;*tag*/image/0&#39;, &#39;*tag*/image/1&#39;, etc.</span>
+
+<span class="sd">  The `bad_color` argument is the color to use in the generated images for</span>
+<span class="sd">  non-finite input values.  It is a `uint8` 1-D tensor of length `channels`.</span>
+<span class="sd">  Each element must be in the range `[0, 255]` (It represents the value of a</span>
+<span class="sd">  pixel in the output image).  Non-finite values in the input tensor are</span>
+<span class="sd">  replaced by this tensor in the output image.  The default value is the color</span>
+<span class="sd">  red.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `Tensor` of type `string`.</span>
+<span class="sd">      Scalar. Used to build the `tag` attribute of the summary values.</span>
+<span class="sd">    tensor: A `Tensor`. Must be one of the following types: `uint8`, `float32`, `half`, `float64`.</span>
+<span class="sd">      4-D of shape `[batch_size, height, width, channels]` where</span>
+<span class="sd">      `channels` is 1, 3, or 4.</span>
+<span class="sd">    max_images: An optional `int` that is `&gt;= 1`. Defaults to `3`.</span>
+<span class="sd">      Max number of batch elements to generate images for.</span>
+<span class="sd">    bad_color: An optional `tf.TensorProto`. Defaults to `dtype: DT_UINT8 tensor_shape { dim { size: 4 } } int_val: 255 int_val: 0 int_val: 0 int_val: 255`.</span>
+<span class="sd">      Color to use for pixels with non-finite values.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="s2">&quot;max_images&quot;</span><span class="p">,</span> <span class="n">max_images</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">,</span>
+        <span class="n">bad_color</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">image_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="o">=</span><span class="n">max_images</span><span class="p">,</span> <span class="n">bad_color</span><span class="o">=</span><span class="n">bad_color</span><span class="p">,</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">max_images</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_images</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_images</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_images</span><span class="p">,</span> <span class="s2">&quot;max_images&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">bad_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bad_color</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_tensor</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;dtype: DT_UINT8 tensor_shape { dim { size: 4 } } int_val: 255 int_val: 0 int_val: 0 int_val: 255&quot;&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">)</span>
+  <span class="n">bad_color</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_tensor</span><span class="p">(</span><span class="n">bad_color</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="o">=</span><span class="n">max_images</span><span class="p">,</span>
+                        <span class="n">bad_color</span><span class="o">=</span><span class="n">bad_color</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;max_images&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;max_images&quot;</span><span class="p">),</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;bad_color&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">ImageSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.ImageSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">image_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">image_summary_eager_fallback</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">max_images</span><span class="p">,</span> <span class="n">bad_color</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">max_images</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">max_images</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">max_images</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">max_images</span><span class="p">,</span> <span class="s2">&quot;max_images&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">bad_color</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bad_color</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_tensor</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;dtype: DT_UINT8 tensor_shape { dim { size: 4 } } int_val: 255 int_val: 0 int_val: 0 int_val: 255&quot;&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">)</span>
+  <span class="n">bad_color</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_tensor</span><span class="p">(</span><span class="n">bad_color</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">tensor</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">tensor</span><span class="p">],</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;max_images&quot;</span><span class="p">,</span> <span class="n">max_images</span><span class="p">,</span> <span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;bad_color&quot;</span><span class="p">,</span> <span class="n">bad_color</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;ImageSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">merge_summary</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Merges summaries.</span>
+
+<span class="sd">  This op creates a</span>
+<span class="sd">  [`Summary`](https://www.tensorflow.org/code/tensorflow/core/framework/summary.proto)</span>
+<span class="sd">  protocol buffer that contains the union of all the values in the input</span>
+<span class="sd">  summaries.</span>
+
+<span class="sd">  When the Op is run, it reports an `InvalidArgument` error if multiple values</span>
+<span class="sd">  in the summaries to merge use the same tag.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    inputs: A list of at least 1 `Tensor` objects with type `string`.</span>
+<span class="sd">      Can be of any shape.  Each must contain serialized `Summary` protocol</span>
+<span class="sd">      buffers.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">merge_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;merge_summary&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">MergeSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.MergeSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">merge_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">merge_summary_eager_fallback</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;inputs&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;merge_summary&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attr_N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_n_to_tensor</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="n">_attr_N</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;MergeSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">_print</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">first_n</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">summarize</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Prints a list of tensors.</span>
+
+<span class="sd">  Passes `input` through to `output` and prints `data` when evaluating.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    input: A `Tensor`. The tensor passed to `output`</span>
+<span class="sd">    data: A list of `Tensor` objects.</span>
+<span class="sd">      A list of tensors to print out when op is evaluated.</span>
+<span class="sd">    message: An optional `string`. Defaults to `&quot;&quot;`.</span>
+<span class="sd">      A string, prefix of the error message.</span>
+<span class="sd">    first_n: An optional `int`. Defaults to `-1`.</span>
+<span class="sd">      Only log `first_n` number of times. -1 disables logging.</span>
+<span class="sd">    summarize: An optional `int`. Defaults to `3`.</span>
+<span class="sd">      Only print this many entries of each tensor.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor`. Has the same type as `input`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Print&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s2">&quot;first_n&quot;</span><span class="p">,</span> <span class="n">first_n</span><span class="p">,</span>
+        <span class="s2">&quot;summarize&quot;</span><span class="p">,</span> <span class="n">summarize</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_print_eager_fallback</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">first_n</span><span class="o">=</span><span class="n">first_n</span><span class="p">,</span>
+            <span class="n">summarize</span><span class="o">=</span><span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">message</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">first_n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">first_n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">first_n</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">first_n</span><span class="p">,</span> <span class="s2">&quot;first_n&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">summarize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">summarize</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">summarize</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">summarize</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Print&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span> <span class="n">first_n</span><span class="o">=</span><span class="n">first_n</span><span class="p">,</span>
+                 <span class="n">summarize</span><span class="o">=</span><span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">),</span> <span class="s2">&quot;message&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;message&quot;</span><span class="p">),</span> <span class="s2">&quot;first_n&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;first_n&quot;</span><span class="p">),</span> <span class="s2">&quot;summarize&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_int</span><span class="p">(</span><span class="s2">&quot;summarize&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Print&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">Print</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Print&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">_print</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">_print_eager_fallback</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">first_n</span><span class="p">,</span> <span class="n">summarize</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">message</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">message</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">first_n</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">first_n</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+  <span class="n">first_n</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">first_n</span><span class="p">,</span> <span class="s2">&quot;first_n&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">summarize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">summarize</span> <span class="o">=</span> <span class="mi">3</span>
+  <span class="n">summarize</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_int</span><span class="p">(</span><span class="n">summarize</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="nb">input</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="nb">input</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_attr_U</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">convert_to_mixed_eager_tensors</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;U&quot;</span><span class="p">,</span> <span class="n">_attr_U</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="s2">&quot;first_n&quot;</span><span class="p">,</span>
+  <span class="n">first_n</span><span class="p">,</span> <span class="s2">&quot;summarize&quot;</span><span class="p">,</span> <span class="n">summarize</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Print&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Print&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">print_v2</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output_stream</span><span class="o">=</span><span class="s2">&quot;stderr&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Prints a string scalar.</span>
+
+<span class="sd">  Prints a string scalar to the desired output_stream.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    input: A `Tensor` of type `string`. The string scalar to print.</span>
+<span class="sd">    output_stream: An optional `string`. Defaults to `&quot;stderr&quot;`.</span>
+<span class="sd">      A string specifying the output stream or logging level to print to.</span>
+<span class="sd">    end: An optional `string`. Defaults to `&quot;\n&quot;`.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    The created Operation.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;PrintV2&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="s2">&quot;output_stream&quot;</span><span class="p">,</span> <span class="n">output_stream</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">print_v2_eager_fallback</span><span class="p">(</span>
+            <span class="nb">input</span><span class="p">,</span> <span class="n">output_stream</span><span class="o">=</span><span class="n">output_stream</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">output_stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">output_stream</span> <span class="o">=</span> <span class="s2">&quot;stderr&quot;</span>
+  <span class="n">output_stream</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">output_stream</span><span class="p">,</span> <span class="s2">&quot;output_stream&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+  <span class="n">end</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;PrintV2&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="nb">input</span><span class="p">,</span> <span class="n">output_stream</span><span class="o">=</span><span class="n">output_stream</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+                   <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">_op</span>
+<span class="n">PrintV2</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.PrintV2&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">print_v2</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">print_v2_eager_fallback</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">output_stream</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">output_stream</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">output_stream</span> <span class="o">=</span> <span class="s2">&quot;stderr&quot;</span>
+  <span class="n">output_stream</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">output_stream</span><span class="p">,</span> <span class="s2">&quot;output_stream&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">end</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+  <span class="n">end</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">end</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">)</span>
+  <span class="nb">input</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="nb">input</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;output_stream&quot;</span><span class="p">,</span> <span class="n">output_stream</span><span class="p">,</span> <span class="s2">&quot;end&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;PrintV2&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span>
+                             <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">scalar_summary</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with scalar values.</span>
+
+<span class="sd">  The input `tags` and `values` must have the same shape.  The generated summary</span>
+<span class="sd">  has a summary value for each tag-value pair in `tags` and `values`.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tags: A `Tensor` of type `string`. Tags for the summary.</span>
+<span class="sd">    values: A `Tensor`. Must be one of the following types: `float32`, `float64`, `int32`, `uint8`, `int16`, `int8`, `int64`, `bfloat16`, `uint16`, `half`, `uint32`, `uint64`.</span>
+<span class="sd">      Same shape as `tags.  Values for the summary.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">scalar_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">ScalarSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.ScalarSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">scalar_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">scalar_summary_eager_fallback</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">values</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">values</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">tags</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tags</span><span class="p">,</span> <span class="n">values</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;ScalarSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">tensor_summary</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[],</span> <span class="n">display_name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with a tensor.</span>
+
+<span class="sd">  This op is being phased out in favor of TensorSummaryV2, which lets callers pass</span>
+<span class="sd">  a tag as well as a serialized SummaryMetadata proto string that contains</span>
+<span class="sd">  plugin-specific data. We will keep this op to maintain backwards compatibility.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tensor: A `Tensor`. A tensor to serialize.</span>
+<span class="sd">    description: An optional `string`. Defaults to `&quot;&quot;`.</span>
+<span class="sd">      A json-encoded SummaryDescription proto.</span>
+<span class="sd">    labels: An optional list of `strings`. Defaults to `[]`.</span>
+<span class="sd">      An unused list of strings.</span>
+<span class="sd">    display_name: An optional `string`. Defaults to `&quot;&quot;`. An unused string.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;TensorSummary&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span>
+        <span class="n">labels</span><span class="p">,</span> <span class="s2">&quot;display_name&quot;</span><span class="p">,</span> <span class="n">display_name</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tensor_summary_eager_fallback</span><span class="p">(</span>
+            <span class="n">tensor</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+            <span class="n">display_name</span><span class="o">=</span><span class="n">display_name</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">if</span> <span class="n">description</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;labels&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;tensor_summary&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">labels</span><span class="p">)</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">_s</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">display_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">display_name</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">display_name</span><span class="p">,</span> <span class="s2">&quot;display_name&quot;</span><span class="p">)</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummary&quot;</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span>
+                         <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">display_name</span><span class="o">=</span><span class="n">display_name</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">),</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span>
+              <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">),</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;labels&quot;</span><span class="p">),</span>
+              <span class="s2">&quot;display_name&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">get_attr</span><span class="p">(</span><span class="s2">&quot;display_name&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">TensorSummary</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.TensorSummary&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">tensor_summary</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">tensor_summary_eager_fallback</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">display_name</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">description</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">description</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">description</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+        <span class="s2">&quot;Expected list for &#39;labels&#39; argument to &quot;</span>
+        <span class="s2">&quot;&#39;tensor_summary&#39; Op, not </span><span class="si">%r</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="n">labels</span><span class="p">)</span>
+  <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">_s</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">_s</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+  <span class="k">if</span> <span class="n">display_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">display_name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+  <span class="n">display_name</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">make_str</span><span class="p">(</span><span class="n">display_name</span><span class="p">,</span> <span class="s2">&quot;display_name&quot;</span><span class="p">)</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">tensor</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">tensor</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tensor</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">description</span><span class="p">,</span> <span class="s2">&quot;labels&quot;</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span>
+  <span class="s2">&quot;display_name&quot;</span><span class="p">,</span> <span class="n">display_name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;TensorSummary&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummary&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<span class="k">def</span> <span class="nf">tensor_summary_v2</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">serialized_summary_metadata</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Outputs a `Summary` protocol buffer with a tensor and per-plugin data.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    tag: A `Tensor` of type `string`.</span>
+<span class="sd">      A string attached to this summary. Used for organization in TensorBoard.</span>
+<span class="sd">    tensor: A `Tensor`. A tensor to serialize.</span>
+<span class="sd">    serialized_summary_metadata: A `Tensor` of type `string`.</span>
+<span class="sd">      A serialized SummaryMetadata proto. Contains plugin</span>
+<span class="sd">      data.</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `string`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">serialized_summary_metadata</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">tensor_summary_v2_eager_fallback</span><span class="p">(</span>
+            <span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">serialized_summary_metadata</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="o">=</span><span class="n">tensor</span><span class="p">,</span>
+                           <span class="n">serialized_summary_metadata</span><span class="o">=</span><span class="n">serialized_summary_metadata</span><span class="p">,</span>
+                           <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_op</span><span class="o">.</span><span class="n">_get_attr_type</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">))</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+<span class="n">TensorSummaryV2</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.TensorSummaryV2&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">tensor_summary_v2</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">tensor_summary_v2_eager_fallback</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">serialized_summary_metadata</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_attr_T</span><span class="p">,</span> <span class="p">(</span><span class="n">tensor</span><span class="p">,)</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">args_to_matching_eager</span><span class="p">([</span><span class="n">tensor</span><span class="p">],</span> <span class="n">ctx</span><span class="p">)</span>
+  <span class="n">tag</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">serialized_summary_metadata</span> <span class="o">=</span> <span class="n">_ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">serialized_summary_metadata</span><span class="p">,</span> <span class="n">_dtypes</span><span class="o">.</span><span class="n">string</span><span class="p">)</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[</span><span class="n">tag</span><span class="p">,</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">serialized_summary_metadata</span><span class="p">]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="n">_attr_T</span><span class="p">)</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;TensorSummaryV2&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+
+<div class="viewcode-block" id="timestamp"><a class="viewcode-back" href="../../../../index.html#tensorflow.timestamp">[docs]</a><span class="nd">@_dispatch</span><span class="o">.</span><span class="n">add_dispatch_list</span>
+<span class="nd">@tf_export</span><span class="p">(</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">timestamp</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Provides the time since epoch in seconds.</span>
+
+<span class="sd">  Returns the timestamp as a `float64` for seconds since the Unix epoch.</span>
+
+<span class="sd">  Note: the timestamp is computed when the op is executed, not when it is added</span>
+<span class="sd">  to the graph.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    name: A name for the operation (optional).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A `Tensor` of type `float64`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">_ctx</span> <span class="o">=</span> <span class="n">_context</span><span class="o">.</span><span class="n">_context</span> <span class="ow">or</span> <span class="n">_context</span><span class="o">.</span><span class="n">context</span><span class="p">()</span>
+  <span class="n">tld</span> <span class="o">=</span> <span class="n">_ctx</span><span class="o">.</span><span class="n">_thread_local_data</span>
+  <span class="k">if</span> <span class="n">tld</span><span class="o">.</span><span class="n">is_eager</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+      <span class="n">_result</span> <span class="o">=</span> <span class="n">pywrap_tfe</span><span class="o">.</span><span class="n">TFE_Py_FastPathExecute</span><span class="p">(</span>
+        <span class="n">_ctx</span><span class="o">.</span><span class="n">_context_handle</span><span class="p">,</span> <span class="n">tld</span><span class="o">.</span><span class="n">device_name</span><span class="p">,</span> <span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span>
+        <span class="n">tld</span><span class="o">.</span><span class="n">op_callbacks</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">_result</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_FallbackException</span><span class="p">:</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">timestamp_eager_fallback</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">_ctx</span><span class="p">)</span>
+      <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_SymbolicException</span><span class="p">:</span>
+        <span class="k">pass</span>  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+      <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span>
+              <span class="n">timestamp</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">OpDispatcher</span><span class="o">.</span><span class="n">NOT_SUPPORTED</span><span class="p">:</span>
+          <span class="k">return</span> <span class="n">result</span>
+        <span class="k">raise</span>
+    <span class="k">except</span> <span class="n">_core</span><span class="o">.</span><span class="n">_NotOkStatusException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+      <span class="n">_ops</span><span class="o">.</span><span class="n">raise_from_not_ok_status</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+  <span class="c1"># Add nodes to the TensorFlow graph.</span>
+  <span class="k">try</span><span class="p">:</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_op</span><span class="p">,</span> <span class="n">_outputs</span> <span class="o">=</span> <span class="n">_op_def_library</span><span class="o">.</span><span class="n">_apply_op_helper</span><span class="p">(</span>
+        <span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span>
+          <span class="n">timestamp</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">_dispatch</span><span class="o">.</span><span class="n">OpDispatcher</span><span class="o">.</span><span class="n">NOT_SUPPORTED</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">result</span>
+    <span class="k">raise</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_outputs</span><span class="p">[:]</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_attrs</span> <span class="o">=</span> <span class="p">()</span>
+    <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="n">_op</span><span class="o">.</span><span class="n">inputs</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span></div>
+
+<span class="n">Timestamp</span> <span class="o">=</span> <span class="n">tf_export</span><span class="p">(</span><span class="s2">&quot;raw_ops.Timestamp&quot;</span><span class="p">)(</span><span class="n">_ops</span><span class="o">.</span><span class="n">to_raw_op</span><span class="p">(</span><span class="n">timestamp</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">timestamp_eager_fallback</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ctx</span><span class="p">):</span>
+  <span class="n">_inputs_flat</span> <span class="o">=</span> <span class="p">[]</span>
+  <span class="n">_attrs</span> <span class="o">=</span> <span class="kc">None</span>
+  <span class="n">_result</span> <span class="o">=</span> <span class="n">_execute</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">_inputs_flat</span><span class="p">,</span>
+                             <span class="n">attrs</span><span class="o">=</span><span class="n">_attrs</span><span class="p">,</span> <span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">_execute</span><span class="o">.</span><span class="n">must_record_gradient</span><span class="p">():</span>
+    <span class="n">_execute</span><span class="o">.</span><span class="n">record_gradient</span><span class="p">(</span>
+        <span class="s2">&quot;Timestamp&quot;</span><span class="p">,</span> <span class="n">_inputs_flat</span><span class="p">,</span> <span class="n">_attrs</span><span class="p">,</span> <span class="n">_result</span><span class="p">)</span>
+  <span class="n">_result</span><span class="p">,</span> <span class="o">=</span> <span class="n">_result</span>
+  <span class="k">return</span> <span class="n">_result</span>
+
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

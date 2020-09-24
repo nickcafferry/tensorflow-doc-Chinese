@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="Chinese" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tensorflow.python.ops.custom_gradient &mdash; tensorflow 0.1.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../../_static/GCC.png"/>
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #343131" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home" alt="Documentation Home"> tensorflow
+          
+
+          
+            
+            <img src="../../../../_static/GCC.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">从TensorFlow开始 (Getting Started)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html">TensorFlow如何工作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id1">变量和张量的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id2">使用占位符和变量</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id3">矩阵</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id4">操作符的声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id5">载入激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id6">数据资源</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id7">资源库</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../01_Introduction/index.html#id8">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow方式 (TensorFlow Way)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html">计算图</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id2">分层嵌套操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id3">多层操作</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id4">载入损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id5">载入反向传播</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id6">随机和批量训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id7">结合训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id8">模型评估</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../02_TensorFlow_Way/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">线性回归 (Linear Regression)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html">矩阵转置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id2">矩阵分解法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#tensorflow">TensorFLow的线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id3">线性回归的损失函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#deming">Deming回归(全回归)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#lasso-ridge">套索(Lasso)回归和岭(Ridge)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#elastic-net">弹性网(Elastic Net)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#logistic">逻辑(Logistic)回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../03_Linear_Regression/index.html#id4">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">支持向量机(Support Vector Machines)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id2">线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id3">回归线性回归</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#tensorflow">TensorFlow中的核</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id4">非线性支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id5">多类支持向量机</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../04_Support_Vector_Machines/index.html#id6">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">最近邻法 (Nearest Neighbor Methods)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id2">最近邻法的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id3">文本距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id4">计算混合距离函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id5">地址匹配</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id6">图像处理的近邻法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../05_Nearest_Neighbor_Methods/index.html#id7">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">神经元网络 (Neural Networks)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id2">载入操作门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id3">门运算和激活函数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id4">载入一层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id5">载入多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id6">使用多层神经网络</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id7">线性模型预测改善</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id8">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../06_Neural_Networks/index.html#id9">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">自然语言处理(NLP)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#bag-of-words">词袋 (Bag of Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#tf-idf">词频-逆文本频率 (TF-IDF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#skip-gram">运用Skip-Gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#cbow-continuous-bag-fo-words">CBOW (Continuous Bag fo Words)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#word2vec">Word2Vec应用实例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#doc2vec-sentiment-analysis">Doc2Vec情感分析 (Sentiment Analysis)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id2">神经网络学习井字棋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../07_Natural_Language_Processing/index.html#id3">本章学习模块</a></li>
+</ul>
+<p class="caption"><span class="caption-text">卷积神经网络(CNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#simple-cnns">简单卷积神经网络 (Simple CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#advanced-cnns">高级卷积神经网络 (Advanced CNNs)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#id2">重新训练一个存在架构</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#stylenet-neural-style">使用Stylenet/Neural-Style</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../08_Convolutional_Neural_Networks/index.html#deep-dream">运用Deep Dream</a></li>
+</ul>
+<p class="caption"><span class="caption-text">递归神经网络(RNN)</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html">引言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id2">卷积神经网络模型用于垃圾信息检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#lstm">LSTM模型用于文本生成</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#id3">堆叠多层LSTM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#seq2seq">创建段对段模型翻译 (Seq2Seq)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../09_Recurrent_Neural_Networks/index.html#siamese">训练Siamese相似度测量</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的应用技巧</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html">单元测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id2">使用多个执行器 (设备)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#tensorflow">TensorFlow平行化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id3">TensorFlow开发贴士</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../10_Taking_TensorFlow_to_Production/index.html#id4">TensorFlow开发实例</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TensorFlow的更多功能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html">计算图可视化(用Tensorboard)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id1">遗传算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#k-means">K-means聚类分析</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id2">解决体系常微分方程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#id3">随机森林</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../11_More_with_TensorFlow/index.html#tensorflowkeras">TensorFlow中的Keras</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TF Cookbook</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html">书籍介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id2">第一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id3">第二章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id4">第三章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id5">第四章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id6">第五章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id7">第六章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id8">第七章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id9">第八章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id10">第九章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id11">第十章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id12">第十一章</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bookindex.html#id13">索引</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">tensorflow</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+        
+      <li>tensorflow.python.ops.custom_gradient</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for tensorflow.python.ops.custom_gradient</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2017 The TensorFlow Authors. All Rights Reserved.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1"># you may not use this file except in compliance with the License.</span>
+<span class="c1"># You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1"># distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1"># WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1"># See the License for the specific language governing permissions and</span>
+<span class="c1"># limitations under the License.</span>
+<span class="c1"># ==============================================================================</span>
+<span class="sd">&quot;&quot;&quot;Decorator to overrides the gradient for a function.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.client</span> <span class="k">import</span> <span class="n">pywrap_tf_session</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">backprop</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">context</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.eager</span> <span class="k">import</span> <span class="n">tape</span> <span class="k">as</span> <span class="n">tape_lib</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">dtypes</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.framework</span> <span class="k">import</span> <span class="n">ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">gen_array_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">op_selector</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">resource_variable_ops</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.ops</span> <span class="k">import</span> <span class="n">variable_scope</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.platform</span> <span class="k">import</span> <span class="n">tf_logging</span> <span class="k">as</span> <span class="n">logging</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">nest</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">tf_decorator</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util</span> <span class="k">import</span> <span class="n">tf_inspect</span>
+<span class="kn">from</span> <span class="nn">tensorflow.python.util.tf_export</span> <span class="k">import</span> <span class="n">tf_export</span>
+
+
+<span class="n">VAR_OP_TYPES</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;VariableV2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;VarHandleOp&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">copy_handle_data</span><span class="p">(</span><span class="n">source_t</span><span class="p">,</span> <span class="n">target_t</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Copies HandleData for variant and resource type tensors if available.</span>
+
+<span class="sd">  The CppShapeInferenceResult::HandleData proto contains information about the</span>
+<span class="sd">  shapes and types of the element tensors of resource/variant type tensors.</span>
+<span class="sd">  We need to copy this across function boundaries, i.e., when capturing a</span>
+<span class="sd">  placeholder or when returning a function tensor as output. If we don&#39;t do this</span>
+<span class="sd">  the element tensors will have unknown shapes, e.g., if a TensorList variant</span>
+<span class="sd">  tensor is captured as a placeholder, elements popped from that list would have</span>
+<span class="sd">  unknown shape.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    source_t: The tensor to copy HandleData from.</span>
+<span class="sd">    target_t: The tensor to copy HandleData to.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">target_t</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span> <span class="ow">or</span>
+      <span class="n">target_t</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">variant</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">source_t</span><span class="p">,</span> <span class="n">ops</span><span class="o">.</span><span class="n">EagerTensor</span><span class="p">):</span>
+      <span class="n">handle_data</span> <span class="o">=</span> <span class="n">source_t</span><span class="o">.</span><span class="n">_handle_data</span>  <span class="c1"># pylint: disable=protected-access</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">handle_data</span> <span class="o">=</span> <span class="n">resource_variable_ops</span><span class="o">.</span><span class="n">get_resource_handle_data</span><span class="p">(</span><span class="n">source_t</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">handle_data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="n">handle_data</span><span class="o">.</span><span class="n">is_set</span>
+        <span class="ow">and</span> <span class="n">handle_data</span><span class="o">.</span><span class="n">shape_and_type</span><span class="p">):</span>
+      <span class="c1"># pylint: disable=protected-access</span>
+      <span class="n">pywrap_tf_session</span><span class="o">.</span><span class="n">SetHandleShapeAndType</span><span class="p">(</span><span class="n">target_t</span><span class="o">.</span><span class="n">graph</span><span class="o">.</span><span class="n">_c_graph</span><span class="p">,</span>
+                                              <span class="n">target_t</span><span class="o">.</span><span class="n">_as_tf_output</span><span class="p">(),</span>
+                                              <span class="n">handle_data</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span>
+      <span class="c1"># pylint: enable=protected-access</span>
+      <span class="c1"># Ensure that shapes and dtypes are propagated.</span>
+      <span class="n">shapes</span><span class="p">,</span> <span class="n">types</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="p">[(</span><span class="n">pair</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">pair</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">handle_data</span><span class="o">.</span><span class="n">shape_and_type</span><span class="p">])</span>
+      <span class="n">ranks</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">unknown_rank</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">]</span>
+      <span class="n">shapes</span> <span class="o">=</span> <span class="p">[[</span><span class="n">d</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">dim</span><span class="p">]</span>  <span class="c1"># pylint: disable=g-complex-comprehension</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">unknown_rank</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">]</span>
+      <span class="n">pywrap_tf_session</span><span class="o">.</span><span class="n">TF_GraphSetOutputHandleShapesAndTypes_wrapper</span><span class="p">(</span>
+          <span class="n">target_t</span><span class="o">.</span><span class="n">_op</span><span class="o">.</span><span class="n">_graph</span><span class="o">.</span><span class="n">_c_graph</span><span class="p">,</span>  <span class="c1"># pylint: disable=protected-access</span>
+          <span class="n">target_t</span><span class="o">.</span><span class="n">_as_tf_output</span><span class="p">(),</span>  <span class="c1"># pylint: disable=protected-access</span>
+          <span class="n">shapes</span><span class="p">,</span>
+          <span class="n">ranks</span><span class="p">,</span>
+          <span class="n">types</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="custom_gradient"><a class="viewcode-back" href="../../../../index.html#tensorflow.custom_gradient">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;custom_gradient&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">custom_gradient</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Decorator to define a function with a custom gradient.</span>
+
+<span class="sd">  This decorator allows fine grained control over the gradients of a sequence</span>
+<span class="sd">  for operations.  This may be useful for multiple reasons, including providing</span>
+<span class="sd">  a more efficient or numerically stable gradient for a sequence of operations.</span>
+
+<span class="sd">  For example, consider the following function that commonly occurs in the</span>
+<span class="sd">  computation of cross entropy and log likelihoods:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  def log1pexp(x):</span>
+<span class="sd">    return tf.math.log(1 + tf.exp(x))</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Due to numerical instability, the gradient of this function evaluated at x=100</span>
+<span class="sd">  is NaN.  For example:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  x = tf.constant(100.)</span>
+<span class="sd">  y = log1pexp(x)</span>
+<span class="sd">  dy = tf.gradients(y, x) # Will be NaN when evaluated.</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  The gradient expression can be analytically simplified to provide numerical</span>
+<span class="sd">  stability:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  @tf.custom_gradient</span>
+<span class="sd">  def log1pexp(x):</span>
+<span class="sd">    e = tf.exp(x)</span>
+<span class="sd">    def grad(dy):</span>
+<span class="sd">      return dy * (1 - 1 / (1 + e))</span>
+<span class="sd">    return tf.math.log(1 + e), grad</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  With this definition, the gradient at x=100 will be correctly evaluated as</span>
+<span class="sd">  1.0.</span>
+
+<span class="sd">  Nesting custom gradients can lead to unintuitive results. The default</span>
+<span class="sd">  behavior does not correspond to n-th order derivatives. For example</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  @tf.custom_gradient</span>
+<span class="sd">  def op(x):</span>
+<span class="sd">    y = op1(x)</span>
+<span class="sd">    @tf.custom_gradient</span>
+<span class="sd">    def grad_fn(dy):</span>
+<span class="sd">      gdy = op2(x, y, dy)</span>
+<span class="sd">      def grad_grad_fn(ddy):  # Not the 2nd order gradient of op w.r.t. x.</span>
+<span class="sd">        return op3(x, y, dy, ddy)</span>
+<span class="sd">      return gdy, grad_grad_fn</span>
+<span class="sd">    return y, grad_fn</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  The function `grad_grad_fn` will be calculating the first order gradient</span>
+<span class="sd">  of `grad_fn` with respect to `dy`, which is used to generate forward-mode</span>
+<span class="sd">  gradient graphs from backward-mode gradient graphs, but is not the same as</span>
+<span class="sd">  the second order gradient of `op` with respect to `x`.</span>
+
+<span class="sd">  Instead, wrap nested `@tf.custom_gradients` in another function:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  @tf.custom_gradient</span>
+<span class="sd">  def op_with_fused_backprop(x):</span>
+<span class="sd">    y, x_grad = fused_op(x)</span>
+<span class="sd">    def first_order_gradient(dy):</span>
+<span class="sd">      @tf.custom_gradient</span>
+<span class="sd">      def first_order_custom(unused_x):</span>
+<span class="sd">        def second_order_and_transpose(ddy):</span>
+<span class="sd">          return second_order_for_x(...), gradient_wrt_dy(...)</span>
+<span class="sd">        return x_grad, second_order_and_transpose</span>
+<span class="sd">      return dy * first_order_custom(x)</span>
+<span class="sd">    return y, first_order_gradient</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Additional arguments to the inner `@tf.custom_gradient`-decorated function</span>
+<span class="sd">  control the expected return values of the innermost function.</span>
+
+<span class="sd">  See also `tf.RegisterGradient` which registers a gradient function for a</span>
+<span class="sd">  primitive TensorFlow operation. `tf.custom_gradient` on the other hand allows</span>
+<span class="sd">  for fine grained control over the gradient computation of a sequence of</span>
+<span class="sd">  operations.</span>
+
+<span class="sd">  Note that if the decorated function uses `Variable`s, the enclosing variable</span>
+<span class="sd">  scope must be using `ResourceVariable`s.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    f: function `f(*x)` that returns a tuple `(y, grad_fn)` where:</span>
+<span class="sd">       - `x` is a sequence of `Tensor` inputs to the function.</span>
+<span class="sd">       - `y` is a `Tensor` or sequence of `Tensor` outputs of applying</span>
+<span class="sd">         TensorFlow operations in `f` to `x`.</span>
+<span class="sd">       - `grad_fn` is a function with the signature `g(*grad_ys)` which returns</span>
+<span class="sd">         a list of `Tensor`s - the derivatives of `Tensor`s in `y` with respect</span>
+<span class="sd">         to the `Tensor`s in `x`.  `grad_ys` is a `Tensor` or sequence of</span>
+<span class="sd">         `Tensor`s the same size as `y` holding the initial value gradients for</span>
+<span class="sd">         each `Tensor` in `y`. In a pure mathematical sense, a vector-argument</span>
+<span class="sd">         vector-valued function `f`&#39;s derivatives should be its Jacobian matrix</span>
+<span class="sd">         `J`. Here we are expressing the Jacobian `J` as a function `grad_fn`</span>
+<span class="sd">         which defines how `J` will transform a vector `grad_ys` when</span>
+<span class="sd">         left-multiplied with it (`grad_ys * J`). This functional representation</span>
+<span class="sd">         of a matrix is convenient to use for chain-rule calculation</span>
+<span class="sd">         (in e.g. the back-propagation algorithm).</span>
+
+<span class="sd">         If `f` uses `Variable`s (that are not part of the</span>
+<span class="sd">         inputs), i.e. through `get_variable`, then `grad_fn` should have</span>
+<span class="sd">         signature `g(*grad_ys, variables=None)`, where `variables` is a list of</span>
+<span class="sd">         the `Variable`s, and return a 2-tuple `(grad_xs, grad_vars)`, where</span>
+<span class="sd">         `grad_xs` is the same as above, and `grad_vars` is a `list&lt;Tensor&gt;`</span>
+<span class="sd">         with the derivatives of `Tensor`s in `y` with respect to the variables</span>
+<span class="sd">         (that is, grad_vars has one Tensor per variable in variables).</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">    A function `h(x)` which returns the same value as `f(x)[0]` and whose</span>
+<span class="sd">    gradient (as calculated by `tf.gradients`) is determined by `f(x)[1]`.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">custom_gradient</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">)</span>
+
+  <span class="nd">@Bind</span><span class="o">.</span><span class="n">decorator</span>
+  <span class="k">def</span> <span class="nf">decorated</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Decorated function with custom gradient.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">executing_eagerly</span><span class="p">():</span>
+      <span class="k">return</span> <span class="n">_eager_mode_decorator</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">_graph_mode_decorator</span><span class="p">(</span><span class="n">wrapped</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="n">tf_decorator</span><span class="o">.</span><span class="n">make_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">decorated</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>  <span class="c1"># pylint: disable=no-value-for-parameter</span></div>
+
+
+<span class="k">class</span> <span class="nc">Bind</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;When called evaluates `d(f, args, kwargs)` but supports binding `f`.</span>
+
+<span class="sd">  &gt;&gt;&gt; @Bind.decorator</span>
+<span class="sd">  ... def my_decorator(f, args, kwargs):</span>
+<span class="sd">  ...   print(&quot;my_decorator called with&quot;, args, kwargs)</span>
+<span class="sd">  ...   return f(*args, **kwargs)</span>
+
+<span class="sd">  &gt;&gt;&gt; class Foo(object):</span>
+<span class="sd">  ...   @my_decorator</span>
+<span class="sd">  ...   def bar(self, a, b, c):</span>
+<span class="sd">  ...     return a * b * c</span>
+
+<span class="sd">  &gt;&gt;&gt; Foo.bar(None, 1, 2, c=3)</span>
+<span class="sd">  my_decorator called with (None, 1, 2) {&#39;c&#39;: 3}</span>
+<span class="sd">  6</span>
+
+<span class="sd">  &gt;&gt;&gt; foo = Foo()</span>
+<span class="sd">  &gt;&gt;&gt; foo.bar(1, 2, c=3)</span>
+<span class="sd">  my_decorator called with (1, 2) {&#39;c&#39;: 3}</span>
+<span class="sd">  6</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+
+  <span class="nd">@classmethod</span>
+  <span class="k">def</span> <span class="nf">decorator</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="k">return</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">:</span> <span class="n">Bind</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_f</span> <span class="o">=</span> <span class="n">f</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_d</span> <span class="o">=</span> <span class="n">d</span>
+
+  <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">instance</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+      <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_f</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">owner</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">tf_decorator</span><span class="o">.</span><span class="n">make_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Bind</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_d</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="bp">self</span>
+
+  <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">):</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_d</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_variable_by_name</span><span class="p">(</span><span class="n">var_name</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Given a variable name, retrieves a handle on the tensorflow Variable.&quot;&quot;&quot;</span>
+
+  <span class="n">candidate_vars</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_collection</span><span class="p">(</span>
+      <span class="n">ops</span><span class="o">.</span><span class="n">GraphKeys</span><span class="o">.</span><span class="n">GLOBAL_VARIABLES</span><span class="p">,</span> <span class="n">scope</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">:0&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var_name</span><span class="p">))</span>
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate_vars</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Filter out non-trainable variables.</span>
+    <span class="n">candidate_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">candidate_vars</span> <span class="k">if</span> <span class="n">v</span><span class="o">.</span><span class="n">trainable</span><span class="p">]</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unsuccessful at finding variable </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var_name</span><span class="p">))</span>
+
+  <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate_vars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">candidate_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate_vars</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;Unsuccessful at finding trainable variable </span><span class="si">{}</span><span class="s2">. &quot;</span>
+        <span class="s2">&quot;Number of candidates: </span><span class="si">{}</span><span class="s2">. &quot;</span>
+        <span class="s2">&quot;Candidates: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">var_name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidate_vars</span><span class="p">),</span> <span class="n">candidate_vars</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c1"># The variable is not trainable.</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span> <span class="nf">get_dependent_variables</span><span class="p">(</span><span class="n">input_ops</span><span class="p">,</span> <span class="n">output_ops</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Finds variables involved in the subgraph b/w input_ops and output_ops.&quot;&quot;&quot;</span>
+
+  <span class="c1"># avoids the edge-case when input_ops == output_ops.</span>
+  <span class="n">output_ops</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="n">gen_array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">,</span> <span class="n">output_ops</span><span class="p">)</span>
+  <span class="n">inbetween_ops</span> <span class="o">=</span> <span class="n">op_selector</span><span class="o">.</span><span class="n">get_backward_walk_ops</span><span class="p">(</span>
+      <span class="n">seed_ops</span><span class="o">=</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">output_ops</span><span class="p">),</span>
+      <span class="n">stop_at_ts</span><span class="o">=</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_ops</span><span class="p">),</span>
+      <span class="n">inclusive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+      <span class="n">only_differentiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="n">var_ops</span> <span class="o">=</span> <span class="p">(</span><span class="n">op</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">inbetween_ops</span> <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">type</span> <span class="ow">in</span> <span class="n">VAR_OP_TYPES</span><span class="p">)</span>
+  <span class="n">var_names</span> <span class="o">=</span> <span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">var_ops</span><span class="p">)</span>
+  <span class="n">tf_vars</span> <span class="o">=</span> <span class="p">(</span><span class="n">get_variable_by_name</span><span class="p">(</span><span class="n">var_name</span><span class="p">)</span> <span class="k">for</span> <span class="n">var_name</span> <span class="ow">in</span> <span class="n">var_names</span><span class="p">)</span>
+  <span class="n">tf_vars</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tf_vars</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">]</span>
+  <span class="k">return</span> <span class="n">tf_vars</span>
+
+
+<span class="k">def</span> <span class="nf">_graph_mode_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Implement custom gradient decorator for graph mode.&quot;&quot;&quot;</span>
+  <span class="c1"># TODO(rsepassi): Add support for kwargs</span>
+  <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="s2">&quot;The custom_gradient decorator currently supports keywords &quot;</span>
+        <span class="s2">&quot;arguments only when eager execution is enabled.&quot;</span><span class="p">)</span>
+  <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CustomGradient-</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ops</span><span class="o">.</span><span class="n">uid</span><span class="p">()</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+
+  <span class="c1"># Checking global and local variables attempts to ensure that no non-resource</span>
+  <span class="c1"># Variables are added to the graph.</span>
+  <span class="n">current_var_scope</span> <span class="o">=</span> <span class="n">variable_scope</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span>
+  <span class="n">before_vars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+      <span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">current_var_scope</span><span class="o">.</span><span class="n">global_variables</span><span class="p">()</span> <span class="o">+</span>
+      <span class="n">current_var_scope</span><span class="o">.</span><span class="n">local_variables</span><span class="p">()</span>
+  <span class="p">])</span>
+  <span class="k">with</span> <span class="n">backprop</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+    <span class="n">result</span><span class="p">,</span> <span class="n">grad_fn</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="n">after_vars</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span>
+      <span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">current_var_scope</span><span class="o">.</span><span class="n">global_variables</span><span class="p">()</span> <span class="o">+</span>
+      <span class="n">current_var_scope</span><span class="o">.</span><span class="n">local_variables</span><span class="p">()</span>
+  <span class="p">])</span>
+  <span class="n">new_vars</span> <span class="o">=</span> <span class="n">after_vars</span> <span class="o">-</span> <span class="n">before_vars</span>
+  <span class="n">new_vars_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">new_vars</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">new_vars_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">resource_variable_ops</span><span class="o">.</span><span class="n">is_resource_variable</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+          <span class="s2">&quot;All variables used by a function wrapped with @custom_gradient must &quot;</span>
+          <span class="s2">&quot;be `ResourceVariable`s. Ensure that no `variable_scope` is created &quot;</span>
+          <span class="s2">&quot;with `use_resource=False`.&quot;</span><span class="p">)</span>
+  <span class="c1"># The variables that grad_fn needs to return gradients for are the set of</span>
+  <span class="c1"># variables used that are *not* part of the inputs.</span>
+  <span class="n">inputs</span> <span class="o">=</span> <span class="n">args</span>
+  <span class="n">variables_in_tape</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span><span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tape</span><span class="o">.</span><span class="n">watched_variables</span><span class="p">()</span>
+                                <span class="p">])</span> <span class="o">-</span> <span class="nb">frozenset</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">)</span>
+  <span class="n">variables_in_subgraph</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">([</span>
+      <span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span>
+      <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">get_dependent_variables</span><span class="p">(</span><span class="n">input_ops</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">output_ops</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+  <span class="p">])</span>
+  <span class="n">variables</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">v</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">variables_in_subgraph</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">variables_in_tape</span><span class="p">)])</span>
+
+  <span class="n">grad_argspec</span> <span class="o">=</span> <span class="n">tf_inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">grad_fn</span><span class="p">)</span>
+  <span class="n">variables_in_signature</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;variables&quot;</span> <span class="ow">in</span> <span class="n">grad_argspec</span><span class="o">.</span><span class="n">args</span> <span class="ow">or</span>
+                            <span class="n">grad_argspec</span><span class="o">.</span><span class="n">varkw</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">variables</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">variables_in_signature</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;If using @custom_gradient with a function that &quot;</span>
+                    <span class="s2">&quot;uses variables, then grad_fn must accept a keyword &quot;</span>
+                    <span class="s2">&quot;argument &#39;variables&#39;.&quot;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">variables_in_signature</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">variables</span><span class="p">:</span>
+    <span class="c1"># User seems to intend to use variables but none were captured.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">variable_scope</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span><span class="o">.</span><span class="n">use_resource</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;If using @custom_gradient with a function that &quot;</span>
+                      <span class="s2">&quot;uses variables, the enclosing variable scope must &quot;</span>
+                      <span class="s2">&quot;have use_resource=True.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;@custom_gradient grad_fn has &#39;variables&#39; in signature, but &quot;</span>
+                   <span class="s2">&quot;no ResourceVariables were used on the forward pass.&quot;</span><span class="p">)</span>
+  <span class="n">flat_result</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+  <span class="n">flat_result_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">flat_result</span><span class="p">)</span>
+
+  <span class="n">all_tensors</span> <span class="o">=</span> <span class="n">flat_result</span> <span class="o">+</span> <span class="n">args</span> <span class="o">+</span> <span class="n">variables</span>
+
+  <span class="k">def</span> <span class="nf">tape_grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Custom grad fn wrapper.&quot;&quot;&quot;</span>
+    <span class="n">result_grads</span> <span class="o">=</span> <span class="n">result_grads</span><span class="p">[:</span><span class="n">flat_result_len</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">variables</span><span class="p">:</span>
+      <span class="n">input_grads</span><span class="p">,</span> <span class="n">variable_grads</span> <span class="o">=</span> <span class="n">grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">variable_grads</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must return gradient for each variable from &quot;</span>
+                         <span class="s2">&quot;@custom_gradient grad_fn.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">input_grads</span> <span class="o">=</span> <span class="n">grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">)</span>
+      <span class="n">variable_grads</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Need to return one value per input to the IdentityN, so pad the</span>
+    <span class="c1"># gradients of the inputs of the custom_gradient function with the</span>
+    <span class="c1"># gradients of the outputs as well.</span>
+    <span class="n">input_grads</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_grads</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">([</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">flat_result_len</span><span class="p">)</span> <span class="o">+</span> <span class="n">input_grads</span> <span class="o">+</span> <span class="n">variable_grads</span>
+
+  <span class="nd">@ops</span><span class="o">.</span><span class="n">RegisterGradient</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">internal_grad_fn</span><span class="p">(</span><span class="n">unused_op</span><span class="p">,</span> <span class="o">*</span><span class="n">result_grads</span><span class="p">):</span>  <span class="c1"># pylint: disable=unused-variable</span>
+    <span class="sd">&quot;&quot;&quot;Custom grad fn wrapper.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tape_grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">)</span>
+
+  <span class="n">original_tensors</span> <span class="o">=</span> <span class="n">all_tensors</span>
+  <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">get_default_graph</span><span class="p">()</span><span class="o">.</span><span class="n">gradient_override_map</span><span class="p">({</span><span class="s2">&quot;IdentityN&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">}):</span>
+    <span class="n">all_tensors</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">identity_n</span><span class="p">(</span><span class="n">all_tensors</span><span class="p">)</span>
+
+  <span class="n">original_tensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">original_tensors</span><span class="p">]</span>
+
+  <span class="c1"># Propagate handle data for happier shape inference for resource variables.</span>
+  <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">original_tensors</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">dtypes</span><span class="o">.</span><span class="n">resource</span> <span class="ow">and</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s2">&quot;_handle_data&quot;</span><span class="p">):</span>
+      <span class="n">all_tensors</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_handle_data</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">_handle_data</span>  <span class="c1"># pylint: disable=protected-access</span>
+  <span class="n">tape_lib</span><span class="o">.</span><span class="n">record_operation</span><span class="p">(</span>
+      <span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">all_tensors</span><span class="p">,</span> <span class="n">original_tensors</span><span class="p">,</span> <span class="n">tape_grad_fn</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">ot</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">original_tensors</span><span class="p">,</span> <span class="n">all_tensors</span><span class="p">):</span>
+    <span class="n">copy_handle_data</span><span class="p">(</span><span class="n">ot</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span>
+      <span class="n">structure</span><span class="o">=</span><span class="n">result</span><span class="p">,</span> <span class="n">flat_sequence</span><span class="o">=</span><span class="n">all_tensors</span><span class="p">[:</span><span class="n">flat_result_len</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_eager_mode_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Implement custom gradient decorator for eager mode.&quot;&quot;&quot;</span>
+  <span class="k">with</span> <span class="n">backprop</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+    <span class="n">result</span><span class="p">,</span> <span class="n">grad_fn</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="n">all_inputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+  <span class="c1"># The variables that grad_fn needs to return gradients for are the set of</span>
+  <span class="c1"># variables used that are *not* part of the inputs.</span>
+  <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">v</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span>  <span class="c1"># pylint: disable=g-complex-comprehension</span>
+      <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">ref</span><span class="p">()</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tape</span><span class="o">.</span><span class="n">watched_variables</span><span class="p">())</span>
+      <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">deref</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">all_inputs</span><span class="p">)</span>
+  <span class="p">]</span>
+  <span class="n">grad_argspec</span> <span class="o">=</span> <span class="n">tf_inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="n">grad_fn</span><span class="p">)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">variables</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;variables&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">grad_argspec</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="ow">and</span>
+      <span class="ow">not</span> <span class="n">grad_argspec</span><span class="o">.</span><span class="n">varkw</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;If using @custom_gradient with a function that &quot;</span>
+                    <span class="s2">&quot;uses variables, then grad_fn must accept a keyword &quot;</span>
+                    <span class="s2">&quot;argument &#39;variables&#39;.&quot;</span><span class="p">)</span>
+  <span class="n">flat_result</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+  <span class="c1"># TODO(apassos) consider removing the identity below.</span>
+  <span class="n">flat_result</span> <span class="o">=</span> <span class="p">[</span><span class="n">gen_array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">flat_result</span><span class="p">]</span>
+
+  <span class="n">input_tensors</span> <span class="o">=</span> <span class="p">[</span><span class="n">ops</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span>
+                   <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">variables</span><span class="p">)]</span>
+
+  <span class="n">recorded_inputs</span> <span class="o">=</span> <span class="n">input_tensors</span>
+  <span class="n">arg_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">actual_grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Custom grad fn wrapper.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">variables</span><span class="p">:</span>
+      <span class="n">input_grads</span><span class="p">,</span> <span class="n">variable_grads</span> <span class="o">=</span> <span class="n">grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span>
+      <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">variable_grads</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Must return gradient for each variable from &quot;</span>
+                         <span class="s2">&quot;@custom_gradient grad_fn.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">input_grads</span> <span class="o">=</span> <span class="n">grad_fn</span><span class="p">(</span><span class="o">*</span><span class="n">result_grads</span><span class="p">)</span>
+      <span class="n">variable_grads</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">flat_grads</span> <span class="o">=</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_grads</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">flat_grads</span><span class="p">)</span> <span class="o">!=</span> <span class="n">arg_count</span><span class="p">:</span>
+      <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+          <span class="s2">&quot;custom_gradient function expected to return&quot;</span><span class="p">,</span> <span class="n">arg_count</span><span class="p">,</span>
+          <span class="s2">&quot;gradients but returned&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">flat_grads</span><span class="p">),</span> <span class="s2">&quot;instead.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">input_grads</span><span class="p">)</span> <span class="o">+</span> <span class="n">variable_grads</span>
+
+  <span class="n">tape_lib</span><span class="o">.</span><span class="n">record_operation</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">flat_result</span><span class="p">,</span> <span class="n">recorded_inputs</span><span class="p">,</span>
+                            <span class="n">actual_grad_fn</span><span class="p">)</span>
+  <span class="n">flat_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">flat_result</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">pack_sequence_as</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">flat_result</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="recompute_grad"><a class="viewcode-back" href="../../../../index.html#tensorflow.recompute_grad">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;recompute_grad&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">recompute_grad</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;An eager-compatible version of recompute_grad.</span>
+
+<span class="sd">  For f(*args, **kwargs), this supports gradients with respect to args or</span>
+<span class="sd">  kwargs, but kwargs are currently only supported in eager-mode.</span>
+<span class="sd">  Note that for keras layer and model objects, this is handled automatically.</span>
+
+<span class="sd">  Warning: If `f` was originally a tf.keras Model or Layer object, `g` will not</span>
+<span class="sd">  be able to access the member variables of that object, because `g` returns</span>
+<span class="sd">  through the wrapper function `inner`.  When recomputing gradients through</span>
+<span class="sd">  objects that inherit from keras, we suggest keeping a reference to the</span>
+<span class="sd">  underlying object around for the purpose of accessing these variables.</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    f: function `f(*x)` that returns a `Tensor` or sequence of `Tensor` outputs.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">   A function `g` that wraps `f`, but which recomputes `f` on the backwards</span>
+<span class="sd">   pass of a gradient call.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="c1"># TODO(cdfreeman) Add is_recomputing functionality from graph mode version</span>
+
+  <span class="nd">@custom_gradient</span>
+  <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Inner function closure for calculating gradients.&quot;&quot;&quot;</span>
+    <span class="n">current_var_scope</span> <span class="o">=</span> <span class="n">variable_scope</span><span class="o">.</span><span class="n">get_variable_scope</span><span class="p">()</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="o">*</span><span class="n">dresult</span><span class="p">,</span> <span class="o">**</span><span class="n">grad_kwargs</span><span class="p">):</span>
+      <span class="sd">&quot;&quot;&quot;Gradient function calculation for inner function.&quot;&quot;&quot;</span>
+      <span class="n">variables</span> <span class="o">=</span> <span class="n">grad_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;variables&quot;</span><span class="p">)</span>
+      <span class="k">with</span> <span class="n">backprop</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">t</span><span class="p">:</span>
+        <span class="n">id_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">gen_array_ops</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">id_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+          <span class="n">t</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">control_dependencies</span><span class="p">(</span><span class="n">dresult</span><span class="p">):</span>
+          <span class="k">with</span> <span class="n">variable_scope</span><span class="o">.</span><span class="n">variable_scope</span><span class="p">(</span><span class="n">current_var_scope</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">id_args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+      <span class="n">kw_vars</span> <span class="o">=</span> <span class="p">[]</span>
+      <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">kw_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+      <span class="n">grads</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span>
+          <span class="n">result</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">id_args</span><span class="p">)</span> <span class="o">+</span> <span class="n">kw_vars</span><span class="p">,</span> <span class="n">output_gradients</span><span class="o">=</span><span class="n">dresult</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">grads</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">id_args</span><span class="p">)],</span> <span class="n">grads</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">id_args</span><span class="p">):]</span>
+
+    <span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="n">grad</span>
+
+  <span class="k">return</span> <span class="n">inner</span></div>
+
+
+<div class="viewcode-block" id="grad_pass_through"><a class="viewcode-back" href="../../../../index.html#tensorflow.grad_pass_through">[docs]</a><span class="nd">@tf_export</span><span class="p">(</span><span class="s2">&quot;grad_pass_through&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">grad_pass_through</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+  <span class="sd">&quot;&quot;&quot;Creates a grad-pass-through op with the forward behavior provided in f.</span>
+
+<span class="sd">  Use this function to wrap any op, maintaining its behavior in the forward</span>
+<span class="sd">  pass, but replacing the original op in the backward graph with an identity.</span>
+<span class="sd">  For example:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  x = tf.Variable(1.0, name=&quot;x&quot;)</span>
+<span class="sd">  z = tf.Variable(3.0, name=&quot;z&quot;)</span>
+
+<span class="sd">  with tf.GradientTape() as tape:</span>
+<span class="sd">    # y will evaluate to 9.0</span>
+<span class="sd">    y = tf.grad_pass_through(x.assign)(z**2)</span>
+<span class="sd">  # grads will evaluate to 6.0</span>
+<span class="sd">  grads = tape.gradient(y, z)</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Another example is a &#39;differentiable&#39; moving average approximation, where</span>
+<span class="sd">  gradients are allowed to flow into the last value fed to the moving average,</span>
+<span class="sd">  but the moving average is still used for the forward pass:</span>
+
+<span class="sd">  ```python</span>
+<span class="sd">  x = ... # Some scalar value</span>
+<span class="sd">  # A moving average object, we don&#39;t need to know how this is implemented</span>
+<span class="sd">  moving_average = MovingAverage()</span>
+<span class="sd">  with backprop.GradientTape() as tape:</span>
+<span class="sd">    # mavg_x will evaluate to the current running average value</span>
+<span class="sd">    mavg_x = tf.grad_pass_through(moving_average)(x)</span>
+<span class="sd">  grads = tape.gradient(mavg_x, x) # grads will evaluate to 1.0</span>
+<span class="sd">  ```</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">    f: function `f(*x)` that returns a `Tensor` or nested structure of `Tensor`</span>
+<span class="sd">      outputs.</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">   A function `h(x)` which returns the same values as `f(x)` and whose</span>
+<span class="sd">   gradients are the same as those of an identity function.</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="nd">@custom_gradient</span>
+  <span class="k">def</span> <span class="nf">_grad_pass_through_op</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">grad</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+      <span class="n">variables</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;variables&quot;</span><span class="p">)</span>
+      <span class="k">if</span> <span class="n">variables</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Variables involved in the wrapped op will not receive gradients.</span>
+        <span class="k">return</span> <span class="n">args</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">args</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">grad</span>
+  <span class="k">return</span> <span class="n">tf_decorator</span><span class="o">.</span><span class="n">make_decorator</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">_grad_pass_through_op</span><span class="p">)</span></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright - Wei MEI (Nick Cafferry).
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
