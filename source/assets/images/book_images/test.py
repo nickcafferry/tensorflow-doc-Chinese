@@ -6,7 +6,7 @@ doc = fitz.open('TensorFlow_Machine_Learning_Cookbook.pdf')
 
 for pg in range(doc.pageCount):
     page = doc[pg]
-    zoom = int(1000)
+    zoom = int(200)
     rotate = int(0)
     trans = fitz.Matrix(zoom / 100.0, zoom / 100.0).preRotate(rotate)
 
