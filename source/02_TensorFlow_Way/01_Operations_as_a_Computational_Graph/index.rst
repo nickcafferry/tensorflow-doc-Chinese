@@ -46,58 +46,51 @@
 
 .. code:: ipython3
 
-    import tensorflow as tf
+    >>> import tensorflow as tf
 
 .. code:: ipython3
 
-    sess = tf.Session()
+    >>> sess = tf.Session()
 
 .. code:: ipython3
 
-    import numpy as np
-    my_array = np.array([[1., 3., 5., 7., 9.],[-2., 0., 2., 4., 6.], [-6., -3., 0., 3., 6.]])
+    >>> import numpy as np
+    >>> my_array = np.array([[1., 3., 5., 7., 9.],[-2., 0., 2., 4., 6.], [-6., -3., 0., 3., 6.]])
 
 .. code:: ipython3
 
-    x_vals = np.array([my_array, my_array+1])
-    x_data = tf.placeholder(tf.float32, shape=(3,5))
+    >>> x_vals = np.array([my_array, my_array+1])
+    >>> x_data = tf.placeholder(tf.float32, shape=(3,5))
 
 .. code:: ipython3
 
-    x_vals, x_data
-
-
-
+    >>> x_vals, x_data
 
 .. parsed-literal::
 
-    (array([[[ 1.,  3.,  5.,  7.,  9.],
+    >>> (array([[[ 1.,  3.,  5.,  7.,  9.],
              [-2.,  0.,  2.,  4.,  6.],
              [-6., -3.,  0.,  3.,  6.]],
      
             [[ 2.,  4.,  6.,  8., 10.],
              [-1.,  1.,  3.,  5.,  7.],
              [-5., -2.,  1.,  4.,  7.]]]),
-     <tf.Tensor 'Placeholder:0' shape=(3, 5) dtype=float32>)
-
-
+    ... <tf.Tensor 'Placeholder:0' shape=(3, 5) dtype=float32>)
 
 .. code:: ipython3
 
-    m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
-    m2 = tf.constant([[2.]])
-    a1 = tf.constant([[10.]])
+    >>> m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
+    >>> m2 = tf.constant([[2.]])
+    >>> a1 = tf.constant([[10.]])
 
 .. code:: ipython3
 
-    m1, m2, a1
-
-
+    >>> m1, m2, a1
 
 
 .. parsed-literal::
 
-    (<tf.Tensor 'Const_6:0' shape=(5, 1) dtype=float32>,
+    >>> (<tf.Tensor 'Const_6:0' shape=(5, 1) dtype=float32>,
      <tf.Tensor 'Const_7:0' shape=(1, 1) dtype=float32>,
      <tf.Tensor 'Const_8:0' shape=(1, 1) dtype=float32>)
 
@@ -105,34 +98,28 @@
 
 .. code:: ipython3
 
-    prod1 = tf.matmul(x_data, m1)
-    prod2 = tf.matmul(prod1, m2)
-    add1 = tf.add(prod2,a1)
+    >>> prod1 = tf.matmul(x_data, m1)
+    >>> prod2 = tf.matmul(prod1, m2)
+    >>> add1 = tf.add(prod2,a1)
 
 .. code:: ipython3
 
-    prod1, prod2, add1
-
-
-
+    >>> prod1, prod2, add1
 
 .. parsed-literal::
 
-    (<tf.Tensor 'MatMul:0' shape=(3, 1) dtype=float32>,
-     <tf.Tensor 'MatMul_1:0' shape=(3, 1) dtype=float32>,
-     <tf.Tensor 'Add:0' shape=(3, 1) dtype=float32>)
-
-
+    >>> (<tf.Tensor 'MatMul:0' shape=(3, 1) dtype=float32>,
+    >>> <tf.Tensor 'MatMul_1:0' shape=(3, 1) dtype=float32>,
+    >>> <tf.Tensor 'Add:0' shape=(3, 1) dtype=float32>)
 
 .. code:: ipython3
 
-    for x_val in x_vals:
-        print(sess.run(add1, feed_dict= {x_data: x_val}))
-
+    >>> for x_val in x_vals:
+    ...    print(sess.run(add1, feed_dict= {x_data: x_val}))
 
 .. parsed-literal::
 
-    [[102.]
+    >>> [[102.]
      [ 66.]
      [ 58.]]
     [[114.]
