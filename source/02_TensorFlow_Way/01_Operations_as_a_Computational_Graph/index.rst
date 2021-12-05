@@ -44,25 +44,25 @@
 
 知道如何将不同的运算符链接起来很重要。在计算图中这将会设置不同的操作，这里我们展示占位符乘以两个矩阵再执行加法。我们将两个矩阵以三维的 :strong:`numpy` 阵列传入网络。
 
-.. code:: ipython3
+.. code:: python
 
     >>> import tensorflow as tf
 
-.. code:: ipython3
+.. code:: python
 
     >>> sess = tf.Session()
 
-.. code:: ipython3
+.. code:: python
 
     >>> import numpy as np
     >>> my_array = np.array([[1., 3., 5., 7., 9.],[-2., 0., 2., 4., 6.], [-6., -3., 0., 3., 6.]])
 
-.. code:: ipython3
+.. code:: python
 
     >>> x_vals = np.array([my_array, my_array+1])
     >>> x_data = tf.placeholder(tf.float32, shape=(3,5))
 
-.. code:: ipython3
+.. code:: python
 
     >>> x_vals, x_data
 
@@ -77,13 +77,13 @@
              [-5., -2.,  1.,  4.,  7.]]]),
     ... <tf.Tensor 'Placeholder:0' shape=(3, 5) dtype=float32>)
 
-.. code:: ipython3
+.. code:: python
 
     >>> m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
     >>> m2 = tf.constant([[2.]])
     >>> a1 = tf.constant([[10.]])
 
-.. code:: ipython3
+.. code:: python
 
     >>> m1, m2, a1
 
@@ -96,13 +96,13 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     >>> prod1 = tf.matmul(x_data, m1)
     >>> prod2 = tf.matmul(prod1, m2)
     >>> add1 = tf.add(prod2,a1)
 
-.. code:: ipython3
+.. code:: python
 
     >>> prod1, prod2, add1
 
@@ -112,7 +112,7 @@
     >>> <tf.Tensor 'MatMul_1:0' shape=(3, 1) dtype=float32>,
     >>> <tf.Tensor 'Add:0' shape=(3, 1) dtype=float32>)
 
-.. code:: ipython3
+.. code:: python
 
     >>> for x_val in x_vals:
     ...    print(sess.run(add1, feed_dict= {x_data: x_val}))
