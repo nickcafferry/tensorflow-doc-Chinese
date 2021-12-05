@@ -40,6 +40,16 @@
 密集层(Dense Layer)
 ====================
 
+在这节中，我们将学习如何在同样的计算谱图中放入相同的操作。
+
+知道如何将不同的运算符链接起来很重要。在计算图中这将会设置不同的操作，这里我们展示占位符乘以两个矩阵再执行加法。我们将两个矩阵以三维的 :strong:`numpy` 阵列传入网络。
+
+.. code:: python
+
+        >>> import tensorflow as tf
+        >>> sess = tf.Session()
+
+
 .. raw:: html
 
     <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
