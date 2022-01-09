@@ -1,10 +1,8 @@
 .. note::
 
-   Neural Networks are very important in machine learning and growing in popularity due to the major 
-   breakthroughs in prior unsolved problems.  We must start with introducing 'shallow' neural networks, 
-   which are very powerful and can help us improve our prior ML algorithm results.  We start by introducing 
-   the very basic NN unit, the operational gate.  We gradually add more and more to the neural network 
-   and end with training a model to play tic-tac-toe.
+   神经网络在机器学习中十分重要，在很多优先度较高未解决的问题中，越来越重要。我们首先开始介绍浅层神经网络, 它很强大而且可以帮我
+   们改善之前用机器学习的结果。我们首先开始介绍最基本的神经网络单元，操作门。 随后我们将继续介绍神经网络的方方面面，并以训练一个
+   用玩tic-tac-toe的模型结束。
    
    
 引言
