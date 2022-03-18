@@ -9,6 +9,12 @@
 
 在这一节中，我们会看到计算图可能会变得很大，然后很难观察。为了解决这一难题，我们引入命名操作和创建作用域的方法。
 
+.. code:: python
+   
+   >>> import tensorflow.compat.v1 as tf
+   >>> tf.disable_eager_execution()
+   >>> tf.disable_
+
 .. digraph:: foo
 
    "bar" -> "baz" -> "quux";
