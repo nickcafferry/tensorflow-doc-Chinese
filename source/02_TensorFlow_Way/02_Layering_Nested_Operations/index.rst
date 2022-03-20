@@ -9,32 +9,32 @@
 
 在这一节中，我们会看到计算图可能会变得很大，然后很难观察。为了解决这一难题，我们引入命名操作和创建作用域的方法。
 
-.. code:: ipython3
+.. code:: python
 
-    import tensorflow.compat.v1 as tf
-    import os
-    import io
-    import time
-    import matplotlib.pyplot as plt
+    >>> import tensorflow.compat.v1 as tf
+    >>> import os
+    >>> import io
+    >>> import time
+    >>> import matplotlib.pyplot as plt
 
-.. code:: ipython3
+.. code:: python
 
-    tf.disable_eager_execution()
-    tf.disable_v2_behavior()
-    sess = tf.Session()
-    summary_writer = tf.summary.FileWriter('tensorboard',tf.get_default_graph())
-    if not os.path.exists('tensorboard'):
-        os.makedirs('tensorboard')
+    >>> tf.disable_eager_execution()
+    >>> tf.disable_v2_behavior()
+    >>> sess = tf.Session()
+    >>> summary_writer = tf.summary.FileWriter('tensorboard',tf.get_default_graph())
+    >>> if not os.path.exists('tensorboard'):
+    ...     os.makedirs('tensorboard')
 
-.. code:: ipython3
+.. code:: python
 
-    import numpy as np
-    x_vals = np.array([1.,3.,5.,7.,9.])
-    x_data = tf.placeholder(tf.float32)
-    m_const = tf.constant(3.)
-    my_product = tf.multiply(x_data,m_const)
-    for _ in x_vals:
-        print(sess.run(my_product, feed_dict={x_data: _}))
+    >>> import numpy as np
+    >>> x_vals = np.array([1.,3.,5.,7.,9.])
+    >>> x_data = tf.placeholder(tf.float32)
+    >>> m_const = tf.constant(3.)
+    >>> my_product = tf.multiply(x_data,m_const)
+    >>> for _ in x_vals:
+    ...      print(sess.run(my_product, feed_dict={x_data: _}))
 
 
 .. parsed-literal::
@@ -46,16 +46,16 @@
     27.0
 
 
-.. code:: ipython3
+.. code:: python
 
     # 知道如何将运算符连接起来很重要。为了便于展示，我们在
 
-.. code:: ipython3
+.. code:: python
 
-    my_array = np.array([[1.,3.,5.,7.,9.], [-2.,0.,2.,4.,6.], [-6., -3., 0., 3.,6.]])
-    x_vals = np.array([my_array, my_array+1])
-    x_data = tf.placeholder(tf.float32, shape=(3,5))
-    x_vals
+    >>> my_array = np.array([[1.,3.,5.,7.,9.], [-2.,0.,2.,4.,6.], [-6., -3., 0., 3.,6.]])
+    >>> x_vals = np.array([my_array, my_array+1])
+    >>> x_data = tf.placeholder(tf.float32, shape=(3,5))
+    >>> x_vals
 
 
 
@@ -72,17 +72,15 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
-    m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
-    m2 = tf.constant([[2.]])
-    a1 = tf.constant([[10.]])
+    >>> m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
+    >>> m2 = tf.constant([[2.]])
+    >>> a1 = tf.constant([[10.]])
 
-.. code:: ipython3
+.. code:: python
 
-    m1
-
-
+    >>> m1
 
 
 .. parsed-literal::
@@ -117,13 +115,13 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     prod1 = tf.matmul(x_data, m1)
     prod2 = tf.matmul(prod1, m2)
     add1 = tf.add(prod2,a1)
 
-.. code:: ipython3
+.. code:: python
 
     for x_val in x_vals:
         print(sess.run(add1, feed_dict={x_data: x_val}))
@@ -139,19 +137,19 @@
      [ 70.]]
 
 
-.. code:: ipython3
+.. code:: python
 
     Prod1 = np.matmul(my_array,np.array([[1.], [0.], [-1.], [2.], [4.]]))
 
-.. code:: ipython3
+.. code:: python
 
     Prod2 = np.matmul(Prod1, np.array([2.]))
 
-.. code:: ipython3
+.. code:: python
 
     add1 = np.add(Prod2, 10)
 
-.. code:: ipython3
+.. code:: python
 
     add1
 
@@ -168,19 +166,19 @@
 
     # 多层操作
 
-.. code:: ipython3
+.. code:: python
 
     x_shape = [1,4,4,1]
     x_val = np.random.uniform(size = x_shape)
 
-.. code:: ipython3
+.. code:: python
 
     x_data = tf.placeholder(tf.float32, shape = x_shape)
     my_filter = tf.constant(0.25, shape= [2,2,1,1])
     my_strides = [1,2,2,1]
     mov_avg_layer = tf.nn.conv2d(x_data, my_filter, my_strides, padding='SAME', name= 'Moving_Avg_Window')
 
-.. code:: ipython3
+.. code:: python
 
     def custom_layer(input_matrix):
         input_matrix_squeezed  = tf.squeeze(input_matrix)
@@ -190,12 +188,12 @@
         temp = tf.add(temp1,b) # Ax+b
         return (tf.sigmoid(temp))
 
-.. code:: ipython3
+.. code:: python
 
     with tf.name_scope('Custom_Layer') as scope:
         custom_layer1 = custom_layer(mov_avg_layer)
 
-.. code:: ipython3
+.. code:: python
 
     print(sess.run(custom_layer1, feed_dict= {x_data: x_val}))
 
@@ -206,7 +204,7 @@
      [0.9348625  0.905745  ]]
 
 
-.. code:: ipython3
+.. code:: python
 
     mov_avg_layer
 
