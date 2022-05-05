@@ -17,7 +17,7 @@ K-means聚类分析
 .. toctree::
        :maxdepth: 3
 
-       /02_TensorFlow_Way/01_Operations_as_a_Computational_Graph/index
+       /11_More_with_TensorFlow/03_Clustering_Using_KMeans/index
 
 解决体系常微分方程
 ========================
