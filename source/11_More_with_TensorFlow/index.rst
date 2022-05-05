@@ -12,8 +12,7 @@ ground truth function.
 K-means聚类分析
 ========================
 
-How to use TensorFlow to do k-means clustering.  We use the Iris data set, set k=3, and use
-k-means to make predictions.
+如何利用Tensorflow去k-means做聚类分析. 这里我们会用到Iris 数据集， k = 3, 然后使用k-means来预测。
 
 解决体系常微分方程
 ========================
