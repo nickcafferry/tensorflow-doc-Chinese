@@ -14,6 +14,11 @@ K-means聚类分析
 
 如何利用Tensorflow去k-means做聚类分析. 这里我们会用到Iris 数据集， k = 3, 然后使用k-means来预测。
 
+.. toctree::
+       :maxdepth: 3
+
+       /02_TensorFlow_Way/01_Operations_as_a_Computational_Graph/index
+
 解决体系常微分方程
 ========================
 
