@@ -1,4 +1,4 @@
-.. code:: ipython3
+.. code:: python
 
     # K-means Clustering
     import numpy as np
@@ -14,7 +14,7 @@
     import matplotlib.pyplot as plt
     import pandas as pd
 
-.. code:: ipython3
+.. code:: python
 
     tf.disable_eager_execution()
     tf.disable_v2_behavior()
@@ -27,15 +27,15 @@
     non-resource variables are not supported in the long term
 
 
-.. code:: ipython3
+.. code:: python
 
     iris = datasets.load_iris()
 
-.. code:: ipython3
+.. code:: python
 
     iris_data = pd.DataFrame(data = iris.data)
 
-.. code:: ipython3
+.. code:: python
 
     iris_data
 
@@ -153,13 +153,13 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     num_pts = len(iris.data)
     num_feats = len(iris.data[0])
     sess = tf.Session()
 
-.. code:: ipython3
+.. code:: python
 
     num_pts, num_feats # number of pieces, number of features
 
@@ -172,18 +172,18 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     k = 3
     generations = 25
     data_points = tf.Variable(iris.data)
     cluster_labels = tf.Variable(tf.zeros([num_pts],dtype=tf.int64))
 
-.. code:: ipython3
+.. code:: python
 
     rand_starts = np.array([iris.data[np.random.choice(len(iris.data))] for _ in range(k)])
 
-.. code:: ipython3
+.. code:: python
 
     rand_starts
 
@@ -198,7 +198,7 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     iris.data[1]
 
@@ -211,11 +211,11 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     centriods = tf.Variable(rand_starts)
 
-.. code:: ipython3
+.. code:: python
 
     centriods
 
@@ -231,11 +231,11 @@
 K-Means clustering on the handwritten digits data
 -------------------------------------------------
 
-.. code:: ipython3
+.. code:: python
 
     # load the dataset
 
-.. code:: ipython3
+.. code:: python
 
     import numpy as np
     from sklearn.datasets import load_digits # digits datasets. Labels: 0,1,2,3,4,5,6,7,8,9. Features: 64 (grey image size: 8 width * 8 height).
@@ -243,7 +243,7 @@ K-Means clustering on the handwritten digits data
     data, labels = load_digits(return_X_y=True)
     (n_samples, n_features), n_digits = data.shape, np.unique(labels).size
 
-.. code:: ipython3
+.. code:: python
 
     data
 
@@ -262,7 +262,7 @@ K-Means clustering on the handwritten digits data
 
 
 
-.. code:: ipython3
+.. code:: python
 
     labels
 
@@ -275,7 +275,7 @@ K-Means clustering on the handwritten digits data
 
 
 
-.. code:: ipython3
+.. code:: python
 
     n_samples, n_features
 
@@ -288,7 +288,7 @@ K-Means clustering on the handwritten digits data
 
 
 
-.. code:: ipython3
+.. code:: python
 
     n_digits
 
@@ -301,7 +301,7 @@ K-Means clustering on the handwritten digits data
 
 
 
-.. code:: ipython3
+.. code:: python
 
     print(f"# digits: {n_digits}; # samples: {n_samples}; # features: {n_features}")
 
@@ -311,11 +311,11 @@ K-Means clustering on the handwritten digits data
     # digits: 10; # samples: 1797; # features: 64
 
 
-.. code:: ipython3
+.. code:: python
 
     # kmeans = KMeans(init="kmeans++",n_cluster=n_digits, n_init=4, random_state=0)
 
-.. code:: ipython3
+.. code:: python
 
     estimator = make_pipeline(StandardScaler(),kmeans).fit(data)
     estimator[-1].labels_
@@ -329,7 +329,7 @@ K-Means clustering on the handwritten digits data
 
 
 
-.. code:: ipython3
+.. code:: python
 
     from time import time # timing 
     from sklearn import metrics # metrics module for evaluation of performance: including score functions, performance metrics
@@ -379,7 +379,7 @@ K-Means clustering on the handwritten digits data
         )
         print(formatter_result.format(*results))
 
-.. code:: ipython3
+.. code:: python
 
     from sklearn.cluster import KMeans
     from sklearn.decomposition import PCA
@@ -407,7 +407,7 @@ K-Means clustering on the handwritten digits data
     ----------------------------------------------------------------------------------
 
 
-.. code:: ipython3
+.. code:: python
 
     import matplotlib.pyplot as plt
     reduced_data = PCA(n_components=2).fit_transform(data)
