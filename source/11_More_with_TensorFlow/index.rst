@@ -25,6 +25,11 @@ K-means聚类分析
 Here, we show how to use TensorFlow to solve a system of ODEs.  The system of concern is the 
 Lotka-Volterra predator-prey system.
 
+.. toctree::
+       :maxdepth: 3
+
+       /11_More_with_TensorFlow/04_Solving_A_System_of_ODEs/index
+
 随机森林
 =======================
 
