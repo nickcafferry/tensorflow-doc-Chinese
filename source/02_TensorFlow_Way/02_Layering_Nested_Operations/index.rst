@@ -1,40 +1,30 @@
-既然我们说到了多层操作，我们会介绍如何将不同的可以传播数据的层连接起来。
+.. code:: python
 
-准备
-============
+    import tensorflow.compat.v1 as tf
+    import os
+    import io
+    import time
+    import matplotlib.pyplot as plt
 
-这里，我们会介绍如何以最佳的方式连接不同的层，包括用户自定义的层。我们所采用的数据是小型随机图像的一些
-代表。因为最好理解的方式是将这些放到简单的例子中，以及我们如何运用内置的层去完成计算。我们会用一个小型的
-移动窗口来捕捉2维图片，然后通过一个用户自定义的操作层来输出数据。
-
-在这一节中，我们会看到计算图可能会变得很大，然后很难观察。为了解决这一难题，我们引入命名操作和创建作用域的方法。
 
 .. code:: python
 
-    >>> import tensorflow.compat.v1 as tf
-    >>> import os
-    >>> import io
-    >>> import time
-    >>> import matplotlib.pyplot as plt
+    tf.disable_eager_execution()
+    tf.disable_v2_behavior()
+    sess = tf.Session()
+    summary_writer = tf.summary.FileWriter('tensorboard',tf.get_default_graph())
+    if not os.path.exists('tensorboard'):
+        os.makedirs('tensorboard')
 
 .. code:: python
 
-    >>> tf.disable_eager_execution()
-    >>> tf.disable_v2_behavior()
-    >>> sess = tf.Session()
-    >>> summary_writer = tf.summary.FileWriter('tensorboard',tf.get_default_graph())
-    >>> if not os.path.exists('tensorboard'):
-    ...     os.makedirs('tensorboard')
-
-.. code:: python
-
-    >>> import numpy as np
-    >>> x_vals = np.array([1.,3.,5.,7.,9.])
-    >>> x_data = tf.placeholder(tf.float32)
-    >>> m_const = tf.constant(3.)
-    >>> my_product = tf.multiply(x_data,m_const)
-    >>> for _ in x_vals:
-    ...      print(sess.run(my_product, feed_dict={x_data: _}))
+    import numpy as np
+    x_vals = np.array([1.,3.,5.,7.,9.])
+    x_data = tf.placeholder(tf.float32)
+    m_const = tf.constant(3.)
+    my_product = tf.multiply(x_data,m_const)
+    for _ in x_vals:
+        print(sess.run(my_product, feed_dict={x_data: _}))
 
 
 .. parsed-literal::
@@ -52,10 +42,10 @@
 
 .. code:: python
 
-    >>> my_array = np.array([[1.,3.,5.,7.,9.], [-2.,0.,2.,4.,6.], [-6., -3., 0., 3.,6.]])
-    >>> x_vals = np.array([my_array, my_array+1])
-    >>> x_data = tf.placeholder(tf.float32, shape=(3,5))
-    >>> x_vals
+    my_array = np.array([[1.,3.,5.,7.,9.], [-2.,0.,2.,4.,6.], [-6., -3., 0., 3.,6.]])
+    x_vals = np.array([my_array, my_array+1])
+    x_data = tf.placeholder(tf.float32, shape=(3,5))
+    x_vals
 
 
 
@@ -74,13 +64,15 @@
 
 .. code:: python
 
-    >>> m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
-    >>> m2 = tf.constant([[2.]])
-    >>> a1 = tf.constant([[10.]])
+    m1 = tf.constant([[1.], [0.], [-1.], [2.], [4.]])
+    m2 = tf.constant([[2.]])
+    a1 = tf.constant([[10.]])
 
 .. code:: python
 
-    >>> m1
+    m1
+
+
 
 
 .. parsed-literal::
@@ -89,7 +81,7 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     m2
 
@@ -102,7 +94,7 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     a1
 
@@ -162,7 +154,7 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     # 多层操作
 
@@ -217,27 +209,27 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     # Implementing loss functions
 
-.. code:: ipython3
+.. code:: python
 
     x_vals = tf.linspace(-1., 1., 500)
     target = tf.constant(0.)
 
-.. code:: ipython3
+.. code:: python
 
     # L2 norm loss is the Euclidean loss function. Advantages: very smmoth near the target and algorithms can use this fact to converge to 
     # the taraget more slowly, the closer it gets, as follows
 
-.. code:: ipython3
+.. code:: python
 
     l2_y_vals = tf.square(target-x_vals)
     x_vals_out = sess.run(x_vals)
     l2_y_out = sess.run(l2_y_vals)
 
-.. code:: ipython3
+.. code:: python
 
     plt.plot(x_vals_out, l2_y_out)
 
@@ -251,10 +243,10 @@
 
 
 
-.. image:: output_26_1.png
+.. image:: output_27_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     x_vals_1 = tf.linspace(-1., 500., 1000)
     target_1 = tf.constant(0.)
@@ -272,20 +264,20 @@
 
 
 
-.. image:: output_27_1.png
+.. image:: output_28_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     # L1 norm loss is known as the abslute loss function. L1 norm is better for outliners than L2 norm because it is not steep for larger valuse
     # One issue to be aware of is that the L1 norm is not smooth at the target and this can result in algorithms not converging well.
 
-.. code:: ipython3
+.. code:: python
 
     l1_y_vals = tf.abs(target-x_vals)
     l1_y_out = sess.run(l1_y_vals)
 
-.. code:: ipython3
+.. code:: python
 
     plt.plot(sess.run(l1_y_vals), l1_y_out)
 
@@ -299,10 +291,10 @@
 
 
 
-.. image:: output_30_1.png
+.. image:: output_31_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     l1_y_vals_1 = tf.abs(target-x_vals_1)
     l1_y_out_1 = sess.run(l1_y_vals_1)
@@ -318,21 +310,21 @@
 
 
 
-.. image:: output_31_1.png
+.. image:: output_32_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     # Pseduo-Huber loss is a continuous and smooth approximation to the Huber loss function. Advantages: L1 and L2 
     # Examples: delta1 = 0.25 and delta2 = 5
 
-.. code:: ipython3
+.. code:: python
 
     delta1 = tf.constant(0.25)
     phuber1_y_vals = tf.multiply(tf.square(delta1), tf.sqrt(1.+ tf.square((target-x_vals)/delta1))-1)
     phuber1_y_out = sess.run(phuber1_y_vals)
 
-.. code:: ipython3
+.. code:: python
 
     plt.plot(sess.run(x_vals), phuber1_y_out)
 
@@ -346,10 +338,10 @@
 
 
 
-.. image:: output_34_1.png
+.. image:: output_35_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     phuber1_y_vals_1 = tf.multiply(tf.square(delta1), tf.sqrt(1.+tf.square((target-x_vals_1)/delta1))-1)
     phuber1_y_out_1 = sess.run(phuber1_y_vals_1)
@@ -368,16 +360,16 @@
 
 
 
-.. image:: output_35_1.png
+.. image:: output_36_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     delta2 = tf.constant(5.)
     phuber2_y_vals = tf.multiply(tf.square(delta2),tf.sqrt(1.+ tf.square((target-x_vals_1)/delta2))-1.)
     phuber2_y_out  = sess.run(phuber2_y_vals)
 
-.. code:: ipython3
+.. code:: python
 
     plt.plot(sess.run(x_vals_1), phuber2_y_out)
 
@@ -391,15 +383,15 @@
 
 
 
-.. image:: output_37_1.png
+.. image:: output_38_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     # CLassification loss functions are used to evaluate loss when predicting categorical outcomes.
     # Hinge loss is mostly used for support vector machines, but can be used in neural networks as well.
 
-.. code:: ipython3
+.. code:: python
 
     x_vals = tf.linspace(-3., 5., 500)
     target = tf.constant(1.)
@@ -407,7 +399,7 @@
     hinge_y_vals = tf.maximum(0., 1.-tf.multiply(target, x_vals))
     hinge_y_out = sess.run(hinge_y_vals)
 
-.. code:: ipython3
+.. code:: python
 
     plt.plot(sess.run(x_vals), hinge_y_out)
 
@@ -421,10 +413,10 @@
 
 
 
-.. image:: output_40_1.png
+.. image:: output_41_1.png
 
 
-.. code:: ipython3
+.. code:: python
 
     sess.run(targets)
 
@@ -466,22 +458,51 @@
 
 
 
-.. code:: ipython3
+.. code:: python
 
     # Cross-Entropy loss for a binary case is also sometimes referred to as the logistic loss function.
 
+.. code:: python
+
+    xentropy_y_vals = tf.multiply(target, tf.log(x_vals))-tf.multiply((1.-target), tf.log(1.-x_vals))
+    xentropy_y_out = sess.run(xentropy_y_vals)
+
+.. code:: python
+
+    plt.plot(sess.run(x_vals), xentropy_y_out)
 
 
-.. digraph:: foo
 
-   "bar" -> "baz" -> "quux";
 
-.. py:function:: enumerate(sequence[, start=0])
+.. parsed-literal::
 
-   返回一个迭代对象,递归式处理字典结构的索引或是其它类似序列内容
-   
-.. raw:: html
+    [<matplotlib.lines.Line2D at 0x7faa369c7940>]
 
-    <video poster="../../_static/images/GCC.png" width="690" height="402" controls="controls">
-        <source src="../../_static/videos/Intro2ML/TFIntro1.mp4" type="video/mp4">
-    </video>
+
+
+
+.. image:: output_45_1.png
+
+
+.. code:: python
+
+    # Sigmoid cross entropy loss is very similar to the previous loss function except we transform the x-values by the sigmoid
+    # function before we put them in the cross entropy loss, as follows:
+    
+    xentropy_sigmoid_y_vals = tf.nn.sigmoid_cross_entropy_with_logits(labels=x_vals, logits=targets)
+    xentropy_sigmoid_y_out = sess.run(xentropy_sigmoid_y_vals)
+    plt.plot(sess.run(x_vals), xentropy_sigmoid_y_out)
+
+
+
+
+.. parsed-literal::
+
+    [<matplotlib.lines.Line2D at 0x7faa56580b80>]
+
+
+
+
+.. image:: output_46_1.png
+
+
