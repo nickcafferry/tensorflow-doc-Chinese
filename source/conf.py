@@ -7,7 +7,6 @@ sys.path.insert(0, os.path.abspath("../../manim/"))
 project = u'tensorflow'
 copyright = u'- Wei MEI (Nick Cafferry).'
 author = u'Wei MEI'
-#author = 'Nick McClure'
 
 version = '0.1.3'
 release = '0.1.3'
