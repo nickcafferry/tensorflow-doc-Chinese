@@ -2,6 +2,7 @@
 
 import sys
 import os
+import tensorflow
 sys.path.insert(0, os.path.abspath("../../manim/"))
 
 project = u'tensorflow'
